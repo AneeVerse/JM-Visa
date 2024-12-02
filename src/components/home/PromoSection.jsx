@@ -1,28 +1,29 @@
 const PromoSection = () => {
     return (
-      <section className="bg-gray-50 py-12 sm:py-16">
+      <section className="bg-gray-50 py-16 sm:py-20">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          {/* Main Content Section */}
+          <div className="flex flex-col lg:flex-row gap-8 items-center">
             {/* Left Image */}
             <div className="flex justify-center">
               <img
                 src="/images/profile.webp" // Replace with your actual image
                 alt="Passport Holder"
-                className="rounded-lg h-[320px] shadow-lg max-w-full"
+                className="rounded-xl shadow-2xl max-w-full object-cover"
               />
             </div>
+  
             {/* Right Content */}
-            <div className="space-y-6">
-              <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">
-                Simplify Your Travel Experience
+            <div className="space-y-6 md:space-y-8">
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 leading-tight">
+                Simplify Your <span className="text-primary">Travel Experience</span>
               </h2>
-              <p className="text-gray-600 leading-relaxed">
-                At JM Visa, we offer expert guidance and assistance to make your
-                visa and immigration process seamless. Let us help you plan your
-                journey with exclusive offers and the best services in the
-                industry.
+              <p className="text-gray-600 text-lg leading-relaxed">
+                At JM Visa, we provide expert guidance and personalized assistance
+                to make your visa and immigration process stress-free. Let us
+                handle the complexities while you focus on planning your dream journey.
               </p>
-              <button className="inline-flex items-center bg-primary text-white px-6 py-3 rounded-lg font-semibold shadow-lg hover:bg-accent transition">
+              <button className="inline-flex items-center bg-primary text-white px-8 py-4 rounded-lg font-semibold shadow-lg hover:bg-accent hover:scale-105 transition-transform duration-300">
                 Contact Us
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -39,28 +40,28 @@ const PromoSection = () => {
                   />
                 </svg>
               </button>
+           
+          {/* Stats Section */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-8 bg-primary text-white py-10 px-8 rounded-xl shadow-xl">
+            <div className="text-center">
+              <h3 className="text-4xl font-extrabold">10k+</h3>
+              <p className="mt-2 text-sm font-medium">Completed Projects</p>
             </div>
+            <div className="text-center">
+              <h3 className="text-4xl font-extrabold">20+</h3>
+              <p className="mt-2 text-sm font-medium">Team Members</p>
+            </div>
+            <div className="text-center">
+              <h3 className="text-4xl font-extrabold">5k+</h3>
+              <p className="mt-2 text-sm font-medium">Happy Clients</p>
+            </div>
+            <div className="text-center">
+              <h3 className="text-4xl font-extrabold">100+</h3>
+              <p className="mt-2 text-sm font-medium">Winning Awards</p>
+            </div>
+          </div> </div>
           </div>
   
-          {/* Stats Section */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-10 bg-primary text-white py-8 px-6 rounded-lg shadow-lg">
-            <div className="text-center">
-              <h3 className="text-3xl font-bold">10k+</h3>
-              <p className="mt-2 text-sm">Completed Projects</p>
-            </div>
-            <div className="text-center">
-              <h3 className="text-3xl font-bold">20+</h3>
-              <p className="mt-2 text-sm">Team Members</p>
-            </div>
-            <div className="text-center">
-              <h3 className="text-3xl font-bold">5k+</h3>
-              <p className="mt-2 text-sm">Happy Clients</p>
-            </div>
-            <div className="text-center">
-              <h3 className="text-3xl font-bold">100+</h3>
-              <p className="mt-2 text-sm">Winning Awards</p>
-            </div>
-          </div>
         </div>
       </section>
     );
