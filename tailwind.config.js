@@ -11,6 +11,10 @@ module.exports = {
           primary: '#007BFF', // Replace with exact blue from logo
           secondary: '#1A1A1A', // Replace with exact gray/black from logo
           accent: '#00C1D4', // Teal from "SERVICES" text
+          gray: {
+            700: "#4A4A4A", // Text gray
+            300: "#E5E5E5", // Border gray
+          },
       },
       spacing: {
         'xs': '4px',
