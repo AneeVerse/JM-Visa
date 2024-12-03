@@ -3,11 +3,11 @@ import { motion } from "framer-motion";
 
 const PromoSection = () => {
   return (
-    <section className="relative py-16 sm:py-20 bg-white">
+    <section className="relative py-16 sm:py-20 bg-white overflow-hidden">
       <div className="container mx-auto px-6 lg:px-12">
-        {/* Main Content Section */}
+        {/* Main Content */}
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-          {/* Left Image with Floating Glass Effect */}
+          {/* Left Image with Modern Floating Elements */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -16,13 +16,21 @@ const PromoSection = () => {
           >
             <div className="relative w-full max-w-md lg:max-w-lg">
               <img
-                src="/images/profile.webp" // Replace with your actual image
+                src="/images/profile.webp" // Replace with your image
                 alt="Travel Assistance"
                 className="w-full rounded-3xl shadow-xl object-cover"
               />
-              {/* Floating Glassmorphic Elements */}
-              <div className="absolute -top-6 -right-6 w-20 h-20 bg-blue-100/30 backdrop-blur-md rounded-full border border-white/30 shadow-lg"></div>
-              <div className="absolute -bottom-6 -left-6 w-20 h-20 bg-blue-100/30 backdrop-blur-md rounded-full border border-white/30 shadow-lg"></div>
+              {/* Floating Elements */}
+              <motion.div
+                className="absolute -top-6 -right-8 w-16 h-16 bg-blue-100/50 backdrop-blur-lg rounded-full shadow-lg"
+                animate={{ y: [0, -15, 0] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              ></motion.div>
+              <motion.div
+                className="absolute -bottom-6 -left-8 w-16 h-16 bg-blue-100/50 backdrop-blur-lg rounded-full shadow-lg"
+                animate={{ y: [0, 15, 0] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              ></motion.div>
             </div>
           </motion.div>
 
@@ -33,17 +41,20 @@ const PromoSection = () => {
             transition={{ duration: 0.6 }}
             className="lg:w-1/2 text-center lg:text-left space-y-6"
           >
-            <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-800 leading-tight">
-              Your <span className="text-blue-500">Journey Partner</span>
+            <h2 className="text-4xl sm:text-5xl font-bold text-gray-800 leading-tight">
+              Your <span className="text-blue-500">Trusted Partner</span> in
+              Visa Assistance
             </h2>
             <p className="text-gray-600 text-lg leading-relaxed">
-              At JM Visa, we simplify your travel and visa needs. Whether it&apos;s immigration, work permits, or travel visas, our expert guidance ensures a stress-free experience for you.
+              JM Visa ensures a seamless process for all your travel, work, and
+              immigration needs. With years of expertise and thousands of
+              satisfied clients, we make your journey stress-free.
             </p>
             <div className="flex justify-center lg:justify-start gap-4">
-              <button className="px-6 py-3 bg-blue-500 text-white font-semibold rounded-full shadow-lg hover:bg-blue-600 transition-transform duration-300">
+              <button className="px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-600 hover:scale-105 transition-transform">
                 Get Started
               </button>
-              <button className="px-6 py-3 bg-white/40 border border-white text-blue-500 font-semibold rounded-full shadow-lg hover:bg-blue-500 hover:text-white hover:border-blue-500 transition-transform duration-300 backdrop-blur-md">
+              <button className="px-6 py-3 border border-blue-500 text-blue-500 font-semibold rounded-lg shadow-lg hover:bg-blue-500 hover:text-white hover:scale-105 transition-transform">
                 Learn More
               </button>
             </div>
@@ -65,18 +76,22 @@ const PromoSection = () => {
           ].map((stat, index) => (
             <div
               key={index}
-              className="p-6 bg-white/20 rounded-xl border border-white/10 shadow-lg backdrop-blur-md text-center transition-transform hover:scale-105"
+              className="p-6 bg-white shadow-lg rounded-xl text-center hover:shadow-2xl hover:scale-105 transition-transform"
             >
-              <h3 className="text-4xl font-extrabold text-blue-500">{stat.value}</h3>
-              <p className="mt-2 text-gray-600 text-sm font-medium">{stat.label}</p>
+              <h3 className="text-4xl font-extrabold text-blue-500">
+                {stat.value}
+              </h3>
+              <p className="mt-2 text-gray-600 text-sm font-medium">
+                {stat.label}
+              </p>
             </div>
           ))}
         </motion.div>
       </div>
 
-      {/* Background Accents */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-blue-300/30 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-300/30 rounded-full blur-3xl"></div>
+      {/* Background Decorative Elements */}
+      <div className="absolute top-0 left-0 w-72 h-72 bg-blue-200/50 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 right-0 w-72 h-72 bg-blue-300/50 rounded-full blur-3xl"></div>
     </section>
   );
 };

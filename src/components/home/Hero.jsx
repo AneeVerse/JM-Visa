@@ -19,7 +19,7 @@ const Hero = () => {
   }, [images.length]);
 
   return (
-    <section className="relative mt-[65px] h-[75vh] md:h-[80vh] flex items-center justify-center bg-gray-900">
+    <section className="relative mt-[50px] h-[75vh] md:h-[80vh] flex items-center justify-center bg-gray-900">
       {/* Background Image Carousel */}
       <div className="absolute inset-0">
         {images.map((img, index) => (

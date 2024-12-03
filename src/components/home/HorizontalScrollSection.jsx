@@ -46,9 +46,6 @@ const HorizontalScrollSection = () => {
           Explore Countries
         </h2>
         <div className="relative">
-          {/* Scroll Buttons */}
-        
-
           {/* Horizontal Scroll Container */}
           <div
             ref={scrollContainerRef}
@@ -65,6 +62,8 @@ const HorizontalScrollSection = () => {
                   alt={country.name}
                   className="rounded-lg h-full w-full object-cover shadow-lg"
                 />
+                <div className="absolute top-0 pb-3 rounded-[10px] h-[318px] w-full bg-black/40 group-hover:bg-black/60 transition-all duration-300"></div>
+                {/* Country Name */}
                 {/* Flag Overlay */}
                 <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2">
                   <img
