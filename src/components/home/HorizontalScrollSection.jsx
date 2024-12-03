@@ -57,7 +57,7 @@ const HorizontalScrollSection = () => {
             {countries.map((country, index) => (
               <div
                 key={index}
-                className="relative h-[330px] w-[250px] flex-shrink-0 group"
+                className="relative h-[330px] pb-3 w-[250px] flex-shrink-0 group"
               >
                 {/* Country Image */}
                 <img
