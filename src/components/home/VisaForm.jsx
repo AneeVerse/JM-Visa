@@ -32,133 +32,143 @@ const VisaForm = () => {
   };
 
   return (
-    <div className="bg-white p-8 sm:p-10 max-w-4xl mx-auto mt-12">
-      <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
-        Visa Application Form
-      </h2>
-      <p className="text-center text-gray-500 mb-10">
-        Fill out the details below to check visa requirements for your travel.
-      </p>
-      <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-        {/* Citizen */}
-        <div className="flex flex-col">
-          <label htmlFor="citizen" className="font-semibold text-gray-700 mb-2">
-            I&apos;m a Citizen Of
-          </label>
-          <select
-            id="citizen"
-            name="citizen"
-            value={formData.citizen}
-            onChange={handleChange}
-            className="border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-accent hover:shadow-md transition"
-          >
-            <option value="India">India</option>
-            <option value="USA">USA</option>
-            <option value="UK">UK</option>
-            <option value="Canada">Canada</option>
-          </select>
-        </div>
+    <div className="relative bg-gradient-to-br from-blue-900 to-purple-900 py-16 px-6">
+      {/* Glassmorphism Card */}
+      <div className="max-w-4xl mx-auto bg-white/10 backdrop-blur-lg border border-white/20 rounded-3xl p-8 shadow-lg">
+        {/* Heading */}
+        <h2 className="text-4xl font-bold text-center text-white mb-6">
+          Visa Application Form
+        </h2>
+        <p className="text-center text-white/80 mb-10">
+          Fill out the details below to check visa requirements for your travel.
+        </p>
 
-        {/* Travelling To */}
-        <div className="flex flex-col">
-          <label htmlFor="travellingTo" className="font-semibold text-gray-700 mb-2">
-            Travelling To
-          </label>
-          <select
-            id="travellingTo"
-            name="travellingTo"
-            value={formData.travellingTo}
-            onChange={handleChange}
-            className="border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-accent hover:shadow-md transition"
-          >
-            <option value="">Select Country</option>
-            <option value="Canada">Canada</option>
-            <option value="Germany">Germany</option>
-            <option value="Australia">Australia</option>
-          </select>
-        </div>
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Citizen */}
+          <div className="flex flex-col">
+            <label htmlFor="citizen" className="font-semibold text-white mb-2">
+              I&apos;m a Citizen Of
+            </label>
+            <select
+              id="citizen"
+              name="citizen"
+              value={formData.citizen}
+              onChange={handleChange}
+              className="bg-white/20 text-white border border-white/30 rounded-lg p-3 focus:ring-2 focus:ring-blue-400 placeholder-white shadow-md transition"
+            >
+              <option value="India">India</option>
+              <option value="USA">USA</option>
+              <option value="UK">UK</option>
+              <option value="Canada">Canada</option>
+            </select>
+          </div>
 
-        {/* Category */}
-        <div className="flex flex-col">
-          <label htmlFor="category" className="font-semibold text-gray-700 mb-2">
-            Select Category
-          </label>
-          <select
-            id="category"
-            name="category"
-            value={formData.category}
-            onChange={handleChange}
-            className="border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-accent hover:shadow-md transition"
-          >
-            <option value="Travel">Travel</option>
-            <option value="Business">Business</option>
-            <option value="Education">Education</option>
-          </select>
-        </div>
+          {/* Travelling To */}
+          <div className="flex flex-col">
+            <label
+              htmlFor="travellingTo"
+              className="font-semibold text-white mb-2"
+            >
+              Travelling To
+            </label>
+            <select
+              id="travellingTo"
+              name="travellingTo"
+              value={formData.travellingTo}
+              onChange={handleChange}
+              className="bg-white/20 text-white border border-white/30 rounded-lg p-3 focus:ring-2 focus:ring-blue-400 placeholder-white shadow-md transition"
+            >
+              <option value="">Select Country</option>
+              <option value="Canada">Canada</option>
+              <option value="Germany">Germany</option>
+              <option value="Australia">Australia</option>
+            </select>
+          </div>
 
-        {/* First Name */}
-        <div className="flex flex-col sm:col-span-1">
-          <label htmlFor="firstName" className="font-semibold text-gray-700 mb-2">
-            First Name
-          </label>
-          <input
-            type="text"
-            id="firstName"
-            name="firstName"
-            placeholder="Enter here"
-            value={formData.firstName}
-            onChange={handleChange}
-            className="border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-accent hover:shadow-md transition"
-          />
-        </div>
+          {/* Category */}
+          <div className="flex flex-col">
+            <label htmlFor="category" className="font-semibold text-white mb-2">
+              Select Category
+            </label>
+            <select
+              id="category"
+              name="category"
+              value={formData.category}
+              onChange={handleChange}
+              className="bg-white/20 text-white border border-white/30 rounded-lg p-3 focus:ring-2 focus:ring-blue-400 placeholder-white shadow-md transition"
+            >
+              <option value="Travel">Travel</option>
+              <option value="Business">Business</option>
+              <option value="Education">Education</option>
+            </select>
+          </div>
 
-        {/* Email Address */}
-        <div className="flex flex-col sm:col-span-1">
-          <label htmlFor="email" className="font-semibold text-gray-700 mb-2">
-            Email Address
-          </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Enter here"
-            value={formData.email}
-            onChange={handleChange}
-            className="border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-accent hover:shadow-md transition"
-          />
-        </div>
+          {/* First Name */}
+          <div className="flex flex-col">
+            <label
+              htmlFor="firstName"
+              className="font-semibold text-white mb-2"
+            >
+              First Name
+            </label>
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              placeholder="Enter your name"
+              value={formData.firstName}
+              onChange={handleChange}
+              className="bg-white/20 text-white border border-white/30 rounded-lg p-3 focus:ring-2 focus:ring-blue-400 placeholder-white shadow-md transition"
+            />
+          </div>
 
-        {/* Phone Number */}
-        <div className="flex flex-col sm:col-span-1">
-          <label htmlFor="phoneNumber" className="font-semibold text-gray-700 mb-2">
-            Phone Number
-          </label>
-          <input
-            type="tel"
-            id="phoneNumber"
-            name="phoneNumber"
-            placeholder="Enter here"
-            value={formData.phoneNumber}
-            onChange={handleChange}
-            className="border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-accent hover:shadow-md transition"
-          />
-        </div>
+          {/* Email Address */}
+          <div className="flex flex-col">
+            <label htmlFor="email" className="font-semibold text-white mb-2">
+              Email Address
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter your email"
+              value={formData.email}
+              onChange={handleChange}
+              className="bg-white/20 text-white border border-white/30 rounded-lg p-3 focus:ring-2 focus:ring-blue-400 placeholder-white shadow-md transition"
+            />
+          </div>
 
-        {/* Submit Button */}
-        <div className="flex items-center justify-between sm:col-span-3 mt-6">
-          <button
-            type="submit"
-            className="bg-primary text-white px-8 py-3 rounded-lg hover:bg-accent hover:text-primary transition duration-300 shadow-lg font-semibold"
-          >
-            Check Requirements
-          </button>
-          <img
-            src="/logo/logo.webp" // Replace with your icon path
-            alt="Paper Plane"
-            className="w-12 h-12"
-          />
-        </div>
-      </form>
+          {/* Phone Number */}
+          <div className="flex flex-col">
+            <label
+              htmlFor="phoneNumber"
+              className="font-semibold text-white mb-2"
+            >
+              Phone Number
+            </label>
+            <input
+              type="tel"
+              id="phoneNumber"
+              name="phoneNumber"
+              placeholder="Enter your phone number"
+              value={formData.phoneNumber}
+              onChange={handleChange}
+              className="bg-white/20 text-white border border-white/30 rounded-lg p-3 focus:ring-2 focus:ring-blue-400 placeholder-white shadow-md transition"
+            />
+          </div>
+
+          {/* Submit Button */}
+          <div className="md:col-span-3 flex justify-center mt-6">
+            <button
+              type="submit"
+              className="bg-gradient-to-r from-blue-400 to-purple-600 text-white px-8 py-3 rounded-lg font-bold hover:shadow-lg transition"
+            >
+              Check Requirements
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

@@ -1,6 +1,5 @@
 "use client";
 import { useRef } from "react";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa"; // Importing icons
 
 const HorizontalScrollSection = () => {
   const scrollContainerRef = useRef(null);
@@ -24,11 +23,12 @@ const HorizontalScrollSection = () => {
     { name: "India", image: "/images/Taj_Mahal.jpg", flag: "/images/flags/india-flag.png" },
   ];
 
-  // Inline CSS for scrollbar hiding
   const scrollContainerStyle = {
     display: "flex",
     overflowX: "scroll",
+    overflowY: "hidden", // Prevent vertical scrolling
     scrollBehavior: "smooth",
+    minHeight: "max-content",
     gap: "1.5rem",
     padding: "1rem 0",
     scrollbarWidth: "none", // For Firefox
@@ -47,18 +47,7 @@ const HorizontalScrollSection = () => {
         </h2>
         <div className="relative">
           {/* Scroll Buttons */}
-          <button
-            onClick={() => scroll("left")}
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-primary text-white p-3 rounded-full shadow-md hover:bg-accent z-10"
-          >
-            <FaChevronLeft className="w-5 h-5" /> {/* Left Scroll Icon */}
-          </button>
-          <button
-            onClick={() => scroll("right")}
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-primary text-white p-3 rounded-full shadow-md hover:bg-accent z-10"
-          >
-            <FaChevronRight className="w-5 h-5" /> {/* Right Scroll Icon */}
-          </button>
+        
 
           {/* Horizontal Scroll Container */}
           <div
@@ -68,16 +57,16 @@ const HorizontalScrollSection = () => {
             {countries.map((country, index) => (
               <div
                 key={index}
-                className="relative min-w-[250px] flex-shrink-0 group"
+                className="relative h-[330px] w-[250px] flex-shrink-0 group"
               >
                 {/* Country Image */}
                 <img
                   src={country.image}
                   alt={country.name}
-                  className="rounded-lg h-[300px] w-[250px] object-cover shadow-lg"
+                  className="rounded-lg h-full w-full object-cover shadow-lg"
                 />
                 {/* Flag Overlay */}
-                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2">
+                <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2">
                   <img
                     src={country.flag}
                     alt={`${country.name} Flag`}
