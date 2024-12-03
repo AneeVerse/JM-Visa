@@ -54,7 +54,7 @@ const HorizontalScrollSection = () => {
   </div>
 
   {/* View All Countries Button */}
-  <button className="px-6 py-2 text-blue-500 flex gap-1 items-center justify-center font-semibold">
+  <button className="px-6 py-2 text-blue-500 min-w-fit flex gap-1 items-center justify-center font-semibold">
    <MdFormatListBulleted className="text-4" /> <span>View All</span> 
   </button>
 </div>
