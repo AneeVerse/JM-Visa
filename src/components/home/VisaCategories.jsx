@@ -63,7 +63,7 @@ const VisaCategories = () => {
           {categories.map((category, index) => (
             <motion.div
               key={index}
-              className="relative group overflow-hidden bg-gradient-to-tr from-blue-500 via-purple-500 to-indigo-500 rounded-xl shadow-lg hover:scale-105 transition-transform duration-300 min-h-[300px] flex justify-center items-center"
+              className="relative group overflow-hidden bg-gradient-to-tr from-blue-500 via-blue-500 to-indigo-500 rounded-xl shadow-lg hover:scale-105 transition-transform duration-300 min-h-[300px] flex justify-center items-center"
               whileHover={{ scale: 1.1 }}
             >
               {/* Background Image with Overlay */}

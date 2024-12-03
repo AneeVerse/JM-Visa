@@ -21,10 +21,10 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 w-full bg-white/10 backdrop-blur-lg  shadow-lg z-50">
-      <div className="bg-gradient-to-r absolute top-0 w-full h-[80px] from-gray-700 to-gray-900 opacity-80 -z-20"></div>
+      {/* <div className="bg-gradient-to-r absolute top-0 w-full h-[80px] bg-[#4475F2] opacity-80 -z-20"></div> */}
       <Container className="flex items-center justify-between h-[80px]">
         {/* Logo */}
-        <div className="text-2xl font-bold tracking-wide text-white">
+        <div className="text-2xl font-bold tracking-wide text-gray-900">
           JM VISA
         </div>
 
@@ -34,7 +34,7 @@ const Header = () => {
             <Link
               key={link.name}
               href={link.href}
-              className="text-lg font-medium text-gray-200 hover:text-blue-400 transition-colors duration-300"
+              className="text-lg font-medium text-gray-900 transition-colors duration-300"
             >
               {link.name}
             </Link>
@@ -50,7 +50,7 @@ const Header = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-2xl text-white focus:outline-none"
+          className="md:hidden text-2xl text-gray-600 focus:outline-none"
           onClick={toggleSidebar}
         >
           {isSidebarOpen ? <FaTimes /> : <FaBars />}
@@ -62,13 +62,13 @@ const Header = () => {
         initial={{ x: "-100%" }}
         animate={{ x: isSidebarOpen ? "0%" : "-100%" }}
         transition={{ duration: 0.3 }}
-        className="fixed top-0 min-h-screen left-0 w-[250px] bg-gray-950 bg-opacity-90 h-full shadow-lg z-50 flex flex-col items-start pt-20 px-6 space-y-6"
+        className="fixed top-0 min-h-screen left-0 w-[270px] bg-white shadow-lg z-50 flex flex-col items-start pt-20 px-6 space-y-6"
       >
         {navLinks.map((link) => (
           <Link
             key={link.name}
             href={link.href}
-            className="text-lg font-medium text-white hover:text-blue-400 transition-colors duration-300"
+            className="text-lg font-medium text-gray-600 hover:text-blue-400 transition-colors duration-300"
             onClick={toggleSidebar}
           >
             {link.name}

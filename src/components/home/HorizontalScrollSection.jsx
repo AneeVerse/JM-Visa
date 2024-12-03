@@ -1,6 +1,6 @@
 "use client";
 import { useRef } from "react";
-
+import { MdFormatListBulleted } from "react-icons/md";
 const HorizontalScrollSection = () => {
   const scrollContainerRef = useRef(null);
 
@@ -15,8 +15,8 @@ const HorizontalScrollSection = () => {
 
   const countries = [
     { name: "India", image: "/images/Taj_Mahal.jpg", flag: "/images/flags/india-flag.png" },
-    { name: "India", image: "/images/Taj_Mahal.jpg", flag: "/images/flags/india-flag.png" },
-    { name: "India", image: "/images/Taj_Mahal.jpg", flag: "/images/flags/india-flag.png" },
+    { name: "London", image: "/images/Taj_Mahal.jpg", flag: "/images/flags/india-flag.png" },
+    { name: "USA", image: "/images/Taj_Mahal.jpg", flag: "/images/flags/india-flag.png" },
     { name: "India", image: "/images/Taj_Mahal.jpg", flag: "/images/flags/india-flag.png" },
     { name: "India", image: "/images/Taj_Mahal.jpg", flag: "/images/flags/india-flag.png" },
     { name: "India", image: "/images/Taj_Mahal.jpg", flag: "/images/flags/india-flag.png" },
@@ -42,9 +42,23 @@ const HorizontalScrollSection = () => {
   return (
     <section className="bg-gray-50 py-12">
       <div className="container mx-auto px-6">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
-          Explore Countries
-        </h2>
+      <div className="flex items-center justify-between mb-8">
+  {/* Subheading and Heading */}
+  <div>
+    <p className="inline-block text-blue-500 font-medium ">
+    ✈️  Discover Destinations Worldwide
+    </p>
+    <h2 className="text-4xl font-bold text-gray-800 leading-tight mt-2">
+      Explore Top Countries with <span className="text-blue-500">JM Visa</span>
+    </h2>
+  </div>
+
+  {/* View All Countries Button */}
+  <button className="px-6 py-2 text-blue-500 flex gap-1 items-center justify-center font-semibold">
+   <MdFormatListBulleted className="text-4" /> <span>View All</span> 
+  </button>
+</div>
+
         <div className="relative">
           {/* Horizontal Scroll Container */}
           <div
@@ -54,7 +68,7 @@ const HorizontalScrollSection = () => {
             {countries.map((country, index) => (
               <div
                 key={index}
-                className="relative h-[330px] pb-3 w-[250px] flex-shrink-0 group"
+                className="relative h-[330px] pb-[12px] w-[250px] flex-shrink-0 group"
               >
                 {/* Country Image */}
                 <img
@@ -64,8 +78,11 @@ const HorizontalScrollSection = () => {
                 />
                 <div className="absolute top-0 pb-3 rounded-[10px] h-[318px] w-full bg-black/40 group-hover:bg-black/60 transition-all duration-300"></div>
                 {/* Country Name */}
+                <h3 className="absolute top-3 left-0 text-gray-300 px-8 rounded-r-full py-[5px] bg-white/10  backdrop-blur-sm font-semibold text-lg">
+                  {country.name}
+                </h3>
                 {/* Flag Overlay */}
-                <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2">
+                <div className="absolute -bottom-[16px] left-1/2 transform -translate-x-1/2">
                   <img
                     src={country.flag}
                     alt={`${country.name} Flag`}

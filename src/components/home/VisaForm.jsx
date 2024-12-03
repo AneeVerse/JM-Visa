@@ -32,7 +32,7 @@ const VisaForm = () => {
   };
 
   return (
-    <div className="relative bg-gradient-to-br from-blue-900 to-purple-900 py-16 px-6">
+    <div className="relative bg-gradient-to-br from-blue-900 to-blue-900 py-16 px-6">
       {/* Glassmorphism Card */}
       <div className="max-w-4xl mx-auto bg-white/10 backdrop-blur-lg border border-white/20 rounded-3xl p-8 shadow-lg">
         {/* Heading */}
@@ -162,7 +162,7 @@ const VisaForm = () => {
           <div className="md:col-span-3 flex justify-center mt-6">
             <button
               type="submit"
-              className="bg-gradient-to-r from-blue-400 to-purple-600 text-white px-8 py-3 rounded-lg font-bold hover:shadow-lg transition"
+              className="bg-gradient-to-r from-blue-400 to-blue-600 text-white px-8 py-3 rounded-lg font-bold hover:shadow-lg transition"
             >
               Check Requirements
             </button>

@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import { FaCheckCircle } from "react-icons/fa"; // Importing React Icons
 
 const PromoSection = () => {
   return (
@@ -50,6 +51,19 @@ const PromoSection = () => {
               immigration needs. With years of expertise and thousands of
               satisfied clients, we make your journey stress-free.
             </p>
+            {/* New List */}
+            <ul className="mt-4 space-y-3">
+              {[
+                "Hassle-free visa processing",
+                "Expert team with 20+ years of experience",
+                "24/7 customer support",
+                "Trusted by over 50k+ clients",
+              ].map((item, index) => (
+                <li key={index} className="flex items-center gap-3 text-gray-700 text-base">
+                  <FaCheckCircle className="text-blue-500" /> {item}
+                </li>
+              ))}
+            </ul>
             <div className="flex justify-center lg:justify-start gap-4">
               <button className="px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-600 hover:scale-105 transition-transform">
                 Get Started
