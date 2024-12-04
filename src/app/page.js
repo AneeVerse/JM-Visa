@@ -17,9 +17,9 @@ export default function Home() {
       <div className="relative ">
       <AboutUs/>
       <PromoSection/>
-      <div className="absolute bottom-20 bg-gradient-to-br from-white via-white to-blue-700 blur-lg bg-opacity-50  w-full min-h-full h-[500px] -z-10"> </div>
+      <div className="absolute bottom-20 bg-gradient-to-br from-white via-white to-blue-200 blur-2xl bg-opacity-60  w-full min-h-full h-[500px] -z-10"> </div>
 
-      <div className="absolute top-20 left-0 bg-gradient-to-br from-blue-600 via-white to-white blur-lg bg-opacity-50  w-full  h-[500px] -z-10"> </div>
+      <div className="absolute top-20 left-0 bg-gradient-to-br from-blue-200 via-white to-white blur-2xl bg-opacity-60   w-full  h-[500px] -z-10"> </div>
       </div>
       <FeedbackReviewComponent/>
       <BlogComponent/>
