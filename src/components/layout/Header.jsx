@@ -24,9 +24,9 @@ const Header = () => {
       {/* <div className="bg-gradient-to-r absolute top-0 w-full h-[80px] bg-[#4475F2] opacity-80 -z-20"></div> */}
       <Container className="flex items-center justify-between h-[80px]">
         {/* Logo */}
-        <div className="text-2xl font-bold tracking-wide text-gray-900">
+        <Link href={"/"} className="block text-2xl font-bold tracking-wide text-gray-900">
           JM VISA
-        </div>
+        </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-8 items-center">

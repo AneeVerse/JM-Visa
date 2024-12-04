@@ -7,9 +7,6 @@ const HeroSection = () => {
     "/images/tourist1.png", // Replace with your actual image paths
     "/images/tourist2.png",
     "/images/tourist3.png",
-    "/images/tourist2.png",
-    "/images/tourist3.png",
-    "/images/tourist2.png",
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
