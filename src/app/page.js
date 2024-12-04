@@ -18,6 +18,8 @@ export default function Home() {
       <AboutUs/>
       <PromoSection/>
       <div className="absolute bottom-20 bg-gradient-to-br from-white via-white to-blue-700 blur-lg bg-opacity-50  w-full min-h-full h-[500px] -z-10"> </div>
+
+      <div className="absolute top-20 left-0 bg-gradient-to-br from-blue-600 via-white to-white blur-lg bg-opacity-50  w-full  h-[500px] -z-10"> </div>
       </div>
       <FeedbackReviewComponent/>
       <BlogComponent/>
