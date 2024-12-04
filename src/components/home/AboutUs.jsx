@@ -28,7 +28,7 @@ const AboutUs = () => {
   ];
 
   return (
-    <section className="relative py-16 px-6 sm:px-12 bg-gradient-to-br from-blue-50 via-white to-blue-700">
+    <section className="relative py-16 px-6 sm:px-12">
       <div className="container mx-auto flex flex-col lg:flex-row items-center gap-12">
         {/* Left Content */}
         <div className="lg:w-1/2 space-y-6">

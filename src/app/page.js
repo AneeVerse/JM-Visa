@@ -14,8 +14,10 @@ export default function Home() {
       <HeroSection/>
       <VisaCategories/>
       <HorizontalScrollSection/>
+      <div className="bg-gradient-to-br from-blue-50 via-white to-blue-700">
       <AboutUs/>
       <PromoSection/>
+      </div>
       <FeedbackReviewComponent/>
       <BlogComponent/>
       <div className="bg-gradient-to-br from-blue-900 via-blue-900 to-black">

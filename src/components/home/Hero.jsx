@@ -92,34 +92,34 @@ const HeroSection = () => {
             />
 
             {/* Floating Badge */}
-            <div className="absolute top-[10%] left-8 border-white border-[1px] bg-white bg-opacity-20 backdrop-blur-sm rounded-lg px-4 py-2 shadow-lg flex items-center gap-2">
+            <div className="absolute top-[10%] left-8 border-white border-[1px] bg-black bg-opacity-20 backdrop-blur-sm rounded-lg px-4 py-2 shadow-lg flex items-center gap-2">
               <img
                 src="/icons/award.png" // Replace with your actual image path
                 alt="Award Icon"
                 className="w-8 h-8 rounded-full shadow-lg object-cover"
               />
-              <span className="text-gray-800 font-semibold"> Best Tour Award</span>
+              <span className="text-gray-100 font-semibold"> Best Tour Award</span>
             </div>
 
             {/* Floating Image */}
-            <div className="absolute top-[40%] border-white border-[1px] bg-white bg-opacity-20 backdrop-blur-sm rounded-lg shadow-lg px-4 py-3 flex items-center gap-2 -right-6">
+            <div className="absolute top-[40%] border-white border-[1px] bg-black bg-opacity-20 backdrop-blur-sm rounded-lg shadow-lg px-4 py-3 flex items-center gap-2 -right-6">
               <img
                 src="/icons/star.png" // Replace with your actual image path
                 alt="Star Icon"
                 className="w-8 h-8 object-cover"
               />
-              <p className="text-gray-800 font-semibold">5.0 (24 reviews)</p>
+              <p className="text-gray-100 font-semibold">5.0 (24 reviews)</p>
             </div>
 
             {/* Card */}
-            <div className="absolute bottom-16 right-8 border-white border-[1px] bg-white bg-opacity-20 backdrop-blur-sm rounded-lg shadow-lg py-3 px-4 flex items-center gap-4">
+            <div className="absolute bottom-16 right-8 border-white border-[1px] bg-black bg-opacity-20 backdrop-blur-sm rounded-lg shadow-lg py-3 px-4 flex items-center gap-4">
               <img
                 src="/icons/google-maps.png" // Replace with your actual image path
                 alt="Google Maps Icon"
                 className="w-8 h-8"
               />
               <div>
-                <p className="text-gray-800 font-semibold">
+                <p className="text-gray-100 font-semibold">
                   Explore the World
                 </p>
               </div>
