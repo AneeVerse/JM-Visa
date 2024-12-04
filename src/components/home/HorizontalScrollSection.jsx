@@ -40,23 +40,25 @@ const HorizontalScrollSection = () => {
   };
 
   return (
-    <section className="bg-gray-50 py-12">
+    <section className="bg-white py-12">
       <div className="container mx-auto px-6">
-      <div className="flex flex-col sm:flex-row items-center justify-between mb-8">
+      <div className=" mb-8">
   {/* Subheading and Heading */}
   <div>
-    <p className="inline-block text-blue-500 font-medium ">
-    ✈️  Discover Destinations Worldwide
+    <div className="flex justify-between gap-2 items-center">
+    <p className="inline-block px-4 py-2 bg-blue-100/50 text-blue-500 font-medium rounded-full backdrop-blur-lg shadow-md ">
+    ✈️  Discover Destinations
     </p>
-    <h2 className="text-4xl font-bold text-gray-800 leading-tight mt-2">
-      Explore Top Countries with <span className="text-blue-500">JM Visa</span>
+  {/* View All Countries Button */}
+  <button className=" py-2 self-end text-blue-500 min-w-fit flex gap-1 items-center justify-center font-semibold">
+   <MdFormatListBulleted className="text-4" /> <span>View All</span> 
+  </button>
+  </div>
+    <h2 className="text-3xl font-bold text-gray-800 leading-tight mt-2">
+      Explore Top Countries
     </h2>
   </div>
 
-  {/* View All Countries Button */}
-  <button className="px-6 py-2 self-end text-blue-500 min-w-fit flex gap-1 items-center justify-center font-semibold">
-   <MdFormatListBulleted className="text-4" /> <span>View All</span> 
-  </button>
 </div>
 
         <div className="relative">

@@ -1,3 +1,4 @@
+import AboutUs from "@/components/home/AboutUs";
 import BlogComponent from "@/components/home/BlogComponent";
 import FeedbackReviewComponent from "@/components/home/FeedbackReviewComponent";
 import HeroSection from "@/components/home/Hero";
@@ -12,6 +13,7 @@ export default function Home() {
       <h1>Home Page</h1>
       <HeroSection/>
       <VisaCategories/>
+      <AboutUs/>
       <HorizontalScrollSection/>
       <PromoSection/>
       <FeedbackReviewComponent/>

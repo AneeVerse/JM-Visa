@@ -4,7 +4,7 @@ import { FaCheckCircle } from "react-icons/fa"; // Importing React Icons
 
 const PromoSection = () => {
   return (
-    <section className="relative py-16 sm:py-20 bg-white overflow-hidden">
+    <section className="relative py-16 sm:py-20 bg-white overflow-x-clip">
       <div className="container mx-auto px-6 lg:px-12">
         {/* Main Content */}
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">

@@ -37,11 +37,11 @@ const BlogComponent = () => {
   ];
 
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 bg-white">
       <div className="container mx-auto px-3 sm:px-6">
         {/* Heading */}
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-4xl font-bold text-gray-800">Explore Our <span className="text-blue-500">Blog</span></h2>
+          <h2 className="text-3xl font-bold text-gray-800">Explore Our <span className="text-blue-500">Blog</span></h2>
           <a
             href="/blogs"
             className="text-blue-500 min-w-fit hover:text-blue-600 flex items-center justify-center gap-1 font-medium transition"

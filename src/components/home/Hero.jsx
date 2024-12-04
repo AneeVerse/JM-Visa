@@ -5,10 +5,11 @@ import { motion } from "framer-motion";
 const HeroSection = () => {
   const images = [
     "/images/tourist1.png", // Replace with your actual image paths
-    "/images/tourist1.png",
-    "/images/tourist1.png",
-    "/images/tourist1.png",
-    "/images/tourist1.png",
+    "/images/tourist2.png",
+    "/images/tourist3.png",
+    "/images/tourist2.png",
+    "/images/tourist3.png",
+    "/images/tourist2.png",
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -18,17 +19,17 @@ const HeroSection = () => {
       setCurrentImageIndex((prevIndex) =>
         prevIndex === images.length - 1 ? 0 : prevIndex + 1
       );
-    }, 3000); // Change image every 3 seconds
+    }, 5000); // Change image every 5 seconds
 
     return () => clearInterval(interval); // Clear interval on unmount
   }, [images.length]);
 
   return (
-    <section className="relative bg-white mt-[50px] py-16">
+    <section className="relative bg-white mt-[50px] overflow-hidden py-16">
       <img
         src="/ui/Decore.svg" // Replace with your actual image path
         alt="Hero Background"
-        className="absolute top-0 hidden lg:block left-[50%] h-full object-cover object-center"
+        className="absolute top-0 hidden lg:block left-[50%] h-full w-full object-cover object-center"
       />
       <div className="container mx-auto px-6 lg:px-12 flex flex-col lg:flex-row items-center justify-between">
         {/* Left Content */}
@@ -44,7 +45,7 @@ const HeroSection = () => {
           </div>
 
           {/* Heading */}
-          <h1 className="mt-6 text-5xl sm:text-6xl font-bold text-gray-800 leading-tight">
+          <h1 className="mt-6 text-2xl sm:text-4xl md:text-5xl font-bold text-gray-800 leading-tight">
             Stress-Free{" "}
             <span className="text-blue-500">Visa Services</span> for{" "}
             <span className="text-blue-500">Your Journey</span> 🌴
@@ -77,10 +78,17 @@ const HeroSection = () => {
         >
           <div className="relative w-full max-w-md lg:max-w-lg">
             {/* Main Image */}
-            <img
+            <motion.img
+            // when currentImageIndex changes, animate the image
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1 , scale: 1}}
+              transition={{ duration: 1 }}
+              key={currentImageIndex}
+
+
               src={images[currentImageIndex]} // Dynamic image based on currentImageIndex
               alt="Traveler"
-              className="w-full object-cover rounded-lg"
+              className="w-full object-cover min-h-[440px] max-h-[440px] sm:min-h-[400px] rounded-lg"
             />
 
             {/* Floating Badge */}
@@ -128,3 +136,5 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
+
