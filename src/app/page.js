@@ -1,3 +1,5 @@
+import BlogComponent from "@/components/home/BlogComponent";
+import FeedbackReviewComponent from "@/components/home/FeedbackReviewComponent";
 import HeroSection from "@/components/home/Hero";
 import HorizontalScrollSection from "@/components/home/HorizontalScrollSection";
 import PromoSection from "@/components/home/PromoSection";
@@ -9,9 +11,11 @@ export default function Home() {
    <div>
       <h1>Home Page</h1>
       <HeroSection/>
-      <PromoSection/>
       <VisaCategories/>
       <HorizontalScrollSection/>
+      <PromoSection/>
+      <FeedbackReviewComponent/>
+      <BlogComponent/>
       <VisaForm/>
    </div>
   );

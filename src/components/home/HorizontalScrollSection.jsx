@@ -42,7 +42,7 @@ const HorizontalScrollSection = () => {
   return (
     <section className="bg-gray-50 py-12">
       <div className="container mx-auto px-6">
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex flex-col sm:flex-row items-center justify-between mb-8">
   {/* Subheading and Heading */}
   <div>
     <p className="inline-block text-blue-500 font-medium ">
@@ -54,7 +54,7 @@ const HorizontalScrollSection = () => {
   </div>
 
   {/* View All Countries Button */}
-  <button className="px-6 py-2 text-blue-500 min-w-fit flex gap-1 items-center justify-center font-semibold">
+  <button className="px-6 py-2 self-end text-blue-500 min-w-fit flex gap-1 items-center justify-center font-semibold">
    <MdFormatListBulleted className="text-4" /> <span>View All</span> 
   </button>
 </div>
