@@ -27,7 +27,6 @@ export default function RootLayout({ children }) {
       >
         <HeaderWithSidebar/>
         {children}
-        <Footer/>
       </body>
     </html>
   );

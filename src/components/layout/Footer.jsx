@@ -24,7 +24,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative bg-gradient-to-br from-blue-900 via-blue-900 to-black text-gray-200 py-16 px-3 sm:px-6">
+    <footer className="relative  text-gray-200 py-16 px-3 sm:px-6">
       {/* Glassmorphism Container */}
       <div className="container mx-auto  md:px-12 bg-white/10 backdrop-blur-md border border-gray-200/20 rounded-3xl py-10 px-4 sm:px-10 shadow-lg">
         {/* Main Footer Content */}

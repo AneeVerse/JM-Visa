@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import { MdFormatListBulleted } from "react-icons/md";
 
 const VisaCategories = () => {
   const categories = [
@@ -41,11 +42,18 @@ const VisaCategories = () => {
     <section className="py-12 bg-white">
       <div className="container mx-auto px-6">
         {/* Heading Section */}
-        <div className="text-center mb-12">
-          <div className="inline-block px-4 py-2 bg-blue-100/50 text-blue-500 font-medium rounded-full backdrop-blur-lg shadow-md">
-            ✈️ Our Services
+        {/* Subheading and Heading */}
+        <div className="mb-8">
+          <div className="flex justify-between gap-2 items-center">
+            <p className="inline-block px-4 py-2 bg-blue-100/50 text-blue-500 font-medium rounded-full backdrop-blur-lg shadow-md ">
+              ✈️  Our Services
+            </p>
+            {/* View All Countries Button */}
+            <button className=" py-2 self-end text-blue-500 min-w-fit flex gap-1 items-center justify-center font-semibold">
+              <MdFormatListBulleted className="text-4" /> <span>View All</span>
+            </button>
           </div>
-          <h2 className="text-3xl font-extrabold text-gray-800 mt-2">
+          <h2 className="text-3xl font-bold text-gray-800 leading-tight mt-2">
             We Provide All Visa
           </h2>
         </div>

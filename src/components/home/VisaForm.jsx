@@ -32,7 +32,7 @@ const VisaForm = () => {
   };
 
   return (
-    <div className="relative bg-gradient-to-br from-blue-900 to-blue-800 py-16 px-3 sm:px-6">
+    <div className="relative  py-16 px-3 sm:px-6">
       <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         {/* Form Section */}
         <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-3xl py-8 px-4 sm:px-8 shadow-lg">

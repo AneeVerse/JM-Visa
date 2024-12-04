@@ -1,6 +1,9 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
+import { PiShareFatFill } from "react-icons/pi";
+import { GoOrganization } from "react-icons/go";
+import { CiHeart } from "react-icons/ci";
 
 const AboutUs = () => {
   const points = [
@@ -67,7 +70,7 @@ const AboutUs = () => {
             {points.map((point, index) => (
               <motion.div
                 key={index}
-                className="flex items-start gap-4 p-4  border border-white/30 backdrop-blur-md rounded-lg shadow-lg hover:shadow-xl transition-all"
+                className="flex items-start gap-4 p-4 bg-white/20 border border-white/30 backdrop-blur-md rounded-lg shadow-sm hover:shadow-xl transition-all"
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.2, duration: 0.6 }}
@@ -84,43 +87,63 @@ const AboutUs = () => {
           </div>
         </div>
 
-        {/* Right Card */}
+        {/* Right Content */}
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
-          className="lg:w-1/2 p-8 border border-white/30 backdrop-blur-lg rounded-2xl shadow-xl hover:shadow-2xl transition-all"
+          className="lg:w-1/2 p-8 relative bg-white/20 border border-white/30 backdrop-blur-lg rounded-2xl shadow-xl hover:shadow-2xl transition-all"
         >
+          {/* Main Image */}
           <img
             src="/images/profile.webp" // Replace with your image path
             alt="Vacation Image"
-            className="w-full h-[300px] object-cover rounded-lg mb-6"
+            className="w-full h-[280px] object-cover rounded-lg mb-6 shadow-md"
           />
-            <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6, duration: 0.5 }}
-          className="mt-16 grid grid-cols-2 md:grid-cols-2  gap-6"
-        >
-          {[
-            { value: "50k+", label: "Visas Approved" },
-            { value: "20+", label: "Years of Experience" },
-            { value: "10k+", label: "Happy Clients" },
-            { value: "100+", label: "Awards Won" },
-          ].map((stat, index) => (
-            <div
-              key={index}
-              className="p-6 bg-white bg-opacity-40 backdrop-blur-lg shadow-lg rounded-xl text-center hover:shadow-2xl hover:scale-105 transition-transform"
-            >
-              <h3 className="text-4xl font-extrabold text-blue-500">
-                {stat.value}
+
+          {/* Details Section */}
+          <div className="space-y-4">
+            {/* Trip Info */}
+            <div className="flex justify-between items-center">
+              <h3 className="text-2xl font-bold text-gray-800">
+                Discover Your Next Destination
               </h3>
-              <p className="mt-2 text-gray-600 text-sm font-medium">
-                {stat.label}
-              </p>
+             
             </div>
-          ))}
-        </motion.div>
+            <p className="text-gray-600 text-sm">14-29 July | by JM Visa</p>
+
+            {/* Progress Section */}
+            <div className="mt-4 flex items-center gap-4">
+              <img
+                src="/images/flags/india-flag.png"
+                alt="Flag"
+                className="w-12 h-12 rounded-full object-cover border-2 border-white shadow-md"
+              />
+              <div className="w-full">
+                <p className="text-sm text-gray-800 font-semibold">Ongoing</p>
+                <p className="text-sm text-gray-600">Explore India</p>
+                {/* <div className="mt-2 w-full bg-gray-300 rounded-full h-2">
+                  <div
+                    className="bg-blue-500 h-2 rounded-full"
+                    style={{ width: "70%" }}
+                  ></div>
+                </div> */}
+              </div>
+            </div>
+
+            {/* Stats */}
+            <div className="mt-4 flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <GoOrganization className="text-xl text-gray-800" />
+                <p className="text-gray-800 text-sm font-semibold">
+                  32 Country
+                </p>
+              </div>
+              <button className="px-4 py-2 text-sm bg-blue-500 text-white rounded-lg shadow-lg hover:bg-blue-600 transition">
+                Explore Countries
+              </button>
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>
