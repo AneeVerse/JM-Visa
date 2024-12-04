@@ -13,11 +13,11 @@ export default function Home() {
       <h1>Home Page</h1>
       <HeroSection/>
       <VisaCategories/>
-      <AboutUs/>
       <HorizontalScrollSection/>
       <PromoSection/>
       <FeedbackReviewComponent/>
       <BlogComponent/>
+      <AboutUs/>
       <VisaForm/>
    </div>
   );
