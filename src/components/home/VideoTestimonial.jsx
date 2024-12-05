@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { IoClose } from "react-icons/io5";
 
 const VideoTestimonials = () => {
   const [selectedVideo, setSelectedVideo] = useState(null);
@@ -61,14 +62,14 @@ const VideoTestimonials = () => {
 
       {/* Video Popup */}
       {selectedVideo && (
-        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center">
+        <div className="fixed inset-0 bg-black/80 z-50 flex p-2 items-center justify-center">
           <div className="relative h-full w-auto max-w-3xl">
             {/* Close Button */}
             <button
               className="absolute top-4 right-4 text-white text-2xl z-50 bg-black/50 p-2 rounded-full"
               onClick={closePopup}
             >
-              ✖
+           <IoClose className="w-4 h-4"/>
             </button>
             {/* Video Player */}
             <video
