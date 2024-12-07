@@ -130,8 +130,8 @@ const ServicesPage = () => {
       </motion.div>
 
       {/* Background Decorative Elements */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-blue-200/50 rounded-full blur-3xl -z-10"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-300/50 rounded-full blur-3xl -z-10"></div>
+      <div className="absolute top-0 left-0 w-full max-w-96 h-96 bg-blue-200/50 rounded-full blur-3xl -z-10"></div>
+      <div className="absolute bottom-0 right-0 w-full max-w-96 h-96 bg-blue-300/50 rounded-full blur-3xl -z-10"></div>
     </section>
   );
 };
