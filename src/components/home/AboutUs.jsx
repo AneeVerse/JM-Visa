@@ -92,14 +92,16 @@ const AboutUs = () => {
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
-          className="lg:w-1/2 p-8 relative bg-white/20 border border-white/80 backdrop-blur-lg  rounded-2xl shadow-md hover:shadow-xl transition-all"
+          className="lg:w-1/2 p-8 relative bg-white/20 border-white border-[1px] backdrop-blur-lg  rounded-2xl shadow-md hover:shadow-xl transition-all"
         >
+          <div className="absolute bg-gradient-to-br -z-20 w-full from-blue-50  h-[400px] to-blue-400 blur-2xl p-2 rounded-full bottom-10 right-4"/>
           {/* Main Image */}
           <img
             src="/images/profile.webp" // Replace with your image path
             alt="Vacation Image"
             className="w-full h-[280px] object-cover rounded-lg mb-6 shadow-md"
           />
+
 
           {/* Details Section */}
           <div className="space-y-4">
@@ -139,7 +141,7 @@ const AboutUs = () => {
                   32 Country
                 </p>
               </div>
-              <button className="px-4 py-2 text-sm border-[1px] bg-blue-500 bg-opacity-20 backdrop-blur-lg border-blue-600 text-blue-600 rounded-lg shadow-sm hover:bg-blue-600 transition">
+              <button className="px-4 py-2 text-sm border-[1px] bg-white bg-opacity-10 backdrop-blur-lg border-blue-500 text-blue-600 rounded-lg shadow-sm hover:bg-blue-600 transition">
                 Explore Countries
               </button>
             </div>
