@@ -92,7 +92,7 @@ const AboutUs = () => {
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
-          className="lg:w-1/2 p-8 relative bg-white/20 border border-white/30 backdrop-blur-lg rounded-2xl shadow-xl hover:shadow-2xl transition-all"
+          className="lg:w-1/2 p-8 relative bg-white/20 border border-white/80 backdrop-blur-lg  rounded-2xl shadow-md hover:shadow-xl transition-all"
         >
           {/* Main Image */}
           <img
@@ -139,7 +139,7 @@ const AboutUs = () => {
                   32 Country
                 </p>
               </div>
-              <button className="px-4 py-2 text-sm bg-blue-500 text-white rounded-lg shadow-lg hover:bg-blue-600 transition">
+              <button className="px-4 py-2 text-sm border-[1px] bg-blue-500 bg-opacity-20 backdrop-blur-lg border-blue-600 text-blue-600 rounded-lg shadow-sm hover:bg-blue-600 transition">
                 Explore Countries
               </button>
             </div>
