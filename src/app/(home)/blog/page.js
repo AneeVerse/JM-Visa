@@ -43,7 +43,7 @@ const BlogPage = () => {
   );
 
   return (
-    <section className="relative mt-[80px] py-16 bg-gradient-to-br from-blue-50 via-white to-blue-100 px-4 sm:px-6 lg:px-12">
+    <section className="relative mt-[70px] py-16 bg-gradient-to-br from-blue-50 via-white to-blue-100 px-4 sm:px-6 lg:px-12">
       <div className="container mx-auto">
         {/* Header */}
         <div className="text-center mb-8">
