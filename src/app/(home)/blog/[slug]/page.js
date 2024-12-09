@@ -75,9 +75,10 @@ const BlogDetails = () => {
         <article className="article-blog max-w-none bg-white/30 border border-white/30 backdrop-blur-md rounded-lg p-6 shadow-lg">
           {blog?.description ? (
             <ReactMarkdown
-              children={blog.description}
               remarkPlugins={[remarkGfm]}
-            />
+            >
+              {blog.description}
+            </ReactMarkdown>
           ) : (
             <p>No content available for this blog.</p>
           )}
