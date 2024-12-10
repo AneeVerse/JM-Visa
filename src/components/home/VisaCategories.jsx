@@ -6,24 +6,24 @@ const VisaCategories = () => {
   const categories = [
     {
       title: "Study Abroad",
-      image: "/images/student-visa.jpg",
+      image: "/images/Student-Visa.webp",
       description:
         "Access education opportunities globally with streamlined visa support.",
     },
     {
       title: "Worker Visa",
-      image: "/images/work-visa.jpg",
+      image: "/images/Worker Visa.webp",
       description:
         "Secure your work visa hassle-free for your dream international job.",
     },
     {
       title: "Tourist Visa",
-      image: "/images/tourist-visa.webp",
+      image: "/images/Tourist Visa.webp",
       description: "Explore the world with our fast and easy tourist visa process.",
     },
     {
       title: "Business Visa",
-      image: "/images/business-visa.png",
+      image: "/images/Business Visa.webp",
       description: "Expand your business ventures globally with minimal effort.",
     },
     {
@@ -75,7 +75,7 @@ const VisaCategories = () => {
           {categories.map((category, index) => (
             <motion.div
               key={index}
-              className="relative group min-w-[280px] sm:min-w-[300px] lg:min-w-[340px] overflow-hidden bg-gradient-to-tr from-blue-500 via-blue-500 to-indigo-500 rounded-xl shadow-lg transition-transform duration-300 h-[320px] flex justify-center items-center"
+              className="relative group min-w-[280px] sm:min-w-[300px] lg:min-w-[340px] overflow-hidden bg-gradient-to-tr from-blue-500 via-blue-500 to-indigo-500 rounded-xl shadow-lg transition-transform duration-300 h-[220px] flex justify-center items-center"
             >
               {/* Background Image with Overlay */}
               <div className="absolute inset-0">

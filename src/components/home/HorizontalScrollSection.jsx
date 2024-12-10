@@ -14,13 +14,11 @@ const HorizontalScrollSection = () => {
   };
 
   const countries = [
-    { name: "India", image: "/images/Taj_Mahal.jpg", flag: "/images/flags/india-flag.png" },
-    { name: "London", image: "/images/Taj_Mahal.jpg", flag: "/images/flags/india-flag.png" },
-    { name: "USA", image: "/images/Taj_Mahal.jpg", flag: "/images/flags/india-flag.png" },
-    { name: "India", image: "/images/Taj_Mahal.jpg", flag: "/images/flags/india-flag.png" },
-    { name: "India", image: "/images/Taj_Mahal.jpg", flag: "/images/flags/india-flag.png" },
-    { name: "India", image: "/images/Taj_Mahal.jpg", flag: "/images/flags/india-flag.png" },
-    { name: "India", image: "/images/Taj_Mahal.jpg", flag: "/images/flags/india-flag.png" },
+    { name: "India", image: "/images/landmarks/Taj_Mahal.jpg", flag: "/images/flags/in.webp" ,altName: "Taj Mahal in India Visa" },
+    { name: "France", image: "/images/landmarks/Eiffel Tower in France Visa.webp", flag: "/images/flags/fr.webp" ,altName: "Eiffel Tower in France Visa" },
+    {name: "Germany", image: "/images/landmarks/Brandenburg Gate in Germany Visa.webp", flag: "/images/flags/de.webp" ,altName: "Brandenburg Gate in Germany Visa" },
+    {name: "Mexico", image: "/images/landmarks/Tourist Places in Mexico Visa.png", flag: "/images/flags/mx.webp" ,altName: "Tourist Places in Mexico Visa" },
+    {name: "Canada", image: "/images/landmarks/Tourist Places in Canada Visa.png", flag: "/images/flags/ca.webp" ,altName: "Tourist Places in Canada Visa" },
   ];
 
   const scrollContainerStyle = {
