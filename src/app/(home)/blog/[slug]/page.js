@@ -53,7 +53,7 @@ const BlogDetails = () => {
   }
 
   return (
-    <section className="relative mt-[70px] py-16 bg-gradient-to-br from-blue-50 via-white to-blue-100 px-4 sm:px-6 lg:px-12">
+    <section className="relative mt-[70px] py-16 bg-gradient-to-br from-blue-50 via-white to-blue-100 px-3 sm:px-6 lg:px-12">
       <div className="container mx-auto">
         {/* Blog Header */}
         <div className="mb-8">
@@ -72,7 +72,7 @@ const BlogDetails = () => {
         </div>
 
         {/* Blog Content */}
-        <article className="article-blog max-w-none bg-white/30 border border-white/30 backdrop-blur-md rounded-lg p-6 shadow-lg">
+        <article className="article-blog max-w-none border border-white/30 backdrop-blur-md py-6 px-3 sm:px-6">
           {blog?.description ? (
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
