@@ -18,28 +18,29 @@
 .article-blog h1 {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #2c3e50; /* Darker shade for primary heading */
+  color: #0c0d0f; /* Darker shade for primary heading */
   margin-bottom: 1rem;
 }
 
 .article-blog h2 {
   font-size: 2rem;
+  margin-top: 12px;
   font-weight: 600;
-  color: #34495e; /* Slightly lighter shade for secondary heading */
+  color: #131517; /* Slightly lighter shade for secondary heading */
   margin-bottom: 0.8rem;
 }
 
 .article-blog h3 {
   font-size: 1.75rem;
   font-weight: 600;
-  color: #4a6572; /* A softer dark tone */
+  color: #1a1e20; /* A softer dark tone */
   margin-bottom: 0.6rem;
 }
 
 .article-blog h4 {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #6c7a89; /* Subtle gray tone */
+  color: #393d42; /* Subtle gray tone */
   margin-bottom: 0.5rem;
 }
 
@@ -158,7 +159,7 @@
   }
 
   .article-blog h2 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
   }
 
   .article-blog h3 {
@@ -180,7 +181,7 @@
   .article-blog p,
   .article-blog ul li,
   .article-blog ol li {
-    font-size: 0.9rem;
+    font-size: 16px;
   }
 
   .article-blog table th,

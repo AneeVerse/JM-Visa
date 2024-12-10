@@ -21,7 +21,7 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-white/10 backdrop-blur-lg  shadow-lg z-50">
+    <header className="fixed top-0 left-0 w-full bg-white/10 backdrop-blur-lg  shadow-sm z-50">
       {/* <div className="bg-gradient-to-r absolute top-0 w-full h-[80px] bg-[#4475F2] opacity-80 -z-20"></div> */}
       <Container className="flex items-center justify-between h-[80px]">
         {/* Logo */}

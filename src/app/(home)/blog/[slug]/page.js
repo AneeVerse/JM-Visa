@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import Image from "next/image";
 
 const BlogDetails = () => {
   const params = useParams(); // Using `useParams` hook to access dynamic params
@@ -53,22 +54,27 @@ const BlogDetails = () => {
   }
 
   return (
-    <section className="relative mt-[70px] py-16 bg-gradient-to-br from-blue-50 via-white to-blue-100 px-3 sm:px-6 lg:px-12">
+    <section className="relative mt-[50px] py-16 bg-gradient-to-br from-blue-50 via-white to-blue-100 px-3 sm:px-6 lg:px-12">
       <div className="container mx-auto">
         {/* Blog Header */}
-        <div className="mb-8">
-          <img
-            src={blog?.thumbnail?.url || "/images/default-thumbnail.jpg"}
-            alt={blog?.title || "Blog"}
-            className="w-full h-64 object-cover rounded-lg shadow-lg"
-          />
+        <div className="mb-4 flex flex-col lg:flex-row gap-3">
+          <div className="mb-4">
           <h1 className="mt-6 text-4xl font-extrabold text-gray-800">
             {blog?.title || "Untitled Blog"}
           </h1>
-          <p className="mt-4 text-gray-600">
-            {blog?.author?.name && `By ${blog.author.name}`} |{" "}
-            {new Date(blog?.date).toLocaleDateString() || "Unknown Date"}
-          </p>
+          <div className="mt-6 text-gray-600 flex gap-3 items-center">
+            <Image src={"/images/default_user.png"} alt={blog?.author?.name || "Author"}  width={35} height={35} className="rounded-full min-w-fit object-cover" />
+            <div className="flex flex-col text-sm">
+           <span className="font-semibold">{blog?.author?.name && `${blog.author.name}`}</span> 
+          <span>Date:  {new Date(blog?.date).toLocaleDateString() || "Unknown Date"}</span>
+            </div>
+          </div>
+          </div>
+          <img
+            src={blog?.thumbnail?.url || "/images/default-thumbnail.jpg"}
+            alt={blog?.title || "Blog"}
+            className="w-full h-64 object-cover rounded-sm shadow-sm"
+          />
         </div>
 
         {/* Blog Content */}
@@ -88,7 +94,7 @@ const BlogDetails = () => {
         <div className="mt-8">
           <button
             onClick={() => router.push("/blog")}
-            className="px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-600 transition"
+            className="px-6 py-3 text-blue-500 font-semibold transition"
           >
             ← Back to Blogs
           </button>
