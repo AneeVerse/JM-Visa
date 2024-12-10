@@ -16,8 +16,11 @@ export default function Home() {
       <VisaCategories/>
       <HorizontalScrollSection/>
       <div className="relative ">
+
+      <div className="bg-gradient-to-br from-blue-900 via-blue-700 to-blue-500">
       <AboutUs/>
       <PromoSection/>
+      </div>
       <VideoTestimonial/>
       <div className="absolute bottom-20 bg-gradient-to-br from-white via-white to-blue-200 blur-2xl bg-opacity-60  w-full min-h-full h-[500px] -z-10"> </div>
 

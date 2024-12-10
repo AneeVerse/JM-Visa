@@ -37,7 +37,7 @@ const AboutUs = () => {
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-block px-4 py-2 bg-blue-200/50 text-blue-600 font-medium rounded-full backdrop-blur-lg shadow-md"
+            className="inline-block px-4 py-2 bg-white bg-opacity-10 text-white font-medium rounded-full backdrop-blur-lg shadow-md"
           >
             ✈️ About Us
           </motion.div>
@@ -47,7 +47,7 @@ const AboutUs = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-3xl font-extrabold text-gray-800 leading-snug"
+            className="text-3xl font-extrabold text-white leading-snug"
           >
             Making Visa Applications <br />
             <span className="text-blue-500">Simple and Efficient</span>
@@ -58,7 +58,7 @@ const AboutUs = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="text-gray-600 text-lg"
+            className="text-white text-lg"
           >
             At JM Visa, we specialize in offering personalized visa services for
             travel, education, and work. Our expert team ensures a smooth and
@@ -70,17 +70,17 @@ const AboutUs = () => {
             {points.map((point, index) => (
               <motion.div
                 key={index}
-                className="flex items-start gap-4 p-4 bg-white/20 border border-white/30 backdrop-blur-md rounded-lg shadow-sm hover:shadow-xl transition-all"
+                className="flex items-start gap-4 p-4 bg-white bg-opacity-10 border border-white/30 backdrop-blur-md rounded-lg hover:shadow-sm transition-all"
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.2, duration: 0.6 }}
               >
                 <div className="text-3xl">{point.icon}</div>
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-800">
+                  <h3 className="text-lg font-semibold text-white">
                     {point.title}
                   </h3>
-                  <p className="text-sm text-gray-600">{point.description}</p>
+                  <p className="text-sm text-white">{point.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -92,9 +92,9 @@ const AboutUs = () => {
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
-          className="lg:w-1/2 p-8 relative bg-white/20 border-white border-[1px] backdrop-blur-lg  rounded-2xl shadow-md hover:shadow-xl transition-all"
+          className="lg:w-1/2 p-8 relative bg-white bg-opacity-10 border-gray-200 border-[1px] backdrop-blur-lg  rounded-2xl hover:shadow-xl transition-all"
         >
-          <div className="absolute bg-gradient-to-br -z-20 w-full from-blue-50  h-[400px] to-blue-400 blur-2xl p-2 rounded-full bottom-10 right-4"/>
+          {/* <div className="absolute bg-gradient-to-br -z-20 w-full from-blue-50  h-[400px] to-blue-400 blur-2xl p-2 rounded-full bottom-10 right-4"/> */}
           {/* Main Image */}
           <img
             src="/images/profile.webp" // Replace with your image path
@@ -107,12 +107,12 @@ const AboutUs = () => {
           <div className="space-y-4">
             {/* Trip Info */}
             <div className="flex justify-between items-center">
-              <h3 className="text-2xl font-bold text-gray-800">
+              <h3 className="text-2xl font-bold text-white">
                 Discover Your Next Destination
               </h3>
              
             </div>
-            <p className="text-gray-600 text-sm">14-29 July | by JM Visa</p>
+            <p className="text-white text-sm">14-29 July | by JM Visa</p>
 
             {/* Progress Section */}
             <div className="mt-4 flex items-center gap-4">
@@ -122,8 +122,8 @@ const AboutUs = () => {
                 className="w-12 h-12 rounded-full object-cover border-2 border-white shadow-md"
               />
               <div className="w-full">
-                <p className="text-sm text-gray-800 font-semibold">Ongoing</p>
-                <p className="text-sm text-gray-600">Explore India</p>
+                <p className="text-sm text-white font-semibold">Ongoing</p>
+                <p className="text-sm text-white">Explore India</p>
                 {/* <div className="mt-2 w-full bg-gray-300 rounded-full h-2">
                   <div
                     className="bg-blue-500 h-2 rounded-full"
@@ -136,12 +136,12 @@ const AboutUs = () => {
             {/* Stats */}
             <div className="mt-4 flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <GoOrganization className="text-xl text-gray-800" />
-                <p className="text-gray-800 text-sm font-semibold">
+                <GoOrganization className="text-xl text-white" />
+                <p className="text-white text-sm font-semibold">
                   32 Country
                 </p>
               </div>
-              <button className="px-4 py-2 text-sm border-[1px] bg-white bg-opacity-10 backdrop-blur-lg border-blue-500 text-blue-600 rounded-lg shadow-sm hover:bg-blue-600 transition">
+              <button className="px-4 py-2 text-sm border-[1px] bg-white bg-opacity-10 backdrop-blur-lg border-blue-500 text-white rounded-lg shadow-sm hover:bg-blue-600 transition">
                 Explore Countries
               </button>
             </div>

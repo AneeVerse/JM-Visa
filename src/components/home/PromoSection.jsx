@@ -55,7 +55,7 @@ const PromoSection = () => {
               key={index}
               className="p-4 sm:p-6 bg-white bg-opacity-50 border-white border-[1px] backdrop-blur-lg shadow-lg rounded-xl text-center hover:shadow-2xl hover:scale-105 transition-transform"
             >
-              <h3 className="text-2xl sm:text-4xl font-extrabold text-blue-500">
+              <h3 className="text-2xl sm:text-4xl font-extrabold text-white">
                 {counters[index]}
               </h3>
               <p className="mt-2 text-gray-600 text-sm sm:text-lg font-medium">
