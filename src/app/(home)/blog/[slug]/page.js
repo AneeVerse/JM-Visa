@@ -54,12 +54,12 @@ const BlogDetails = () => {
   }
 
   return (
-    <section className="relative mt-[50px] py-16 bg-gradient-to-br from-blue-50 via-white to-blue-100 px-3 sm:px-6 lg:px-12">
+    <section className="relative mt-[60px] py-16 bg-gradient-to-br from-blue-50 via-white to-blue-100 px-3 sm:px-6 lg:px-12">
       <div className="container mx-auto">
         {/* Blog Header */}
         <div className="mb-4 flex flex-col lg:flex-row gap-3">
           <div className="mb-4 flex-1">
-            <h1 className="mt-6 text-4xl font-extrabold text-gray-800">
+            <h1 style={{lineHeight: "125%"}} className="text-4xl xl:text-5xl font-extrabold text-gray-800">
               {blog?.title || "Untitled Blog"}
             </h1>
             <div className="mt-6 text-gray-600 flex gap-3 items-center">
@@ -85,7 +85,7 @@ const BlogDetails = () => {
               <img
                 src={blog?.thumbnail?.url || "/images/default-thumbnail.jpg"}
                 alt={blog?.title || "Blog"}
-                className="w-full max-h-[370px] h-full object-cover rounded-sm shadow-sm"
+                className="w-full max-h-[370px] h-full object-cover rounded-md shadow-sm"
               />
             </div>
           </div>
