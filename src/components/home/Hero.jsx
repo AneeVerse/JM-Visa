@@ -85,11 +85,11 @@ const HeroSection = () => {
 
               src={images[currentImageIndex]} // Dynamic image based on currentImageIndex
               alt="Traveler"
-              className="w-full object-cover min-h-[440px] max-h-[440px] sm:min-h-[400px] rounded-lg"
+              className="w-full object-contain  min-h-[440px] max-h-[440px] sm:min-h-[400px] rounded-lg"
             />
 
             {/* Floating Badge */}
-            <div className="absolute top-[10%] left-8 border-white border-[1px] bg-black bg-opacity-20 backdrop-blur-sm rounded-lg px-4 py-2 shadow-lg flex items-center gap-2">
+            <div className="absolute top-[10%] left-0 border-white border-[1px] bg-black bg-opacity-20 backdrop-blur-sm rounded-lg px-4 py-2 shadow-lg flex items-center gap-2">
               <img
                 src="/icons/award.png" // Replace with your actual image path
                 alt="Award Icon"
