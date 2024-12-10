@@ -59,30 +59,42 @@ const BlogDetails = () => {
         {/* Blog Header */}
         <div className="mb-4 flex flex-col lg:flex-row gap-3">
           <div className="mb-4">
-          <h1 className="mt-6 text-4xl font-extrabold text-gray-800">
-            {blog?.title || "Untitled Blog"}
-          </h1>
-          <div className="mt-6 text-gray-600 flex gap-3 items-center">
-            <Image src={"/images/default_user.png"} alt={blog?.author?.name || "Author"}  width={35} height={35} className="rounded-full min-w-fit object-cover" />
-            <div className="flex flex-col text-sm">
-           <span className="font-semibold">{blog?.author?.name && `${blog.author.name}`}</span> 
-          <span>Date:  {new Date(blog?.date).toLocaleDateString() || "Unknown Date"}</span>
+            <h1 className="mt-6 text-4xl font-extrabold text-gray-800">
+              {blog?.title || "Untitled Blog"}
+            </h1>
+            <div className="mt-6 text-gray-600 flex gap-3 items-center">
+              <Image
+                src={"/images/default_user.png"}
+                alt={blog?.author?.name || "Author"}
+                width={35}
+                height={35}
+                className="rounded-full min-w-fit object-cover"
+              />
+              <div className="flex flex-col text-sm">
+                <span className="font-semibold">
+                  {blog?.author?.name && `${blog.author.name}`}
+                </span>
+                <span>
+                  Date: {new Date(blog?.date).toLocaleDateString() || "Unknown Date"}
+                </span>
+              </div>
             </div>
           </div>
+          <div className="">
+            <div className="aspect-w-16 aspect-h-9">
+              <img
+                src={blog?.thumbnail?.url || "/images/default-thumbnail.jpg"}
+                alt={blog?.title || "Blog"}
+                className="w-full h-full object-cover rounded-sm shadow-sm"
+              />
+            </div>
           </div>
-          <img
-            src={blog?.thumbnail?.url || "/images/default-thumbnail.jpg"}
-            alt={blog?.title || "Blog"}
-            className="w-full h-64 object-cover rounded-sm shadow-sm"
-          />
         </div>
 
         {/* Blog Content */}
         <article className="article-blog max-w-none border border-white/30 backdrop-blur-md py-6 px-3 sm:px-6">
           {blog?.description ? (
-            <ReactMarkdown
-              remarkPlugins={[remarkGfm]}
-            >
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>
               {blog.description}
             </ReactMarkdown>
           ) : (
