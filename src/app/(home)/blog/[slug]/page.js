@@ -58,7 +58,7 @@ const BlogDetails = () => {
       <div className="container mx-auto">
         {/* Blog Header */}
         <div className="mb-4 flex flex-col lg:flex-row gap-3">
-          <div className="mb-4">
+          <div className="mb-4 flex-1">
             <h1 className="mt-6 text-4xl font-extrabold text-gray-800">
               {blog?.title || "Untitled Blog"}
             </h1>
@@ -80,12 +80,12 @@ const BlogDetails = () => {
               </div>
             </div>
           </div>
-          <div className="">
+          <div className="flex-1">
             <div className="aspect-w-16 aspect-h-9">
               <img
                 src={blog?.thumbnail?.url || "/images/default-thumbnail.jpg"}
                 alt={blog?.title || "Blog"}
-                className="w-full h-full object-cover rounded-sm shadow-sm"
+                className="w-full max-h-[370px] h-full object-cover rounded-sm shadow-sm"
               />
             </div>
           </div>
