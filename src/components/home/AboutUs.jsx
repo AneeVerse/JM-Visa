@@ -50,7 +50,7 @@ const AboutUs = () => {
             className="text-3xl font-extrabold text-white leading-snug"
           >
             Making Visa Applications <br />
-            <span className="text-blue-500">Simple and Efficient</span>
+            <span className="text-blue-200">Simple and Efficient</span>
           </motion.h1>
 
           {/* Description */}

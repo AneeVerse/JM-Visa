@@ -5,7 +5,7 @@ import { MdFormatListBulleted } from "react-icons/md";
 const VisaCategories = () => {
   const categories = [
     {
-      title: "Student Visa",
+      title: "Study Abroad",
       image: "/images/student-visa.jpg",
       description:
         "Access education opportunities globally with streamlined visa support.",

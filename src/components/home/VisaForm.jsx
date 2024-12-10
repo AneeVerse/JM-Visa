@@ -59,7 +59,7 @@ const VisaForm = () => {
                 name="citizen"
                 value={formData.citizen}
                 onChange={handleChange}
-                className="bg-white/20 text-white border border-white/30 rounded-lg p-3 focus:ring-2 focus:ring-blue-400 placeholder-white shadow-md transition"
+                className="bg-white/20 text-gray-800 border border-black/30 rounded-lg p-3 focus:ring-2 focus:ring-blue-400 placeholder-white shadow-md transition"
               >
                 <option value="India">India</option>
                 <option value="USA">USA</option>
@@ -81,7 +81,7 @@ const VisaForm = () => {
                 name="travellingTo"
                 value={formData.travellingTo}
                 onChange={handleChange}
-                className="bg-white/20 text-white border border-white/30 rounded-lg p-3 focus:ring-2 focus:ring-blue-400 placeholder-white shadow-md transition"
+                className="bg-white/20 text-gray-800 border border-white/30 rounded-lg p-3 focus:ring-2 focus:ring-blue-400 placeholder-white shadow-md transition"
               >
                 <option value="">Select Country</option>
                 <option value="Canada">Canada</option>
@@ -100,7 +100,7 @@ const VisaForm = () => {
                 name="category"
                 value={formData.category}
                 onChange={handleChange}
-                className="bg-white/20 text-white border border-white/30 rounded-lg p-3 focus:ring-2 focus:ring-blue-400 placeholder-white shadow-md transition"
+                className="bg-white/20 text-gray-800 border border-white/30 rounded-lg p-3 focus:ring-2 focus:ring-blue-400 placeholder-white shadow-md transition"
               >
                 <option value="Travel">Travel</option>
                 <option value="Business">Business</option>

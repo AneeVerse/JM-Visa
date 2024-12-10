@@ -11,9 +11,9 @@ const Header = () => {
   const navLinks = [
     { name: "About", href: "/about" },
     { name: "Services", href: "/services" },
-    { name: "Blog", href: "/blog" },
     { name: "Country", href: "/country" },
-    { name: "Contact", href: "/contact" },
+    { name: "Blog", href: "/blog" },
+    // { name: "Contact", href: "/contact" },
   ];
 
   const toggleSidebar = () => {
@@ -42,10 +42,10 @@ const Header = () => {
           ))}
           {/* CTA Button */}
           <Link
-            href="/get-started"
+            href="/contact"
             className="px-6 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full font-semibold hover:scale-105 transition-transform duration-300 shadow-md"
           >
-            Get Started
+            Get in Touch
           </Link>
         </nav>
 
@@ -76,11 +76,11 @@ const Header = () => {
           </Link>
         ))}
         <Link
-          href="/get-started"
+          href="/contact"
           className="mt-4 px-6 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full font-semibold hover:scale-105 transition-transform duration-300 shadow-md"
           onClick={toggleSidebar}
         >
-          Get Started
+          Get in Touch
         </Link>
       </motion.div>
     </header>

@@ -1,17 +1,18 @@
 "use client";
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 
 const CountrySelector = () => {
   const categories = {
     Europe: [
-      { name: "Belgium", flag: "/images/flags/be.webp", landmark: "/images/landmarks/Taj_Mahal.jpg", landmarkName: "Atomium" },
+      { name: "Belgium", flag: "/images/flags/be.webp", landmark: "/images/landmarks/Atomium in Belgium Visa.webp", landmarkName: "Atomium" },
       { name: "France", flag: "/images/flags/fr.webp", landmark: "/images/landmarks/Taj_Mahal.jpg", landmarkName: "Eiffel Tower" },
       { name: "Germany", flag: "/images/flags/de.webp", landmark: "/images/landmarks/Taj_Mahal.jpg", landmarkName: "Brandenburg Gate" },
       { name: "Greece", flag: "/images/flags/gr.webp", landmark: "/images/landmarks/Taj_Mahal.jpg", landmarkName: "Parthenon" },
       { name: "Iceland", flag: "/images/flags/is.webp", landmark: "/images/landmarks/Taj_Mahal.jpg", landmarkName: "Blue Lagoon" },
       { name: "Ireland", flag: "/images/flags/ie.webp", landmark: "/images/landmarks/Taj_Mahal.jpg", landmarkName: "Cliffs of Moher" },
       { name: "Italy", flag: "/images/flags/it.webp", landmark: "/images/landmarks/italy.webp", landmarkName: "Colosseum" },
-      { name: "Luxembourg", flag: "/images/flags/lu.webp", landmark: "/images/landmarks/luxembourg.webp", landmarkName: "Vianden Castle" },
+      { name: "Luxembourg", flag: "/images/flags/lu.webp", landmark: "/images/landmarks/Vianden Castle in Luxembourg Visa.webp", landmarkName: "Vianden Castle" },
     ],
     NorthAmerica: [
       { name: "Canada", flag: "/images/flags/ca.webp",landmark: "/images/landmarks/Taj_Mahal.jpg", landmarkName: "Colosseum"  },
@@ -47,6 +48,15 @@ const CountrySelector = () => {
     <section className="relative py-16 px-3 sm:px-6 md:px-12 bg-gradient-to-br from-blue-50 via-white to-blue-100">
       <div className="container mx-auto">
         {/* Heading */}
+        <motion.div
+        className="text-center"
+        initial="hidden"
+        animate="visible"
+        variants={{
+          hidden: { opacity: 0, y: 50 },
+          visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+        }}
+      >
         <div className="text-center mb-12">
           <div className="inline-block px-4 py-2 bg-blue-200/50 text-blue-600 font-medium rounded-full backdrop-blur-lg shadow-md">
             🌍 Explore Countries
@@ -59,6 +69,7 @@ const CountrySelector = () => {
             Select a region to explore popular countries and their landmarks.
           </p>
         </div>
+        </motion.div>
 
         {/* Categories */}
         <div className="flex justify-center gap-4 mb-8 flex-wrap">
@@ -89,7 +100,7 @@ const CountrySelector = () => {
                 <img
                   src={country.landmark}
                   alt={country.landmarkName}
-                  className="w-full h-32 object-cover"
+                  className="w-full h-32 md:h-[190px] object-cover"
                 />
                 <div className="absolute top-2 left-0 bg-white/50 backdrop-blur-sm text-gray-600 px-2 py-1 rounded-r-full text-xs font-medium">
                   {country.landmarkName}

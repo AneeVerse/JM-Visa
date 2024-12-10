@@ -41,7 +41,7 @@ const PromoSection = () => {
   return (
     <section
       ref={ref}
-      className="relative pb-16 sm:py-20 "
+      className="relative pb-16 sm:pb-20 sm:py-10 "
     >
       <div className="container mx-auto px-6 lg:px-12">
         <motion.div
@@ -53,12 +53,12 @@ const PromoSection = () => {
           {stats.map((stat, index) => (
             <div
               key={index}
-              className="p-4 sm:p-6 bg-white bg-opacity-50 border-white border-[1px] backdrop-blur-lg shadow-lg rounded-xl text-center hover:shadow-2xl hover:scale-105 transition-transform"
+              className="p-4 sm:p-6 bg-white bg-opacity-10 border-gray-200 border-[1px] backdrop-blur-lg shadow-lg rounded-xl text-center hover:shadow-2xl hover:scale-105 transition-transform"
             >
               <h3 className="text-2xl sm:text-4xl font-extrabold text-white">
                 {counters[index]}
               </h3>
-              <p className="mt-2 text-gray-600 text-sm sm:text-lg font-medium">
+              <p className="mt-2 text-gray-100 text-sm sm:text-lg font-medium">
                 {stat.label}
               </p>
             </div>

@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 const BlogPage = () => {
   const [blogs, setBlogs] = useState([]);
@@ -33,6 +34,15 @@ const BlogPage = () => {
     <section className="relative mt-[70px] py-16 bg-gradient-to-br from-blue-50 via-white to-blue-100 px-4 sm:px-6 lg:px-12">
       <div className="container mx-auto">
         {/* Header */}
+        <motion.div
+        className="text-center"
+        initial="hidden"
+        animate="visible"
+        variants={{
+          hidden: { opacity: 0, y: 50 },
+          visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+        }}
+      >
         <div className="text-center mb-8">
           <div className="inline-block px-4 py-2 bg-blue-200/50 text-blue-600 font-medium rounded-full backdrop-blur-lg shadow-md">
             📰 Explore Our Blogs
@@ -44,6 +54,7 @@ const BlogPage = () => {
             Browse through our latest articles and updates tailored for you.
           </p>
         </div>
+        </motion.div>
 
         {/* Blog Grid */}
         {loading ? (

@@ -2,6 +2,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import HeaderWithSidebar from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import FloatingActionButton from "@/components/layout/FloatingActionButton";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -27,6 +28,7 @@ export default function RootLayout({ children }) {
       >
         <HeaderWithSidebar/>
         {children}
+        <FloatingActionButton/>
       </body>
     </html>
   );

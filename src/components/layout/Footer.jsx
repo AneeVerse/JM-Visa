@@ -1,11 +1,15 @@
 "use client";
 
+import Image from "next/image";
+import Link from "next/link";
+
 const Footer = () => {
   const quickLinks = [
-    { name: "Our History", href: "#" },
-    { name: "Contact Us", href: "#" },
-    { name: "FAQ", href: "#" },
-    { name: "About Us", href: "#" },
+    { name: "Home", href: "/" },
+    { name: "About Us", href: "/about" },
+    { name: "Services", href: "/services" },
+    { name: "Countries", href: "/country" },
+    { name: "Contact Us", href: "/contact" },
   ];
 
   const servicesLinks = [
@@ -20,7 +24,6 @@ const Footer = () => {
   const footerLinks = [
     { name: "Privacy Policy", href: "#" },
     { name: "Terms of Service", href: "#" },
-    { name: "Legal", href: "#" },
   ];
 
   return (
@@ -39,19 +42,26 @@ const Footer = () => {
             <div className="mt-6">
               <p className="font-semibold text-white">Call Us</p>
               <a
-                href="tel:+1232567890"
-                className="text-blue-400 font-medium hover:text-blue-300 transition"
+                href="tel:+919321315524"
+                className="text-blue-50 font-medium hover:text-blue-100 transition"
               >
-                +1 (123) 256 7890
+                +91 9321315524
+              </a>
+              <br />
+              <a
+                href="tel:+918591070718"
+                className="text-blue-50 font-medium hover:text-blue-100 transition"
+              >
+                +91 8591070718
               </a>
             </div>
             <div className="mt-4">
               <p className="font-semibold text-white">Email Us</p>
               <a
-                href="mailto:info@jmvisa.com"
-                className="text-blue-400 font-medium hover:text-blue-300 transition"
+                href="mailto:info@jmvisaservices.com"
+                className="text-blue-50 font-medium hover:text-blue-100 transition"
               >
-                info@jmvisa.com
+               info@jmvisaservices.com
               </a>
             </div>
           </div>
@@ -97,38 +107,43 @@ const Footer = () => {
             <h3 className="text-xl font-semibold text-white mb-4">
               Working Hours
             </h3>
-            <ul className="text-sm space-y-3 text-gray-300">
+            <ul className="text-sm space-y-3 text-white">
               <li>
                 Mon - Fri:{" "}
-                <span className="text-gray-400">9 AM - 6 PM</span>
+                <span className="text-gray-100">9 AM - 6 PM</span>
               </li>
               <li>
-                Sat: <span className="text-gray-400">10 AM - 3 PM</span>
+                Sat: <span className="text-gray-100">10 AM - 3 PM</span>
               </li>
               <li>
-                Sun: <span className="text-gray-400">Closed</span>
+                Sun: <span className="text-gray-100">Closed</span>
               </li>
             </ul>
           </div>
         </div>
 
         {/* Divider */}
-        <div className="border-t border-gray-700 mt-12 pt-6 flex flex-col sm:flex-row justify-between items-center">
-          <p className="text-sm text-gray-500">
+        <div className="border-t border-gray-400 mt-12 pt-6 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-sm text-gray-100">
             Copyright © {new Date().getFullYear()} JM Visa. All rights reserved.
           </p>
-          <ul className="flex space-x-6 mt-4 sm:mt-0">
+          <ul className="flex space-x-6 mt-3 sm:mt-0">
             {footerLinks.map((link) => (
               <li key={link.name}>
                 <a
                   href={link.href}
-                  className="hover:text-blue-400 transition-colors text-sm"
+                  className="hover:text-blue-400 text-gray-100 transition-colors text-sm"
                 >
                   {link.name}
                 </a>
               </li>
             ))}
           </ul>
+          <div className="mt-3 sm:mt-1 md:mt-0">Design & Managed by <Link href={"https://aneeverse.com/"} target="_blank" className=" hover:underline inline-flex flex-row items-center gap-2 min-h-fit" >
+          
+         <span>Aneeverse</span>
+          <Image src={"/logo/aneeverse-logo.png"} alt="Aneeverse Logo" width={20} height={20} className="inline-block" />
+          </Link></div>
         </div>
       </div>
     </footer>

@@ -28,7 +28,7 @@ export default function Home() {
       </div>
       <FeedbackReviewComponent/>
       <BlogComponent/>
-      <div className="bg-gradient-to-br from-blue-900 via-blue-900 to-black">
+      <div className="bg-gradient-to-br from-blue-900 via-blue-700 to-blue-500">
       <VisaForm/>
       <Footer/>
       </div>

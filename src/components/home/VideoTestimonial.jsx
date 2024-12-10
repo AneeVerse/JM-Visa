@@ -30,16 +30,25 @@ const VideoTestimonials = () => {
             🎥 Client Testimonials
           </div>
           <h1 className="mt-4 text-3xl font-extrabold text-gray-800">
-            See What Our <span className="text-blue-500">Happy Clients</span> Say
+            See What Our <br className=" sm:hidden"/><span className="text-blue-500">Happy Clients</span> Say
           </h1>
         </div>
 
         {/* Video Carousel */}
-        <div className="relative flex gap-6 overflow-x-auto scroll-smooth no-scrollbar">
+        <div
+        // hide scrollbar
+        style={{
+          scrollbarWidth: "none",
+          msOverflowStyle: "none",
+          overflowX: "auto",
+          WebkitOverflowScrolling: "touch",
+          scrollBehavior: "smooth"
+        }}
+        className="relative flex gap-6  overflow-x-auto scroll-smooth ">
           {testimonials.map((testimonial) => (
             <div
               key={testimonial.id}
-              className="relative min-w-[200px] sm:min-w-[300px] h-[340px] sm:h-[340px] rounded-lg overflow-hidden shadow-md hover:scale-105 transition-transform cursor-pointer"
+              className="relative min-w-[200px] sm:min-w-[300px] h-[340px] hover:shadow-md sm:h-[480px] rounded-lg overflow-hidden shadow-md transition-transform cursor-pointer"
               onClick={() => handleVideoClick(testimonial.videoUrl)}
             >
               {/* Video */}
