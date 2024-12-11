@@ -27,11 +27,19 @@ const HorizontalScrollSection = () => {
   // }, []);
 
   const countries = [
-    { name: "India", image: "/images/landmarks/Taj_Mahal.jpg", flag: "/images/flags/in.webp" ,altName: "Taj Mahal in India Visa" , continent: "Asia" },
-    { name: "France", image: "/images/landmarks/Eiffel Tower in France Visa.webp", flag: "/images/flags/fr.webp" ,altName: "Eiffel Tower in France Visa", continent: "Europe" },
+    // add United Kingdom, Germany, United States, France, Italy, Spain,  Canada, Mexico
+    // { name: "United Kingdom", image: "/images/landmarks/big-ben.webp", flag: "/images/flags/gb.webp" ,altName: "London Eye in United Kingdom Visa", continent: "Europe" },
     {name: "Germany", image: "/images/landmarks/Brandenburg Gate in Germany Visa.webp", flag: "/images/flags/de.webp" ,altName: "Brandenburg Gate in Germany Visa" , continent: "Europe" },
-    {name: "Mexico", image: "/images/landmarks/Tourist Places in Mexico Visa.webp", flag: "/images/flags/mx.webp" ,altName: "Tourist Places in Mexico Visa" , continent: "NorthAmerica" },
+    { name: "United States", image: "/images/landmarks/Tourist Places in United States Visa.webp", flag: "/images/flags/us.webp" ,altName: "Statue of Liberty in United States Visa", continent: "NorthAmerica" },
+
+    { name: "France", image: "/images/landmarks/Eiffel Tower in France Visa.webp", flag: "/images/flags/fr.webp" ,altName: "Eiffel Tower in France Visa", continent: "Europe" },
+    // { name: "Italy", image: "/images/landmarks/Colosseum in Italy Visa.webp", flag: "/images/flags/it.webp" ,altName: "Colosseum in Italy Visa", continent: "Europe" },
+    // { name: "Spain", image: "/images/landmarks/Sagrada Familia in Spain Visa.webp", flag: "/images/flags/es.webp" ,altName: "Sagrada Familia in Spain Visa", continent: "Europe" },
+
     {name: "Canada", image: "/images/landmarks/Tourist Places in Canada Visa.webp", flag: "/images/flags/ca.webp" ,altName: "Tourist Places in Canada Visa", continent: "NorthAmerica" },
+    { name: "India", image: "/images/landmarks/Taj_Mahal.jpg", flag: "/images/flags/in.webp" ,altName: "Taj Mahal in India Visa" , continent: "Asia" },
+   
+    {name: "Mexico", image: "/images/landmarks/Tourist Places in Mexico Visa.webp", flag: "/images/flags/mx.webp" ,altName: "Tourist Places in Mexico Visa" , continent: "NorthAmerica" },
   ];
 
   const scrollContainerStyle = {
