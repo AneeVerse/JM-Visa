@@ -1,7 +1,9 @@
 "use client";
 import Link from "next/link";
-import { useRef } from "react";
-import { MdFormatListBulleted } from "react-icons/md";
+import { useRef, useEffect } from "react";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
+import { MdFormatListBulleted, MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
+
 const HorizontalScrollSection = () => {
   const scrollContainerRef = useRef(null);
 
@@ -14,12 +16,22 @@ const HorizontalScrollSection = () => {
     }
   };
 
+  // Auto Scroll Function
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (scrollContainerRef.current) {
+        scrollContainerRef.current.scrollBy({ left: 300, behavior: "smooth" });
+      }
+    }, 3000);
+    return () => clearInterval(interval); // Cleanup on component unmount
+  }, []);
+
   const countries = [
     { name: "India", image: "/images/landmarks/Taj_Mahal.jpg", flag: "/images/flags/in.webp" ,altName: "Taj Mahal in India Visa" },
     { name: "France", image: "/images/landmarks/Eiffel Tower in France Visa.webp", flag: "/images/flags/fr.webp" ,altName: "Eiffel Tower in France Visa" },
     {name: "Germany", image: "/images/landmarks/Brandenburg Gate in Germany Visa.webp", flag: "/images/flags/de.webp" ,altName: "Brandenburg Gate in Germany Visa" },
-    {name: "Mexico", image: "/images/landmarks/Tourist Places in Mexico Visa.png", flag: "/images/flags/mx.webp" ,altName: "Tourist Places in Mexico Visa" },
-    {name: "Canada", image: "/images/landmarks/Tourist Places in Canada Visa.png", flag: "/images/flags/ca.webp" ,altName: "Tourist Places in Canada Visa" },
+    {name: "Mexico", image: "/images/landmarks/Tourist Places in Mexico Visa.webp", flag: "/images/flags/mx.webp" ,altName: "Tourist Places in Mexico Visa" },
+    {name: "Canada", image: "/images/landmarks/Tourist Places in Canada Visa.webp", flag: "/images/flags/ca.webp" ,altName: "Tourist Places in Canada Visa" },
   ];
 
   const scrollContainerStyle = {
@@ -39,7 +51,7 @@ const HorizontalScrollSection = () => {
   };
 
   return (
-    <section className="bg-white py-12">
+    <section className="bg-white py-12 relative">
       <div className="container mx-auto px-6">
       <div className=" mb-8">
   {/* Subheading and Heading */}
@@ -57,14 +69,22 @@ const HorizontalScrollSection = () => {
       Explore Top Countries
     </h2>
   </div>
-
 </div>
 
         <div className="relative">
+          {/* Left Scroll Button */}
+          <button
+            onClick={() => scroll("left")}
+            className="absolute left-0 top-1/2 hidden  transform -translate-y-1/2 bg-gray-50 bg-opacity-50 text-white h-[40px] w-[40px] rounded-full sm:flex items-center justify-center shadow-lg z-10"
+          >
+            <FaAngleLeft size={20} className="text-blue-500 self-center" />
+          </button>
+
           {/* Horizontal Scroll Container */}
           <div
             ref={scrollContainerRef}
             style={{ ...scrollContainerStyle, ...hideScrollbarStyle }}
+            className="scroll-smooth"
           >
             {countries.map((country, index) => (
               <div
@@ -93,6 +113,15 @@ const HorizontalScrollSection = () => {
               </div>
             ))}
           </div>
+
+          {/* Right Scroll Button */}
+          {/* Right Scroll Button */}
+          <button
+            onClick={() => scroll("right")}
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-50 bg-opacity-50 text-white h-[40px] w-[40px] hidden rounded-full sm:flex items-center justify-center shadow-lg z-10"
+          >
+            <FaAngleRight size={20} className="text-blue-500 self-center" />
+          </button>
         </div>
       </div>
     </section>

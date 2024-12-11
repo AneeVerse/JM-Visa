@@ -17,7 +17,7 @@ const FeedbackReviewComponent = () => {
   }, []);
 
   return (
-    <section className="py-16 bg-white">
+    <section className="pt-16 bg-white">
       <div className="container mx-auto px-6 text-left">
         {/* Heading */}
         <p className="inline-block mb-6 px-4 py-2 bg-blue-100/50 text-blue-500 font-medium rounded-full backdrop-blur-lg shadow-md ">

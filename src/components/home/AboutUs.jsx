@@ -99,7 +99,7 @@ const AboutUs = () => {
           <img
             src="/images/profile.webp" // Replace with your image path
             alt="Vacation Image"
-            className="w-full h-[280px] object-cover rounded-lg mb-6 shadow-md"
+            className="w-full h-[330px] object-cover rounded-lg mb-6 shadow-md"
           />
 
 
@@ -112,7 +112,7 @@ const AboutUs = () => {
               </h3>
              
             </div>
-            <p className="text-white text-sm">14-29 July | by JM Visa</p>
+            {/* <p className="text-white text-sm">14-29 July | by JM Visa</p> */}
 
             {/* Progress Section */}
             <div className="mt-4 flex items-center gap-4">
@@ -138,7 +138,7 @@ const AboutUs = () => {
               <div className="flex items-center gap-2">
                 <GoOrganization className="text-xl text-white" />
                 <p className="text-white text-sm font-semibold">
-                  32 Country
+                  49 Country
                 </p>
               </div>
               <button className="px-4 py-2 text-sm border-[1px] bg-white bg-opacity-10 backdrop-blur-lg border-blue-500 text-white rounded-lg shadow-sm hover:bg-blue-600 transition">

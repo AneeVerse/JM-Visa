@@ -21,12 +21,12 @@ export default function Home() {
       <AboutUs/>
       <PromoSection/>
       </div>
-      <VideoTestimonial/>
       <div className="absolute bottom-20 bg-gradient-to-br from-white via-white to-blue-200 blur-2xl bg-opacity-60  w-full min-h-full h-[500px] -z-10"> </div>
 
       <div className="absolute top-20 left-0 bg-gradient-to-br from-blue-200 via-white to-white blur-2xl bg-opacity-60   w-full  h-[500px] -z-10"> </div>
       </div>
       <FeedbackReviewComponent/>
+      <VideoTestimonial/>
       <BlogComponent/>
       <div className="bg-gradient-to-br from-blue-900 via-blue-700 to-blue-500">
       <VisaForm/>
