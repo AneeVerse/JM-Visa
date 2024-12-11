@@ -60,7 +60,7 @@ const VisaCategories = () => {
       url: "/residence-visa",
       description: "Simplify the process of settling in a new country permanently.",
     },
-    
+
     // {
     //   title: "Family Visa",
     //   image: "/images/work-visa.jpg",
@@ -91,7 +91,7 @@ const VisaCategories = () => {
           {/* Left Scroll Button */}
           <button
             onClick={() => scroll("left")}
-            className="absolute hidden left-0 top-1/2 transform -translate-y-1/2 bg-gray-50 bg-opacity-50 text-white h-[40px] w-[40px] rounded-full sm:flex items-center justify-center shadow-lg z-10"
+            className="absolute hidden left-0 top-1/2 transform -translate-y-1/2 bg-gray-50 bg-opacity-50 text-white h-[40px] w-[40px] rounded-full sm:flex items-center justify-center shadow-lg z-20"
           >
             <FaAngleLeft size={20} className="text-blue-500 self-center" />
           </button>
