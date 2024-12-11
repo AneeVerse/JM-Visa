@@ -2,6 +2,7 @@
 import Link from "next/link";
 import React, { useState, useEffect, useRef } from "react";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
+import { MdFormatListBulleted } from "react-icons/md";
 
 const BlogComponent = () => {
   const [blogs, setBlogs] = useState([]);
@@ -58,13 +59,9 @@ const BlogComponent = () => {
           <h2 className="text-3xl font-bold text-gray-800">
             Explore Our <span className="text-blue-500">Blog</span>
           </h2>
-          <a
-            href="/blogs"
-            className="text-blue-500 min-w-fit hover:text-blue-600 hidden sm:flex items-center justify-center gap-1 font-medium transition"
-          >
-         
-         <FaAngleLeft size={20} className="text-blue-500 self-center" />
-          </a>
+          <Link href={"/blog"} className=" py-2 self-end text-blue-500 min-w-fit flex gap-1 items-center justify-center font-semibold">
+   <MdFormatListBulleted className="text-4" /> <span>View All</span> 
+  </Link>
         </div>
         <p className="text-lg text-gray-600 mb-8">
           Stay updated with the latest travel tips, visa guides, and destination
@@ -98,7 +95,7 @@ const BlogComponent = () => {
                 <Link
                   href={`/blog/${blog.slug}`}
                   key={blog.id}
-                  className="min-w-[290px] sm:min-w-[300px] bg-white mb-4 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-300 cursor-pointer group"
+                  className="min-w-[290px] w-[290px] bg-white mb-4 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-300 cursor-pointer group"
                 >
                   {/* Blog Image */}
                   <img

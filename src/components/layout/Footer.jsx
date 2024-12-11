@@ -34,7 +34,10 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand Info */}
           <div>
+            <Link href={"/"} className="flex flex-row items-center gap-2">
+              <Image src={"/logo/logo.png"} alt="JM Visa Logo" width={50} height={50} />
             <h2 className="text-3xl font-bold text-white">JM Visa</h2>
+            </Link>
             <p className="mt-6 text-sm leading-relaxed text-gray-300">
               Simplify your immigration journey with our expert assistance for
               student, family, and business visas.

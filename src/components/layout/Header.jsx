@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { FaBars, FaTimes } from "react-icons/fa";
 import Link from "next/link";
 import Container from "./Container"; // Assuming the Container component exists
+import Image from "next/image";
 
 const Header = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -25,8 +26,11 @@ const Header = () => {
       {/* <div className="bg-gradient-to-r absolute top-0 w-full h-[80px] bg-[#4475F2] opacity-80 -z-20"></div> */}
       <Container className="flex items-center justify-between h-[80px]">
         {/* Logo */}
-        <Link href={"/"} className="block text-2xl font-bold tracking-wide text-gray-900">
-          JM VISA
+        <Link href={"/"} className=" text-2xl flex flex-row items-center gap-2 font-bold tracking-wide text-gray-900">
+
+        <Image src="/logo/logo.png" alt="JM VISA" width={35} height={35} className=" object-cover" />
+        <span> JM VISA</span>
+         
         </Link>
 
         {/* Desktop Navigation */}
