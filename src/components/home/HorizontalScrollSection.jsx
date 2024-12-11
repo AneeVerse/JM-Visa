@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useRef } from "react";
 import { MdFormatListBulleted } from "react-icons/md";
 const HorizontalScrollSection = () => {
@@ -48,9 +49,9 @@ const HorizontalScrollSection = () => {
     ✈️  Discover Destinations
     </p>
   {/* View All Countries Button */}
-  <button className=" py-2 self-end text-blue-500 min-w-fit flex gap-1 items-center justify-center font-semibold">
+  <Link href={"/country"} className=" py-2 self-end text-blue-500 min-w-fit flex gap-1 items-center justify-center font-semibold">
    <MdFormatListBulleted className="text-4" /> <span>View All</span> 
-  </button>
+  </Link>
   </div>
     <h2 className="text-3xl font-bold text-gray-800 leading-tight mt-2">
       Explore Top Countries
@@ -85,7 +86,7 @@ const HorizontalScrollSection = () => {
                 <div className="absolute -bottom-[16px] left-1/2 transform -translate-x-1/2">
                   <img
                     src={country.flag}
-                    alt={`${country.name} Flag`}
+                    alt={`${country.altName} Flag`}
                     className="w-14 h-14 object-cover rounded-full shadow-md border-2 border-white"
                   />
                 </div>
