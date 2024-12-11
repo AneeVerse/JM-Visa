@@ -17,21 +17,21 @@ const HorizontalScrollSection = () => {
   };
 
   // Auto Scroll Function
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (scrollContainerRef.current) {
-        scrollContainerRef.current.scrollBy({ left: 300, behavior: "smooth" });
-      }
-    }, 3000);
-    return () => clearInterval(interval); // Cleanup on component unmount
-  }, []);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     if (scrollContainerRef.current) {
+  //       scrollContainerRef.current.scrollBy({ left: 300, behavior: "smooth" });
+  //     }
+  //   }, 3000);
+  //   return () => clearInterval(interval); // Cleanup on component unmount
+  // }, []);
 
   const countries = [
-    { name: "India", image: "/images/landmarks/Taj_Mahal.jpg", flag: "/images/flags/in.webp" ,altName: "Taj Mahal in India Visa" },
-    { name: "France", image: "/images/landmarks/Eiffel Tower in France Visa.webp", flag: "/images/flags/fr.webp" ,altName: "Eiffel Tower in France Visa" },
-    {name: "Germany", image: "/images/landmarks/Brandenburg Gate in Germany Visa.webp", flag: "/images/flags/de.webp" ,altName: "Brandenburg Gate in Germany Visa" },
-    {name: "Mexico", image: "/images/landmarks/Tourist Places in Mexico Visa.webp", flag: "/images/flags/mx.webp" ,altName: "Tourist Places in Mexico Visa" },
-    {name: "Canada", image: "/images/landmarks/Tourist Places in Canada Visa.webp", flag: "/images/flags/ca.webp" ,altName: "Tourist Places in Canada Visa" },
+    { name: "India", image: "/images/landmarks/Taj_Mahal.jpg", flag: "/images/flags/in.webp" ,altName: "Taj Mahal in India Visa" , continent: "Asia" },
+    { name: "France", image: "/images/landmarks/Eiffel Tower in France Visa.webp", flag: "/images/flags/fr.webp" ,altName: "Eiffel Tower in France Visa", continent: "Europe" },
+    {name: "Germany", image: "/images/landmarks/Brandenburg Gate in Germany Visa.webp", flag: "/images/flags/de.webp" ,altName: "Brandenburg Gate in Germany Visa" , continent: "Europe" },
+    {name: "Mexico", image: "/images/landmarks/Tourist Places in Mexico Visa.webp", flag: "/images/flags/mx.webp" ,altName: "Tourist Places in Mexico Visa" , continent: "NorthAmerica" },
+    {name: "Canada", image: "/images/landmarks/Tourist Places in Canada Visa.webp", flag: "/images/flags/ca.webp" ,altName: "Tourist Places in Canada Visa", continent: "NorthAmerica" },
   ];
 
   const scrollContainerStyle = {
@@ -87,7 +87,7 @@ const HorizontalScrollSection = () => {
             className="scroll-smooth"
           >
             {countries.map((country, index) => (
-              <div
+              <Link href={`/country/${country.continent}/${country.name}`}
                 key={index}
                 className="relative h-[330px] pb-[12px] w-[250px] flex-shrink-0 group"
               >
@@ -110,7 +110,7 @@ const HorizontalScrollSection = () => {
                     className="w-14 h-14 object-cover rounded-full shadow-md border-2 border-white"
                   />
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
 

@@ -1,7 +1,9 @@
 "use client";
+import Link from "next/link";
 import { useRef, useEffect } from "react";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { MdFormatListBulleted } from "react-icons/md";
+
 
 const VisaCategories = () => {
   const scrollContainerRef = useRef(null);
@@ -16,48 +18,55 @@ const VisaCategories = () => {
   };
 
   // Auto Scroll Function
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (scrollContainerRef.current) {
-        scrollContainerRef.current.scrollBy({ left: 300, behavior: "smooth" });
-      }
-    }, 3000);
-    return () => clearInterval(interval); // Cleanup on component unmount
-  }, []);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     if (scrollContainerRef.current) {
+  //       scrollContainerRef.current.scrollBy({ left: 300, behavior: "smooth" });
+  //     }
+  //   }, 3000);
+  //   return () => clearInterval(interval); // Cleanup on component unmount
+  // }, []);
 
   const categories = [
     {
       title: "Study Abroad",
       image: "/images/Student-Visa.webp",
+      url: "/study-abroad",
       description:
         "Access education opportunities globally with streamlined visa support.",
     },
     {
       title: "Worker Visa",
       image: "/images/Worker Visa.webp",
+      url: "/work-visa",
       description:
         "Secure your work visa hassle-free for your dream international job.",
     },
     {
       title: "Tourist Visa",
       image: "/images/Tourist Visa.webp",
+      url: "/tourist-visa",
       description: "Explore the world with our fast and easy tourist visa process.",
     },
     {
       title: "Business Visa",
       image: "/images/Business Visa.webp",
+      url: "/business-visa",
       description: "Expand your business ventures globally with minimal effort.",
     },
     {
       title: "Residence Visa",
       image: "/images/student-visa.jpg",
+      url: "/residence-visa",
       description: "Simplify the process of settling in a new country permanently.",
     },
-    {
-      title: "Family Visa",
-      image: "/images/work-visa.jpg",
-      description: "Reunite with your loved ones with quick family visa services.",
-    },
+    
+    // {
+    //   title: "Family Visa",
+    //   image: "/images/work-visa.jpg",
+    //   url: "/family-visa",
+    //   description: "Reunite with your loved ones with quick family visa services.",
+    // },
   ];
 
   return (
@@ -97,7 +106,8 @@ const VisaCategories = () => {
             }}
           >
             {categories.map((category, index) => (
-              <div
+              <Link 
+              href={`/services${category.url}`}
                 key={index}
                 className="relative group min-w-[280px] sm:min-w-[300px] lg:min-w-[340px] overflow-hidden bg-gradient-to-tr from-blue-500 via-blue-500 to-indigo-500 rounded-xl shadow-lg transition-transform duration-300 h-[220px] flex justify-center items-center"
               >
@@ -118,7 +128,7 @@ const VisaCategories = () => {
                   </h3>
                   <p className="text-white text-sm">{category.description}</p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
 

@@ -42,14 +42,14 @@ const BlogComponent = () => {
   };
 
   // Auto Scroll
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (scrollContainerRef.current) {
-        scrollContainerRef.current.scrollBy({ left: 300, behavior: "smooth" });
-      }
-    }, 5000); // Auto scroll every 5 seconds
-    return () => clearInterval(interval); // Cleanup on component unmount
-  }, []);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     if (scrollContainerRef.current) {
+  //       scrollContainerRef.current.scrollBy({ left: 300, behavior: "smooth" });
+  //     }
+  //   }, 5000); // Auto scroll every 5 seconds
+  //   return () => clearInterval(interval); // Cleanup on component unmount
+  // }, []);
 
   return (
     <section className="bg-white py-16 relative">
@@ -95,7 +95,7 @@ const BlogComponent = () => {
                 <Link
                   href={`/blog/${blog.slug}`}
                   key={blog.id}
-                  className="min-w-[290px] w-[290px] bg-white mb-4 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-300 cursor-pointer group"
+                  className="min-w-[290px] w-[290px]  bg-white mb-4 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-300 cursor-pointer group"
                 >
                   {/* Blog Image */}
                   <img
