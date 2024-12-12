@@ -79,7 +79,7 @@ const HorizontalScrollSection = () => {
           {/* Left Scroll Button */}
           <button
             onClick={() => scroll("left")}
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white h-[40px] w-[40px] rounded-full sm:flex items-center justify-center shadow-lg z-10"
+            className="absolute left-0 top-1/2 hidden transform -translate-y-1/2 bg-black bg-opacity-50 text-white h-[40px] w-[40px] rounded-full sm:flex items-center justify-center shadow-lg z-10"
           >
             <FaAngleLeft size={20} className="text-white" />
           </button>
@@ -122,10 +122,12 @@ const HorizontalScrollSection = () => {
           {/* Right Scroll Button */}
           <button
             onClick={() => scroll("right")}
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white h-[40px] w-[40px] rounded-full sm:flex items-center justify-center shadow-lg z-10"
+            className="absolute right-0 top-1/2 hidden transform -translate-y-1/2 bg-black bg-opacity-50 text-white h-[40px] w-[40px] rounded-full sm:flex items-center justify-center shadow-lg z-10"
           >
             <FaAngleRight size={20} className="text-white" />
           </button>
+          
+
         </div>
       </div>
     </section>

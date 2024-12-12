@@ -49,12 +49,12 @@ const VideoTestimonials = () => {
     <section className="relative pb-16">
       <div className="container mx-auto px-5 sm:px-6 lg:px-12">
         {/* Header */}
-        <div className="text-left mb-8">
+        {/* <div className="text-left mb-8">
           <h1 className="mt-4 text-3xl font-extrabold text-gray-800">
             See What Our <br className="sm:hidden" />
             <span className="text-blue-500">Happy Clients</span> Say
           </h1>
-        </div>
+        </div> */}
 
         {/* Video Carousel */}
         <div className="relative">
