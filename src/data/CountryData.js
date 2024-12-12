@@ -1,4 +1,9 @@
+
+
 const CountryData = {
+  
+
+
   Asia: [
     {
       name: "Japan",
@@ -421,11 +426,13 @@ const CountryData = {
     {
       name: "Fiji",
       flag: "/images/flags/fj.webp",
-      landmark: "/images/landmarks/cloud-9.webp",
+      landmark: "/images/landmarks/Cloud 9 tourist places in Fiji Visa.webp",
       landmarkName: "Cloud 9",
-      altName: "Cloud 9 in Fiji Visa",
+      altName: "Cloud 9 tourist places in Fiji Visa",
     },
   ],
 };
+
+ 
 
 export default CountryData;

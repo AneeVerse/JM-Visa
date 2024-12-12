@@ -2,8 +2,12 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 const Footer = () => {
+  const [isQuickLinksOpen, setQuickLinksOpen] = useState(false);
+  const [isServicesOpen, setServicesOpen] = useState(false);
+
   const quickLinks = [
     { name: "Home", href: "/" },
     { name: "About Us", href: "/about" },
@@ -27,16 +31,20 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative  text-gray-200 py-16 px-3 sm:px-6">
-      {/* Glassmorphism Container */}
-      <div className="container mx-auto  md:px-12 bg-white/10 backdrop-blur-md border border-gray-200/20 rounded-3xl py-10 px-4 sm:px-10 shadow-lg">
+    <footer className="relative text-gray-200 py-16 px-3 sm:px-6">
+      <div className="container mx-auto md:px-12 bg-white/10 backdrop-blur-md border border-gray-200/20 rounded-3xl py-10 px-4 sm:px-10 shadow-lg">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand Info */}
           <div>
             <Link href={"/"} className="flex flex-row items-center gap-2">
-              <Image src={"/logo/logo.png"} alt="JM Visa Logo" width={50} height={50} />
-            <h2 className="text-3xl font-bold text-white">JM Visa</h2>
+              <Image
+                src={"/logo/logo.png"}
+                alt="JM Visa Logo"
+                width={50}
+                height={50}
+              />
+              <h2 className="text-3xl font-bold text-white">JM Visa</h2>
             </Link>
             <p className="mt-6 text-sm leading-relaxed text-gray-300">
               Simplify your immigration journey with our expert assistance for
@@ -64,17 +72,27 @@ const Footer = () => {
                 href="mailto:info@jmvisaservices.com"
                 className="text-blue-50 font-medium hover:text-blue-100 transition"
               >
-               info@jmvisaservices.com
+                info@jmvisaservices.com
               </a>
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-xl font-semibold text-white mb-4">
+            <h3
+              className="text-xl font-semibold text-white mb-4 cursor-pointer sm:mb-0"
+              onClick={() => setQuickLinksOpen(!isQuickLinksOpen)}
+            >
               Quick Links
+              <span className="sm:hidden ml-2 text-sm">
+                {isQuickLinksOpen ? "▲" : "▼"}
+              </span>
             </h3>
-            <ul className="space-y-3">
+            <ul
+              className={`space-y-3 sm:block ${
+                isQuickLinksOpen ? "block" : "hidden"
+              }`}
+            >
               {quickLinks.map((link) => (
                 <li key={link.name}>
                   <a
@@ -90,8 +108,20 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h3 className="text-xl font-semibold text-white mb-4">Services</h3>
-            <ul className="space-y-3">
+            <h3
+              className="text-xl font-semibold text-white mb-4 cursor-pointer sm:mb-0"
+              onClick={() => setServicesOpen(!isServicesOpen)}
+            >
+              Services
+              <span className="sm:hidden ml-2 text-sm">
+                {isServicesOpen ? "▲" : "▼"}
+              </span>
+            </h3>
+            <ul
+              className={`space-y-3 sm:block ${
+                isServicesOpen ? "block" : "hidden"
+              }`}
+            >
               {servicesLinks.map((link) => (
                 <li key={link.name}>
                   <a
@@ -112,8 +142,7 @@ const Footer = () => {
             </h3>
             <ul className="text-sm space-y-3 text-white">
               <li>
-                Mon - Fri:{" "}
-                <span className="text-gray-100">9 AM - 6 PM</span>
+                Mon - Fri: <span className="text-gray-100">9 AM - 6 PM</span>
               </li>
               <li>
                 Sat: <span className="text-gray-100">10 AM - 3 PM</span>
@@ -142,11 +171,23 @@ const Footer = () => {
               </li>
             ))}
           </ul>
-          <div className="mt-3 sm:mt-1 md:mt-0">Design & Managed by <Link href={"https://aneeverse.com/"} target="_blank" className=" hover:underline inline-flex flex-row items-center gap-2 min-h-fit" >
-          
-         <span>Aneeverse</span>
-          <Image src={"/logo/aneeverse-logo.png"} alt="Aneeverse Logo" width={20} height={20} className="inline-block" />
-          </Link></div>
+          <div className="mt-3 sm:mt-1 md:mt-0">
+            Design & Managed by{" "}
+            <Link
+              href={"https://aneeverse.com/"}
+              target="_blank"
+              className="hover:underline inline-flex flex-row items-center gap-2 min-h-fit"
+            >
+              <span>Aneeverse</span>
+              <Image
+                src={"/logo/aneeverse-logo.png"}
+                alt="Aneeverse Logo"
+                width={20}
+                height={20}
+                className="inline-block"
+              />
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

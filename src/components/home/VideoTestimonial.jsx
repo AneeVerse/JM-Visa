@@ -25,11 +25,23 @@ const VideoTestimonials = () => {
     setSelectedVideo(null);
   };
 
+  // Enhanced Scroll Function
   const scroll = (direction) => {
-    if (direction === "left") {
-      scrollContainerRef.current.scrollBy({ left: -300, behavior: "smooth" });
-    } else {
-      scrollContainerRef.current.scrollBy({ left: 300, behavior: "smooth" });
+    const container = scrollContainerRef.current;
+    if (container) {
+      const scrollDistance = 300; // Total distance to scroll
+      const step = 10; // Smaller step for smoother scrolling
+      let remainingDistance = scrollDistance;
+
+      const scrollStep = () => {
+        if (remainingDistance <= 0) return; // Stop scrolling when distance is covered
+        const stepDistance = Math.min(step, remainingDistance);
+        container.scrollLeft += direction === "left" ? -stepDistance : stepDistance;
+        remainingDistance -= stepDistance;
+        requestAnimationFrame(scrollStep); // Smoothly transition frame by frame
+      };
+
+      scrollStep();
     }
   };
 
@@ -38,10 +50,10 @@ const VideoTestimonials = () => {
       <div className="container mx-auto px-5 sm:px-6 lg:px-12">
         {/* Header */}
         <div className="text-left mb-8">
-          {/* <h1 className="mt-4 text-3xl font-extrabold text-gray-800">
+          <h1 className="mt-4 text-3xl font-extrabold text-gray-800">
             See What Our <br className="sm:hidden" />
             <span className="text-blue-500">Happy Clients</span> Say
-          </h1> */}
+          </h1>
         </div>
 
         {/* Video Carousel */}
@@ -51,8 +63,7 @@ const VideoTestimonials = () => {
             onClick={() => scroll("left")}
             className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-black/50 text-white h-10 w-10 rounded-full hidden sm:flex items-center justify-center shadow-lg z-10"
           >
-           
-           <FaAngleLeft size={20} className="text-white self-center" />
+            <FaAngleLeft size={20} className="text-white self-center" />
           </button>
 
           <div
@@ -61,9 +72,10 @@ const VideoTestimonials = () => {
               scrollbarWidth: "none",
               msOverflowStyle: "none",
               WebkitOverflowScrolling: "touch",
-              scrollBehavior: "smooth",
             }}
-            className={`relative flex gap-6 ${testimonials.length === 1 ? " justify-center " : " " } overflow-x-auto scroll-smooth pb-4`}
+            className={`relative flex gap-6 ${
+              testimonials.length === 1 ? "justify-center" : ""
+            } overflow-x-auto scroll-smooth pb-4`}
           >
             {testimonials.map((testimonial) => (
               <div
@@ -93,7 +105,6 @@ const VideoTestimonials = () => {
             onClick={() => scroll("right")}
             className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-black/50 text-white h-10 w-10 rounded-full hidden sm:flex items-center justify-center shadow-lg z-10"
           >
-            
             <FaAngleRight size={20} className="text-white self-center" />
           </button>
         </div>
@@ -101,8 +112,8 @@ const VideoTestimonials = () => {
 
       {/* Video Popup */}
       {selectedVideo && (
-        <div className="fixed top-0 bottom-0 w-full h-full bg-black/80 z-50 flex p-2  justify-center">
-          <div className="relative h-full max-w-3xl">
+        <div className="fixed top-0 bottom-0 w-full h-full bg-black/90 z-50 flex p-2 justify-center ">
+          <div className="relative w-full max-w-3xl">
             {/* Close Button */}
             <button
               className="absolute top-4 right-4 text-white text-2xl z-50 bg-black/50 p-2 rounded-full"

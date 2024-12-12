@@ -32,24 +32,25 @@ const BlogComponent = () => {
     fetchBlogs();
   }, []);
 
-  // Scroll Function
+  // Enhanced Scroll Function
   const scroll = (direction) => {
-    if (direction === "left") {
-      scrollContainerRef.current.scrollBy({ left: -300, behavior: "smooth" });
-    } else {
-      scrollContainerRef.current.scrollBy({ left: 300, behavior: "smooth" });
+    const container = scrollContainerRef.current;
+    if (container) {
+      const scrollDistance = 300; // Total distance to scroll
+      const step = 10; // Smaller step for smoother transition
+      let remainingDistance = scrollDistance;
+
+      const scrollStep = () => {
+        if (remainingDistance <= 0) return; // Stop scrolling when distance is covered
+        const stepDistance = Math.min(step, remainingDistance);
+        container.scrollLeft += direction === "left" ? -stepDistance : stepDistance;
+        remainingDistance -= stepDistance;
+        requestAnimationFrame(scrollStep); // Smoothly transition frame by frame
+      };
+
+      scrollStep();
     }
   };
-
-  // Auto Scroll
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     if (scrollContainerRef.current) {
-  //       scrollContainerRef.current.scrollBy({ left: 300, behavior: "smooth" });
-  //     }
-  //   }, 5000); // Auto scroll every 5 seconds
-  //   return () => clearInterval(interval); // Cleanup on component unmount
-  // }, []);
 
   return (
     <section className="bg-white py-16 relative">
@@ -59,9 +60,12 @@ const BlogComponent = () => {
           <h2 className="text-3xl font-bold text-gray-800">
             Explore Our <span className="text-blue-500">Blog</span>
           </h2>
-          <Link href={"/blog"} className=" py-2 self-end text-blue-500 min-w-fit flex gap-1 items-center justify-center font-semibold">
-   <MdFormatListBulleted className="text-4" /> <span>View All</span> 
-  </Link>
+          <Link
+            href={"/blog"}
+            className="py-2 self-end text-blue-500 min-w-fit flex gap-1 items-center justify-center font-semibold"
+          >
+            <MdFormatListBulleted className="text-4" /> <span>View All</span>
+          </Link>
         </div>
         <p className="text-lg text-gray-600 mb-8">
           Stay updated with the latest travel tips, visa guides, and destination
@@ -78,9 +82,9 @@ const BlogComponent = () => {
             {/* Left Scroll Button */}
             <button
               onClick={() => scroll("left")}
-              className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-50 bg-opacity-50 text-white h-[40px] w-[40px] rounded-full hidden sm:flex items-center justify-center shadow-lg z-10"
+              className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white h-[40px] w-[40px] rounded-full hidden sm:flex items-center justify-center shadow-lg z-10"
             >
-              <FaAngleLeft size={20} className="text-blue-500 self-center" />
+              <FaAngleLeft size={20} className="text-white self-center" />
             </button>
 
             <div
@@ -89,20 +93,18 @@ const BlogComponent = () => {
               style={{
                 scrollbarWidth: "none", // Hide scrollbar in Firefox
                 msOverflowStyle: "none", // Hide scrollbar in Internet Explorer
-                scrollBehavior: "smooth"
               }}
             >
               {blogs.map((blog) => (
                 <Link
                   href={`/blog/${blog.slug}`}
                   key={blog.id}
-                  className="min-w-[290px] w-[290px]  bg-white mb-4 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-300 cursor-pointer group"
+                  className="min-w-[290px] w-[290px] bg-white mb-4 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-300 cursor-pointer group"
                 >
                   {/* Blog Image */}
                   <img
                     src={
-                      blog?.thumbnail?.url ||
-                      "/images/default-thumbnail.jpg"
+                      blog?.thumbnail?.url || "/images/default-thumbnail.jpg"
                     }
                     alt={blog?.attributes?.title || "Blog"}
                     className="w-full h-48 object-cover group-hover:blur-[4px] transition duration-300"
@@ -112,9 +114,6 @@ const BlogComponent = () => {
                     <h3 className="text-xl line-clamp-3 font-semibold text-gray-800 mb-2">
                       {blog?.title || "Untitled Blog"}
                     </h3>
-                    {/* <p className="text-gray-600 text-sm">
-                      {blog?.description.slice(0,120) || "No description available."}
-                    </p> */}
                   </div>
                 </Link>
               ))}
@@ -123,10 +122,9 @@ const BlogComponent = () => {
             {/* Right Scroll Button */}
             <button
               onClick={() => scroll("right")}
-              className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-50 bg-opacity-50 text-white h-[40px] w-[40px] rounded-full hidden sm:flex items-center justify-center shadow-lg z-10"
+              className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white h-[40px] w-[40px] rounded-full hidden sm:flex items-center justify-center shadow-lg z-10"
             >
-            
-            <FaAngleRight size={20} className="text-blue-500 self-center" />
+              <FaAngleRight size={20} className="text-white self-center" />
             </button>
           </div>
         ) : (

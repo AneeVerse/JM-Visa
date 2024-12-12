@@ -1,31 +1,31 @@
 "use client";
 import Link from "next/link";
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { MdFormatListBulleted } from "react-icons/md";
-
 
 const VisaCategories = () => {
   const scrollContainerRef = useRef(null);
 
-  // Scroll Function
+  // Enhanced Scroll Function
   const scroll = (direction) => {
-    if (direction === "left") {
-      scrollContainerRef.current.scrollBy({ left: -300, behavior: "smooth" });
-    } else {
-      scrollContainerRef.current.scrollBy({ left: 300, behavior: "smooth" });
+    const container = scrollContainerRef.current;
+    if (container) {
+      const scrollDistance = 300; // Total scroll distance
+      const step = 10; // Smaller step for smoother transition
+      let remainingDistance = scrollDistance;
+
+      const scrollStep = () => {
+        if (remainingDistance <= 0) return; // Stop scrolling when completed
+        const stepDistance = Math.min(step, remainingDistance);
+        container.scrollLeft += direction === "left" ? -stepDistance : stepDistance;
+        remainingDistance -= stepDistance;
+        requestAnimationFrame(scrollStep); // Smooth transition with each frame
+      };
+
+      scrollStep();
     }
   };
-
-  // Auto Scroll Function
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     if (scrollContainerRef.current) {
-  //       scrollContainerRef.current.scrollBy({ left: 300, behavior: "smooth" });
-  //     }
-  //   }, 3000);
-  //   return () => clearInterval(interval); // Cleanup on component unmount
-  // }, []);
 
   const categories = [
     {
@@ -60,13 +60,6 @@ const VisaCategories = () => {
       url: "/residence-visa",
       description: "Simplify the process of settling in a new country permanently.",
     },
-
-    // {
-    //   title: "Family Visa",
-    //   image: "/images/work-visa.jpg",
-    //   url: "/family-visa",
-    //   description: "Reunite with your loved ones with quick family visa services.",
-    // },
   ];
 
   return (
@@ -75,10 +68,13 @@ const VisaCategories = () => {
         {/* Heading Section */}
         <div className="mb-8">
           <div className="flex justify-between gap-2 items-center">
-            <p className="inline-block px-4 py-2 bg-blue-100/50 text-blue-500 font-medium rounded-full backdrop-blur-lg shadow-md ">
+            <p className="inline-block px-4 py-2 bg-blue-100/50 text-blue-500 font-medium rounded-full backdrop-blur-lg shadow-md">
               ✈️ Our Services
             </p>
-            <Link href={"/services"} className="py-2 self-end text-blue-500 min-w-fit flex gap-1 items-center justify-center font-semibold">
+            <Link
+              href={"/services"}
+              className="py-2 self-end text-blue-500 min-w-fit flex gap-1 items-center justify-center font-semibold"
+            >
               <MdFormatListBulleted className="text-4" /> <span>View All</span>
             </Link>
           </div>
@@ -91,9 +87,9 @@ const VisaCategories = () => {
           {/* Left Scroll Button */}
           <button
             onClick={() => scroll("left")}
-            className="absolute hidden left-0 top-1/2 transform -translate-y-1/2 bg-gray-50 bg-opacity-50 text-white h-[40px] w-[40px] rounded-full sm:flex items-center justify-center shadow-lg z-40"
+            className="absolute hidden left-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white h-[40px] w-[40px] rounded-full sm:flex items-center justify-center shadow-lg z-40"
           >
-            <FaAngleLeft size={20} className="text-blue-500 self-center" />
+            <FaAngleLeft size={20} className="text-white self-center" />
           </button>
 
           {/* Horizontal Scroll Section */}
@@ -103,12 +99,11 @@ const VisaCategories = () => {
             style={{
               scrollbarWidth: "none", // Hide scrollbar in Firefox
               msOverflowStyle: "none", // Hide scrollbar in IE/Edge
-              scrollBehavior: "smooth"
             }}
           >
             {categories.map((category, index) => (
-              <Link 
-              href={`/services${category.url}`}
+              <Link
+                href={`/services${category.url}`}
                 key={index}
                 className="relative group min-w-[280px] sm:min-w-[300px] lg:min-w-[340px] overflow-hidden bg-gradient-to-tr from-blue-500 via-blue-500 to-indigo-500 rounded-xl shadow-lg transition-transform duration-300 h-[220px] flex justify-center items-center"
               >
@@ -136,9 +131,9 @@ const VisaCategories = () => {
           {/* Right Scroll Button */}
           <button
             onClick={() => scroll("right")}
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-50 bg-opacity-50 text-white h-[40px] w-[40px] rounded-full hidden sm:flex items-center justify-center shadow-lg z-40"
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white h-[40px] w-[40px] rounded-full hidden sm:flex items-center justify-center shadow-lg z-40"
           >
-            <FaAngleRight size={20} className="text-blue-500 self-center" />
+            <FaAngleRight size={20} className="text-white self-center" />
           </button>
         </div>
       </div>
