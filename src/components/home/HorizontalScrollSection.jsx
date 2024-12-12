@@ -7,21 +7,20 @@ import { MdFormatListBulleted } from "react-icons/md";
 const HorizontalScrollSection = () => {
   const scrollContainerRef = useRef(null);
 
-  // Enhanced Scroll Function
+  // Enhanced Smooth Scroll Function
   const scroll = (direction) => {
     const container = scrollContainerRef.current;
     if (container) {
-      const scrollDistance = 300; // Adjust as needed
-      const step = 10; // Smaller step for smoother scroll
-      const intervalTime = 5; // Interval between steps in milliseconds
+      const scrollDistance = 300; // Total distance to scroll
+      const step = 10; // Smaller step size for smoother scrolling
       let remainingDistance = scrollDistance;
 
       const scrollStep = () => {
-        if (remainingDistance <= 0) return; // Stop when distance is covered
+        if (remainingDistance <= 0) return; // Stop when the distance is covered
         const stepDistance = Math.min(step, remainingDistance);
         container.scrollLeft += direction === "left" ? -stepDistance : stepDistance;
         remainingDistance -= stepDistance;
-        requestAnimationFrame(scrollStep); // Use requestAnimationFrame for smoothness
+        requestAnimationFrame(scrollStep); // Smoothly transition frame by frame
       };
 
       scrollStep();
@@ -32,40 +31,22 @@ const HorizontalScrollSection = () => {
     { name: "Germany", image: "/images/landmarks/Brandenburg Gate in Germany Visa.webp", flag: "/images/flags/de.webp", altName: "Brandenburg Gate in Germany Visa", continent: "Europe" },
     { name: "United States", image: "/images/landmarks/Tourist Places in United States Visa.webp", flag: "/images/flags/us.webp", altName: "Statue of Liberty in United States Visa", continent: "NorthAmerica" },
     { name: "France", image: "/images/landmarks/Eiffel Tower in France Visa.webp", flag: "/images/flags/fr.webp", altName: "Eiffel Tower in France Visa", continent: "Europe" },
-    { name: "Italy", image: "/images/landmarks/Colosseum in Italy Visa.webp", flag: "/images/flags/it.webp", altName: "Colosseum in Italy Visa", continent: "Europe" },
-    { name: "Spain", image: "/images/landmarks/Sagrada Familia tourist places in Spain Visa.webp", flag: "/images/flags/es.webp", altName: "Sagrada Familia tourist places in Spain Visa", continent: "Europe" },
     { name: "Canada", image: "/images/landmarks/Tourist Places in Canada Visa.webp", flag: "/images/flags/ca.webp", altName: "Tourist Places in Canada Visa", continent: "NorthAmerica" },
     { name: "India", image: "/images/landmarks/Taj_Mahal.jpg", flag: "/images/flags/in.webp", altName: "Taj Mahal in India Visa", continent: "Asia" },
     { name: "Mexico", image: "/images/landmarks/Tourist Places in Mexico Visa.webp", flag: "/images/flags/mx.webp", altName: "Tourist Places in Mexico Visa", continent: "NorthAmerica" },
   ];
 
-  const containerStyle = {
-    display: "flex",
-    overflowX: "hidden",
-    scrollBehavior: "smooth",
-    gap: "1.5rem",
-    padding: "1rem 0",
-    msOverflowStyle: "none",
-  };
-
-  const hideScrollbar = {
-    "&::-webkit-scrollbar": { display: "none" }, // Hide scrollbar for WebKit
-    scrollbarWidth: "none", // Hide scrollbar for Firefox
-  };
-
   return (
     <section className="bg-white py-12 relative">
       <div className="container mx-auto px-6">
         <div className="mb-8">
-          {/* Subheading and Heading */}
           <div className="flex justify-between gap-2 items-center">
             <p className="inline-block px-4 py-2 bg-blue-100/50 text-blue-500 font-medium rounded-full backdrop-blur-lg shadow-md">
               ✈️ Discover Destinations
             </p>
-            {/* View All Countries Button */}
             <Link
-              href="/country"
-              className="py-2 text-blue-500 flex gap-1 items-center font-semibold"
+              href={"/country"}
+              className="py-2 self-end text-blue-500 min-w-fit flex gap-1 items-center justify-center font-semibold"
             >
               <MdFormatListBulleted className="text-4" /> <span>View All</span>
             </Link>
@@ -79,16 +60,19 @@ const HorizontalScrollSection = () => {
           {/* Left Scroll Button */}
           <button
             onClick={() => scroll("left")}
-            className="absolute left-0 top-1/2 hidden transform -translate-y-1/2 bg-black bg-opacity-50 text-white h-[40px] w-[40px] rounded-full sm:flex items-center justify-center shadow-lg z-10"
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white h-[40px] w-[40px] rounded-full hidden sm:flex items-center justify-center shadow-lg z-10"
           >
-            <FaAngleLeft size={20} className="text-white" />
+            <FaAngleLeft size={20} className="text-white self-center" />
           </button>
 
           {/* Horizontal Scroll Container */}
           <div
             ref={scrollContainerRef}
-            style={{ ...containerStyle, ...hideScrollbar }}
-            className="scroll-smooth"
+            className="flex overflow-x-auto scroll-smooth gap-6 pb-4"
+            style={{
+              scrollbarWidth: "none", // Hide scrollbar in Firefox
+              msOverflowStyle: "none", // Hide scrollbar in IE/Edge
+            }}
           >
             {countries.map((country, index) => (
               <Link
@@ -122,12 +106,10 @@ const HorizontalScrollSection = () => {
           {/* Right Scroll Button */}
           <button
             onClick={() => scroll("right")}
-            className="absolute right-0 top-1/2 hidden transform -translate-y-1/2 bg-black bg-opacity-50 text-white h-[40px] w-[40px] rounded-full sm:flex items-center justify-center shadow-lg z-10"
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white h-[40px] w-[40px] rounded-full hidden sm:flex items-center justify-center shadow-lg z-10"
           >
-            <FaAngleRight size={20} className="text-white" />
+            <FaAngleRight size={20} className="text-white self-center" />
           </button>
-          
-
         </div>
       </div>
     </section>
