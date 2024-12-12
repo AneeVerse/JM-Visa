@@ -38,10 +38,10 @@ const VideoTestimonials = () => {
       <div className="container mx-auto px-5 sm:px-6 lg:px-12">
         {/* Header */}
         <div className="text-left mb-8">
-          <h1 className="mt-4 text-3xl font-extrabold text-gray-800">
+          {/* <h1 className="mt-4 text-3xl font-extrabold text-gray-800">
             See What Our <br className="sm:hidden" />
             <span className="text-blue-500">Happy Clients</span> Say
-          </h1>
+          </h1> */}
         </div>
 
         {/* Video Carousel */}
@@ -52,7 +52,7 @@ const VideoTestimonials = () => {
             className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-black/50 text-white h-10 w-10 rounded-full hidden sm:flex items-center justify-center shadow-lg z-10"
           >
            
-           <FaAngleLeft size={20} className="text-blue-500 self-center" />
+           <FaAngleLeft size={20} className="text-white self-center" />
           </button>
 
           <div
@@ -63,12 +63,12 @@ const VideoTestimonials = () => {
               WebkitOverflowScrolling: "touch",
               scrollBehavior: "smooth",
             }}
-            className="relative flex gap-6 overflow-x-auto scroll-smooth pb-4"
+            className={`relative flex gap-6 ${testimonials.length === 1 ? " justify-center " : " " } overflow-x-auto scroll-smooth pb-4`}
           >
             {testimonials.map((testimonial) => (
               <div
                 key={testimonial.id}
-                className="relative min-w-[250px] sm:min-w-[250px] h-[340px] hover:shadow-md rounded-lg overflow-hidden shadow-md transition-transform cursor-pointer"
+                className="relative min-w-[220px] sm:min-w-[220px] h-[340px] hover:shadow-md rounded-lg overflow-hidden shadow-md transition-transform cursor-pointer"
                 onClick={() => handleVideoClick(testimonial.videoUrl)}
               >
                 {/* Video */}
@@ -94,15 +94,15 @@ const VideoTestimonials = () => {
             className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-black/50 text-white h-10 w-10 rounded-full hidden sm:flex items-center justify-center shadow-lg z-10"
           >
             
-            <FaAngleRight size={20} className="text-blue-500 self-center" />
+            <FaAngleRight size={20} className="text-white self-center" />
           </button>
         </div>
       </div>
 
       {/* Video Popup */}
       {selectedVideo && (
-        <div className="fixed inset-0 bg-black/80 z-50 flex p-2 items-center justify-center">
-          <div className="relative h-auto w-full max-w-3xl">
+        <div className="fixed top-0 bottom-0 w-full h-full bg-black/80 z-50 flex p-2  justify-center">
+          <div className="relative h-full max-w-3xl">
             {/* Close Button */}
             <button
               className="absolute top-4 right-4 text-white text-2xl z-50 bg-black/50 p-2 rounded-full"
@@ -115,7 +115,7 @@ const VideoTestimonials = () => {
               src={selectedVideo}
               controls
               autoPlay
-              className="w-full h-auto rounded-lg shadow-lg"
+              className="w-full h-full rounded-lg shadow-lg"
             ></video>
           </div>
         </div>
