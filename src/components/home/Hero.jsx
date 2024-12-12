@@ -11,23 +11,18 @@ const HeroSection = () => {
     "/images/bg5.png",
   ];
 
-  const heroImages = [
-    "/images/tourist1.png", // Replace with your actual image paths
-    "/images/tourist2.png",
-    "/images/tourist3.png",
-  ];
+
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
       setCurrentBgIndex((prevIndex) => (prevIndex + 1) % backgroundImages.length);
     }, 5000); // Change image every 5 seconds
 
     return () => clearInterval(interval); // Clear interval on unmount
-  }, [heroImages.length, backgroundImages.length]);
+  }, [ backgroundImages.length]);
 
   return (
     <section className="relative  h-screen lg:min-h-none flex items-center lg:pt-0 sm:h-[700px] overflow-hidden">
@@ -53,7 +48,7 @@ const HeroSection = () => {
 
       <div className="bg-gradient-to-r from-black  to-transparent bg-opacity-70 opacity-70 absolute w-full top-0 h-full -z-30 "/>
 
-      <div className="container relative z-10 mx-auto px-6 lg:px-12 flex flex-row items-center justify-between h-full">
+      <div className="container relative z-10 mx-auto px-4 lg:px-12 flex flex-row items-center justify-between h-full">
         {/* Left Content */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
@@ -81,7 +76,7 @@ const HeroSection = () => {
           {/* Buttons */}
           <div className="mt-6 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
             <button className="px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-2xl shadow-blue-500 hover:bg-blue-600 transition-transform">
-              Get Started ➔
+              Enquire Now ➔
             </button>
             <button className="flex items-center gap-2 px-6 py-3 bg-white bg-opacity-10 border border-blue-500 text-blue-100 font-semibold rounded-lg shadow-lg hover:bg-blue-500 hover:text-white  transition-transform backdrop-blur-lg">
               <span>▶</span> Learn More

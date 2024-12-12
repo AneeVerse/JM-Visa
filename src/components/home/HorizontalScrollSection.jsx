@@ -55,7 +55,7 @@ const HorizontalScrollSection = () => {
   };
 
   const hideScrollbarStyle = {
-    "&::-WebkitScrollbar": { display: "none" }, // For WebKit browsers
+    "&::WebkitScrollbar": { display: "none" }, // For WebKit browsers
   };
 
   return (
