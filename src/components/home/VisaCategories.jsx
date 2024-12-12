@@ -78,9 +78,9 @@ const VisaCategories = () => {
             <p className="inline-block px-4 py-2 bg-blue-100/50 text-blue-500 font-medium rounded-full backdrop-blur-lg shadow-md ">
               ✈️ Our Services
             </p>
-            <button className="py-2 self-end text-blue-500 min-w-fit flex gap-1 items-center justify-center font-semibold">
+            <Link href={"/services"} className="py-2 self-end text-blue-500 min-w-fit flex gap-1 items-center justify-center font-semibold">
               <MdFormatListBulleted className="text-4" /> <span>View All</span>
-            </button>
+            </Link>
           </div>
           <h2 className="text-3xl font-bold text-gray-800 leading-tight mt-2">
             We Provide All Visa
@@ -103,6 +103,7 @@ const VisaCategories = () => {
             style={{
               scrollbarWidth: "none", // Hide scrollbar in Firefox
               msOverflowStyle: "none", // Hide scrollbar in IE/Edge
+              scrollBehavior: "smooth"
             }}
           >
             {categories.map((category, index) => (

@@ -91,7 +91,7 @@ const HorizontalScrollSection = () => {
           {/* Horizontal Scroll Container */}
           <div
             ref={scrollContainerRef}
-            style={{ ...scrollContainerStyle, ...hideScrollbarStyle }}
+            style={{ ...scrollContainerStyle, ...hideScrollbarStyle, scrollBehavior: "smooth" }}
             className="scroll-smooth"
           >
             {countries.map((country, index) => (
