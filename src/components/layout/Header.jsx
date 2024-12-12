@@ -14,7 +14,7 @@ const Header = () => {
     { name: "Services", href: "/services" },
     { name: "Country", href: "/country" },
     { name: "Blog", href: "/blog" },
-    // { name: "Contact", href: "/contact" },
+    { name: "Contact", href: "/contact" },
   ];
 
   const toggleSidebar = () => {
