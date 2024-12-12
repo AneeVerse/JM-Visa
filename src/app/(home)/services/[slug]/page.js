@@ -1,20 +1,22 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useParams, useRouter } from "next/navigation"; // Updated for useParams
+import { useParams, useRouter } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
+import { BiMessageDetail } from "react-icons/bi";
+import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import services from "@/data/ServicesData";
 
 const ServiceDetails = () => {
-  const params = useParams(); // Get dynamic parameters
-  const router = useRouter(); // For navigation
+  const params = useParams();
+  const router = useRouter();
   const [service, setService] = useState(null);
+  const [expandedFaqIndex, setExpandedFaqIndex] = useState(null);
 
   useEffect(() => {
-    if (!params?.slug) return; // Ensure the slug exists
-
-    // Find the service by slug
+    if (!params?.slug) return;
     const matchedService = services.find((s) => s.url === `/${params.slug}`);
     if (!matchedService) {
-      router.push("/services"); // Redirect if no match
+      router.push("/services");
     } else {
       setService(matchedService);
     }
@@ -29,19 +31,29 @@ const ServiceDetails = () => {
   }
 
   return (
-    <section className="relative mt-[80px] py-16 px-4 sm:px-6 lg:px-12 bg-gradient-to-br from-blue-50 via-white to-blue-100">
-      <div className="container mx-auto">
+    <section className="relative mt-[60px] py-16 px-4 sm:px-6 lg:px-12 bg-gradient-to-br from-blue-50 via-white to-blue-100">
+      <div className="max-w-[1280px] mx-auto">
         {/* Main Section: Image and Title Side by Side */}
-        <div className="flex flex-col lg:flex-row gap-8 items-center lg:items-start">
-         
-
-          {/* Title and Description Section */}
+        <div className="flex flex-col lg:flex-row gap-12 px-4 sm:px-8 items-center lg:items-start">
           <div className="lg:w-1/2 w-full text-center lg:text-left">
-            <h1 className="text-3xl font-bold text-gray-800">{service.title}</h1>
-            <p className="mt-4 text-gray-600 text-lg">{service.description}</p>
+            {/* Back Button */}
+            <div className="mb-4 hidden lg:block">
+              <button
+                onClick={() => router.push("/services")}
+                className="py-3 text-blue-500 font-semibold transition"
+              >
+                ← Back to Services
+              </button>
+            </div>
+            <h1 className="text-3xl lg:text-5xl font-bold text-gray-800 leading-tight">
+              {service.title}
+            </h1>
+            <p className="mt-6 text-lg text-gray-600">{service.description}</p>
+            <p className="mt-4 text-gray-500 text-base">
+              {service.content?.overview}
+            </p>
           </div>
-           {/* Image Section */}
-          <div className="lg:w-1/2 w-full h-[300px] lg:h-[300px] rounded-lg overflow-hidden shadow-lg">
+          <div className="lg:w-1/2 w-full h-[300px] rounded-lg overflow-hidden shadow-md">
             <img
               src={service.image}
               alt={service.title}
@@ -53,30 +65,62 @@ const ServiceDetails = () => {
         {/* Content and Form Section */}
         <div className="mt-12 flex flex-col lg:flex-row gap-8">
           {/* Content Section */}
-          <article className="lg:w-2/3 w-full bg-white/30 border border-white/20 backdrop-blur-lg rounded-lg shadow-lg p-6">
-            <h2 className="text-2xl font-semibold text-gray-800">
+          <article className="lg:w-2/3 w-full bg-white bg-opacity-30 backdrop-blur-lg py-8 px-4 sm:px-8">
+            <h2 className="text-3xl font-semibold text-gray-800 mb-6">
               Why Choose {service.title}?
             </h2>
-            <p className="mt-4 text-gray-600">
-              {`We offer comprehensive support for ${service.title.toLowerCase()}, ensuring a seamless process with minimal hassle. Our experienced professionals are here to guide you through every step of the way.`}
-            </p>
+            <p className="text-gray-600 mb-6">{service.content?.overview}</p>
 
-            <ul className="mt-6 list-disc list-inside text-gray-600">
-              <li>Personalized consultation tailored to your needs.</li>
-              <li>Expert documentation and process assistance.</li>
-              <li>Quick and reliable support for all queries.</li>
+            <h3 className="text-2xl font-semibold text-gray-800 mb-4">Key Highlights:</h3>
+            <ul className="list-disc list-inside text-gray-600 mb-8">
+              {service.content?.highlights?.map((highlight, index) => (
+                <li key={index}>{highlight}</li>
+              ))}
             </ul>
-
-            <p className="mt-4 text-gray-600">
-              Experience the most efficient and transparent process with our {service.title} service. Let us help you achieve your goals with ease and confidence.
-            </p>
+           <h3 className="text-2xl font-semibold text-gray-800 mb-4">FAQs:</h3>
+            <div className="space-y-4">
+              {service.content?.faqs?.map((faq, index) => (
+                <div key={index} className="border-b border-gray-300 pb-4">
+                  <button
+                    type="button"
+                    className="flex justify-between items-center w-full text-left text-gray-800 font-medium py-3"
+                    onClick={() =>
+                      setExpandedFaqIndex(
+                        expandedFaqIndex === index ? null : index
+                      )
+                    }
+                  >
+                    <span>{faq.question}</span>
+                    {expandedFaqIndex === index ? (
+                      <AiOutlineMinus className="text-blue-500" />
+                    ) : (
+                      <AiOutlinePlus className="text-blue-500" />
+                    )}
+                  </button>
+                  <AnimatePresence>
+                    {expandedFaqIndex === index && (
+                      <motion.p
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="text-gray-600 mt-2"
+                      >
+                        {faq.answer}
+                      </motion.p>
+                    )}
+                  </AnimatePresence>
+                </div>
+              ))}
+            </div>
           </article>
 
           {/* Static Form Section */}
-          <aside className="lg:w-1/3 w-full bg-white/30 border border-white/20 backdrop-blur-lg rounded-lg shadow-lg p-6 sticky top-16">
-            <h3 className="text-xl font-semibold text-gray-800 mb-4">Get in Touch</h3>
+          <aside className="lg:w-1/3 w-full bg-white bg-opacity-30 backdrop-blur-lg py-8 px-4 sm:px-8 rounded-md ">
+          <h3 className="text-2xl font-semibold text-gray-800 mb-6 flex items-center gap-2">
+              <BiMessageDetail className="text-blue-500" /> Get in Touch
+            </h3>
             <form>
-              <div className="mb-4">
+              <div className="mb-6">
                 <label
                   htmlFor="name"
                   className="block text-sm font-medium text-gray-700"
@@ -86,12 +130,12 @@ const ServiceDetails = () => {
                 <input
                   type="text"
                   id="name"
-                  className="mt-1 p-2 w-full border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                  className="mt-2 p-3 w-full border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
                   placeholder="Your Name"
                 />
               </div>
 
-              <div className="mb-4">
+              <div className="mb-6">
                 <label
                   htmlFor="email"
                   className="block text-sm font-medium text-gray-700"
@@ -101,12 +145,12 @@ const ServiceDetails = () => {
                 <input
                   type="email"
                   id="email"
-                  className="mt-1 p-2 w-full border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                  className="mt-2 p-3 w-full border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
                   placeholder="Your Email"
                 />
               </div>
 
-              <div className="mb-4">
+              <div className="mb-6">
                 <label
                   htmlFor="message"
                   className="block text-sm font-medium text-gray-700"
@@ -116,29 +160,19 @@ const ServiceDetails = () => {
                 <textarea
                   id="message"
                   rows="4"
-                  className="mt-1 p-2 w-full border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                  className="mt-2 p-3 w-full border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
                   placeholder="Your Message"
                 ></textarea>
               </div>
 
               <button
                 type="submit"
-                className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-600 transition"
+                className="w-full px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-transform transform"
               >
                 Submit
               </button>
             </form>
           </aside>
-        </div>
-
-        {/* Back Button */}
-        <div className="mt-8 text-center">
-          <button
-            onClick={() => router.push("/services")}
-            className="px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-600 transition"
-          >
-            ← Back to Services
-          </button>
         </div>
       </div>
     </section>
