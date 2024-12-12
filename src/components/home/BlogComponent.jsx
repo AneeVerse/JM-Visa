@@ -89,6 +89,7 @@ const BlogComponent = () => {
               style={{
                 scrollbarWidth: "none", // Hide scrollbar in Firefox
                 msOverflowStyle: "none", // Hide scrollbar in Internet Explorer
+                scrollBehavior: "smooth"
               }}
             >
               {blogs.map((blog) => (

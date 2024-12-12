@@ -79,7 +79,7 @@ const HeroSection = () => {
           </p>
 
           {/* Buttons */}
-          <div className="mt-6 flex items-center justify-center lg:justify-start gap-4">
+          <div className="mt-6 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
             <button className="px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-2xl shadow-blue-500 hover:bg-blue-600 transition-transform">
               Get Started ➔
             </button>
