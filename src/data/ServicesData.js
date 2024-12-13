@@ -22,6 +22,51 @@ const services = [
           question: "Do you assist with scholarships?",
           answer: "Yes, we guide students on scholarships that match their eligibility.",
         },
+
+        {
+          question: "What is the process for applying to a foreign university?",
+          answer: "The process includes application submission, document preparation, and securing a student visa.",
+        },
+        {
+          question: "Do you assist with scholarships?",
+          answer: "Yes, we guide students on scholarships that match their eligibility.",
+        },
+
+        {
+          question: "What is the process for applying to a foreign university?",
+          answer: "The process includes application submission, document preparation, and securing a student visa.",
+        },
+        {
+          question: "Do you assist with scholarships?",
+          answer: "Yes, we guide students on scholarships that match their eligibility.",
+        },
+
+        {
+          question: "What is the process for applying to a foreign university?",
+          answer: "The process includes application submission, document preparation, and securing a student visa.",
+        },
+        {
+          question: "Do you assist with scholarships?",
+          answer: "Yes, we guide students on scholarships that match their eligibility.",
+        },
+
+        {
+          question: "What is the process for applying to a foreign university?",
+          answer: "The process includes application submission, document preparation, and securing a student visa.",
+        },
+        {
+          question: "Do you assist with scholarships?",
+          answer: "Yes, we guide students on scholarships that match their eligibility.",
+        },
+
+        {
+          question: "What is the process for applying to a foreign university?",
+          answer: "The process includes application submission, document preparation, and securing a student visa.",
+        },
+        {
+          question: "Do you assist with scholarships?",
+          answer: "Yes, we guide students on scholarships that match their eligibility.",
+        },
       ],
     },
   },

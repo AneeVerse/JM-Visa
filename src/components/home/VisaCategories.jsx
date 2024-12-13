@@ -63,7 +63,7 @@ const VisaCategories = () => {
   ];
 
   return (
-    <section className="bg-white py-12 relative">
+    <section className=" py-12 relative">
       <div className="container mx-auto px-6">
         {/* Heading Section */}
         <div className="mb-8">

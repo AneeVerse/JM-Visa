@@ -37,7 +37,7 @@ const HorizontalScrollSection = () => {
   ];
 
   return (
-    <section className="bg-white py-12 relative">
+    <section className=" py-12 relative">
       <div className="container mx-auto px-6">
         <div className="mb-8">
           <div className="flex justify-between gap-2 items-center">

@@ -12,7 +12,7 @@ const Header = () => {
   const navLinks = [
     { name: "About", href: "/about" },
     { name: "Visa", href: "/services" },
-    { name: "Study Abroad", href: "/services" },
+    { name: "Study Abroad", href: "/services/study-abroad" },
     { name: "Country", href: "/country" },
     { name: "Blog", href: "/blog" },
   ];

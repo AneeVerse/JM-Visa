@@ -6,34 +6,363 @@ const CountryData = {
 
   Asia: [
     {
-      name: "Japan",
-      flag: "/images/flags/jp.webp",
-      landmark: "/images/landmarks/Mount Fuji in Japan Visa.webp",
-      landmarkName: "Mount Fuji",
-      altName: "Mount Fuji in Japan Visa",
-    },
-    {
-      name: "China",
-      flag: "/images/flags/cn.webp",
-      landmark: "/images/landmarks/Great Wall of China in China Visa.webp",
-      landmarkName: "Great Wall of China",
-      altName: "Great Wall of China in China Visa",
-    },
-    {
-      name: "South Korea",
-      flag: "/images/flags/kr.webp",
-      landmark:
-        "/images/landmarks/Gyeongbokgung Palace in South Korea Visa.webp",
-      landmarkName: "Gyeongbokgung Palace",
-      altName: "Gyeongbokgung Palace in South Korea Visa",
-    },
-    {
-      name: "India",
-      flag: "/images/flags/in.webp",
-      landmark: "/images/landmarks/Taj_Mahal.jpg",
-      landmarkName: "Taj Mahal",
-      altName: "Taj Mahal in India Visa",
-    },
+        name: "Japan",
+        flag: "/images/flags/jp.webp",
+        landmark: "/images/landmarks/Mount Fuji in Japan Visa.webp",
+        landmarkName: "Mount Fuji",
+        altName: "Mount Fuji in Japan Visa",
+        visaTypes: [
+          {
+            type: "Japan Tourist Visa",
+            processingTime: "3-5 days",
+            stayPeriod: "Up to 90 days",
+            validity: "6 months",
+            visaCategory: "Tourist / Business",
+            entry: "Single / Multiple",
+            fees: "INR 6,000/-",
+          },
+          {
+            type: "Japan Business Visa",
+            processingTime: "5-7 days",
+            stayPeriod: "Up to 90 days",
+            validity: "1 year",
+            visaCategory: "Business",
+            entry: "Multiple",
+            fees: "INR 10,000/-",
+          },
+        ],
+        documentsRequired: [
+          {
+            category: "Must-have Documents for Japan Visa Online",
+            documents: [
+              "Scanned copy of the first and last page of your passport",
+              "Scanned recent color photograph",
+              "Confirmed return flight ticket",
+              "Hotel reservation or invitation letter",
+              "Birth certificate for minors (below 14 years)",
+            ],
+            note: "Ensure your photographs meet the required specifications for a successful visa application.",
+          },
+          {
+            category: "Additional Documents for Business Visa",
+            documents: [
+              "Invitation letter from the Japanese company",
+              "Company registration certificate of the Indian company",
+              "Original bank statements for the last 6 months",
+            ],
+          },
+        ],
+        applyProcess: [
+          {
+            step: 1,
+            title: "Pay Online",
+            description: "Secure your application by making the payment online.",
+            icon: "/images/icons/pay-online.png",
+          },
+          {
+            step: 2,
+            title: "Upload Documents",
+            description: "Submit all the required documents via our portal.",
+            icon: "/images/icons/upload-documents.png",
+          },
+          {
+            step: 3,
+            title: "Verification",
+            description: "Our team will verify and process your documents.",
+            icon: "/images/icons/verification.png",
+          },
+          {
+            step: 4,
+            title: "Receive Visa",
+            description: "Download your Japan Visa online after approval.",
+            icon: "/images/icons/receive-visa.png",
+          },
+        ],
+        sampleVisaCopy: "/pdf/visa-sample/sample-pdf.pdf",
+        faqs: [
+          {
+            question: "How long does it take to process a Japan visa?",
+            answer: "The processing time is typically 3-5 working days.",
+          },
+          {
+            question: "Can I apply for a Japan visa online?",
+            answer:
+              "Yes, you can apply online by uploading the required documents on our portal.",
+          },
+          {
+            question: "What is the validity of a Japan tourist visa?",
+            answer: "The validity of a Japan tourist visa is generally up to 6 months.",
+          },
+        ],
+      },
+    
+      {
+        name: "China",
+        flag: "/images/flags/cn.webp",
+        landmark: "/images/landmarks/Great Wall of China in China Visa.webp",
+        landmarkName: "Great Wall of China",
+        altName: "Great Wall of China in China Visa",
+        visaTypes: [
+          {
+            type: "China Tourist Visa",
+            processingTime: "4-7 days",
+            stayPeriod: "Up to 30 days",
+            validity: "3 months",
+            visaCategory: "Tourist",
+            entry: "Single / Double / Multiple",
+            fees: "INR 7,500/-",
+          },
+          {
+            type: "China Business Visa",
+            processingTime: "7-10 days",
+            stayPeriod: "Up to 90 days",
+            validity: "1 year",
+            visaCategory: "Business",
+            entry: "Multiple",
+            fees: "INR 12,000/-",
+          },
+        ],
+        documentsRequired: [
+          {
+            category: "Must-have Documents for China Visa Online",
+            documents: [
+              "Scanned copy of the first and last page of your passport",
+              "Recent passport-size color photograph (white background)",
+              "Confirmed return flight ticket",
+              "Hotel reservation or invitation letter",
+              "Visa application form filled and signed",
+            ],
+            note: "Ensure all documents are legible and meet the guidelines for a successful visa application.",
+          },
+          {
+            category: "Additional Documents for Business Visa",
+            documents: [
+              "Invitation letter from the Chinese company",
+              "Original bank statements for the last 3 months",
+              "Company registration certificate of the Indian company",
+            ],
+          },
+        ],
+        applyProcess: [
+          {
+            step: 1,
+            title: "Pay Online",
+            description: "Make a secure payment to initiate your application.",
+            icon: "/images/icons/pay-online.png",
+          },
+          {
+            step: 2,
+            title: "Upload Documents",
+            description: "Submit all necessary documents through our platform.",
+            icon: "/images/icons/upload-documents.png",
+          },
+          {
+            step: 3,
+            title: "Verification",
+            description: "Our experts will review and verify your documents.",
+            icon: "/images/icons/verification.png",
+          },
+          {
+            step: 4,
+            title: "Receive Visa",
+            description: "Download your China Visa once it is approved.",
+            icon: "/images/icons/receive-visa.png",
+          },
+        ],
+        sampleVisaCopy: "/pdf/visa-sample/china-visa-sample.pdf",
+        faqs: [
+          {
+            question: "How long does it take to process a China visa?",
+            answer: "The processing time for a China visa is 4-7 working days.",
+          },
+          {
+            question: "Can I apply for a China visa online?",
+            answer:
+              "Yes, you can apply online by submitting the required documents on our portal.",
+          },
+          {
+            question: "What is the validity of a China business visa?",
+            answer: "The validity of a China business visa is up to 1 year.",
+          },
+        ],
+      },      
+      {
+        name: "South Korea",
+        flag: "/images/flags/kr.webp",
+        landmark: "/images/landmarks/Gyeongbokgung Palace in South Korea Visa.webp",
+        landmarkName: "Gyeongbokgung Palace",
+        altName: "Gyeongbokgung Palace in South Korea Visa",
+        visaTypes: [
+          {
+            type: "South Korea Tourist Visa",
+            processingTime: "5-7 days",
+            stayPeriod: "Up to 90 days",
+            validity: "3 months",
+            visaCategory: "Tourist",
+            entry: "Single / Multiple",
+            fees: "INR 4,500/-",
+          },
+          {
+            type: "South Korea Business Visa",
+            processingTime: "7-10 days",
+            stayPeriod: "Up to 90 days",
+            validity: "1 year",
+            visaCategory: "Business",
+            entry: "Multiple",
+            fees: "INR 8,000/-",
+          },
+        ],
+        documentsRequired: [
+          {
+            category: "Must-have Documents for South Korea Visa Online",
+            documents: [
+              "Scanned copy of the first and last page of your passport",
+              "Recent passport-size color photograph",
+              "Confirmed return flight ticket",
+              "Hotel booking confirmation",
+              "Filled and signed visa application form",
+            ],
+            note: "Ensure all documents meet the specific requirements for successful approval.",
+          },
+          {
+            category: "Additional Documents for Business Visa",
+            documents: [
+              "Invitation letter from the South Korean company",
+              "Company registration certificate of the Indian company",
+              "Original bank statements for the last 6 months",
+            ],
+          },
+        ],
+        applyProcess: [
+          {
+            step: 1,
+            title: "Pay Online",
+            description: "Complete your payment securely to begin the application.",
+            icon: "/images/icons/pay-online.png",
+          },
+          {
+            step: 2,
+            title: "Upload Documents",
+            description: "Provide all required documents through our platform.",
+            icon: "/images/icons/upload-documents.png",
+          },
+          {
+            step: 3,
+            title: "Verification",
+            description: "Our team will verify and process your application.",
+            icon: "/images/icons/verification.png",
+          },
+          {
+            step: 4,
+            title: "Receive Visa",
+            description: "Download your South Korea Visa upon approval.",
+            icon: "/images/icons/receive-visa.png",
+          },
+        ],
+        sampleVisaCopy: "/pdf/visa-sample/south-korea-visa-sample.pdf",
+        faqs: [
+          {
+            question: "How long does it take to process a South Korea visa?",
+            answer: "The processing time is typically 5-7 working days.",
+          },
+          {
+            question: "What is the validity of a South Korea business visa?",
+            answer: "The validity of a South Korea business visa is up to 1 year.",
+          },
+          {
+            question: "Can I apply for a South Korea visa online?",
+            answer: "Yes, you can apply online by uploading the required documents.",
+          },
+        ],
+      },
+      {
+        name: "India",
+        flag: "/images/flags/in.webp",
+        landmark: "/images/landmarks/Taj_Mahal.jpg",
+        landmarkName: "Taj Mahal",
+        altName: "Taj Mahal in India Visa",
+        visaTypes: [
+          {
+            type: "India Tourist Visa",
+            processingTime: "2-4 days",
+            stayPeriod: "Up to 30 days",
+            validity: "30 days",
+            visaCategory: "Tourist",
+            entry: "Single",
+            fees: "INR 1,500/-",
+          },
+          {
+            type: "India Business Visa",
+            processingTime: "5-7 days",
+            stayPeriod: "Up to 180 days",
+            validity: "1 year",
+            visaCategory: "Business",
+            entry: "Multiple",
+            fees: "INR 3,000/-",
+          },
+        ],
+        documentsRequired: [
+          {
+            category: "Must-have Documents for India Visa Online",
+            documents: [
+              "Scanned copy of the first and last page of your passport",
+              "Recent passport-size photograph",
+              "Flight ticket confirmation",
+              "Hotel booking or address proof of stay in India",
+            ],
+            note: "Ensure your documents are clear and meet the application requirements.",
+          },
+          {
+            category: "Additional Documents for Business Visa",
+            documents: [
+              "Invitation letter from the Indian company",
+              "Letter of introduction from your employer",
+              "Company registration certificate of the Indian company",
+            ],
+          },
+        ],
+        applyProcess: [
+          {
+            step: 1,
+            title: "Pay Online",
+            description: "Complete the secure online payment process.",
+            icon: "/images/icons/pay-online.png",
+          },
+          {
+            step: 2,
+            title: "Upload Documents",
+            description: "Submit the required documents through our portal.",
+            icon: "/images/icons/upload-documents.png",
+          },
+          {
+            step: 3,
+            title: "Verification",
+            description: "Our team will verify the submitted documents.",
+            icon: "/images/icons/verification.png",
+          },
+          {
+            step: 4,
+            title: "Receive Visa",
+            description: "Download your India Visa after successful approval.",
+            icon: "/images/icons/receive-visa.png",
+          },
+        ],
+        sampleVisaCopy: "/pdf/visa-sample/india-visa-sample.pdf",
+        faqs: [
+          {
+            question: "How long does it take to process an India visa?",
+            answer: "The processing time is typically 2-4 working days.",
+          },
+          {
+            question: "What is the validity of an India tourist visa?",
+            answer: "The validity of an India tourist visa is up to 30 days.",
+          },
+          {
+            question: "Can I apply for an India visa online?",
+            answer: "Yes, you can apply online by submitting the required documents.",
+          },
+        ],
+      },
     {
       name: "UAE",
       flag: "/images/flags/ae.webp",
