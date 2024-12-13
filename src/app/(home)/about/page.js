@@ -3,6 +3,9 @@ import React from "react";
 import { motion } from "framer-motion";
 import { AiOutlineSolution, AiOutlineUser } from "react-icons/ai";
 import { FiPhoneCall } from "react-icons/fi";
+import FeedbackReviewComponent from "@/components/home/FeedbackReviewComponent";
+import VideoTestimonials from "@/components/home/VideoTestimonial";
+import OurTeam from "@/components/about/OurTeam";
 
 const AboutUsPage = () => {
   const points = [
@@ -132,6 +135,9 @@ const AboutUsPage = () => {
           </motion.div>
         ))}
       </div>
+      <OurTeam/>
+      <FeedbackReviewComponent/>
+      <VideoTestimonials/>
 
       {/* Contact Section */}
       <div className="mt-20 p-8 bg-blue-500 text-white rounded-3xl shadow-xl">

@@ -105,25 +105,25 @@ const VisaCategories = () => {
               <Link
                 href={`/services${category.url}`}
                 key={index}
-                className="relative group min-w-[280px] sm:min-w-[300px] lg:min-w-[340px] overflow-hidden bg-gradient-to-tr from-blue-500 via-blue-500 to-indigo-500 rounded-xl shadow-lg transition-transform duration-300 h-[220px] flex justify-center items-center"
+                className="relative p-5 group min-w-[280px] sm:min-w-[300px] lg:min-w-[340px] overflow-hidden rounded-xl shadow-sm hover:shadow-md transition-all border bg-white  duration-300 flex  gap-3 flex-col"
               >
                 {/* Background Image with Overlay */}
-                <div className="absolute inset-0">
+                <div className="">
                   <img
                     src={category.image}
                     alt={category.title}
-                    className="w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity duration-300"
+                    className="w-full h-full rounded-xl object-cover"
                   />
-                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-all duration-300"></div>
+                  {/* <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-all duration-300"></div> */}
                 </div>
 
-                {/* Content */}
-                <div className="relative p-6 flex flex-col items-center text-center z-10">
-                  <h3 className="text-2xl font-semibold text-white mb-3">
+                <h3 className="text-xl text-left font-semibold text-black ">
                     {category.title}
                   </h3>
-                  <p className="text-white text-sm">{category.description}</p>
-                </div>
+                {/* Content */}
+              
+                  <p className="text-black text-sm">{category.description}</p>
+             
               </Link>
             ))}
           </div>

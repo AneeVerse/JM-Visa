@@ -17,17 +17,16 @@ const Footer = () => {
   ];
 
   const servicesLinks = [
-    { name: "Student Visa", href: "#" },
-    { name: "Family Visa", href: "#" },
-    { name: "Business Visa", href: "#" },
-    { name: "Travel Visa", href: "#" },
-    { name: "Work Visa", href: "#" },
-    { name: "Immigration Assistance", href: "#" },
+    { name: "Study Abroad", href: "/services/study-abroad" },
+    { name: "Work Visa", href: "/services/work-visa" },
+    { name: "Business Visa", href: "/services/business-visa" },
+    { name: "Tourist Visa", href: "/services/tourist-visa" },
+    { name: "Residence Visa", href: "/services/residence-visa" },
   ];
 
   const footerLinks = [
-    { name: "Privacy Policy", href: "#" },
-    { name: "Terms of Service", href: "#" },
+    { name: "Privacy Policy", href: "/privacy-policy" },
+    { name: "Terms & Service", href: "/terms-and-condition" },
   ];
 
   return (
@@ -89,7 +88,7 @@ const Footer = () => {
               </span>
             </h3>
             <ul
-              className={`space-y-3 sm:block ${
+              className={`space-y-3 mt-3 sm:block ${
                 isQuickLinksOpen ? "block" : "hidden"
               }`}
             >
@@ -118,7 +117,7 @@ const Footer = () => {
               </span>
             </h3>
             <ul
-              className={`space-y-3 sm:block ${
+              className={`space-y-3 mt-3 sm:block ${
                 isServicesOpen ? "block" : "hidden"
               }`}
             >

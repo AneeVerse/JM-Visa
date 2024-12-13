@@ -99,7 +99,7 @@ const BlogComponent = () => {
                 <Link
                   href={`/blog/${blog.slug}`}
                   key={blog.id}
-                  className="min-w-[290px] w-[290px] bg-white mb-4 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-300 cursor-pointer group"
+                  className="min-w-[280px] sm:min-w-[300px] lg:min-w-[340px] mb-3  bg-white flex flex-col gap-3 p-5 border  rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-all duration-300 cursor-pointer group"
                 >
                   {/* Blog Image */}
                   <img
@@ -107,14 +107,12 @@ const BlogComponent = () => {
                       blog?.thumbnail?.url || "/images/default-thumbnail.jpg"
                     }
                     alt={blog?.attributes?.title || "Blog"}
-                    className="w-full h-48 object-cover group-hover:blur-[4px] transition duration-300"
+                    className="w-full h-48 object-cover rounded-xl  transition duration-300"
                   />
                   {/* Blog Content */}
-                  <div className="p-4">
-                    <h3 className="text-xl line-clamp-3 font-semibold text-gray-800 mb-2">
+                    <h3 className="text-xl line-clamp-2 font-semibold text-gray-800 ">
                       {blog?.title || "Untitled Blog"}
                     </h3>
-                  </div>
                 </Link>
               ))}
             </div>

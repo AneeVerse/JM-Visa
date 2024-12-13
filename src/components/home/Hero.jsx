@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const HeroSection = () => {
   const backgroundImages = [
@@ -74,14 +75,14 @@ const HeroSection = () => {
           </p>
 
           {/* Buttons */}
-          <div className="mt-6 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+          <Link href={"/contact"} className="mt-6 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
             <button className="px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-2xl shadow-blue-500 hover:bg-blue-600 transition-transform">
               Enquire Now ➔
             </button>
-            <button className="flex items-center gap-2 px-6 py-3 bg-white bg-opacity-10 border border-blue-500 text-blue-100 font-semibold rounded-lg shadow-lg hover:bg-blue-500 hover:text-white  transition-transform backdrop-blur-lg">
-              <span>▶</span> Learn More
-            </button>
-          </div>
+            <Link href={"/blog"} className="flex items-center gap-2 px-6 py-3 bg-white bg-opacity-10 border border-blue-500 text-blue-100 font-semibold rounded-lg shadow-lg hover:bg-blue-500 hover:text-white  transition-transform backdrop-blur-lg">
+              <span>➔</span> Learn More
+            </Link>
+          </Link>
         </motion.div>
       </div>
 
