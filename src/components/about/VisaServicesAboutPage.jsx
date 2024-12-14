@@ -1,10 +1,11 @@
+
 "use client";
 import Link from "next/link";
 import { useRef } from "react";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { MdFormatListBulleted } from "react-icons/md";
 
-const VisaCategories = () => {
+const VisaServicesAboutPage = () => {
   const scrollContainerRef = useRef(null);
 
   // Enhanced Scroll Function
@@ -64,7 +65,7 @@ const VisaCategories = () => {
 
   return (
     <section className=" py-12 relative">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto">
         {/* Heading Section */}
         <div className="mb-8">
           <div className="flex justify-between gap-2 items-center">
@@ -141,4 +142,5 @@ const VisaCategories = () => {
   );
 };
 
-export default VisaCategories;
+export default VisaServicesAboutPage;
+

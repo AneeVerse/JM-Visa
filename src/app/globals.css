@@ -16,14 +16,14 @@
 }
 
 .article-blog h1 {
-  font-size: 2.5rem;
+  font-size: 2.0rem;
   font-weight: 700;
   color: #0c0d0f; /* Darker shade for primary heading */
   margin-bottom: 1rem;
 }
 
 .article-blog h2 {
-  font-size: 2rem;
+  font-size: 1.75rem;
   margin-top: 12px;
   font-weight: 600;
   color: #131517; /* Slightly lighter shade for secondary heading */
@@ -31,28 +31,28 @@
 }
 
 .article-blog h3 {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   font-weight: 600;
   color: #1a1e20; /* A softer dark tone */
   margin-bottom: 0.6rem;
 }
 
 .article-blog h4 {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 600;
   color: #393d42; /* Subtle gray tone */
   margin-bottom: 0.5rem;
 }
 
 .article-blog h5 {
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 500;
   color: #7f8c8d; /* Neutral gray tone */
   margin-bottom: 0.4rem;
 }
 
 .article-blog h6 {
-  font-size: 1rem;
+  font-size: 0.85rem;
   font-weight: 500;
   color: #95a5a6; /* Light gray */
   margin-bottom: 0.3rem;

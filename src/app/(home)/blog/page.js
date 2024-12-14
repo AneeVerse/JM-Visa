@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const BlogPage = () => {
   const [blogs, setBlogs] = useState([]);
@@ -65,9 +66,9 @@ const BlogPage = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {blogs.map((blog) => {
               return (
-                <div
+                <Link href={`/blog/${blog.slug}`} 
                   key={blog.id}
-                  className="relative group bg-white/20 border border-white/30 backdrop-blur-md rounded-lg shadow-lg hover:shadow-xl transition-all overflow-hidden"
+                  className="relative group bg-white/20 border border-white/30 backdrop-blur-md rounded-lg shadow-lg hover:shadow-xl transition-all cursor-pointer overflow-hidden"
                 >
                   {/* Blog Image */}
                   <img
@@ -83,14 +84,13 @@ const BlogPage = () => {
                     <p className="text-sm text-gray-600 mt-2 line-clamp-2">
                       {blog.description || "No description available."}
                     </p>
-                    <a
-                      href={`/blog/${blog.slug}`}
+                    <span
                       className="mt-4 inline-block text-blue-500 font-medium hover:underline"
                     >
                       Read More ➔
-                    </a>
+                    </span>
                   </div>
-                </div>
+                </Link>
               );
             })}
           </div>

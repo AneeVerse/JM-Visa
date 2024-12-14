@@ -375,6 +375,7 @@ const CountryDetails = () => {
           </aside>
         </div>
       </div>
+      
     </section>
   );
 };

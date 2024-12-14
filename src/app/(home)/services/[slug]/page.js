@@ -5,8 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { BiMessageDetail } from "react-icons/bi";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import services from "@/data/ServicesData";
-import HorizontalScrollSection from "@/components/home/HorizontalScrollSection";
-import VisaCategories from "@/components/home/VisaCategories";
+import CountryListAboutPage from "@/components/about/CountryListAboutPage";
+import VisaServicesAboutPage from "@/components/about/VisaServicesAboutPage";
 
 const ServiceDetails = () => {
   const params = useParams();
@@ -181,8 +181,8 @@ const ServiceDetails = () => {
           </aside>
         </div>
       </div>
-      <HorizontalScrollSection/>
-      <VisaCategories/>
+      <CountryListAboutPage/>
+      <VisaServicesAboutPage/>
     </section>
   );
 };

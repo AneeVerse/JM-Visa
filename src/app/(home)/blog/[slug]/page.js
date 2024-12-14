@@ -6,14 +6,15 @@ import remarkGfm from "remark-gfm";
 import Image from "next/image";
 
 const BlogDetails = () => {
-  const params = useParams(); // Using `useParams` hook to access dynamic params
-  const router = useRouter(); // Router to handle navigation
-  const { slug } = params || {}; // Destructure `slug` from params
+  const params = useParams();
+  const router = useRouter();
+  const { slug } = params || {};
   const [blog, setBlog] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [relatedBlogs, setRelatedBlogs] = useState([]);
 
   useEffect(() => {
-    if (!slug) return; // Wait until slug is available
+    if (!slug) return;
 
     const fetchBlogDetails = async () => {
       try {
@@ -21,12 +22,7 @@ const BlogDetails = () => {
           `https://integral-cuddle-38b1ccd978.strapiapp.com/api/blogs?filters[slug][$eq]=${slug}&populate=*`
         );
         const data = await response.json();
-
-        if (data?.data?.length) {
-          setBlog(data.data[0]); // Get the first (and only) result
-        } else {
-          console.error("Blog not found:", data);
-        }
+        if (data?.data?.length) setBlog(data.data[0]);
       } catch (error) {
         console.error("Error fetching blog details:", error);
       } finally {
@@ -34,7 +30,20 @@ const BlogDetails = () => {
       }
     };
 
+    const fetchRelatedBlogs = async () => {
+      try {
+        const response = await fetch(
+          `https://integral-cuddle-38b1ccd978.strapiapp.com/api/blogs?filters[slug][$ne]=${slug}&populate=*`
+        );
+        const data = await response.json();
+        setRelatedBlogs(data?.data || []);
+      } catch (error) {
+        console.error("Error fetching related blogs:", error);
+      }
+    };
+
     fetchBlogDetails();
+    fetchRelatedBlogs();
   }, [slug]);
 
   if (loading) {
@@ -54,12 +63,24 @@ const BlogDetails = () => {
   }
 
   return (
-    <section className="relative mt-[60px] py-16 bg-gradient-to-br from-blue-50 via-white to-blue-100 px-3 sm:px-6 lg:px-12">
-      <div className="max-w-[1200px] mx-auto">
+    <section className="relative mt-[60px] py-16 bg-gradient-to-br from-blue-50 via-white to-blue-100 px-4 sm:px-8 lg:px-16">
+      <div className="max-w-[1280px] mx-auto">
         {/* Blog Header */}
-        <div className="mb-4 flex flex-col lg:flex-row gap-3">
-          <div className="mb-4 flex-1">
-            <h1 style={{lineHeight: "125%"}} className="text-4xl xl:text-5xl font-extrabold text-gray-800">
+        <div className="flex flex-col lg:flex-row gap-10 items-start">
+          <div className="lg:w-1/2 w-full">
+           {/* Back Button */}
+           <div className="mb-4 hidden lg:block">
+              <button
+                onClick={() => router.push(`/blog`)}
+                className="py-3 text-blue-500 font-semibold transition"
+              >
+                ← Back to Blogs
+              </button>
+            </div>
+            <h1
+              className="text-3xl sm:text-4xl xl:text-5xl font-extrabold text-gray-800 leading-tight"
+              style={{ lineHeight: "1.3" }}
+            >
               {blog?.title || "Untitled Blog"}
             </h1>
             <div className="mt-6 text-gray-600 flex gap-3 items-center">
@@ -72,7 +93,7 @@ const BlogDetails = () => {
               />
               <div className="flex flex-col text-sm">
                 <span className="font-semibold">
-                  {blog?.author?.name && `${blog.author.name}`}
+                  {blog?.author?.name && blog.author.name}
                 </span>
                 <span>
                   Date: {new Date(blog?.date).toLocaleDateString() || "Unknown Date"}
@@ -80,37 +101,66 @@ const BlogDetails = () => {
               </div>
             </div>
           </div>
-          <div className="flex-1">
-            <div className="aspect-w-16 aspect-h-9">
+          <div className="lg:w-1/2 w-full">
+            <div className="aspect-w-16 max-w-[500px] aspect-h-9 rounded-lg h-[300px] mr-auto ml-auto lg:mr-0 lg:ml-auto  overflow-hidden shadow-md">
               <img
                 src={blog?.thumbnail?.url || "/images/default-thumbnail.jpg"}
-                alt={blog?.title || "Blog"}
-                className="w-full max-h-[370px] h-full object-cover rounded-md shadow-sm"
+                alt={blog?.title || "Blog Thumbnail"}
+                className="w-full h-full object-cover"
               />
             </div>
           </div>
         </div>
 
-        {/* Blog Content */}
-        <article className="article-blog max-w-none border border-white/30 backdrop-blur-md py-6">
-          {blog?.description ? (
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>
-              {blog.description}
-            </ReactMarkdown>
-          ) : (
-            <p>No content available for this blog.</p>
-          )}
-        </article>
+        {/* Main Content and Related Blogs Section */}
+        <div className="mt-16 flex flex-col lg:flex-row gap-12">
+          {/* Blog Content */}
+          <div className="lg:w-2/3 w-full">
+            <article className="prose prose-lg max-w-none article-blog bg-white bg-opacity-50 p-10 rounded-md shadow-sm">
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                {blog?.description || "No content available for this blog."}
+              </ReactMarkdown>
+            </article>
+          </div>
 
-        {/* Back Button */}
-        <div className="mt-8">
-          <button
-            onClick={() => router.push("/blog")}
-            className="px-6 py-3 text-blue-500 font-semibold transition"
-          >
-            ← Back to Blogs
-          </button>
+          {/* Related Blogs */}
+          <aside className="lg:w-1/3 w-full">
+            <div className="sticky top-[100px] bg-white bg-opacity-50 rounded-md shadow-sm p-8">
+              <h2 className="text-xl font-semibold text-gray-800 mb-6">
+                Related Blogs
+              </h2>
+              <div className="space-y-6">
+                {relatedBlogs.map((relatedBlog) => (
+                  <div
+                    key={relatedBlog.id}
+                    className="flex items-start gap-4 border-b pb-4 last:border-b-0"
+                  >
+                    <img
+                      src={
+                        relatedBlog.thumbnail?.url || "/images/default-thumbnail.jpg"
+                      }
+                      alt={relatedBlog.title || "Related Blog"}
+                      className="w-16 h-16 rounded-lg object-cover"
+                    />
+                    <div>
+                      <h3 className="text-md font-semibold text-gray-800">
+                        {relatedBlog.title}
+                      </h3>
+                      <button
+                        onClick={() => router.push(`/blog/${relatedBlog.slug}`)}
+                        className="text-blue-500 text-sm mt-2 hover:underline"
+                      >
+                        Read More →
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </aside>
         </div>
+
+      
       </div>
     </section>
   );
