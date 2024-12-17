@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiPhone, FiMail, FiMapPin } from "react-icons/fi";
+import Link from "next/link";
 
 const ContactUsPage = () => {
   const [formData, setFormData] = useState({
@@ -31,7 +32,7 @@ const ContactUsPage = () => {
   
       const result = await response.json();
       if (result.success) {
-        setPopup({ show: true, message: "Your message has been sent successfully!", success: true });
+        setPopup({ show: true, message: "Form submitted successfully!", success: true });
         setFormData({ name: "", email: "", phone: "", message: "" });
       } else {
         setPopup({ show: true, message: "Failed to send the message. Try again.", success: false });
@@ -144,25 +145,25 @@ const ContactUsPage = () => {
           <div className="bg-white p-8 rounded-lg shadow-md">
             <h2 className="text-2xl font-bold mb-4 text-gray-800">Contact Information</h2>
             <div className="space-y-6">
-              <div className="flex items-center gap-4">
+              <Link href={"tel:+919321315524"} className="flex items-center gap-4">
                 <FiPhone className="text-blue-500 text-3xl" />
                 <div>
                   <p className="text-gray-800 font-medium">Phone</p>
-                  <p className="text-gray-600">+1 (123) 456-7890</p>
+                  <p className="text-gray-600">+919321315524 / +918591070718</p>
                 </div>
-              </div>
-              <div className="flex items-center gap-4">
+              </Link>
+              <Link href={"mailto:info@jmvisaservices.com"} className="flex cursor-pointer items-center gap-4">
                 <FiMail className="text-blue-500 text-3xl" />
                 <div>
                   <p className="text-gray-800 font-medium">Email</p>
-                  <p className="text-gray-600">info@jmvisa.com</p>
+                  <p className="text-gray-600">info@jmvisaservices.com</p>
                 </div>
-              </div>
+              </Link>
               <div className="flex items-center gap-4">
-                <FiMapPin className="text-blue-500 text-3xl" />
+                <FiMapPin className="text-blue-500 min-w-fit text-3xl" />
                 <div>
                   <p className="text-gray-800 font-medium">Address</p>
-                  <p className="text-gray-600">123 Visa Street, New York, NY 10001</p>
+                  <p className="text-gray-600">Shop No 11, CBSE School, City Light CHS, Plot No.25, near Terna Orchids The International School, Sector 1, Kopar Khairane, Navi Mumbai, Maharashtra 400709</p>
                 </div>
               </div>
             </div>
@@ -171,7 +172,7 @@ const ContactUsPage = () => {
           {/* Google Map */}
           <div className="w-full h-[300px] overflow-hidden rounded-lg shadow-md">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.9167394140747!2d-74.0060156845948!3d40.71277577933001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a31650e2a67%3A0xa8b5cfda52a6b4da!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sin!4v1637844037736!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4020.27545473824!2d73.006725!3d19.1107866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4f174af374b22233%3A0x39a66841cc7cfdd5!2sJM%20Visa%20Services!5e1!3m2!1sen!2sin!4v1734419571115!5m2!1sen!2sin"
               width="100%"
               height="100%"
               allowFullScreen=""

@@ -1,7 +1,8 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import HeaderWithSidebar from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
+
+import NextTopLoader from "nextjs-toploader";
 import FloatingActionButton from "@/components/layout/FloatingActionButton";
 
 const geistSans = localFont({
@@ -26,6 +27,15 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+         <NextTopLoader
+         color="#0e2f50"
+         initialPosition={0.08}
+         height={3}
+         showSpinner={false}
+         easing="ease"
+         speed={500}
+         shadow="0 0 10px #2299DD,0 0 5px #2299DD"
+         />
         <HeaderWithSidebar/>
         {children}
         <FloatingActionButton/>

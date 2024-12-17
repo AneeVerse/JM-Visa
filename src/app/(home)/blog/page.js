@@ -78,12 +78,12 @@ const BlogPage = () => {
                   />
                   {/* Blog Content */}
                   <div className="p-4">
-                    <h3 className="text-lg font-semibold text-gray-800">
+                    <h3 className="text-lg line-clamp-2 font-semibold text-gray-800">
                       {blog.title || "Untitled Blog"}
                     </h3>
-                    <p className="text-sm text-gray-600 mt-2 line-clamp-2">
+                    {/* <p className="text-sm text-gray-600 mt-2 line-clamp-2">
                       {blog.description || "No description available."}
-                    </p>
+                    </p> */}
                     <span
                       className="mt-4 inline-block text-blue-500 font-medium hover:underline"
                     >
