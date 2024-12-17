@@ -51,28 +51,28 @@ const Footer = () => {
             </p>
             <div className="mt-6">
               <p className="font-semibold text-white">Call Us</p>
-              <a
+              <Link
                 href="tel:+919321315524"
                 className="text-blue-50 font-medium hover:text-blue-100 transition"
               >
                 +91 9321315524
-              </a>
+              </Link>
               <br />
-              <a
+              <Link
                 href="tel:+918591070718"
                 className="text-blue-50 font-medium hover:text-blue-100 transition"
               >
                 +91 8591070718
-              </a>
+              </Link>
             </div>
             <div className="mt-4">
               <p className="font-semibold text-white">Email Us</p>
-              <a
+              <Link
                 href="mailto:info@jmvisaservices.com"
                 className="text-blue-50 font-medium hover:text-blue-100 transition"
               >
                 info@jmvisaservices.com
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -94,12 +94,12 @@ const Footer = () => {
             >
               {quickLinks.map((link) => (
                 <li key={link.name}>
-                  <a
+                  <Link
                     href={link.href}
                     className="hover:text-blue-400 transition-colors"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -123,12 +123,12 @@ const Footer = () => {
             >
               {servicesLinks.map((link) => (
                 <li key={link.name}>
-                  <a
+                  <Link
                     href={link.href}
                     className="hover:text-blue-400 transition-colors"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -161,12 +161,12 @@ const Footer = () => {
           <ul className="flex space-x-6 mt-3 sm:mt-0">
             {footerLinks.map((link) => (
               <li key={link.name}>
-                <a
+                <Link
                   href={link.href}
                   className="hover:text-blue-400 text-gray-100 transition-colors text-sm"
                 >
                   {link.name}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

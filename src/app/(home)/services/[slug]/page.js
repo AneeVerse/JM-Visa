@@ -13,6 +13,9 @@ const ServiceDetails = () => {
   const router = useRouter();
   const [service, setService] = useState(null);
   const [expandedFaqIndex, setExpandedFaqIndex] = useState(null);
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [isLoading, setIsLoading] = useState(false);
+  const [popup, setPopup] = useState({ show: false, message: "", success: false });
 
   useEffect(() => {
     if (!params?.slug) return;
@@ -24,6 +27,43 @@ const ServiceDetails = () => {
     }
   }, [params?.slug, router]);
 
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setPopup({ show: false });
+
+    try {
+      const response = await fetch("/api/get-touch", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        setPopup({ show: true, message: "Form submitted successfully!", success: true });
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        setPopup({ show: true, message: "Failed to send the message. Try again.", success: false });
+      }
+
+      setTimeout(() => {
+        setPopup({ show: false });
+      }, 5000); // Auto-hide popup after 5 seconds
+    } catch (error) {
+      setPopup({ show: true, message: "Server error! Please try later.", success: false });
+      setTimeout(() => {
+        setPopup({ show: false });
+      }, 5000);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   if (!service) {
     return (
       <div className="flex justify-center items-center h-screen">
@@ -34,6 +74,23 @@ const ServiceDetails = () => {
 
   return (
     <section className="relative mt-[60px] py-16 px-4 sm:px-6 lg:px-12 bg-gradient-to-br from-blue-50 via-white to-blue-100">
+    
+       {/* Popup Message */}
+       <AnimatePresence>
+        {popup.show && (
+          <motion.div
+            initial={{ x: "100%", opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: "100%", opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className={`fixed top-4 right-4 px-6 py-4 rounded-lg shadow-lg z-50 text-white ${
+              popup.success ? "bg-green-500" : "bg-red-500"
+            }`}
+          >
+            {popup.message}
+          </motion.div>
+        )}
+      </AnimatePresence>
       <div className="max-w-[1280px] mx-auto">
         {/* Main Section: Image and Title Side by Side */}
         <div className="flex flex-col lg:flex-row gap-12 pl-4 sm:pl-8 items-center justify-between lg:items-start">
@@ -124,57 +181,51 @@ const ServiceDetails = () => {
               <h3 className="text-2xl font-semibold text-gray-800 mb-6 flex items-center gap-2">
                 <BiMessageDetail className="text-blue-500" /> Get in Touch
               </h3>
-              <form>
-                <div className="mb-6">
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Name
-                  </label>
+              <form onSubmit={handleSubmit}>
+              <div className="mb-6">
+                  <label className="block text-sm font-medium text-gray-700">Name</label>
                   <input
                     type="text"
-                    id="name"
-                    className="mt-2 p-3 w-full border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
                     placeholder="Your Name"
+                    className="mt-2 p-3 w-full border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                    required
                   />
                 </div>
-
                 <div className="mb-6">
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Email
-                  </label>
+                  <label className="block text-sm font-medium text-gray-700">Email</label>
                   <input
                     type="email"
-                    id="email"
-                    className="mt-2 p-3 w-full border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
                     placeholder="Your Email"
+                    className="mt-2 p-3 w-full border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                    required
                   />
                 </div>
-
                 <div className="mb-6">
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Message
-                  </label>
+                  <label className="block text-sm font-medium text-gray-700">Message</label>
                   <textarea
-                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
                     rows="4"
-                    className="mt-2 p-3 w-full border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
                     placeholder="Your Message"
+                    className="mt-2 p-3 w-full border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                    required
                   ></textarea>
                 </div>
-
                 <button
                   type="submit"
-                  className="w-full px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-transform transform"
+                  className={`w-full px-6 py-3 text-white font-semibold rounded-lg shadow-md ${
+                    isLoading ? "bg-gray-400 cursor-not-allowed" : "bg-blue-500 hover:bg-blue-600"
+                  }`}
+                  disabled={isLoading}
                 >
-                  Submit
+                  {isLoading ? "Sending..." : "Submit"}
                 </button>
               </form>
             </div>

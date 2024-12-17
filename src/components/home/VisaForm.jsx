@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import axios from "axios";
+import { AnimatePresence, motion } from "framer-motion";
 
 const VisaForm = () => {
   const [formData, setFormData] = useState({
@@ -11,7 +12,8 @@ const VisaForm = () => {
     email: "",
     phoneNumber: "",
   });
-  // some iupdate
+  const [isLoading, setIsLoading] = useState(false);
+  const [popup, setPopup] = useState({ show: false, message: "", success: false });
 
   const handleChange = (e) => {
     setFormData({
@@ -22,18 +24,53 @@ const VisaForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
+    setPopup({ show: false });
+
     try {
-      const response = await axios.post("https://api.example.com/visa", formData); // Replace with your API URL
-      alert("Form submitted successfully!");
-      console.log(response.data);
+      const response = await axios.post("/api/visa-form", formData);
+
+      if (response.data.success) {
+        setPopup({ show: true, message: "Form submitted successfully!", success: true });
+        setFormData({
+          citizen: "India",
+          travellingTo: "",
+          category: "Travel",
+          firstName: "",
+          email: "",
+          phoneNumber: "",
+        });
+      } else {
+        setPopup({ show: true, message: "Submission failed. Try again!", success: false });
+      }
     } catch (error) {
-      alert("Error submitting the form. Please try again.");
       console.error(error);
+      setPopup({ show: true, message: "Server error! Please try later.", success: false });
+    } finally {
+      setIsLoading(false);
+      setTimeout(() => setPopup({ show: false }), 5000); // Hide popup after 5 seconds
     }
   };
 
   return (
     <div className="relative  py-16 px-3 sm:px-6">
+         {/* Success/Error Popup */}
+         <AnimatePresence>
+        {popup.show && (
+          <motion.div
+            initial={{ x: "100%", opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: "100%", opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className={`fixed top-4 right-4 px-6 py-4 rounded-lg shadow-lg z-50 text-white ${
+              popup.success ? "bg-green-500" : "bg-red-500"
+            }`}
+          >
+            {popup.message}
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         {/* Form Section */}
         <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-3xl py-8 px-4 sm:px-8 shadow-lg">
@@ -46,130 +83,100 @@ const VisaForm = () => {
           </p>
 
           {/* Form */}
-          <form
-            onSubmit={handleSubmit}
-            className="grid grid-cols-1 md:grid-cols-2 gap-6"
-          >
+          <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Citizen */}
             <div className="flex flex-col">
-              <label htmlFor="citizen" className="font-semibold text-white mb-2">
-                I&apos;m a Citizen Of
-              </label>
+              <label className="text-white mb-2">I&apos;m a Citizen Of</label>
               <select
-                id="citizen"
                 name="citizen"
                 value={formData.citizen}
                 onChange={handleChange}
-                className="bg-white/20 text-gray-800 border border-black/30 rounded-lg p-3 focus:ring-2 focus:ring-blue-400 placeholder-white shadow-md transition"
+                className="bg-white/20 text-gray-800 border border-gray-300 rounded-lg p-3"
               >
                 <option value="India">India</option>
                 <option value="USA">USA</option>
                 <option value="UK">UK</option>
-                <option value="Canada">Canada</option>
               </select>
             </div>
 
             {/* Travelling To */}
             <div className="flex flex-col">
-              <label
-                htmlFor="travellingTo"
-                className="font-semibold text-white mb-2"
-              >
-                Travelling To
-              </label>
+              <label className="text-white mb-2">Travelling To</label>
               <select
-                id="travellingTo"
                 name="travellingTo"
                 value={formData.travellingTo}
                 onChange={handleChange}
-                className="bg-white/20 text-gray-800 border border-white/30 rounded-lg p-3 focus:ring-2 focus:ring-blue-400 placeholder-white shadow-md transition"
+                className="bg-white/20 text-gray-800 border border-gray-300 rounded-lg p-3"
               >
                 <option value="">Select Country</option>
                 <option value="Canada">Canada</option>
-                <option value="Germany">Germany</option>
                 <option value="Australia">Australia</option>
               </select>
             </div>
 
             {/* Category */}
             <div className="flex flex-col">
-              <label htmlFor="category" className="font-semibold text-white mb-2">
-                Select Category
-              </label>
+              <label className="text-white mb-2">Select Category</label>
               <select
-                id="category"
                 name="category"
                 value={formData.category}
                 onChange={handleChange}
-                className="bg-white/20 text-gray-800 border border-white/30 rounded-lg p-3 focus:ring-2 focus:ring-blue-400 placeholder-white shadow-md transition"
+                className="bg-white/20 text-gray-800 border border-gray-300 rounded-lg p-3"
               >
                 <option value="Travel">Travel</option>
                 <option value="Business">Business</option>
-                <option value="Education">Education</option>
               </select>
             </div>
 
             {/* First Name */}
             <div className="flex flex-col">
-              <label
-                htmlFor="firstName"
-                className="font-semibold text-white mb-2"
-              >
-                First Name
-              </label>
+              <label className="text-white mb-2">First Name</label>
               <input
                 type="text"
-                id="firstName"
                 name="firstName"
-                placeholder="Enter your name"
                 value={formData.firstName}
                 onChange={handleChange}
-                className="bg-white/20 text-white border border-white/30 rounded-lg p-3 focus:ring-2 focus:ring-blue-400 placeholder-white shadow-md transition"
+                className="bg-white/20 border border-gray-300 rounded-lg p-3 text-white"
+                placeholder="Enter your name"
+                required
               />
             </div>
 
-            {/* Email Address */}
+            {/* Email */}
             <div className="flex flex-col">
-              <label htmlFor="email" className="font-semibold text-white mb-2">
-                Email Address
-              </label>
+              <label className="text-white mb-2">Email</label>
               <input
                 type="email"
-                id="email"
                 name="email"
-                placeholder="Enter your email"
                 value={formData.email}
                 onChange={handleChange}
-                className="bg-white/20 text-white border border-white/30 rounded-lg p-3 focus:ring-2 focus:ring-blue-400 placeholder-white shadow-md transition"
+                className="bg-white/20 border border-gray-300 rounded-lg p-3 text-white"
+                placeholder="Enter your email"
+                required
               />
             </div>
 
-            {/* Phone Number */}
+            {/* Phone */}
             <div className="flex flex-col md:col-span-2">
-              <label
-                htmlFor="phoneNumber"
-                className="font-semibold text-white mb-2"
-              >
-                Phone Number
-              </label>
+              <label className="text-white mb-2">Phone Number</label>
               <input
                 type="tel"
-                id="phoneNumber"
                 name="phoneNumber"
-                placeholder="Enter your phone number"
                 value={formData.phoneNumber}
                 onChange={handleChange}
-                className="bg-white/20 text-white border border-white/30 rounded-lg p-3 focus:ring-2 focus:ring-blue-400 placeholder-white shadow-md transition"
+                className="bg-white/20 border border-gray-300 rounded-lg p-3 text-white"
+                placeholder="Enter phone number"
               />
             </div>
 
-            {/* Submit Button */}
-            <div className="md:col-span-2 flex justify-center mt-6">
+            {/* Submit */}
+            <div className="md:col-span-2 flex justify-center">
               <button
                 type="submit"
-                className="bg-gradient-to-r from-blue-400 to-blue-600 text-white px-8 py-3 rounded-lg font-bold hover:shadow-lg transition"
+                disabled={isLoading}
+                className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold transition"
               >
-                Check Requirements
+                {isLoading ? "Submitting..." : "Check Requirements"}
               </button>
             </div>
           </form>
