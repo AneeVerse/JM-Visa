@@ -278,9 +278,9 @@ const CountryData = {
       {
         name: "India",
         flag: "/images/flags/in.webp",
-        landmark: "/images/landmarks/Taj_Mahal.jpg",
-        landmarkName: "Taj Mahal",
-        altName: "Taj Mahal in India Visa",
+        landmark: "/images/landmarks/gateway-of-india.jpeg",
+        landmarkName: "Gateway of India",
+        altName: "Gateway of india in India Visa",
         visaTypes: [
           {
             type: "India Tourist Visa",

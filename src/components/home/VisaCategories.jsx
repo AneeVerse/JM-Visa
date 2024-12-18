@@ -50,16 +50,52 @@ const VisaCategories = () => {
     },
     {
       title: "Business Visa",
-      image: "/images/Business Visa.webp",
+      image: "/images/business-visa.png",
       url: "/business-visa",
       description: "Expand your business ventures globally with minimal effort.",
     },
     {
       title: "Residence Visa",
-      image: "/images/student-visa.jpg",
+      image: "/images/residence-visa.png",
       url: "/residence-visa",
       description: "Simplify the process of settling in a new country permanently.",
     },
+    {
+      title: "Overseas Education",
+      image: "/images/Overseas Education.webp",
+      url: "/overseas-education",
+      description: "Get expert guidance for your study abroad journey.",
+    },
+    {
+      title: "Dummy Ticket Booking",
+      image: "/images/dummy-ticket-booking.png",
+      url: "/dummy-ticket-booking",
+      description: "Book dummy tickets for visa applications with ease.",
+    },
+    {
+      title: "English Proficiency Test",
+      image: "/images/english-proficiency-test.png",
+      url: "/english-proficiency-test",
+      description: "Prepare for English proficiency exams with our expert guidance.",
+    },
+    {
+      title: "Foreign Exchange",
+      image: "/images/foreign-exchange.png",
+      url: "/foreign-exchange",
+      description: "Get the best foreign exchange rates for your international travel.",
+    },
+    {
+      title: "Passport Services",
+      image: "/images/passport-services.png",
+      url: "/passport-services",
+      description: "Get your passport processed quickly and efficiently.",
+    },
+    {
+      title: "US Interview Dates",
+      image: "/images/us-interview-dates.png",
+      url: "/us-interview-dates",
+      description: "Schedule your US visa interview with ease.",
+    }
   ];
 
   return (
@@ -105,14 +141,14 @@ const VisaCategories = () => {
               <Link
                 href={`/services${category.url}`}
                 key={index}
-                className="relative p-5 group min-w-[280px] sm:min-w-[300px] lg:min-w-[340px] overflow-hidden rounded-xl shadow-sm hover:shadow-md transition-all border bg-white  duration-300 flex  gap-3 flex-col"
+                className="relative p-5 group min-w-[280px] sm:min-w-[300px] lg:min-w-[340px] overflow-hidden rounded-xl shadow-sm hover:shadow-md  transition-all border bg-white  duration-300 flex  gap-3 flex-col"
               >
                 {/* Background Image with Overlay */}
                 <div className="">
                   <img
                     src={category.image}
                     alt={category.title}
-                    className="w-full h-full rounded-xl object-cover"
+                    className="w-full h-[180px] rounded-xl object-cover"
                   />
                   {/* <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-all duration-300"></div> */}
                 </div>

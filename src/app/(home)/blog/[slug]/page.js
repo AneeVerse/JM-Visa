@@ -4,6 +4,8 @@ import { useParams, useRouter } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Image from "next/image";
+import { BiMessageDetail } from "react-icons/bi";
+import { AnimatePresence, motion } from "framer-motion";
 
 const BlogDetails = () => {
   const params = useParams();
@@ -12,6 +14,48 @@ const BlogDetails = () => {
   const [blog, setBlog] = useState(null);
   const [loading, setLoading] = useState(true);
   const [relatedBlogs, setRelatedBlogs] = useState([]);
+
+   const [formData, setFormData] = useState({ name: "", email: "", phone: "" });
+    const [isLoading, setIsLoading] = useState(false);
+    const [popup, setPopup] = useState({ show: false, message: "", success: false });
+  
+    const handleChange = (e) => {
+      setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+  
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      setIsLoading(true);
+      setPopup({ show: false });
+  
+      try {
+        const response = await fetch("/api/get-touch", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ...formData, other: "From Blog Page" }),
+        });
+  
+        const result = await response.json();
+        if (result.success) {
+          setPopup({ show: true, message: "Form submitted successfully!", success: true });
+          setFormData({ name: "", email: "", phone: "" });
+        } else {
+          setPopup({ show: true, message: "Failed to send the message. Try again.", success: false });
+        }
+  
+        setTimeout(() => {
+          setPopup({ show: false });
+        }, 5000);
+      } catch (error) {
+        setPopup({ show: true, message: "Server error! Please try later.", success: false });
+        setTimeout(() => {
+          setPopup({ show: false });
+        }, 5000);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
 
   useEffect(() => {
     if (!slug) return;
@@ -64,6 +108,22 @@ const BlogDetails = () => {
 
   return (
     <section className="relative mt-[60px] py-16 bg-gradient-to-br from-blue-50 via-white to-blue-100 px-4 sm:px-8 lg:px-16">
+         {/* Popup Message */}
+         <AnimatePresence>
+        {popup.show && (
+          <motion.div
+            initial={{ x: "100%", opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: "100%", opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className={`fixed top-4 right-4 px-6 py-4 rounded-lg shadow-lg z-50 text-white ${
+              popup.success ? "bg-green-500" : "bg-red-500"
+            }`}
+          >
+            {popup.message}
+          </motion.div>
+        )}
+      </AnimatePresence>
       <div className="max-w-[1280px] mx-auto">
         {/* Blog Header */}
         <div className="flex flex-col lg:flex-row gap-10 items-start">
@@ -126,6 +186,58 @@ const BlogDetails = () => {
           {/* Related Blogs */}
           <aside className="lg:w-1/3 w-full">
             <div className="sticky top-[100px] bg-white bg-opacity-50 rounded-md shadow-sm p-8">
+            <div className="mb-6">
+                <h3 className="text-2xl font-semibold text-gray-800 mb-6 flex items-center gap-2">
+                              <BiMessageDetail className="text-blue-500" /> Get in Touch
+                            </h3>
+                            <form onSubmit={handleSubmit}>
+                              <div className="mb-6">
+                                <label className="block text-sm font-medium text-gray-700">Name</label>
+                                <input
+                                  type="text"
+                                  name="name"
+                                  value={formData.name}
+                                  onChange={handleChange}
+                                  placeholder="Your Name"
+                                  className="mt-2 p-3 w-full border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                                  required
+                                />
+                              </div>
+                              <div className="mb-6">
+                                <label className="block text-sm font-medium text-gray-700">Email</label>
+                                <input
+                                  type="email"
+                                  name="email"
+                                  value={formData.email}
+                                  onChange={handleChange}
+                                  placeholder="Your Email"
+                                  className="mt-2 p-3 w-full border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                                  required
+                                />
+                              </div>
+                              <div className="mb-6">
+                                <label className="block text-sm font-medium text-gray-700">Phone</label>
+                                <input
+                                  type="tel"
+                                  name="phone"
+                                  value={formData.phone}
+                                  onChange={handleChange}
+                                  placeholder="Your Phone Number"
+                                  className="mt-2 p-3 w-full border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                                  required
+                                />
+                              </div>
+                              <button
+                                type="submit"
+                                className={`w-full px-6 py-3 text-white font-semibold rounded-lg shadow-md ${
+                                  isLoading ? "bg-gray-400 cursor-not-allowed" : "bg-blue-500 hover:bg-blue-600"
+                                }`}
+                                disabled={isLoading}
+                              >
+                                {isLoading ? "Sending..." : "Submit"}
+                              </button>
+                            </form>
+                          </div>
               <h2 className="text-xl font-semibold text-gray-800 mb-6">
                 Related Blogs
               </h2>

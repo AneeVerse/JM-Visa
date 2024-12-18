@@ -1,12 +1,50 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import CountryData from "@/data/CountryData";
 import Link from "next/link";
 
 const CountrySelector = () => {
-  const categories =  CountryData;
-  const [activeCategory, setActiveCategory] = useState("Asia");
+  const categories = CountryData;
+  const [activeCategory, setActiveCategory] = useState("All");
+  const [filteredCountries, setFilteredCountries] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  useEffect(() => {
+    // Create a flat list of countries with their category included for the "All" view
+    const allCountries = Object.entries(categories).flatMap(([category, countries]) =>
+      countries.map((country) => ({ ...country, category }))
+    );
+
+    if (activeCategory === "All") {
+      setFilteredCountries(allCountries);
+    } else {
+      const specificCategoryCountries =
+        categories[activeCategory]?.map((country) => ({
+          ...country,
+          category: activeCategory,
+        })) || [];
+      setFilteredCountries(specificCategoryCountries);
+    }
+  }, [activeCategory, categories]);
+
+  useEffect(() => {
+    // Filter based on search term and active category
+    const allCountries =
+      activeCategory === "All"
+        ? Object.entries(categories).flatMap(([category, countries]) =>
+            countries.map((country) => ({ ...country, category }))
+          )
+        : categories[activeCategory]?.map((country) => ({
+            ...country,
+            category: activeCategory,
+          })) || [];
+
+    const filtered = allCountries.filter((country) =>
+      country.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredCountries(filtered);
+  }, [searchTerm, activeCategory, categories]);
 
   return (
     <section className="relative py-16 px-3 sm:px-6 md:px-12 bg-gradient-to-br from-blue-50 via-white to-blue-100">
@@ -21,7 +59,7 @@ const CountrySelector = () => {
             visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
           }}
         >
-          <div className="text-center mb-12">
+          <div className="text-center mb-6">
             <div className="inline-block px-4 py-2 bg-blue-200/50 text-blue-600 font-medium rounded-full backdrop-blur-lg shadow-md">
               🌍 Explore Countries
             </div>
@@ -35,9 +73,20 @@ const CountrySelector = () => {
           </div>
         </motion.div>
 
+        {/* Search Bar */}
+        <div className="flex justify-center mb-6">
+          <input
+            type="text"
+            placeholder="Search for a country..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="w-full max-w-lg px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none shadow-md"
+          />
+        </div>
+
         {/* Categories */}
         <div className="flex justify-center gap-4 mb-8 flex-wrap">
-          {Object.keys(categories).map((category) => (
+          {["All", ...Object.keys(categories)].map((category) => (
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
@@ -54,9 +103,10 @@ const CountrySelector = () => {
 
         {/* Country Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
-          {categories[activeCategory].length > 0 ? (
-            categories[activeCategory].map((country, index) => (
-              <Link href={`/country/${activeCategory}/${country.name}`}
+          {filteredCountries.length > 0 ? (
+            filteredCountries.map((country, index) => (
+              <Link
+                href={`/country/${country.category}/${country.name}`}
                 key={index}
                 className="relative flex flex-col items-center bg-white/30 border border-white/30 backdrop-blur-lg rounded-lg shadow-md hover:shadow-xl transition-transform hover:scale-105 overflow-hidden"
               >
@@ -87,7 +137,7 @@ const CountrySelector = () => {
             ))
           ) : (
             <p className="text-gray-500 col-span-full text-center">
-              No countries available in this category.
+              No countries found for your search or selection.
             </p>
           )}
         </div>

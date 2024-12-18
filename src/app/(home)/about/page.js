@@ -6,6 +6,7 @@ import { FiPhoneCall } from "react-icons/fi";
 import FeedbackReviewComponent from "@/components/home/FeedbackReviewComponent";
 import VideoTestimonials from "@/components/home/VideoTestimonial";
 import OurTeam from "@/components/about/OurTeam";
+import Link from "next/link";
 
 const AboutUsPage = () => {
   const points = [
@@ -140,23 +141,62 @@ const AboutUsPage = () => {
       <VideoTestimonials/>
 
       {/* Contact Section */}
-      <div className="mt-20 p-8 bg-blue-500 text-white rounded-3xl shadow-xl">
-        <div className="flex flex-col lg:flex-row justify-between items-center gap-6">
-          <div className="space-y-4 text-center lg:text-left">
-            <h2 className="text-3xl font-bold">Get in Touch with JM Visa</h2>
-            <p className="text-sm">
-              Our friendly team is here to assist you with any queries or
-              support you need for your visa application.
-            </p>
-          </div>
-          <a
-            href="/contact"
-            className="px-6 py-3 bg-white text-blue-500 font-semibold rounded-lg shadow-lg hover:bg-blue-600 hover:text-white transition"
-          >
-            Contact Us
-          </a>
-        </div>
+      <div className="mt-20 p-10 bg-gradient-to-r from-blue-800 to-blue-700 text-white rounded-3xl shadow-lg">
+  <div className="flex flex-col lg:flex-row justify-between items-center gap-8">
+    {/* Left Section */}
+    <div className="flex flex-col sm:flex-row items-center gap-6">
+      <div className="p-4 bg-white/20 rounded-full shadow-md">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={2}
+          stroke="currentColor"
+          className="w-10 h-10 text-white"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M3 3h18M3 21h18M3 3v18M21 3v18M7 6h10M7 12h4"
+          />
+        </svg>
       </div>
+      <div>
+        <h2 className="text-4xl font-bold leading-tight">
+          Ready to Explore the World?
+        </h2>
+        <p className="text-base text-white/80 mt-2">
+          Connect with us to make your visa process effortless and stress-free.
+        </p>
+      </div>
+    </div>
+
+    {/* Right Section */}
+    <Link
+      href="/contact"
+      className="flex items-center gap-4 px-8 py-4 bg-white text-blue-600 rounded-full shadow-sm hover:bg-blue-700 hover:text-white hover:shadow-md"
+    >
+      <div className="p-2 bg-blue-600 rounded-full">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={2}
+          stroke="currentColor"
+          className="w-6 h-6 text-white"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M3 8h18M3 16h18M3 8v8M21 8v8M7 12h10"
+          />
+        </svg>
+      </div>
+      <span className="text-lg font-bold">Contact Us</span>
+    </Link>
+  </div>
+</div>
+
     </div>
   );
 };

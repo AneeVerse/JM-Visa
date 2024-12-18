@@ -6,6 +6,7 @@ import Link from "next/link";
 const HeroSection = () => {
   const backgroundImages = [
     "/images/bg1.png", // Replace with your actual image paths
+    "/images/bg-2.png",
     "/images/bg2.png",
     "/images/bg3.png",
     "/images/bg4.png",

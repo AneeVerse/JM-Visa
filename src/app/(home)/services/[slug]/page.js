@@ -13,7 +13,7 @@ const ServiceDetails = () => {
   const router = useRouter();
   const [service, setService] = useState(null);
   const [expandedFaqIndex, setExpandedFaqIndex] = useState(null);
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "" });
   const [isLoading, setIsLoading] = useState(false);
   const [popup, setPopup] = useState({ show: false, message: "", success: false });
 
@@ -40,13 +40,13 @@ const ServiceDetails = () => {
       const response = await fetch("/api/get-touch", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, other: service?.title }),
       });
 
       const result = await response.json();
       if (result.success) {
         setPopup({ show: true, message: "Form submitted successfully!", success: true });
-        setFormData({ name: "", email: "", message: "" });
+        setFormData({ name: "", email: "", phone: "" });
       } else {
         setPopup({ show: true, message: "Failed to send the message. Try again.", success: false });
       }
@@ -74,9 +74,8 @@ const ServiceDetails = () => {
 
   return (
     <section className="relative mt-[60px] py-16 px-4 sm:px-6 lg:px-12 bg-gradient-to-br from-blue-50 via-white to-blue-100">
-    
-       {/* Popup Message */}
-       <AnimatePresence>
+      {/* Popup Message */}
+      <AnimatePresence>
         {popup.show && (
           <motion.div
             initial={{ x: "100%", opacity: 0 }}
@@ -182,7 +181,7 @@ const ServiceDetails = () => {
                 <BiMessageDetail className="text-blue-500" /> Get in Touch
               </h3>
               <form onSubmit={handleSubmit}>
-              <div className="mb-6">
+                <div className="mb-6">
                   <label className="block text-sm font-medium text-gray-700">Name</label>
                   <input
                     type="text"
@@ -207,16 +206,16 @@ const ServiceDetails = () => {
                   />
                 </div>
                 <div className="mb-6">
-                  <label className="block text-sm font-medium text-gray-700">Message</label>
-                  <textarea
-                    name="message"
-                    value={formData.message}
+                  <label className="block text-sm font-medium text-gray-700">Phone</label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
                     onChange={handleChange}
-                    rows="4"
-                    placeholder="Your Message"
+                    placeholder="Your Phone Number"
                     className="mt-2 p-3 w-full border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
                     required
-                  ></textarea>
+                  />
                 </div>
                 <button
                   type="submit"
@@ -232,8 +231,8 @@ const ServiceDetails = () => {
           </aside>
         </div>
       </div>
-      <CountryListAboutPage/>
-      <VisaServicesAboutPage/>
+      <CountryListAboutPage />
+      <VisaServicesAboutPage />
     </section>
   );
 };

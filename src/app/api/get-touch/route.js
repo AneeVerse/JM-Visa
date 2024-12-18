@@ -3,10 +3,10 @@ import nodemailer from "nodemailer";
 export const POST = async (req) => {
   try {
     // Parse the incoming request body
-    const { name, email, phone, message } = await req.json();
+    const { name, email, phone, other } = await req.json();
 
     // Input validation
-    if (!name || !email || !message) {
+    if (!name || !email ) {
       return new Response(
         JSON.stringify({
           success: false,
@@ -42,15 +42,15 @@ export const POST = async (req) => {
             <p style="font-size: 1.1rem; margin-bottom: 10px;">
               <strong>Name:</strong> <span style="color: #007BFF;">${name}</span>
             </p>
+             <p style="font-size: 1.1rem; margin-bottom: 10px;">
+              <strong>Phone:</strong> <span style="color: #007BFF;">${phone}</span>
+            </p>
             <p style="font-size: 1.1rem; margin-bottom: 10px;">
               <strong>Email:</strong> <a href="mailto:${email}" style="color: #007BFF; text-decoration: none;">${email}</a>
             </p>
             <p style="font-size: 1.1rem; margin-bottom: 10px;">
-              <strong>Message:</strong>
-            </p>
-            <div style="background-color: #f9f9f9; padding: 15px; border-left: 5px solid #007BFF; border-radius: 5px; color: #333;">
-              ${message}
-            </div>
+                <strong>Other:</strong> <span style="color: #007BFF;">${other}</span>
+                </p>
           </div>
 
           <!-- Footer -->
@@ -59,7 +59,7 @@ export const POST = async (req) => {
           </div>
         </div>
       `,
-      text: `New submission from ${name} (${email}, ${message}`,
+      text: `New submission from ${name} (${email},${phone}, ${other}`,
     };
 
     // Send the email

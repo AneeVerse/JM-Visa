@@ -106,7 +106,7 @@ const services = [
   {
     title: "Residence Visa",
     description: "Simplify settling in a new country.",
-    image: "/images/business-visa.png",
+    image: "/images/residence-visa.png",
     url: "/residence-visa",
     content: {
       overview:
@@ -158,7 +158,7 @@ const services = [
   {
     title: "Dummy Ticket Booking",
     description: "Book dummy tickets for visa processing.",
-    image: "/images/business-visa.png",
+    image: "/images/dummy-ticket-booking.png",
     url: "/dummy-ticket-booking",
     content: {
       overview:
@@ -184,7 +184,7 @@ const services = [
   {
     title: "English Proficiency Test",
     description: "Prepare for TOEFL, IELTS, and more.",
-    image: "/images/business-visa.png",
+    image: "/images/english-proficiency-test.png",
     url: "/english-proficiency-test",
     content: {
       overview:
@@ -210,7 +210,7 @@ const services = [
   {
     title: "Foreign Exchange",
     description: "Easily exchange currency for travel.",
-    image: "/images/business-visa.png",
+    image: "/images/foreign-exchange.png",
     url: "/foreign-exchange",
     content: {
       overview:
@@ -236,7 +236,7 @@ const services = [
   {
     title: "Passport Services",
     description: "Hassle-free passport application assistance.",
-    image: "/images/business-visa.png",
+    image: "/images/passport-services.png",
     url: "/passport-services",
     content: {
       overview:
@@ -262,7 +262,7 @@ const services = [
   {
     title: "US Interview Dates",
     description: "Get the earliest interview dates for the US.",
-    image: "/images/business-visa.png",
+    image: "/images/us-interview-dates.png",
     url: "/us-interview-dates",
     content: {
       overview:
