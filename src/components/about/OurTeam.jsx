@@ -13,15 +13,15 @@ const teamMembers = [
     twitter: "#",
     email: "mailto:harsh@example.com",
   },
-  {
-    name: "Alexa Kimberly",
-    role: "Lead Designer",
-    image: "/images/profile.webp", // Replace with your image paths
-    bio: "I’ve been lead designer since the beginning and enjoyed every bit.",
-    linkedin: "https://linkedin.com/in/alexa",
-    twitter: "https://twitter.com/alexa",
-    email: "mailto:alexa@example.com",
-  },
+  // {
+  //   name: "Alexa Kimberly",
+  //   role: "Lead Designer",
+  //   image: "/images/profile.webp", // Replace with your image paths
+  //   bio: "I’ve been lead designer since the beginning and enjoyed every bit.",
+  //   linkedin: "https://linkedin.com/in/alexa",
+  //   twitter: "https://twitter.com/alexa",
+  //   email: "mailto:alexa@example.com",
+  // },
 ];
 
 const OurTeamSection = () => {
