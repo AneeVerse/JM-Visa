@@ -5,12 +5,12 @@ import { FaTwitter, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
 const teamMembers = [
   {
-    name: "Harsh Patel",
+    name: "Jayesh More",
     role: "Co-Founder & CEO",
-    image: "/images/profile.webp", // Replace with your image paths
+    image: "/images/team1.jpeg", // Replace with your image paths
     bio: "I am the co-founder of JM Visa and we’ve pushed our limits to make it successful.",
-    linkedin: "https://linkedin.com/in/harsh",
-    twitter: "https://twitter.com/harsh",
+    linkedin: "https://www.linkedin.com/in/jayesh-jaywant-more-156360292",
+    twitter: "#",
     email: "mailto:harsh@example.com",
   },
   {
