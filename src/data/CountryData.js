@@ -1789,7 +1789,7 @@ const CountryData = {
   ],
   Europe: [
     {
-      name: "United Kingdom (uk)",
+      name: "United Kingdom",
       flag: "/images/flags/uk.webp",
       landmark: "/images/landmarks/Big Ben tourist places in United Kingdom UK Visa.webp",
       landmarkName: "Big Ben",
@@ -3608,7 +3608,7 @@ const CountryData = {
   ],
   NorthAmerica: [
     {
-      name: "United States (usa)",
+      name: "United States",
       flag: "/images/flags/us.webp",
       landmark: "/images/landmarks/Tourist Places in United States Visa.webp",
       landmarkName: "Statue of Liberty",
@@ -3673,7 +3673,7 @@ const CountryData = {
           step: 3,
           title: "Schedule Appointments",
           description: "Book appointments for biometrics and visa interview.",
-          icon: "/images/icons/schedule-appointment.png",
+          icon: "/icons/verifications.svg",
         },
         {
           step: 4,
@@ -3852,7 +3852,7 @@ const CountryData = {
           step: 3,
           title: "Schedule Appointment",
           description: "Book an appointment at the nearest Mexican consulate.",
-          icon: "/images/icons/schedule-appointment.png",
+          icon: "/icons/verifications.svg",
         },
         {
           step: 4,
@@ -4044,7 +4044,7 @@ const CountryData = {
           step: 3,
           title: "Schedule Appointment",
           description: "Book an appointment at the nearest consulate.",
-          icon: "/images/icons/schedule-appointment.png",
+          icon: "/icons/verifications.svg",
         },
         {
           step: 4,
@@ -4145,7 +4145,7 @@ const CountryData = {
           step: 4,
           title: "Schedule Appointment",
           description: "Book an appointment at the nearest embassy or consulate.",
-          icon: "/images/icons/schedule-appointment.png",
+          icon: "/icons/verifications.svg",
         },
         {
           step: 5,
