@@ -11,7 +11,7 @@ const BlogPage = () => {
     const fetchBlogs = async () => {
       try {
         const response = await fetch(
-          "https://integral-cuddle-38b1ccd978.strapiapp.com/api/blogs?populate=*"
+          "https://strapi-jmvisa-blog.onrender.com/api/blogs?populate=*"
         );
         const data = await response.json();
         console.log("Fetched blogs:", data);
@@ -72,7 +72,7 @@ const BlogPage = () => {
                 >
                   {/* Blog Image */}
                   <img
-                    src={blog.thumbnail.url || "/images/default-thumbnail.jpg"}
+                    src={`https://strapi-jmvisa-blog.onrender.com${blog.thumbnail.url}` || "/images/default-thumbnail.jpg"}
                     alt={blog.title || "Blog"}
                     className="w-full h-48 object-cover group-hover:scale-105 transition-transform"
                   />
