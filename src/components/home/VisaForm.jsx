@@ -136,7 +136,7 @@ const VisaForm = () => {
                 name="firstName"
                 value={formData.firstName}
                 onChange={handleChange}
-                className="bg-white/20 border border-gray-300 rounded-lg p-3 text-white"
+                className="bg-white/20 border border-gray-300 rounded-lg p-3 placeholder:text-gray-800 text-gray-800"
                 placeholder="Enter your name"
                 required
               />
@@ -150,7 +150,7 @@ const VisaForm = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="bg-white/20 border border-gray-300 rounded-lg p-3 text-white"
+                className="bg-white/20 border border-gray-300 placeholder:text-gray-800 rounded-lg p-3 text-gray-800"
                 placeholder="Enter your email"
                 required
               />
@@ -164,7 +164,7 @@ const VisaForm = () => {
                 name="phoneNumber"
                 value={formData.phoneNumber}
                 onChange={handleChange}
-                className="bg-white/20 border border-gray-300 rounded-lg p-3 text-white"
+                className="bg-white/20 border border-gray-300  placeholder:text-gray-800 rounded-lg p-3 text-gray-800"
                 placeholder="Enter phone number"
               />
             </div>
