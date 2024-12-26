@@ -49,7 +49,7 @@ export const POST = async (req) => {
               <strong>Email:</strong> <a href="mailto:${email}" style="color: #007BFF; text-decoration: none;">${email}</a>
             </p>
             <p style="font-size: 1.1rem; margin-bottom: 10px;">
-                <strong>Other:</strong> <span style="color: #007BFF;">${other}</span>
+                <strong>From:</strong> <span style="color: #007BFF;">${other}</span>
                 </p>
           </div>
 
