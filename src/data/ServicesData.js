@@ -132,7 +132,7 @@ const services = [
   {
     title: "Overseas Education",
     description: "Pursue education in top universities.",
-    image: "/images/business-visa.png",
+    image: "/images/overseas-edu.png",
     url: "/overseas-education",
     content: {
       overview:

@@ -13,9 +13,10 @@ const Header = () => {
   const currentPath = usePathname(); // Get current route
 
   const navLinks = [
-    { name: "About", href: "/about" },
+    // { name: "About", href: "/about" },npm
     { name: "Visa", href: "/services" },
     { name: "Study Abroad", href: "/services/study-abroad" },
+    {name: "Dummy Ticket", href: "/services/dummy-ticket-booking"},
     { name: "Country", href: "/country" },
     { name: "Blog", href: "/blog" },
   ];
