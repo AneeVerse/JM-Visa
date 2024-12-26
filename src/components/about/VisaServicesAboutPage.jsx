@@ -64,7 +64,7 @@ const VisaServicesAboutPage = () => {
     },
     {
       title: "Overseas Education",
-      image: "/images/Overseas Education.webp",
+      image: "/images/overseas-edu.png",
       url: "/overseas-education",
       description: "Get expert guidance for your study abroad journey.",
     },

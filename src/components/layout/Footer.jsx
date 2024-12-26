@@ -17,11 +17,15 @@ const Footer = () => {
   ];
 
   const servicesLinks = [
+    { name: "Visa", href: "/services" },
     { name: "Study Abroad", href: "/services/study-abroad" },
-    { name: "Work Visa", href: "/services/work-visa" },
-    { name: "Business Visa", href: "/services/business-visa" },
-    { name: "Tourist Visa", href: "/services/tourist-visa" },
-    { name: "Residence Visa", href: "/services/residence-visa" },
+    {name: "Overseas Education", href: "/services/overseas-education"},
+    { name: "Dummy Tickets", href: "/services/dummy-ticket-booking" },
+    {name: "English Proficiency Test", href: "/services/english-proficiency-test"},
+    {name: "Foreign Exchange", href: "/services/foreign-exchange"},
+    {name: "Passport Services", href: "/services/passport-services"},
+    {name: "US Interview Dates", href: "/services/us-interview-dates"},
+    
   ];
 
   const footerLinks = [
@@ -111,7 +115,7 @@ const Footer = () => {
               className="text-xl font-semibold text-white mb-4 cursor-pointer sm:mb-0"
               onClick={() => setServicesOpen(!isServicesOpen)}
             >
-              Services
+             More Services
               <span className="sm:hidden ml-2 text-sm">
                 {isServicesOpen ? "▲" : "▼"}
               </span>

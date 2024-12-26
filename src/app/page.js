@@ -3,6 +3,7 @@ import BlogComponent from "@/components/home/BlogComponent";
 import FeedbackReviewComponent from "@/components/home/FeedbackReviewComponent";
 import HeroSection from "@/components/home/Hero";
 import HorizontalScrollSection from "@/components/home/HorizontalScrollSection";
+import PopupForm from "@/components/home/PopupForm";
 import PromoSection from "@/components/home/PromoSection";
 import VideoTestimonial from "@/components/home/VideoTestimonial";
 import VisaCategories from "@/components/home/VisaCategories";
@@ -30,7 +31,9 @@ export default function Home() {
       <BlogComponent/>
       <div className="bg-gradient-to-br from-blue-900 via-blue-700 to-blue-500">
       <VisaForm/>
+
       <Footer/>
+      <PopupForm/>
       </div>
    </div>
   );

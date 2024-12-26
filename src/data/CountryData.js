@@ -1789,7 +1789,7 @@ const CountryData = {
   ],
   Europe: [
     {
-      name: "United Kingdom",
+      name: "United Kingdom (uk)",
       flag: "/images/flags/uk.webp",
       landmark: "/images/landmarks/Big Ben tourist places in United Kingdom UK Visa.webp",
       landmarkName: "Big Ben",
@@ -3608,7 +3608,7 @@ const CountryData = {
   ],
   NorthAmerica: [
     {
-      name: "United States",
+      name: "United States (usa)",
       flag: "/images/flags/us.webp",
       landmark: "/images/landmarks/Tourist Places in United States Visa.webp",
       landmarkName: "Statue of Liberty",
