@@ -11,7 +11,7 @@ const BlogPage = () => {
     const fetchBlogs = async () => {
       try {
         const response = await fetch(
-          "https://strapi-jmvisa-blog.onrender.com/api/blogs?populate=*"
+          "https://strapi-jmvisa-blog.onrender.com/api/blogs?populate=*&sort[0]=createdAt:desc"
         );
         const data = await response.json();
         console.log("Fetched blogs:", data);

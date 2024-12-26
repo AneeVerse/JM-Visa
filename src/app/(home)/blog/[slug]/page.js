@@ -145,7 +145,7 @@ const BlogDetails = () => {
             </h1>
             <div className="mt-6 text-gray-600 flex gap-3 items-center">
               <Image
-                src={"/images/default_user.png"}
+                src={"/images/team1.jpeg"}
                 alt={blog?.author?.name || "Author"}
                 width={35}
                 height={35}
