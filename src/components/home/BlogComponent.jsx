@@ -14,7 +14,7 @@ const BlogComponent = () => {
     const fetchBlogs = async () => {
       try {
         const response = await fetch(
-          "https://integral-cuddle-38b1ccd978.strapiapp.com/api/blogs?populate=*"
+          "https://strapi-jmvisa-blog.onrender.com/api/blogs?populate=*"
         );
         const data = await response.json();
         if (data?.data) {
@@ -104,7 +104,7 @@ const BlogComponent = () => {
                   {/* Blog Image */}
                   <img
                     src={
-                      blog?.thumbnail?.url || "/images/default-thumbnail.jpg"
+                      `https://strapi-jmvisa-blog.onrender.com${blog?.thumbnail?.url}` || "/images/default-thumbnail.jpg"
                     }
                     alt={blog?.attributes?.title || "Blog"}
                     className="w-full h-48 object-cover rounded-xl  transition duration-300"
