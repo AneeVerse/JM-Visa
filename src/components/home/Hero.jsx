@@ -64,8 +64,8 @@ const HeroSection = () => {
           </div>
 
           {/* Heading */}
-          <h1 className="mt-6 text-2xl sm:text-4xl md:text-5xl font-bold text-gray-100 leading-tight">STRESS-FREE
-            <span className="text-blue-500">VISA SERVICES</span> AT
+          <h1 className="mt-6 text-2xl sm:text-4xl md:text-5xl font-bold text-gray-100 leading-tight">STRESS-FREE 
+            <span className="text-blue-500"> VISA SERVICES</span> AT
             <span className="text-blue-500"> <br/> YOUR DOOR STEPS</span> 🌴
           </h1>
 
