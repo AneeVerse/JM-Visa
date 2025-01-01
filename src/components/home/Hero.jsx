@@ -65,8 +65,8 @@ const HeroSection = () => {
 
           {/* Heading */}
           <h1 className="mt-6 text-2xl sm:text-4xl md:text-5xl font-bold text-gray-100 leading-tight">
-            Stress-Free <span className="text-blue-500">Visa Services</span> for
-            <span className="text-blue-500"> <br/> AT YOUR DOOR STEPS</span> 🌴
+            Stress-Free <span className="text-blue-500">Visa Services</span> AT
+            <span className="text-blue-500"> <br/> YOUR DOOR STEPS</span> 🌴
           </h1>
 
           {/* Subtext */}
