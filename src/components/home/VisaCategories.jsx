@@ -67,7 +67,7 @@ const VisaCategories = () => {
       description: "Get expert guidance for your study abroad journey.",
     },
     {
-      title: "Dummy Ticket Booking",
+      title: "Dummy Booking",
       image: "/images/dummy-ticket-booking.png",
       url: "/dummy-ticket-booking",
       description: "Book dummy tickets for visa applications with ease.",

@@ -85,34 +85,90 @@ const VisaForm = () => {
           {/* Form */}
           <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Citizen */}
-            <div className="flex flex-col">
-              <label className="text-white mb-2">I&apos;m a Citizen Of</label>
-              <select
-                name="citizen"
-                value={formData.citizen}
-                onChange={handleChange}
-                className="bg-white/20 text-gray-800 border border-gray-300 rounded-lg p-3"
-              >
-                <option value="India">India</option>
-                <option value="USA">USA</option>
-                <option value="UK">UK</option>
-              </select>
-            </div>
+            <div>
+     
+      <div className="flex flex-col">
+        <label className="text-white mb-2">I&apos;m a Citizen Of</label>
+        <select
+          name="citizen"
+          value={formData.citizen}
+          onChange={handleChange}
+          className="bg-white/20 text-gray-800 border border-gray-300 rounded-lg p-3"
+        >
+          <option value="India">India</option>
+          <option value="USA">Australia</option>
+          <option value="New Zealand">New Zealand</option>
+          <option value="USA">USA</option>
+          <option value="Canada">Canada</option>
+          <option value="UK">UK</option>
+          <option value="Ireland">Ireland</option>
+          <option value="Austria">Austria</option>
+          <option value="Belgium">Belgium</option>
+          <option value="Croatia">Croatia</option>
+          <option value="Czech Republic">Czech Republic</option>
+          <option value="Denmark">Denmark</option>
+          <option value="Estonia">Estonia</option>
+          <option value="Finland">Finland</option>
+          <option value="France">France</option>
+          <option value="Georgia">Georgia</option>
+          <option value="Germany">Germany</option>
+          <option value="Greece">Greece</option>
+          <option value="other">other</option>
+        </select>
+        {formData.citizen === 'other' && (
+          <input
+            type="text"
+            name="otherCitizen"
+            value={formData.otherCitizen}
+            onChange={handleChange}
+            placeholder="Please specify"
+            className="mt-3 bg-white/20 text-gray-800 border border-gray-300 rounded-lg p-3"
+          />
+        )}
+      </div>
 
-            {/* Travelling To */}
-            <div className="flex flex-col">
-              <label className="text-white mb-2">Travelling To</label>
-              <select
-                name="travellingTo"
-                value={formData.travellingTo}
-                onChange={handleChange}
-                className="bg-white/20 text-gray-800 border border-gray-300 rounded-lg p-3"
-              >
-                <option value="">Select Country</option>
-                <option value="Canada">Canada</option>
-                <option value="Australia">Australia</option>
-              </select>
-            </div>
+      {/* Travelling To */}
+      <div className="flex flex-col">
+        <label className="text-white mb-2">Travelling To</label>
+        <select
+          name="travellingTo"
+          value={formData.travellingTo}
+          onChange={handleChange}
+          className="bg-white/20 text-gray-800 border border-gray-300 rounded-lg p-3"
+        >
+          <option value="">Select Country</option>
+          <option value="USA">Australia</option>
+          <option value="New Zealand">New Zealand</option>
+          <option value="USA">USA</option>
+          <option value="Canada">Canada</option>
+          <option value="UK">UK</option>
+          <option value="Ireland">Ireland</option>
+          <option value="Austria">Austria</option>
+          <option value="Belgium">Belgium</option>
+          <option value="Croatia">Croatia</option>
+          <option value="Czech Republic">Czech Republic</option>
+          <option value="Denmark">Denmark</option>
+          <option value="Estonia">Estonia</option>
+          <option value="Finland">Finland</option>
+          <option value="France">France</option>
+          <option value="Georgia">Georgia</option>
+          <option value="Germany">Germany</option>
+          <option value="Greece">Greece</option>
+          <option value="India">India</option>
+          <option value="other">other</option>
+        </select>
+        {formData.travellingTo === 'other' && (
+          <input
+            type="text"
+            name="otherTravellingTo"
+            value={formData.otherTravellingTo}
+            onChange={handleChange}
+            placeholder="Please specify"
+            className="mt-3 bg-white/20 text-gray-800 border border-gray-300 rounded-lg p-3"
+          />
+        )}
+      </div>
+    </div>
 
             {/* Category */}
             <div className="flex flex-col">

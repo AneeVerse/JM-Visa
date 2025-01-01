@@ -163,7 +163,7 @@ const ContactUsPage = () => {
                 <FiMapPin className="text-blue-500 min-w-fit text-3xl" />
                 <div>
                   <p className="text-gray-800 font-medium">Address</p>
-                  <p className="text-gray-600">Shop No 11, CBSE School, City Light CHS, Plot No.25, near Terna Orchids The International School, Sector 1, Kopar Khairane, Navi Mumbai, Maharashtra 400709</p>
+                  <p className="text-gray-600">Shop No 11, City Light CHS, CBSE School, Plot No.25, near Terna Orchids The International School, Sector 1, Kopar Khairane, Navi Mumbai, Maharashtra 400709</p>
                 </div>
               </div>
             </div>

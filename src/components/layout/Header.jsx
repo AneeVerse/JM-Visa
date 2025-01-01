@@ -16,7 +16,7 @@ const Header = () => {
     // { name: "About", href: "/about" },npm
     { name: "Visa", href: "/services" },
     { name: "Study Abroad", href: "/services/study-abroad" },
-    {name: "Dummy Tickets", href: "/services/dummy-ticket-booking"},
+    {name: "Dummy Bookings", href: "/services/dummy-ticket-booking"},
     { name: "Country", href: "/country" },
     { name: "Blog", href: "/blog" },
   ];

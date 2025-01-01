@@ -104,6 +104,34 @@ const VisaServicesAboutPage = () => {
   return (
     <section className=" py-12 relative">
       <div className="container mx-auto">
+
+
+
+        {/* College Logos Section */}
+        <div className="mb-8">
+          <h2 className="text-3xl font-bold text-gray-800 leading-tight mb-4">
+            Explore academic institutes across the world.
+          </h2>
+          <div className="grid grid-cols-3 md:grid-cols-5 gap-4">
+            
+            <img src="/images/clg/RMIT.jpg" alt="RMIT University" />
+            <img src="/images/clg/University-of-Western-Australia.jpg" alt="University-of-Western-Australia" />
+            <img src="/images/clg/San-Jose-State-University.jpg" alt="San-Jose-State-University" />
+            <img src="/images/clg/California-State-University-East-Bay.png" alt="California-State-University-East-Bay" />
+            <img src="/images/clg/University-of-Manchester.jpg" alt="University-of-Manchester" />
+            <img src="/images/clg/King's-College-London.jpg" alt="King's College London" />
+            <img src="/images/clg/Westminster-University.jpg" alt="Westminster University" />
+            <img src="/images/clg/University-of-Auckland.jpg" alt="University of Auckland" />
+            <img src="/images/clg/University-of-Canterbury.jpg" alt="University of Canterbury" />
+            <img src="/images/clg/PSB-Academy.png" alt="PSB Academy" />
+            <img src="/images/clg/LSBF-Singapore-Campus.jpg" alt="LSBF Singapore Campus" />
+          </div>
+        </div>
+
+
+
+
+
         {/* Heading Section */}
         <div className="mb-8">
           <div className="flex justify-between gap-2 items-center">

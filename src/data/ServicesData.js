@@ -156,7 +156,7 @@ const services = [
     },
   },
   {
-    title: "Dummy Ticket Booking",
+    title: "Dummy Booking",
     description: "Book dummy tickets for visa processing.",
     image: "/images/dummy-ticket-booking.png",
     url: "/dummy-ticket-booking",

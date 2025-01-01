@@ -28,12 +28,19 @@ const HorizontalScrollSection = () => {
   };
 
   const countries = [
-    { name: "Germany", image: "/images/landmarks/Brandenburg Gate in Germany Visa.webp", flag: "/images/flags/de.webp", altName: "Brandenburg Gate in Germany Visa", continent: "Europe" },
-    { name: "United States", image: "/images/landmarks/Tourist Places in United States Visa.webp", flag: "/images/flags/us.webp", altName: "Statue of Liberty in United States Visa", continent: "NorthAmerica" },
-    { name: "France", image: "/images/landmarks/Eiffel Tower in France Visa.webp", flag: "/images/flags/fr.webp", altName: "Eiffel Tower in France Visa", continent: "Europe" },
-    { name: "Canada", image: "/images/landmarks/Tourist Places in Canada Visa.webp", flag: "/images/flags/ca.webp", altName: "Tourist Places in Canada Visa", continent: "NorthAmerica" },
-    { name: "India", image: "/images/landmarks/gateway-of-india.jpeg", flag: "/images/flags/in.webp", altName: "Gateway of india in India Visa", continent: "Asia" },
-    { name: "Mexico", image: "/images/landmarks/Tourist Places in Mexico Visa.webp", flag: "/images/flags/mx.webp", altName: "Tourist Places in Mexico Visa", continent: "NorthAmerica" },
+    { name: "Australia", image: "/images/landmarks/Sydney Opera House in Australia Visa.webp", flag: "/images/flags/au.webp", altName: "Sydney Opera House in Australia Visa", continent: "Europe" },
+    { name: "New Zealand", image: "/images/landmarks/Milford Sound in New Zealand Visa.webp", flag: "/images/flags/nz.webp", altName: "Milford Sound in New Zealand Visa", continent: "Europe" },
+    { name: "USA", image: "/images/landmarks/Tourist Places in United States Visa.webp", flag: "/images/flags/us.webp", altName: "Tourist Places in United States Visa", continent: "Europe" },
+    { name: "Canada", image: "/images/landmarks/Tourist Places in Canada Visa.webp", flag: "/images/flags/ca.webp", altName: "Tourist Places in Canada Visa", continent: "Europe" },
+    { name: "UK", image: "/images/landmarks/Big Ben tourist places in United Kingdom UK Visa.webp", flag: "/images/flags/uk.webp", altName: "Big Ben tourist places in United Kingdom UK Visa", continent: "NorthAmerica" },
+    { name: "Ireland", image: "/images/landmarks/Cliffs of Moher in Ireland Visa.webp", flag: "/images/flags/ie.webp", altName: "Cliffs of Moher in Ireland Visa", continent: "Europe" },
+    { name: "Austria", image: "/images/landmarks/Schonbrunn Palace tourist places in Austria Visa.webp", flag: "/images/flags/at.webp", altName: "Schonbrunn Palace tourist places in Austria Visa", continent: "NorthAmerica" },
+    { name: "Belgium", image: "/images/landmarks/Atomium in Belgium Visa.webp", flag: "/images/flags/be.webp", altName: "Atomium in Belgium Visa", continent: "Asia" },
+    { name: "Denmark", image: "/images/landmarks/Little Mermaid Statue tourist places in Denmark visa.webp", flag: "/images/flags/dk.webp", altName: "Little Mermaid Statue tourist places in Denmark visa", continent: "NorthAmerica" },
+    { name: "Finland", image: "/images/landmarks/Helsinki Cathedral tourist places in Finland Visa.webp", flag: "/images/flags/fi.webp", altName: "Helsinki Cathedral tourist places in Finland Visa", continent: "NorthAmerica" },
+    { name: "France", image: "/images/landmarks/Eiffel Tower in France Visa.webp", flag: "/images/flags/fr.webp", altName: "Eiffel Tower in France Visa", continent: "NorthAmerica" },
+    { name: "Germany", image: "/images/landmarks/Brandenburg Gate in Germany Visa.webp", flag: "/images/flags/de.webp", altName: "Brandenburg Gate in Germany Visa", continent: "NorthAmerica" },
+    { name: "Greece", image: "/images/landmarks/Parthenon in Greece Visa.webp", flag: "/images/flags/gr.webp", altName: "Parthenon in Greece Visa", continent: "NorthAmerica" },
   ];
 
   return (
