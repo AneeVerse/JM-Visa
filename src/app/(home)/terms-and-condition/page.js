@@ -1,5 +1,6 @@
 "use client";
 
+import TermsAndConditionsPopup from "@/components/TandC/TermsAndConditionsPopup";
 import React from "react";
 
 const TermsAndConditions = () => {
@@ -198,6 +199,7 @@ const TermsAndConditions = () => {
           </section>
         </div>
       </div>
+      <TermsAndConditionsPopup/>
     </section>
   );
 };

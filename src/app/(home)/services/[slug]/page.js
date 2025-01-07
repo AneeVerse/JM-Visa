@@ -16,6 +16,7 @@ const ServiceDetails = () => {
   const [formData, setFormData] = useState({ name: "", email: "", phone: "" });
   const [isLoading, setIsLoading] = useState(false);
   const [popup, setPopup] = useState({ show: false, message: "", success: false });
+ const [isAccepted, setIsAccepted] = useState(false); // State to track checkbox
 
   useEffect(() => {
     if (!params?.slug) return;
@@ -30,6 +31,10 @@ const ServiceDetails = () => {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+  const handleCheckboxChange = () => {
+    setIsAccepted(!isAccepted); // Toggle checkbox state
+  };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -217,12 +222,27 @@ const ServiceDetails = () => {
                     required
                   />
                 </div>
+
+                 {/* Terms and Conditions Checkbox */}
+                 <div className="mb-4 flex items-center">
+                  <input
+                    type="checkbox"
+                    checked={isAccepted}
+                    onChange={handleCheckboxChange}
+                    className="mr-2"
+                  />
+                  <label className="text-sm text-gray-700">
+                    I accept the <a href="/terms-and-condition" className="text-blue-500">terms and conditions</a>.
+                  </label>
+                </div>
+
+
                 <button
                   type="submit"
                   className={`w-full px-6 py-3 text-white font-semibold rounded-lg shadow-md ${
-                    isLoading ? "bg-gray-400 cursor-not-allowed" : "bg-blue-500 hover:bg-blue-600"
+                    isLoading || !isAccepted ? "bg-gray-400 cursor-not-allowed" : "bg-blue-500 hover:bg-blue-600"
                   }`}
-                  disabled={isLoading}
+                  disabled={isLoading || !isAccepted}
                 >
                   {isLoading ? "Sending..." : "Submit"}
                 </button>

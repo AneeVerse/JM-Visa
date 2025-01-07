@@ -80,8 +80,8 @@ const HeroSection = () => {
             <button className="px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-2xl shadow-blue-500 hover:bg-blue-600 transition-transform">
               Enquire Now ➔
             </button>
-            <Link href={"/blog"} className="flex items-center gap-2 px-6 py-3 bg-white bg-opacity-10 border border-blue-500 text-blue-100 font-semibold rounded-lg shadow-lg hover:bg-blue-500 hover:text-white  transition-transform backdrop-blur-lg">
-              <span>➔</span> Learn More
+            <Link href={"/services"} className="flex items-center gap-2 px-6 py-3 bg-white bg-opacity-10 border border-blue-500 text-blue-100 font-semibold rounded-lg shadow-lg hover:bg-blue-500 hover:text-white  transition-transform backdrop-blur-lg">
+              <span>➔</span> Services
             </Link>
           </Link>
         </motion.div>

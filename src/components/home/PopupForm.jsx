@@ -10,6 +10,7 @@ const PopupForm = () => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [responsePopup, setResponsePopup] = useState({ show: false, success: false, message: "" });
+  const [isAccepted, setIsAccepted] = useState(false); // State to track checkbox
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -43,10 +44,14 @@ const PopupForm = () => {
     setErrors({ ...errors, [e.target.name]: "" });
   };
 
+  const handleCheckboxChange = () => {
+    setIsAccepted(!isAccepted); // Toggle checkbox state
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!validate()) return;
+    if (!validate() || !isAccepted) return; // Check if checkbox is accepted
 
     setIsSubmitting(true);
     try {
@@ -137,11 +142,26 @@ const PopupForm = () => {
                   {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
                 </div>
 
+                {/* Terms and Conditions Checkbox */}
+                <div className="mb-4 flex items-center">
+                  <input
+                    type="checkbox"
+                    checked={isAccepted}
+                    onChange={handleCheckboxChange}
+                    className="mr-2"
+                  />
+                  <label className="text-sm text-gray-700">
+                    I accept the <a href="/terms-and-condition" className="text-blue-500">terms and conditions</a>.
+                  </label>
+                </div>
+
                 <button
                   type="submit"
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || !isAccepted}
                   className={`w-full py-2 px-4 rounded-md text-white font-semibold shadow-md transition ${
-                    isSubmitting ? "bg-gray-400 cursor-not-allowed" : "bg-blue-500 hover:bg-blue-600"
+                    isSubmitting || !isAccepted
+                      ? "bg-gray-400 cursor-not-allowed"
+                      : "bg-blue-500 hover:bg-blue-600"
                   }`}
                 >
                   {isSubmitting ? "Submitting..." : "Submit"}
