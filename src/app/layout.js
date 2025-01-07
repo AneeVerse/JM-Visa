@@ -15,11 +15,21 @@ const geistMono = localFont({
   variable: "--font-geist-mono",
   weight: "100 900",
 });
-
 export const metadata = {
-  title: "JM visa",
-  description: "JM visa",
+  title: "JM Visa",
+  description: "JM Visa",
+  // Add favicon icon and device-specific icons
+  icons: {
+    icon: "/favicon.ico", // Default favicon
+    apple: "/apple-touch-icon.png", // Apple touch icon
+    other: [
+      { rel: "icon", type: "image/png", sizes: "192x192", url: "/android-chrome-192x192.png" },
+      { rel: "icon", type: "image/png", sizes: "512x512", url: "/android-chrome-512x512.png" },
+    ],
+  },
+  manifest: "/site.webmanifest", // Optional: Link to your manifest.json file
 };
+
 
 export default function RootLayout({ children }) {
   return (
