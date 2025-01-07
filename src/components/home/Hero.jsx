@@ -81,7 +81,7 @@ const HeroSection = () => {
               Enquire Now ➔
             </button>
             <Link href={"/services"} className="flex items-center gap-2 px-6 py-3 bg-white bg-opacity-10 border border-blue-500 text-blue-100 font-semibold rounded-lg shadow-lg hover:bg-blue-500 hover:text-white  transition-transform backdrop-blur-lg">
-              <span>➔</span> Services
+              <span>➔</span> Our Services
             </Link>
           </Link>
         </motion.div>

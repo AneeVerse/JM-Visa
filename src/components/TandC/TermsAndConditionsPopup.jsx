@@ -3,19 +3,12 @@ import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const TermsAndConditionsPopup = () => {
-  const [showPopup, setShowPopup] = useState(false);
+  const [showPopup, setShowPopup] = useState(true);
   const [formData, setFormData] = useState({ name: "", email: "" });
   const [isLoading, setIsLoading] = useState(false);
   const [popupMessage, setPopupMessage] = useState("");
   const [hideButton, setHideButton] = useState(false);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowPopup(true);
-    }, 3000); // Popup will appear after 3 seconds
-
-    return () => clearTimeout(timer); // Cleanup the timer
-  }, []);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -40,7 +33,7 @@ const TermsAndConditionsPopup = () => {
         // Close the popup after 2 seconds
         setTimeout(() => {
           setShowPopup(false);
-        }, 2000);
+        }, 600);
       } else {
         setPopupMessage("Failed to submit. Please try again.");
         setHideButton(false);
