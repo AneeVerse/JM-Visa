@@ -11,7 +11,7 @@ const BlogPage = () => {
     const fetchBlogs = async () => {
       try {
         const response = await fetch(
-          "https://strapi-jmvisa-blog.onrender.com/api/blogs?populate=*&sort[0]=createdAt:desc"
+          "https://app.jmvisaservices.com/api/blogs?populate=*&sort[0]=createdAt:desc"
         );
         const data = await response.json();
         console.log("Fetched blogs:", data);
@@ -72,7 +72,7 @@ const BlogPage = () => {
                 >
                   {/* Blog Image */}
                   <img
-                    src={`https://strapi-jmvisa-blog.onrender.com${blog.thumbnail.url}` || "/images/default-thumbnail.jpg"}
+                    src={`https://app.jmvisaservices.com${blog.thumbnail.url}` || "/images/default-thumbnail.jpg"}
                     alt={blog.title || "Blog"}
                     className="w-full h-48 object-cover group-hover:scale-105 transition-transform"
                   />

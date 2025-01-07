@@ -63,7 +63,7 @@ const BlogDetails = () => {
     const fetchBlogDetails = async () => {
       try {
         const response = await fetch(
-          `https://strapi-jmvisa-blog.onrender.com/api/blogs?filters[slug][$eq]=${slug}&populate=*`
+          `https://app.jmvisaservices.com/api/blogs?filters[slug][$eq]=${slug}&populate=*`
         );
         const data = await response.json();
         if (data?.data?.length) setBlog(data.data[0]);
@@ -77,7 +77,7 @@ const BlogDetails = () => {
     const fetchRelatedBlogs = async () => {
       try {
         const response = await fetch(
-          `https://strapi-jmvisa-blog.onrender.com/api/blogs?filters[slug][$ne]=${slug}&populate=*`
+          `https://app.jmvisaservices.com/api/blogs?filters[slug][$ne]=${slug}&populate=*`
         );
         const data = await response.json();
         setRelatedBlogs(data?.data || []);
@@ -164,7 +164,7 @@ const BlogDetails = () => {
           <div className="lg:w-1/2 w-full">
             <div className="aspect-w-16 max-w-[500px] aspect-h-9 rounded-lg h-[300px] mr-auto ml-auto lg:mr-0 lg:ml-auto  overflow-hidden shadow-md">
               <img
-                src={`https://strapi-jmvisa-blog.onrender.com${blog?.thumbnail?.url}` || "/images/default-thumbnail.jpg"}
+                src={`https://app.jmvisaservices.com${blog?.thumbnail?.url}` || "/images/default-thumbnail.jpg"}
                 alt={blog?.title || "Blog Thumbnail"}
                 className="w-full h-full object-cover"
               />
@@ -249,7 +249,7 @@ const BlogDetails = () => {
                   >
                     <img
                       src={
-                        `https://strapi-jmvisa-blog.onrender.com${relatedBlog.thumbnail?.url}` || "/images/default-thumbnail.jpg"
+                        `https://app.jmvisaservices.com${relatedBlog.thumbnail?.url}` || "/images/default-thumbnail.jpg"
                       }
                       alt={relatedBlog.title || "Related Blog"}
                       className="w-16 h-16 rounded-lg object-cover"
