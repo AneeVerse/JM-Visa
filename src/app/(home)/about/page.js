@@ -138,7 +138,7 @@ const AboutUsPage = () => {
       </div>
       <OurTeam/>
       <FeedbackReviewComponent/>
-      <VideoTestimonials/>
+      {/* <VideoTestimonials/> */}
 
       {/* Contact Section */}
       <div className="mt-20 p-10 bg-gradient-to-r from-blue-800 to-blue-700 text-white rounded-3xl shadow-lg">
