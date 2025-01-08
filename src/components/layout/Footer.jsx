@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { FaInstagram } from "react-icons/fa6";
 
 const Footer = () => {
   const [isQuickLinksOpen, setQuickLinksOpen] = useState(false);
@@ -78,6 +79,12 @@ const Footer = () => {
                 info@jmvisaservices.com
               </Link>
             </div>
+            {/* follow social link */}
+            <div className="mt-4 flex gap-4">
+              <Link href={"https://www.instagram.com/jmvisaservices"} target="_blank">
+              <FaInstagram className="text-blue-50 hover:text-blue-100" />
+              </Link>
+              </div>
           </div>
 
           {/* Quick Links */}

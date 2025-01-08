@@ -13,23 +13,47 @@ const ContactUsPage = () => {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [popup, setPopup] = useState({ show: false, message: "", success: false });
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const validateForm = () => {
+    let validationErrors = {};
+    if (!formData.name) validationErrors.name = "Name is required";
+    if (!formData.email) {
+      validationErrors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      validationErrors.email = "Please enter a valid email address";
+    }
+    if (formData.phone && !/^\d{10}$/.test(formData.phone)) {
+      validationErrors.phone = "Please enter a valid 10-digit phone number";
+    }
+    if (!formData.message) validationErrors.message = "Message is required";
+    return validationErrors;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     setPopup({ show: false });
-  
+    setErrors({});
+
+    const validationErrors = validateForm();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      setIsLoading(false);
+      return;
+    }
+
     try {
       const response = await fetch("/api/contact-us", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-  
+
       const result = await response.json();
       if (result.success) {
         setPopup({ show: true, message: "Form submitted successfully!", success: true });
@@ -37,14 +61,14 @@ const ContactUsPage = () => {
       } else {
         setPopup({ show: true, message: "Failed to send the message. Try again.", success: false });
       }
-  
+
       // Hide popup after 5 seconds
       setTimeout(() => {
         setPopup({ show: false });
       }, 5000);
     } catch (error) {
       setPopup({ show: true, message: "Server error! Please try later.", success: false });
-  
+
       // Hide popup after 5 seconds
       setTimeout(() => {
         setPopup({ show: false });
@@ -53,7 +77,6 @@ const ContactUsPage = () => {
       setIsLoading(false);
     }
   };
-  
 
   return (
     <section className="relative mt-[80px] bg-gradient-to-br from-blue-50 via-white to-blue-100 pt-4 pb-16 px-3 sm:px-12">
@@ -88,9 +111,9 @@ const ContactUsPage = () => {
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="Your name"
-                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-blue-500"
-                required
+                className={`w-full p-3 border ${errors.name ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:outline-blue-500`}
               />
+              {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
             </div>
             <div>
               <label className="block mb-1 text-gray-600">Email</label>
@@ -100,9 +123,9 @@ const ContactUsPage = () => {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="Your email"
-                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-blue-500"
-                required
+                className={`w-full p-3 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:outline-blue-500`}
               />
+              {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
             </div>
             <div>
               <label className="block mb-1 text-gray-600">Phone</label>
@@ -112,8 +135,9 @@ const ContactUsPage = () => {
                 value={formData.phone}
                 onChange={handleChange}
                 placeholder="Your phone number"
-                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-blue-500"
+                className={`w-full p-3 border ${errors.phone ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:outline-blue-500`}
               />
+              {errors.phone && <p className="text-red-500 text-sm">{errors.phone}</p>}
             </div>
             <div>
               <label className="block mb-1 text-gray-600">Message</label>
@@ -123,16 +147,14 @@ const ContactUsPage = () => {
                 onChange={handleChange}
                 placeholder="Write your message here"
                 rows="4"
-                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-blue-500"
-                required
+                className={`w-full p-3 border ${errors.message ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:outline-blue-500`}
               ></textarea>
+              {errors.message && <p className="text-red-500 text-sm">{errors.message}</p>}
             </div>
             <button
               type="submit"
               disabled={isLoading}
-              className={`w-full p-3 rounded-lg text-white font-bold ${
-                isLoading ? "bg-gray-400" : "bg-blue-500 hover:bg-blue-600"
-              }`}
+              className={`w-full p-3 rounded-lg text-white font-bold ${isLoading ? "bg-gray-400" : "bg-blue-500 hover:bg-blue-600"}`}
             >
               {isLoading ? "Sending..." : "Send Message"}
             </button>

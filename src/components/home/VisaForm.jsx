@@ -11,9 +11,12 @@ const VisaForm = () => {
     firstName: "",
     email: "",
     phoneNumber: "",
+    otherCitizen: "",
+    otherTravellingTo: "",
   });
   const [isLoading, setIsLoading] = useState(false);
   const [popup, setPopup] = useState({ show: false, message: "", success: false });
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     setFormData({
@@ -22,10 +25,26 @@ const VisaForm = () => {
     });
   };
 
+  const validateForm = () => {
+    const newErrors = {};
+    if (!formData.firstName) newErrors.firstName = "First Name is required.";
+    if (!formData.email || !/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = "Valid email is required.";
+    if (formData.phoneNumber && !/^\d{10}$/.test(formData.phoneNumber)) newErrors.phoneNumber = "Phone number must be 10 digits.";
+    if (!formData.travellingTo) newErrors.travellingTo = "Please select a destination country.";
+    return newErrors;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     setPopup({ show: false });
+    const formErrors = validateForm();
+
+    if (Object.keys(formErrors).length > 0) {
+      setErrors(formErrors);
+      setIsLoading(false);
+      return;
+    }
 
     try {
       const response = await axios.post("/api/visa-form", formData);
@@ -39,6 +58,8 @@ const VisaForm = () => {
           firstName: "",
           email: "",
           phoneNumber: "",
+          otherCitizen: "",
+          otherTravellingTo: "",
         });
       } else {
         setPopup({ show: true, message: "Submission failed. Try again!", success: false });
@@ -53,9 +74,9 @@ const VisaForm = () => {
   };
 
   return (
-    <div className="relative  py-16 px-3 sm:px-6">
-         {/* Success/Error Popup */}
-         <AnimatePresence>
+    <div className="relative py-16 px-3 sm:px-6">
+      {/* Success/Error Popup */}
+      <AnimatePresence>
         {popup.show && (
           <motion.div
             initial={{ x: "100%", opacity: 0 }}
@@ -85,90 +106,89 @@ const VisaForm = () => {
           {/* Form */}
           <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Citizen */}
-            <div>
-     
-      <div className="flex flex-col">
-        <label className="text-white mb-2">I&apos;m a Citizen Of</label>
-        <select
-          name="citizen"
-          value={formData.citizen}
-          onChange={handleChange}
-          className="bg-white/20 text-gray-800 border border-gray-300 rounded-lg p-3"
-        >
-          <option value="India">India</option>
-          <option value="USA">Australia</option>
-          <option value="New Zealand">New Zealand</option>
-          <option value="USA">USA</option>
-          <option value="Canada">Canada</option>
-          <option value="UK">UK</option>
-          <option value="Ireland">Ireland</option>
-          <option value="Austria">Austria</option>
-          <option value="Belgium">Belgium</option>
-          <option value="Croatia">Croatia</option>
-          <option value="Czech Republic">Czech Republic</option>
-          <option value="Denmark">Denmark</option>
-          <option value="Estonia">Estonia</option>
-          <option value="Finland">Finland</option>
-          <option value="France">France</option>
-          <option value="Georgia">Georgia</option>
-          <option value="Germany">Germany</option>
-          <option value="Greece">Greece</option>
-          <option value="other">other</option>
-        </select>
-        {formData.citizen === 'other' && (
-          <input
-            type="text"
-            name="otherCitizen"
-            value={formData.otherCitizen}
-            onChange={handleChange}
-            placeholder="Please specify"
-            className="mt-3 bg-white/20 text-gray-800 border border-gray-300 rounded-lg p-3"
-          />
-        )}
-      </div>
+            <div className="flex flex-col">
+              <label className="text-white mb-2">I'm a Citizen Of</label>
+              <select
+                name="citizen"
+                value={formData.citizen}
+                onChange={handleChange}
+                className="bg-white/20 text-gray-800 border border-gray-300 rounded-lg p-3"
+              >
+                <option value="India">India</option>
+                <option value="USA">Australia</option>
+                <option value="New Zealand">New Zealand</option>
+                <option value="USA">USA</option>
+                <option value="Canada">Canada</option>
+                <option value="UK">UK</option>
+                <option value="Ireland">Ireland</option>
+                <option value="Austria">Austria</option>
+                <option value="Belgium">Belgium</option>
+                <option value="Croatia">Croatia</option>
+                <option value="Czech Republic">Czech Republic</option>
+                <option value="Denmark">Denmark</option>
+                <option value="Estonia">Estonia</option>
+                <option value="Finland">Finland</option>
+                <option value="France">France</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Germany">Germany</option>
+                <option value="Greece">Greece</option>
+                <option value="other">other</option>
+              </select>
+              {formData.citizen === "other" && (
+                <input
+                  type="text"
+                  name="otherCitizen"
+                  value={formData.otherCitizen}
+                  onChange={handleChange}
+                  placeholder="Please specify"
+                  className="mt-3 bg-white/20 text-gray-800 border border-gray-300 rounded-lg p-3"
+                />
+              )}
+              {errors.citizen && <p className="text-red-500 text-sm">{errors.citizen}</p>}
+            </div>
 
-      {/* Travelling To */}
-      <div className="flex flex-col">
-        <label className="text-white mb-2">Travelling To</label>
-        <select
-          name="travellingTo"
-          value={formData.travellingTo}
-          onChange={handleChange}
-          className="bg-white/20 text-gray-800 border border-gray-300 rounded-lg p-3"
-        >
-          <option value="">Select Country</option>
-          <option value="USA">Australia</option>
-          <option value="New Zealand">New Zealand</option>
-          <option value="USA">USA</option>
-          <option value="Canada">Canada</option>
-          <option value="UK">UK</option>
-          <option value="Ireland">Ireland</option>
-          <option value="Austria">Austria</option>
-          <option value="Belgium">Belgium</option>
-          <option value="Croatia">Croatia</option>
-          <option value="Czech Republic">Czech Republic</option>
-          <option value="Denmark">Denmark</option>
-          <option value="Estonia">Estonia</option>
-          <option value="Finland">Finland</option>
-          <option value="France">France</option>
-          <option value="Georgia">Georgia</option>
-          <option value="Germany">Germany</option>
-          <option value="Greece">Greece</option>
-          <option value="India">India</option>
-          <option value="other">other</option>
-        </select>
-        {formData.travellingTo === 'other' && (
-          <input
-            type="text"
-            name="otherTravellingTo"
-            value={formData.otherTravellingTo}
-            onChange={handleChange}
-            placeholder="Please specify"
-            className="mt-3 bg-white/20 text-gray-800 border border-gray-300 rounded-lg p-3"
-          />
-        )}
-      </div>
-    </div>
+            {/* Travelling To */}
+            <div className="flex flex-col">
+              <label className="text-white mb-2">Travelling To</label>
+              <select
+                name="travellingTo"
+                value={formData.travellingTo}
+                onChange={handleChange}
+                className="bg-white/20 text-gray-800 border border-gray-300 rounded-lg p-3"
+              >
+                <option value="">Select Country</option>
+                <option value="USA">Australia</option>
+                <option value="New Zealand">New Zealand</option>
+                <option value="USA">USA</option>
+                <option value="Canada">Canada</option>
+                <option value="UK">UK</option>
+                <option value="Ireland">Ireland</option>
+                <option value="Austria">Austria</option>
+                <option value="Belgium">Belgium</option>
+                <option value="Croatia">Croatia</option>
+                <option value="Czech Republic">Czech Republic</option>
+                <option value="Denmark">Denmark</option>
+                <option value="Estonia">Estonia</option>
+                <option value="Finland">Finland</option>
+                <option value="France">France</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Germany">Germany</option>
+                <option value="Greece">Greece</option>
+                <option value="India">India</option>
+                <option value="other">other</option>
+              </select>
+              {formData.travellingTo === "other" && (
+                <input
+                  type="text"
+                  name="otherTravellingTo"
+                  value={formData.otherTravellingTo}
+                  onChange={handleChange}
+                  placeholder="Please specify"
+                  className="mt-3 bg-white/20 text-gray-800 border border-gray-300 rounded-lg p-3"
+                />
+              )}
+              {errors.travellingTo && <p className="text-red-500 text-sm">{errors.travellingTo}</p>}
+            </div>
 
             {/* Category */}
             <div className="flex flex-col">
@@ -196,6 +216,7 @@ const VisaForm = () => {
                 placeholder="Enter your name"
                 required
               />
+              {errors.firstName && <p className="text-red-500 text-sm">{errors.firstName}</p>}
             </div>
 
             {/* Email */}
@@ -210,6 +231,7 @@ const VisaForm = () => {
                 placeholder="Enter your email"
                 required
               />
+              {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
             </div>
 
             {/* Phone */}
@@ -220,9 +242,10 @@ const VisaForm = () => {
                 name="phoneNumber"
                 value={formData.phoneNumber}
                 onChange={handleChange}
-                className="bg-white/20 border border-gray-300  placeholder:text-gray-800 rounded-lg p-3 text-gray-800"
+                className="bg-white/20 border border-gray-300 placeholder:text-gray-800 rounded-lg p-3 text-gray-800"
                 placeholder="Enter phone number"
               />
+              {errors.phoneNumber && <p className="text-red-500 text-sm">{errors.phoneNumber}</p>}
             </div>
 
             {/* Submit */}

@@ -16,7 +16,8 @@ const ServiceDetails = () => {
   const [formData, setFormData] = useState({ name: "", email: "", phone: "" });
   const [isLoading, setIsLoading] = useState(false);
   const [popup, setPopup] = useState({ show: false, message: "", success: false });
- const [isAccepted, setIsAccepted] = useState(false); // State to track checkbox
+  const [isAccepted, setIsAccepted] = useState(false); // State to track checkbox
+  const [errors, setErrors] = useState({ name: "", email: "", phone: "" });
 
   useEffect(() => {
     if (!params?.slug) return;
@@ -31,13 +32,42 @@ const ServiceDetails = () => {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
   const handleCheckboxChange = () => {
     setIsAccepted(!isAccepted); // Toggle checkbox state
   };
 
+  const validateForm = () => {
+    const newErrors = { name: "", email: "", phone: "" };
+    let isValid = true;
+
+    if (!formData.name) {
+      newErrors.name = "Name is required.";
+      isValid = false;
+    }
+    if (!formData.email) {
+      newErrors.email = "Email is required.";
+      isValid = false;
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "Please enter a valid email address.";
+      isValid = false;
+    }
+    if (!formData.phone) {
+      newErrors.phone = "Phone number is required.";
+      isValid = false;
+    } else if (!/^\d{10}$/.test(formData.phone)) {
+      newErrors.phone = "Please enter a valid phone number.";
+      isValid = false;
+    }
+    
+    setErrors(newErrors);
+    return isValid;
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!validateForm() || !isAccepted) return; // Prevent submission if validation fails
+
     setIsLoading(true);
     setPopup({ show: false });
 
@@ -194,9 +224,10 @@ const ServiceDetails = () => {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="Your Name"
-                    className="mt-2 p-3 w-full border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                    className={`mt-2 p-3 w-full border ${errors.name ? 'border-red-500' : 'border-gray-300'} rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500`}
                     required
                   />
+                  {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
                 </div>
                 <div className="mb-6">
                   <label className="block text-sm font-medium text-gray-700">Email</label>
@@ -206,9 +237,10 @@ const ServiceDetails = () => {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="Your Email"
-                    className="mt-2 p-3 w-full border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                    className={`mt-2 p-3 w-full border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500`}
                     required
                   />
+                  {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
                 </div>
                 <div className="mb-6">
                   <label className="block text-sm font-medium text-gray-700">Phone</label>
@@ -218,13 +250,14 @@ const ServiceDetails = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="Your Phone Number"
-                    className="mt-2 p-3 w-full border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                    className={`mt-2 p-3 w-full border ${errors.phone ? 'border-red-500' : 'border-gray-300'} rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500`}
                     required
                   />
+                  {errors.phone && <p className="text-red-500 text-sm">{errors.phone}</p>}
                 </div>
 
-                 {/* Terms and Conditions Checkbox */}
-                 <div className="mb-4 flex items-center">
+                {/* Terms and Conditions Checkbox */}
+                <div className="mb-4 flex items-center">
                   <input
                     type="checkbox"
                     checked={isAccepted}
@@ -235,7 +268,6 @@ const ServiceDetails = () => {
                     I accept the <a href="/terms-and-condition" className="text-blue-500">terms and conditions</a>.
                   </label>
                 </div>
-
 
                 <button
                   type="submit"

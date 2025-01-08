@@ -1,11 +1,15 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 const FeedbackReviewComponent = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [showThankYouPopup, setShowThankYouPopup] = useState(false);
   const [selectedRating, setSelectedRating] = useState(0);
+  const [message, setMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false); // Track submission state
+  const [notification, setNotification] = useState(null); // New state for notifications
 
   // Load EmbedSocial script
   useEffect(() => {
@@ -28,16 +32,49 @@ const FeedbackReviewComponent = () => {
     setSelectedRating(rating);
     setShowPopup(false); // Hide star rating popup
 
-    setTimeout(() => {
-      if (rating >= 4) {
-        // Redirect to Google Review if rating is 4 or higher
-        const googleReviewUrl = `https://www.google.com/maps/place/JM+Visa+Services/@19.1107798,73.0050874,350m/data=!3m1!1e3!4m8!3m7!1s0x4f174af374b22233:0x39a66841cc7cfdd5!8m2!3d19.1107866!4d73.006725!9m1!1b1!16s%2Fg%2F11txqcs1k4?hl=en&entry=ttu&g_ep=EgoyMDI1MDEwMi4wIKXMDSoASAFQAw%3D%3D`;
-        window.open(googleReviewUrl, "_blank");
+    if (rating >= 4) {
+      // Redirect to Google Review if rating is 4 or higher
+      const googleReviewUrl = `https://g.page/r/CdX9fMxBaKY5EBE/review`;
+      window.open(googleReviewUrl, "_blank");
+    } else {
+      // Show Thank You popup and message input if rating is below 4
+      setShowThankYouPopup(true);
+    }
+  };
+
+  // Handle Message Submission through API
+  const handleSubmitMessage = async () => {
+    setIsSubmitting(true); // Disable button and show loading state
+
+    try {
+      // Replace with your API endpoint
+      const response = await fetch("/api/submitFeedback", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ message }),
+      });
+
+      if (response.ok) {
+        // Message submitted successfully
+        setNotification({ type: "success", message: "Your message has been submitted." });
       } else {
-        // Show Thank You popup if rating is 3 or below
-        setShowThankYouPopup(true);
+        setNotification({ type: "error", message: "There was an error submitting your message." });
       }
-    }, 500);
+    } catch (error) {
+      console.error("Error submitting message:", error);
+      setNotification({ type: "error", message: "There was an error submitting your message." });
+    } finally {
+      setIsSubmitting(false); // Re-enable the button
+      setShowThankYouPopup(false); // Close the Thank You popup
+      setMessage(""); // Clear the message field
+
+      // Auto-hide the notification after 4 seconds
+      setTimeout(() => {
+        setNotification(null);
+      }, 4000);
+    }
   };
 
   return (
@@ -57,7 +94,7 @@ const FeedbackReviewComponent = () => {
           {/* Leave Review Button */}
           <button
             onClick={() => setShowPopup(true)}
-            className="mt-6 px-6 text-sm py-[10px] bg-blue-700 text-white font-semibold rounded-md  hover:bg-blue-900"
+            className="mt-6 px-6 text-sm py-[10px] bg-blue-700 text-white font-semibold rounded-md hover:bg-blue-900"
           >
             Leave Review
           </button>
@@ -116,8 +153,43 @@ const FeedbackReviewComponent = () => {
             <h2 className="text-xl font-semibold my-4 text-green-500">
               Thank you for your feedback!
             </h2>
+
+            {/* Message Input for ratings below 4 */}
+            {selectedRating < 4 && (
+              <div>
+                <textarea
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  placeholder="Leave a message (optional)"
+                  className="w-full p-3 border rounded-md border-gray-300"
+                  rows={4}
+                ></textarea>
+                <button
+                  onClick={handleSubmitMessage}
+                  className="mt-4 px-6 py-3 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600"
+                  disabled={!message.trim() || isSubmitting} // Disable button if message is empty or submitting
+                >
+                  {isSubmitting ? "Submitting..." : "Submit Message"}
+                </button>
+              </div>
+            )}
           </div>
         </div>
+      )}
+
+      {/* Notification Popup */}
+      {notification && (
+        <motion.div
+        initial={{ opacity: 0, x: "100%" }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: "100%" }}
+          duration={0.5}
+          className={`fixed top-4 right-4 p-4 rounded-lg shadow-lg z-50 ${
+            notification.type === "success" ? "bg-green-500" : "bg-red-500"
+          }`}
+        >
+          <p className="text-white font-semibold">{notification.message}</p>
+        </motion.div>
       )}
     </section>
   );

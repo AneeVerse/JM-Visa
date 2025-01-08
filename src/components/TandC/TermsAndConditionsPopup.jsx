@@ -51,10 +51,6 @@ const TermsAndConditionsPopup = () => {
       <AnimatePresence>
         {showPopup && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
             className="fixed inset-0 bg-black/50 flex justify-center items-center z-50"
           >
             <div className="bg-white p-6 rounded-lg shadow-lg w-72 sm:w-80 lg:w-[400px] mx-4">

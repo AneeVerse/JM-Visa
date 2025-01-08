@@ -20,6 +20,7 @@ const BlogDetails = () => {
     const [popup, setPopup] = useState({ show: false, message: "", success: false });
     const [isAccepted, setIsAccepted] = useState(false); // State to track checkbox
 
+  const [errors, setErrors] = useState({ name: "", email: "", phone: "" });
 
     const handleChange = (e) => {
       setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -29,8 +30,38 @@ const BlogDetails = () => {
     setIsAccepted(!isAccepted); // Toggle checkbox state
   };
 
+
+  const validateForm = () => {
+    const newErrors = { name: "", email: "", phone: "" };
+    let isValid = true;
+
+    if (!formData.name) {
+      newErrors.name = "Name is required.";
+      isValid = false;
+    }
+    if (!formData.email) {
+      newErrors.email = "Email is required.";
+      isValid = false;
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "Please enter a valid email address.";
+      isValid = false;
+    }
+    if (!formData.phone) {
+      newErrors.phone = "Phone number is required.";
+      isValid = false;
+    } else if (!/^\d{10}$/.test(formData.phone)) {
+      newErrors.phone = "Please enter a valid phone number.";
+      isValid = false;
+    }
+    
+    setErrors(newErrors);
+    return isValid;
+  };
     const handleSubmit = async (e) => {
       e.preventDefault();
+
+    if (!validateForm() || !isAccepted) return; // Prevent submission if validation fails
+
       setIsLoading(true);
       setPopup({ show: false });
   
@@ -197,42 +228,45 @@ const BlogDetails = () => {
                               <BiMessageDetail className="text-blue-500" /> Get in Touch
                             </h3>
                             <form onSubmit={handleSubmit}>
-                              <div className="mb-6">
-                                <label className="block text-sm font-medium text-gray-700">Name</label>
-                                <input
-                                  type="text"
-                                  name="name"
-                                  value={formData.name}
-                                  onChange={handleChange}
-                                  placeholder="Your Name"
-                                  className="mt-2 p-3 w-full border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                                  required
-                                />
-                              </div>
-                              <div className="mb-6">
-                                <label className="block text-sm font-medium text-gray-700">Email</label>
-                                <input
-                                  type="email"
-                                  name="email"
-                                  value={formData.email}
-                                  onChange={handleChange}
-                                  placeholder="Your Email"
-                                  className="mt-2 p-3 w-full border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                                  required
-                                />
-                              </div>
-                              <div className="mb-6">
-                                <label className="block text-sm font-medium text-gray-700">Phone</label>
-                                <input
-                                  type="tel"
-                                  name="phone"
-                                  value={formData.phone}
-                                  onChange={handleChange}
-                                  placeholder="Your Phone Number"
-                                  className="mt-2 p-3 w-full border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                                  required
-                                />
-                              </div>
+                            <div className="mb-6">
+                  <label className="block text-sm font-medium text-gray-700">Name</label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Your Name"
+                    className={`mt-2 p-3 w-full border ${errors.name ? 'border-red-500' : 'border-gray-300'} rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500`}
+                    required
+                  />
+                  {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
+                </div>
+                <div className="mb-6">
+                  <label className="block text-sm font-medium text-gray-700">Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="Your Email"
+                    className={`mt-2 p-3 w-full border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500`}
+                    required
+                  />
+                  {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
+                </div>
+                <div className="mb-6">
+                  <label className="block text-sm font-medium text-gray-700">Phone</label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="Your Phone Number"
+                    className={`mt-2 p-3 w-full border ${errors.phone ? 'border-red-500' : 'border-gray-300'} rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500`}
+                    required
+                  />
+                  {errors.phone && <p className="text-red-500 text-sm">{errors.phone}</p>}
+                </div>
 
                  {/* Terms and Conditions Checkbox */}
                  <div className="mb-4 flex items-center">
