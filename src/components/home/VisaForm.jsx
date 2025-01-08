@@ -107,7 +107,7 @@ const VisaForm = () => {
           <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Citizen */}
             <div className="flex flex-col">
-              <label className="text-white mb-2">I'm a Citizen Of</label>
+              <label className="text-white mb-2">I&apos;m a Citizen Of</label>
               <select
                 name="citizen"
                 value={formData.citizen}
