@@ -8,10 +8,10 @@ const PromoSection = () => {
   const [counters, setCounters] = useState([0, 0, 0, 0]);
 
   const stats = [
-    { value: 50000, label: "Visas Approved" },
-    { value: 20, label: "Years of Experience" },
-    { value: 10000, label: "Happy Clients" },
-    { value: 100, label: "Awards Won" },
+    { value: 500, label: "+ Visas Approved" },
+    { value: 4, label: "Years of Experience" },
+    { value: 200, label: "+ Happy Clients" },
+    { value: 7, label: "Awards Won" },
   ];
 
   useEffect(() => {

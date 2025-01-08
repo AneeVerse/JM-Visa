@@ -17,7 +17,7 @@ const points = [
   },
   {
     icon: "📋",
-    title: "Submit Your Documents",
+    title: "Fast processing, 99% visa approval rate",
     description:
       "Provide accurate information and complete your visa application seamlessly.",
   },
