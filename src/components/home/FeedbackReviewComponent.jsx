@@ -92,12 +92,13 @@ const FeedbackReviewComponent = () => {
             </h1>
           </div>
           {/* Leave Review Button */}
-          <button
+          {/* <button
+          
             onClick={() => setShowPopup(true)}
-            className="mt-6 px-6 text-sm py-[10px] bg-blue-700 text-white font-semibold rounded-md hover:bg-blue-900"
+            className=" px-6 text-sm py-[10px] bg-blue-700 text-white font-semibold rounded-md hover:bg-blue-900"
           >
             Leave Review
-          </button>
+          </button> */}
         </div>
 
         {/* EmbedSocial Reviews */}
