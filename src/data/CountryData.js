@@ -1613,6 +1613,102 @@ const CountryData = {
       ],
     },
     {
+      name: "Turkey",
+      flag: "/images/flags/tr.webp",
+      landmark: "/images/landmarks/Hagia Sophia in Turkey.webp",
+      landmarkName: "Hagia Sophia",
+      altName: "Hagia Sophia in Turkey Visa",
+      visaTypes: [
+        {
+          type: "Turkey Tourist Visa",
+          processingTime: "3-5 days",
+          stayPeriod: "Up to 90 days",
+          validity: "6 months",
+          visaCategory: "Tourist",
+          entry: "Single / Multiple",
+          fees: "USD 40/- (Single Entry)",
+        },
+        {
+          type: "Turkey Business Visa",
+          processingTime: "5-7 days",
+          stayPeriod: "Up to 90 days",
+          validity: "1 year",
+          visaCategory: "Business",
+          entry: "Single / Multiple",
+          fees: "USD 80/-",
+        },
+      ],
+      documentsRequired: [
+        {
+          category: "Documents Required for Turkey Visa",
+          documents: [
+            "Valid passport with at least 6 months validity",
+            "Completed visa application form",
+            "Two recent passport-size photographs",
+            "Return flight tickets",
+            "Proof of accommodation (hotel reservation or invitation letter)",
+            "Proof of financial means (bank statements or salary slips)",
+          ],
+          note: "Ensure all documents are clear and legible.",
+        },
+        {
+          category: "Additional Documents for Business Visa",
+          documents: [
+            "Invitation letter from the Turkish company",
+            "Business registration documents",
+            "Proof of past business dealings (if applicable)",
+          ],
+        },
+      ],
+      applyProcess: [
+        {
+          step: 1,
+          title: "Submit Application",
+          description: "Fill and submit the visa application form.",
+          icon: "/icons/pay-online.svg",
+        },
+        {
+          step: 2,
+          title: "Upload Documents",
+          description: "Provide all required documents for the visa.",
+          icon: "/icons/upload-document.svg",
+        },
+        {
+          step: 3,
+          title: "Pay Visa Fee",
+          description: "Make the payment for the visa fee.",
+          icon: "/icons/pay-online.svg",
+        },
+        {
+          step: 4,
+          title: "Processing & Approval",
+          description: "Wait for 3-5 business days for visa processing.",
+          icon: "/icons/verifications.svg",
+        },
+        {
+          step: 5,
+          title: "Collect Your Visa",
+          description: "Download your e-visa or collect it from the embassy.",
+          icon: "/icons/approved.svg",
+        },
+      ],
+      sampleVisaCopy: "/pdf/visa-sample/turkey-visa-sample.pdf",
+      faqs: [
+        {
+          question: "How long is a Turkey tourist visa valid?",
+          answer: "It is valid for 6 months with a stay period of up to 90 days.",
+        },
+        {
+          question: "Is an e-visa available for Turkey?",
+          answer: "Yes, you can apply for a Turkey e-visa for certain nationalities.",
+        },
+        {
+          question: "How much does a Turkey tourist visa cost?",
+          answer: "The single-entry Turkey tourist visa fee is USD 40.",
+        },
+      ],
+    },    
+    {
       name: "Kuwait",
       flag: "/images/flags/kw.webp",
       landmark: "/images/landmarks/Kuwait Towers tourist places in Kuwait Visa.webp",
@@ -1797,6 +1893,102 @@ const CountryData = {
         },
       ],
     },
+    {
+      name: "Jordan",
+      flag: "/images/flags/jo.webp",
+      landmark: "/images/landmarks/Petra in Jordan Visa.jpg",
+      landmarkName: "Petra",
+      altName: "Petra in Jordan Visa",
+      visaTypes: [
+        {
+          type: "Jordan Tourist Visa",
+          processingTime: "2-4 days",
+          stayPeriod: "Up to 30 days",
+          validity: "3 months",
+          visaCategory: "Tourist",
+          entry: "Single / Multiple",
+          fees: "USD 50/- (Single Entry)",
+        },
+        {
+          type: "Jordan Business Visa",
+          processingTime: "5-7 days",
+          stayPeriod: "Up to 30 days",
+          validity: "1 year",
+          visaCategory: "Business",
+          entry: "Single / Multiple",
+          fees: "USD 75/-",
+        },
+      ],
+      documentsRequired: [
+        {
+          category: "Documents Required for Jordan Visa",
+          documents: [
+            "Valid passport with at least 6 months validity",
+            "Completed visa application form",
+            "Two recent passport-size photographs",
+            "Return flight tickets",
+            "Proof of accommodation (hotel reservation or invitation letter)",
+            "Proof of financial means (bank statements or salary slips)",
+          ],
+          note: "Ensure all documents are clear and legible.",
+        },
+        {
+          category: "Additional Documents for Business Visa",
+          documents: [
+            "Invitation letter from the Jordanian company",
+            "Business registration documents",
+            "Proof of past business dealings (if applicable)",
+          ],
+        },
+      ],
+      applyProcess: [
+        {
+          step: 1,
+          title: "Submit Application",
+          description: "Fill and submit the visa application form.",
+          icon: "/icons/pay-online.svg",
+        },
+        {
+          step: 2,
+          title: "Upload Documents",
+          description: "Provide all required documents for the visa.",
+          icon: "/icons/upload-document.svg",
+        },
+        {
+          step: 3,
+          title: "Pay Visa Fee",
+          description: "Make the payment for the visa fee.",
+          icon: "/icons/pay-online.svg",
+        },
+        {
+          step: 4,
+          title: "Processing & Approval",
+          description: "Wait for 2-4 business days for visa processing.",
+          icon: "/icons/verifications.svg",
+        },
+        {
+          step: 5,
+          title: "Collect Your Visa",
+          description: "Download your e-visa or collect it from the embassy.",
+          icon: "/icons/approved.svg",
+        },
+      ],
+      sampleVisaCopy: "/pdf/visa-sample/jordan-visa-sample.pdf",
+      faqs: [
+        {
+          question: "How long is a Jordan tourist visa valid?",
+          answer: "It is valid for 3 months with a stay period of up to 30 days.",
+        },
+        {
+          question: "Is an e-visa available for Jordan?",
+          answer: "Yes, you can apply for a Jordan e-visa for certain nationalities.",
+        },
+        {
+          question: "How much does a Jordan tourist visa cost?",
+          answer: "The single-entry Jordan tourist visa fee is USD 50.",
+        },
+      ],
+    },    
         
     {
       name: "Saudi Arabia",
