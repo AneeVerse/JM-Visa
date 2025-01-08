@@ -115,7 +115,7 @@ const VisaCategories = () => {
             </Link>
           </div>
           <h2 className="text-3xl font-bold text-gray-800 leading-tight mt-2">
-            We Provide All Visa
+            Visa Services
           </h2>
         </div>
 

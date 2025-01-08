@@ -59,7 +59,7 @@ const HorizontalScrollSection = () => {
             </Link>
           </div>
           <h2 className="text-3xl font-bold text-gray-800 leading-tight mt-2">
-            Explore Top Countries
+            Explore Countries
           </h2>
         </div>
 
