@@ -53,7 +53,7 @@ const BlogComponent = () => {
   };
 
   return (
-    <section className="bg-white py-16 relative">
+    <section className="bg-white py-16 relative z-10">
       <div className="container mx-auto px-6">
         {/* Heading */}
         <div className="flex items-center justify-between mb-6">

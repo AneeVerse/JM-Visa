@@ -123,7 +123,7 @@ const VisaServicesAboutPage = () => {
             <img src="/images/clg/Westminster-University.jpg" alt="Westminster University" />
             <img src="/images/clg/University-of-Auckland.jpg" alt="University of Auckland" />
             <img src="/images/clg/University-of-Canterbury.jpg" alt="University of Canterbury" />
-            <img src="/images/clg/PSB-Academy.png" alt="PSB Academy" />
+            <img src="/images/clg/PSB-Academy.PNG" alt="PSB Academy" />
             <img src="/images/clg/LSBF-Singapore-Campus.jpg" alt="LSBF Singapore Campus" />
           </div>
         </div>

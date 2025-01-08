@@ -364,540 +364,6 @@ const CountryData = {
         ],
       },
       {
-        name: "UAE",
-        flag: "/images/flags/ae.webp",
-        landmark: "/images/landmarks/Burj Khalifa tourist places in UAE Visa.webp",
-        landmarkName: "Burj Khalifa",
-        altName: "Burj Khalifa tourist places in UAE Visa",
-        visaTypes: [
-          {
-            type: "UAE Tourist Visa",
-            processingTime: "2-4 days",
-            stayPeriod: "Up to 30 days",
-            validity: "60 days",
-            visaCategory: "Tourist",
-            entry: "Single",
-            fees: "INR 5,000/-",
-          },
-          {
-            type: "UAE Business Visa",
-            processingTime: "3-5 days",
-            stayPeriod: "Up to 90 days",
-            validity: "6 months",
-            visaCategory: "Business",
-            entry: "Multiple",
-            fees: "INR 10,000/-",
-          },
-        ],
-        documentsRequired: [
-          {
-            category: "Must-have Documents for UAE Visa Online",
-            documents: [
-              "Scanned copy of the first and last page of your passport",
-              "Recent passport-size color photograph",
-              "Confirmed return flight ticket",
-              "Hotel booking confirmation or invitation letter",
-              "Filled and signed visa application form",
-            ],
-            note: "Ensure all documents are clear and meet the UAE visa specifications for approval.",
-          },
-          {
-            category: "Additional Documents for Business Visa",
-            documents: [
-              "Invitation letter from the UAE company",
-              "Company registration certificate of the Indian company",
-              "Bank statements for the last 6 months",
-            ],
-          },
-        ],
-        applyProcess: [
-          {
-            step: 1,
-            title: "Pay Online",
-            description: "Complete the online payment process securely.",
-            icon: "/icons/pay-online.svg",
-          },
-          {
-            step: 2,
-            title: "Upload Documents",
-            description: "Upload the required documents through our platform.",
-            icon: "/icons/upload-document.svg",
-          },
-          {
-            step: 3,
-            title: "Verification",
-            description: "Our team will verify your documents and process your application.",
-            icon: "/icons/verifications.svg",
-          },
-          {
-            step: 4,
-            title: "Receive Visa",
-            description: "Download your UAE Visa online once approved.",
-            icon: "/icons/approved.svg",
-          },
-        ],
-        sampleVisaCopy: "/pdf/visa-sample/uae-visa-sample.pdf",
-        faqs: [
-          {
-            question: "How long does it take to process a UAE visa?",
-            answer: "The processing time is typically 2-4 working days.",
-          },
-          {
-            question: "What is the validity of a UAE tourist visa?",
-            answer: "The validity of a UAE tourist visa is up to 60 days.",
-          },
-          {
-            question: "Can I apply for a UAE visa online?",
-            answer: "Yes, you can apply online by submitting the required documents.",
-          },
-        ],
-      },      
-      {
-        name: "Saudi Arabia",
-        flag: "/images/flags/sa.webp",
-        landmark: "/images/landmarks/Kaaba tourist places in Saudi Arabia Visa.webp",
-        landmarkName: "Kaaba",
-        altName: "Kaaba tourist places in Saudi Arabia Visa",
-        visaTypes: [
-          {
-            type: "Saudi Arabia Tourist Visa",
-            processingTime: "5-7 days",
-            stayPeriod: "Up to 90 days",
-            validity: "1 year",
-            visaCategory: "Tourist",
-            entry: "Multiple",
-            fees: "INR 7,000/-",
-          },
-          {
-            type: "Saudi Arabia Business Visa",
-            processingTime: "7-10 days",
-            stayPeriod: "Up to 90 days",
-            validity: "1 year",
-            visaCategory: "Business",
-            entry: "Multiple",
-            fees: "INR 12,000/-",
-          },
-        ],
-        documentsRequired: [
-          {
-            category: "Must-have Documents for Saudi Arabia Visa Online",
-            documents: [
-              "Scanned copy of the first and last page of your passport",
-              "Recent passport-size photograph",
-              "Confirmed return flight ticket",
-              "Accommodation proof or invitation letter",
-              "Visa application form",
-            ],
-            note: "Ensure all documents meet Saudi Arabia's visa specifications.",
-          },
-          {
-            category: "Additional Documents for Business Visa",
-            documents: [
-              "Invitation letter from the Saudi company",
-              "Company registration certificate of the Indian company",
-              "Latest bank statements (last 6 months)",
-            ],
-          },
-        ],
-        applyProcess: [
-          {
-            step: 1,
-            title: "Pay Online",
-            description: "Make the payment securely through our platform.",
-            icon: "/icons/pay-online.svg",
-          },
-          {
-            step: 2,
-            title: "Upload Documents",
-            description: "Submit the required documents on our portal.",
-            icon: "/icons/upload-document.svg",
-          },
-          {
-            step: 3,
-            title: "Verification",
-            description: "We verify your documents and process your application.",
-            icon: "/icons/verifications.svg",
-          },
-          {
-            step: 4,
-            title: "Receive Visa",
-            description: "Download your Saudi Arabia visa after approval.",
-            icon: "/icons/approved.svg",
-          },
-        ],
-        sampleVisaCopy: "/pdf/visa-sample/saudi-arabia-visa-sample.pdf",
-        faqs: [
-          {
-            question: "How long does it take to process a Saudi Arabia visa?",
-            answer: "The processing time is typically 5-7 working days.",
-          },
-          {
-            question: "Can I apply for a Saudi Arabia visa online?",
-            answer: "Yes, you can apply online by uploading the required documents.",
-          },
-          {
-            question: "What is the validity of a Saudi Arabia tourist visa?",
-            answer: "The validity of a Saudi Arabia tourist visa is up to 1 year.",
-          },
-        ],
-      },
-      {
-        name: "Qatar",
-        flag: "/images/flags/qa.webp",
-        landmark: "/images/landmarks/Museum of Islamic Art tourist places in Qatar Visa.webp",
-        landmarkName: "Museum of Islamic Art",
-        altName: "Museum of Islamic Art tourist places in Qatar Visa",
-        visaTypes: [
-          {
-            type: "Qatar Tourist Visa",
-            processingTime: "3-5 days",
-            stayPeriod: "Up to 30 days",
-            validity: "3 months",
-            visaCategory: "Tourist",
-            entry: "Single",
-            fees: "INR 4,000/-",
-          },
-          {
-            type: "Qatar Business Visa",
-            processingTime: "5-7 days",
-            stayPeriod: "Up to 90 days",
-            validity: "6 months",
-            visaCategory: "Business",
-            entry: "Multiple",
-            fees: "INR 8,000/-",
-          },
-        ],
-        documentsRequired: [
-          {
-            category: "Must-have Documents for Qatar Visa Online",
-            documents: [
-              "Scanned copy of the first and last page of your passport",
-              "Recent passport-size color photograph",
-              "Confirmed return flight ticket",
-              "Hotel reservation or invitation letter",
-              "Completed visa application form",
-            ],
-            note: "Ensure the documents are clear and meet Qatar's visa requirements.",
-          },
-          {
-            category: "Additional Documents for Business Visa",
-            documents: [
-              "Invitation letter from the Qatari company",
-              "Indian company registration certificate",
-              "Original bank statements for the last 6 months",
-            ],
-          },
-        ],
-        applyProcess: [
-          {
-            step: 1,
-            title: "Pay Online",
-            description: "Complete the payment process on our secure platform.",
-            icon: "/icons/pay-online.svg",
-          },
-          {
-            step: 2,
-            title: "Upload Documents",
-            description: "Upload the necessary documents through our portal.",
-            icon: "/icons/upload-document.svg",
-          },
-          {
-            step: 3,
-            title: "Verification",
-            description: "Our team will verify your documents and process your application.",
-            icon: "/icons/verifications.svg",
-          },
-          {
-            step: 4,
-            title: "Receive Visa",
-            description: "Get your Qatar visa online once it is approved.",
-            icon: "/icons/approved.svg",
-          },
-        ],
-        sampleVisaCopy: "/pdf/visa-sample/qatar-visa-sample.pdf",
-        faqs: [
-          {
-            question: "How long does it take to process a Qatar visa?",
-            answer: "The processing time is typically 3-5 working days.",
-          },
-          {
-            question: "What is the validity of a Qatar tourist visa?",
-            answer: "The validity of a Qatar tourist visa is up to 3 months.",
-          },
-          {
-            question: "Can I apply for a Qatar visa online?",
-            answer: "Yes, you can apply online through our portal by submitting the required documents.",
-          },
-        ],
-      },
-      {
-        name: "Oman",
-        flag: "/images/flags/om.webp",
-        landmark: "/images/landmarks/Sultan Qaboos Mosque tourist places in Oman Visa.webp",
-        landmarkName: "Sultan Qaboos Mosque",
-        altName: "Sultan Qaboos Mosque tourist places in Oman Visa",
-        visaTypes: [
-          {
-            type: "Oman Tourist Visa",
-            processingTime: "3-5 days",
-            stayPeriod: "Up to 30 days",
-            validity: "3 months",
-            visaCategory: "Tourist",
-            entry: "Single",
-            fees: "INR 4,500/-",
-          },
-          {
-            type: "Oman Business Visa",
-            processingTime: "5-7 days",
-            stayPeriod: "Up to 90 days",
-            validity: "6 months",
-            visaCategory: "Business",
-            entry: "Multiple",
-            fees: "INR 8,000/-",
-          },
-        ],
-        documentsRequired: [
-          {
-            category: "Must-have Documents for Oman Visa Online",
-            documents: [
-              "Scanned copy of the first and last page of your passport",
-              "Recent passport-size color photograph",
-              "Confirmed return flight ticket",
-              "Hotel reservation or invitation letter",
-              "Completed visa application form",
-            ],
-            note: "Ensure all documents meet Oman's visa requirements for smooth processing.",
-          },
-          {
-            category: "Additional Documents for Business Visa",
-            documents: [
-              "Invitation letter from the Omani company",
-              "Indian company registration certificate",
-              "Original bank statements for the last 6 months",
-            ],
-          },
-        ],
-        applyProcess: [
-          {
-            step: 1,
-            title: "Pay Online",
-            description: "Complete the payment securely on our platform.",
-            icon: "/icons/pay-online.svg",
-          },
-          {
-            step: 2,
-            title: "Upload Documents",
-            description: "Submit the required documents through our online portal.",
-            icon: "/icons/upload-document.svg",
-          },
-          {
-            step: 3,
-            title: "Verification",
-            description: "We will verify and process your application.",
-            icon: "/icons/verifications.svg",
-          },
-          {
-            step: 4,
-            title: "Receive Visa",
-            description: "Download your Oman visa once approved.",
-            icon: "/icons/approved.svg",
-          },
-        ],
-        sampleVisaCopy: "/pdf/visa-sample/oman-visa-sample.pdf",
-        faqs: [
-          {
-            question: "How long does it take to process an Oman visa?",
-            answer: "The processing time is typically 3-5 working days.",
-          },
-          {
-            question: "What is the validity of an Oman tourist visa?",
-            answer: "The validity of an Oman tourist visa is up to 3 months.",
-          },
-          {
-            question: "Can I apply for an Oman visa online?",
-            answer: "Yes, you can apply online by submitting the required documents.",
-          },
-        ],
-      },
-      {
-        name: "Bahrain",
-        flag: "/images/flags/bh.webp",
-        landmark: "/images/landmarks/World Trade Center tourist places in Bahrain Visa.webp",
-        landmarkName: "World Trade Center",
-        altName: "World Trade Center tourist places in Bahrain Visa",
-        visaTypes: [
-          {
-            type: "Bahrain Tourist Visa",
-            processingTime: "3-5 days",
-            stayPeriod: "Up to 14 days",
-            validity: "1 month",
-            visaCategory: "Tourist",
-            entry: "Single",
-            fees: "INR 3,500/-",
-          },
-          {
-            type: "Bahrain Business Visa",
-            processingTime: "5-7 days",
-            stayPeriod: "Up to 90 days",
-            validity: "1 year",
-            visaCategory: "Business",
-            entry: "Multiple",
-            fees: "INR 10,000/-",
-          },
-        ],
-        documentsRequired: [
-          {
-            category: "Must-have Documents for Bahrain Visa Online",
-            documents: [
-              "Scanned copy of the first and last page of your passport",
-              "Recent passport-size color photograph",
-              "Confirmed return flight ticket",
-              "Hotel booking or invitation letter",
-              "Completed visa application form",
-            ],
-            note: "Ensure your documents are complete and accurate for smooth visa approval.",
-          },
-          {
-            category: "Additional Documents for Business Visa",
-            documents: [
-              "Invitation letter from the Bahraini company",
-              "Indian company registration certificate",
-              "Original bank statements for the last 6 months",
-            ],
-          },
-        ],
-        applyProcess: [
-          {
-            step: 1,
-            title: "Pay Online",
-            description: "Securely complete the payment through our platform.",
-            icon: "/icons/pay-online.svg",
-          },
-          {
-            step: 2,
-            title: "Upload Documents",
-            description: "Upload the required documents via our portal.",
-            icon: "/icons/upload-document.svg",
-          },
-          {
-            step: 3,
-            title: "Verification",
-            description: "We verify your documents and process the application.",
-            icon: "/icons/verifications.svg",
-          },
-          {
-            step: 4,
-            title: "Receive Visa",
-            description: "Download your Bahrain visa after approval.",
-            icon: "/icons/approved.svg",
-          },
-        ],
-        sampleVisaCopy: "/pdf/visa-sample/bahrain-visa-sample.pdf",
-        faqs: [
-          {
-            question: "How long does it take to process a Bahrain visa?",
-            answer: "The processing time is typically 3-5 working days.",
-          },
-          {
-            question: "What is the validity of a Bahrain tourist visa?",
-            answer: "The validity of a Bahrain tourist visa is up to 1 month.",
-          },
-          {
-            question: "Can I apply for a Bahrain visa online?",
-            answer: "Yes, the Bahrain visa application process can be completed online.",
-          },
-        ],
-      },
-      {
-        name: "Kuwait",
-        flag: "/images/flags/kw.webp",
-        landmark: "/images/landmarks/Kuwait Towers tourist places in Kuwait Visa.webp",
-        landmarkName: "Kuwait Towers",
-        altName: "Kuwait Towers tourist places in Kuwait Visa",
-        visaTypes: [
-          {
-            type: "Kuwait Tourist Visa",
-            processingTime: "3-5 days",
-            stayPeriod: "Up to 90 days",
-            validity: "3 months",
-            visaCategory: "Tourist",
-            entry: "Single",
-            fees: "INR 5,000/-",
-          },
-          {
-            type: "Kuwait Business Visa",
-            processingTime: "5-7 days",
-            stayPeriod: "Up to 90 days",
-            validity: "6 months",
-            visaCategory: "Business",
-            entry: "Multiple",
-            fees: "INR 9,000/-",
-          },
-        ],
-        documentsRequired: [
-          {
-            category: "Must-have Documents for Kuwait Visa Online",
-            documents: [
-              "Scanned copy of the first and last page of your passport",
-              "Recent passport-size color photograph",
-              "Confirmed return flight ticket",
-              "Hotel reservation or invitation letter",
-              "Completed visa application form",
-            ],
-            note: "Ensure your documents meet the visa application standards for Kuwait.",
-          },
-          {
-            category: "Additional Documents for Business Visa",
-            documents: [
-              "Invitation letter from the Kuwaiti company",
-              "Company registration certificate of the Indian organization",
-              "Original bank statements for the last 6 months",
-            ],
-          },
-        ],
-        applyProcess: [
-          {
-            step: 1,
-            title: "Pay Online",
-            description: "Secure your application by making an online payment.",
-            icon: "/icons/pay-online.svg",
-          },
-          {
-            step: 2,
-            title: "Upload Documents",
-            description: "Submit all required documents via our portal.",
-            icon: "/icons/upload-document.svg",
-          },
-          {
-            step: 3,
-            title: "Verification",
-            description: "Our team will verify and process your application.",
-            icon: "/icons/verifications.svg",
-          },
-          {
-            step: 4,
-            title: "Receive Visa",
-            description: "Download your approved Kuwait visa online.",
-            icon: "/icons/approved.svg",
-          },
-        ],
-        sampleVisaCopy: "/pdf/visa-sample/kuwait-visa-sample.pdf",
-        faqs: [
-          {
-            question: "How long does it take to process a Kuwait visa?",
-            answer: "The processing time is typically 3-5 working days.",
-          },
-          {
-            question: "What is the validity of a Kuwait tourist visa?",
-            answer: "The validity of a Kuwait tourist visa is up to 3 months.",
-          },
-          {
-            question: "Can I apply for a Kuwait visa online?",
-            answer: "Yes, you can complete your application online by submitting required documents.",
-          },
-        ],
-      },
-      {
         name: "Singapore",
         flag: "/images/flags/sg.webp",
         landmark: "/images/landmarks/Marina Bay Sands tourist places in Singapore Visa.webp",
@@ -1786,6 +1252,642 @@ const CountryData = {
           },
         ],
       }      
+  ],
+
+  MiddleEast: [
+    
+    {
+      name: "UAE",
+      flag: "/images/flags/ae.webp",
+      landmark: "/images/landmarks/Burj Khalifa tourist places in UAE Visa.webp",
+      landmarkName: "Burj Khalifa",
+      altName: "Burj Khalifa tourist places in UAE Visa",
+      visaTypes: [
+        {
+          type: "UAE Tourist Visa",
+          processingTime: "2-4 days",
+          stayPeriod: "Up to 30 days",
+          validity: "60 days",
+          visaCategory: "Tourist",
+          entry: "Single",
+          fees: "INR 5,000/-",
+        },
+        {
+          type: "UAE Business Visa",
+          processingTime: "3-5 days",
+          stayPeriod: "Up to 90 days",
+          validity: "6 months",
+          visaCategory: "Business",
+          entry: "Multiple",
+          fees: "INR 10,000/-",
+        },
+      ],
+      documentsRequired: [
+        {
+          category: "Must-have Documents for UAE Visa Online",
+          documents: [
+            "Scanned copy of the first and last page of your passport",
+            "Recent passport-size color photograph",
+            "Confirmed return flight ticket",
+            "Hotel booking confirmation or invitation letter",
+            "Filled and signed visa application form",
+          ],
+          note: "Ensure all documents are clear and meet the UAE visa specifications for approval.",
+        },
+        {
+          category: "Additional Documents for Business Visa",
+          documents: [
+            "Invitation letter from the UAE company",
+            "Company registration certificate of the Indian company",
+            "Bank statements for the last 6 months",
+          ],
+        },
+      ],
+      applyProcess: [
+        {
+          step: 1,
+          title: "Pay Online",
+          description: "Complete the online payment process securely.",
+          icon: "/icons/pay-online.svg",
+        },
+        {
+          step: 2,
+          title: "Upload Documents",
+          description: "Upload the required documents through our platform.",
+          icon: "/icons/upload-document.svg",
+        },
+        {
+          step: 3,
+          title: "Verification",
+          description: "Our team will verify your documents and process your application.",
+          icon: "/icons/verifications.svg",
+        },
+        {
+          step: 4,
+          title: "Receive Visa",
+          description: "Download your UAE Visa online once approved.",
+          icon: "/icons/approved.svg",
+        },
+      ],
+      sampleVisaCopy: "/pdf/visa-sample/uae-visa-sample.pdf",
+      faqs: [
+        {
+          question: "How long does it take to process a UAE visa?",
+          answer: "The processing time is typically 2-4 working days.",
+        },
+        {
+          question: "What is the validity of a UAE tourist visa?",
+          answer: "The validity of a UAE tourist visa is up to 60 days.",
+        },
+        {
+          question: "Can I apply for a UAE visa online?",
+          answer: "Yes, you can apply online by submitting the required documents.",
+        },
+      ],
+    },  
+    {
+      name: "Qatar",
+      flag: "/images/flags/qa.webp",
+      landmark: "/images/landmarks/Museum of Islamic Art tourist places in Qatar Visa.webp",
+      landmarkName: "Museum of Islamic Art",
+      altName: "Museum of Islamic Art tourist places in Qatar Visa",
+      visaTypes: [
+        {
+          type: "Qatar Tourist Visa",
+          processingTime: "3-5 days",
+          stayPeriod: "Up to 30 days",
+          validity: "3 months",
+          visaCategory: "Tourist",
+          entry: "Single",
+          fees: "INR 4,000/-",
+        },
+        {
+          type: "Qatar Business Visa",
+          processingTime: "5-7 days",
+          stayPeriod: "Up to 90 days",
+          validity: "6 months",
+          visaCategory: "Business",
+          entry: "Multiple",
+          fees: "INR 8,000/-",
+        },
+      ],
+      documentsRequired: [
+        {
+          category: "Must-have Documents for Qatar Visa Online",
+          documents: [
+            "Scanned copy of the first and last page of your passport",
+            "Recent passport-size color photograph",
+            "Confirmed return flight ticket",
+            "Hotel reservation or invitation letter",
+            "Completed visa application form",
+          ],
+          note: "Ensure the documents are clear and meet Qatar's visa requirements.",
+        },
+        {
+          category: "Additional Documents for Business Visa",
+          documents: [
+            "Invitation letter from the Qatari company",
+            "Indian company registration certificate",
+            "Original bank statements for the last 6 months",
+          ],
+        },
+      ],
+      applyProcess: [
+        {
+          step: 1,
+          title: "Pay Online",
+          description: "Complete the payment process on our secure platform.",
+          icon: "/icons/pay-online.svg",
+        },
+        {
+          step: 2,
+          title: "Upload Documents",
+          description: "Upload the necessary documents through our portal.",
+          icon: "/icons/upload-document.svg",
+        },
+        {
+          step: 3,
+          title: "Verification",
+          description: "Our team will verify your documents and process your application.",
+          icon: "/icons/verifications.svg",
+        },
+        {
+          step: 4,
+          title: "Receive Visa",
+          description: "Get your Qatar visa online once it is approved.",
+          icon: "/icons/approved.svg",
+        },
+      ],
+      sampleVisaCopy: "/pdf/visa-sample/qatar-visa-sample.pdf",
+      faqs: [
+        {
+          question: "How long does it take to process a Qatar visa?",
+          answer: "The processing time is typically 3-5 working days.",
+        },
+        {
+          question: "What is the validity of a Qatar tourist visa?",
+          answer: "The validity of a Qatar tourist visa is up to 3 months.",
+        },
+        {
+          question: "Can I apply for a Qatar visa online?",
+          answer: "Yes, you can apply online through our portal by submitting the required documents.",
+        },
+      ],
+    },
+    {
+      name: "Oman",
+      flag: "/images/flags/om.webp",
+      landmark: "/images/landmarks/Sultan Qaboos Mosque tourist places in Oman Visa.webp",
+      landmarkName: "Sultan Qaboos Mosque",
+      altName: "Sultan Qaboos Mosque tourist places in Oman Visa",
+      visaTypes: [
+        {
+          type: "Oman Tourist Visa",
+          processingTime: "3-5 days",
+          stayPeriod: "Up to 30 days",
+          validity: "3 months",
+          visaCategory: "Tourist",
+          entry: "Single",
+          fees: "INR 4,500/-",
+        },
+        {
+          type: "Oman Business Visa",
+          processingTime: "5-7 days",
+          stayPeriod: "Up to 90 days",
+          validity: "6 months",
+          visaCategory: "Business",
+          entry: "Multiple",
+          fees: "INR 8,000/-",
+        },
+      ],
+      documentsRequired: [
+        {
+          category: "Must-have Documents for Oman Visa Online",
+          documents: [
+            "Scanned copy of the first and last page of your passport",
+            "Recent passport-size color photograph",
+            "Confirmed return flight ticket",
+            "Hotel reservation or invitation letter",
+            "Completed visa application form",
+          ],
+          note: "Ensure all documents meet Oman's visa requirements for smooth processing.",
+        },
+        {
+          category: "Additional Documents for Business Visa",
+          documents: [
+            "Invitation letter from the Omani company",
+            "Indian company registration certificate",
+            "Original bank statements for the last 6 months",
+          ],
+        },
+      ],
+      applyProcess: [
+        {
+          step: 1,
+          title: "Pay Online",
+          description: "Complete the payment securely on our platform.",
+          icon: "/icons/pay-online.svg",
+        },
+        {
+          step: 2,
+          title: "Upload Documents",
+          description: "Submit the required documents through our online portal.",
+          icon: "/icons/upload-document.svg",
+        },
+        {
+          step: 3,
+          title: "Verification",
+          description: "We will verify and process your application.",
+          icon: "/icons/verifications.svg",
+        },
+        {
+          step: 4,
+          title: "Receive Visa",
+          description: "Download your Oman visa once approved.",
+          icon: "/icons/approved.svg",
+        },
+      ],
+      sampleVisaCopy: "/pdf/visa-sample/oman-visa-sample.pdf",
+      faqs: [
+        {
+          question: "How long does it take to process an Oman visa?",
+          answer: "The processing time is typically 3-5 working days.",
+        },
+        {
+          question: "What is the validity of an Oman tourist visa?",
+          answer: "The validity of an Oman tourist visa is up to 3 months.",
+        },
+        {
+          question: "Can I apply for an Oman visa online?",
+          answer: "Yes, you can apply online by submitting the required documents.",
+        },
+      ],
+    },
+    {
+      name: "Bahrain",
+      flag: "/images/flags/bh.webp",
+      landmark: "/images/landmarks/World Trade Center tourist places in Bahrain Visa.webp",
+      landmarkName: "World Trade Center",
+      altName: "World Trade Center tourist places in Bahrain Visa",
+      visaTypes: [
+        {
+          type: "Bahrain Tourist Visa",
+          processingTime: "3-5 days",
+          stayPeriod: "Up to 14 days",
+          validity: "1 month",
+          visaCategory: "Tourist",
+          entry: "Single",
+          fees: "INR 3,500/-",
+        },
+        {
+          type: "Bahrain Business Visa",
+          processingTime: "5-7 days",
+          stayPeriod: "Up to 90 days",
+          validity: "1 year",
+          visaCategory: "Business",
+          entry: "Multiple",
+          fees: "INR 10,000/-",
+        },
+      ],
+      documentsRequired: [
+        {
+          category: "Must-have Documents for Bahrain Visa Online",
+          documents: [
+            "Scanned copy of the first and last page of your passport",
+            "Recent passport-size color photograph",
+            "Confirmed return flight ticket",
+            "Hotel booking or invitation letter",
+            "Completed visa application form",
+          ],
+          note: "Ensure your documents are complete and accurate for smooth visa approval.",
+        },
+        {
+          category: "Additional Documents for Business Visa",
+          documents: [
+            "Invitation letter from the Bahraini company",
+            "Indian company registration certificate",
+            "Original bank statements for the last 6 months",
+          ],
+        },
+      ],
+      applyProcess: [
+        {
+          step: 1,
+          title: "Pay Online",
+          description: "Securely complete the payment through our platform.",
+          icon: "/icons/pay-online.svg",
+        },
+        {
+          step: 2,
+          title: "Upload Documents",
+          description: "Upload the required documents via our portal.",
+          icon: "/icons/upload-document.svg",
+        },
+        {
+          step: 3,
+          title: "Verification",
+          description: "We verify your documents and process the application.",
+          icon: "/icons/verifications.svg",
+        },
+        {
+          step: 4,
+          title: "Receive Visa",
+          description: "Download your Bahrain visa after approval.",
+          icon: "/icons/approved.svg",
+        },
+      ],
+      sampleVisaCopy: "/pdf/visa-sample/bahrain-visa-sample.pdf",
+      faqs: [
+        {
+          question: "How long does it take to process a Bahrain visa?",
+          answer: "The processing time is typically 3-5 working days.",
+        },
+        {
+          question: "What is the validity of a Bahrain tourist visa?",
+          answer: "The validity of a Bahrain tourist visa is up to 1 month.",
+        },
+        {
+          question: "Can I apply for a Bahrain visa online?",
+          answer: "Yes, the Bahrain visa application process can be completed online.",
+        },
+      ],
+    },
+    {
+      name: "Kuwait",
+      flag: "/images/flags/kw.webp",
+      landmark: "/images/landmarks/Kuwait Towers tourist places in Kuwait Visa.webp",
+      landmarkName: "Kuwait Towers",
+      altName: "Kuwait Towers tourist places in Kuwait Visa",
+      visaTypes: [
+        {
+          type: "Kuwait Tourist Visa",
+          processingTime: "3-5 days",
+          stayPeriod: "Up to 90 days",
+          validity: "3 months",
+          visaCategory: "Tourist",
+          entry: "Single",
+          fees: "INR 5,000/-",
+        },
+        {
+          type: "Kuwait Business Visa",
+          processingTime: "5-7 days",
+          stayPeriod: "Up to 90 days",
+          validity: "6 months",
+          visaCategory: "Business",
+          entry: "Multiple",
+          fees: "INR 9,000/-",
+        },
+      ],
+      documentsRequired: [
+        {
+          category: "Must-have Documents for Kuwait Visa Online",
+          documents: [
+            "Scanned copy of the first and last page of your passport",
+            "Recent passport-size color photograph",
+            "Confirmed return flight ticket",
+            "Hotel reservation or invitation letter",
+            "Completed visa application form",
+          ],
+          note: "Ensure your documents meet the visa application standards for Kuwait.",
+        },
+        {
+          category: "Additional Documents for Business Visa",
+          documents: [
+            "Invitation letter from the Kuwaiti company",
+            "Company registration certificate of the Indian organization",
+            "Original bank statements for the last 6 months",
+          ],
+        },
+      ],
+      applyProcess: [
+        {
+          step: 1,
+          title: "Pay Online",
+          description: "Secure your application by making an online payment.",
+          icon: "/icons/pay-online.svg",
+        },
+        {
+          step: 2,
+          title: "Upload Documents",
+          description: "Submit all required documents via our portal.",
+          icon: "/icons/upload-document.svg",
+        },
+        {
+          step: 3,
+          title: "Verification",
+          description: "Our team will verify and process your application.",
+          icon: "/icons/verifications.svg",
+        },
+        {
+          step: 4,
+          title: "Receive Visa",
+          description: "Download your approved Kuwait visa online.",
+          icon: "/icons/approved.svg",
+        },
+      ],
+      sampleVisaCopy: "/pdf/visa-sample/kuwait-visa-sample.pdf",
+      faqs: [
+        {
+          question: "How long does it take to process a Kuwait visa?",
+          answer: "The processing time is typically 3-5 working days.",
+        },
+        {
+          question: "What is the validity of a Kuwait tourist visa?",
+          answer: "The validity of a Kuwait tourist visa is up to 3 months.",
+        },
+        {
+          question: "Can I apply for a Kuwait visa online?",
+          answer: "Yes, you can complete your application online by submitting required documents.",
+        },
+      ],
+    },
+    {
+      name: "Egypt",
+      flag: "/images/flags/eg.webp",
+      landmark: "/images/landmarks/Pyramids of Giza in Egypt  Visa.webp",
+      landmarkName: "Pyramids of Giza",
+      altName: "Pyramids of Giza in Egypt Visa",
+      visaTypes: [
+        {
+          type: "Egypt Tourist Visa",
+          processingTime: "3-5 days",
+          stayPeriod: "Up to 30 days",
+          validity: "3 months",
+          visaCategory: "Tourist",
+          entry: "Single / Multiple",
+          fees: "USD 25/- (Single Entry)",
+        },
+        {
+          type: "Egypt Business Visa",
+          processingTime: "5-7 days",
+          stayPeriod: "Up to 30 days",
+          validity: "1 year",
+          visaCategory: "Business",
+          entry: "Single / Multiple",
+          fees: "USD 60/-",
+        },
+      ],
+      documentsRequired: [
+        {
+          category: "Documents Required for Egypt Visa",
+          documents: [
+            "Valid passport with at least 6 months validity",
+            "Completed visa application form",
+            "Two recent passport-size photographs",
+            "Return flight tickets",
+            "Proof of accommodation (hotel reservation or invitation letter)",
+            "Proof of financial means (bank statements or salary slips)",
+          ],
+          note: "Ensure all documents are clear and legible.",
+        },
+        {
+          category: "Additional Documents for Business Visa",
+          documents: [
+            "Invitation letter from the Egyptian company",
+            "Business registration documents",
+            "Proof of past business dealings (if applicable)",
+          ],
+        },
+      ],
+      applyProcess: [
+        {
+          step: 1,
+          title: "Submit Application",
+          description: "Fill and submit the visa application form.",
+          icon: "/icons/pay-online.svg",
+        },
+        {
+          step: 2,
+          title: "Upload Documents",
+          description: "Provide all required documents for the visa.",
+          icon: "/icons/upload-document.svg",
+        },
+        {
+          step: 3,
+          title: "Pay Visa Fee",
+          description: "Make the payment for the visa fee.",
+          icon: "/icons/pay-online.svg",
+        },
+        {
+          step: 4,
+          title: "Processing & Approval",
+          description: "Wait for 3-5 business days for visa processing.",
+          icon: "/icons/verifications.svg",
+        },
+        {
+          step: 5,
+          title: "Collect Your Visa",
+          description: "Download your e-visa or collect it from the embassy.",
+          icon: "/icons/approved.svg",
+        },
+      ],
+      sampleVisaCopy: "/pdf/visa-sample/egypt-visa-sample.pdf",
+      faqs: [
+        {
+          question: "How long is an Egypt tourist visa valid?",
+          answer: "It is valid for 3 months with a stay period of up to 30 days.",
+        },
+        {
+          question: "Is an e-visa available for Egypt?",
+          answer: "Yes, you can apply for an Egypt e-visa for certain nationalities.",
+        },
+        {
+          question: "How much does an Egypt tourist visa cost?",
+          answer: "The single-entry Egypt tourist visa fee is USD 25.",
+        },
+      ],
+    },
+        
+    {
+      name: "Saudi Arabia",
+      flag: "/images/flags/sa.webp",
+      landmark: "/images/landmarks/Kaaba tourist places in Saudi Arabia Visa.webp",
+      landmarkName: "Kaaba",
+      altName: "Kaaba tourist places in Saudi Arabia Visa",
+      visaTypes: [
+        {
+          type: "Saudi Arabia Tourist Visa",
+          processingTime: "5-7 days",
+          stayPeriod: "Up to 90 days",
+          validity: "1 year",
+          visaCategory: "Tourist",
+          entry: "Multiple",
+          fees: "INR 7,000/-",
+        },
+        {
+          type: "Saudi Arabia Business Visa",
+          processingTime: "7-10 days",
+          stayPeriod: "Up to 90 days",
+          validity: "1 year",
+          visaCategory: "Business",
+          entry: "Multiple",
+          fees: "INR 12,000/-",
+        },
+      ],
+      documentsRequired: [
+        {
+          category: "Must-have Documents for Saudi Arabia Visa Online",
+          documents: [
+            "Scanned copy of the first and last page of your passport",
+            "Recent passport-size photograph",
+            "Confirmed return flight ticket",
+            "Accommodation proof or invitation letter",
+            "Visa application form",
+          ],
+          note: "Ensure all documents meet Saudi Arabia's visa specifications.",
+        },
+        {
+          category: "Additional Documents for Business Visa",
+          documents: [
+            "Invitation letter from the Saudi company",
+            "Company registration certificate of the Indian company",
+            "Latest bank statements (last 6 months)",
+          ],
+        },
+      ],
+      applyProcess: [
+        {
+          step: 1,
+          title: "Pay Online",
+          description: "Make the payment securely through our platform.",
+          icon: "/icons/pay-online.svg",
+        },
+        {
+          step: 2,
+          title: "Upload Documents",
+          description: "Submit the required documents on our portal.",
+          icon: "/icons/upload-document.svg",
+        },
+        {
+          step: 3,
+          title: "Verification",
+          description: "We verify your documents and process your application.",
+          icon: "/icons/verifications.svg",
+        },
+        {
+          step: 4,
+          title: "Receive Visa",
+          description: "Download your Saudi Arabia visa after approval.",
+          icon: "/icons/approved.svg",
+        },
+      ],
+      sampleVisaCopy: "/pdf/visa-sample/saudi-arabia-visa-sample.pdf",
+      faqs: [
+        {
+          question: "How long does it take to process a Saudi Arabia visa?",
+          answer: "The processing time is typically 5-7 working days.",
+        },
+        {
+          question: "Can I apply for a Saudi Arabia visa online?",
+          answer: "Yes, you can apply online by uploading the required documents.",
+        },
+        {
+          question: "What is the validity of a Saudi Arabia tourist visa?",
+          answer: "The validity of a Saudi Arabia tourist visa is up to 1 year.",
+        },
+      ],
+    },
+
   ],
   Europe: [
     {
@@ -4842,102 +4944,7 @@ const CountryData = {
         },
       ],
     },
-    {
-      name: "Egypt",
-      flag: "/images/flags/eg.webp",
-      landmark: "/images/landmarks/Pyramids of Giza in Egypt  Visa.webp",
-      landmarkName: "Pyramids of Giza",
-      altName: "Pyramids of Giza in Egypt Visa",
-      visaTypes: [
-        {
-          type: "Egypt Tourist Visa",
-          processingTime: "3-5 days",
-          stayPeriod: "Up to 30 days",
-          validity: "3 months",
-          visaCategory: "Tourist",
-          entry: "Single / Multiple",
-          fees: "USD 25/- (Single Entry)",
-        },
-        {
-          type: "Egypt Business Visa",
-          processingTime: "5-7 days",
-          stayPeriod: "Up to 30 days",
-          validity: "1 year",
-          visaCategory: "Business",
-          entry: "Single / Multiple",
-          fees: "USD 60/-",
-        },
-      ],
-      documentsRequired: [
-        {
-          category: "Documents Required for Egypt Visa",
-          documents: [
-            "Valid passport with at least 6 months validity",
-            "Completed visa application form",
-            "Two recent passport-size photographs",
-            "Return flight tickets",
-            "Proof of accommodation (hotel reservation or invitation letter)",
-            "Proof of financial means (bank statements or salary slips)",
-          ],
-          note: "Ensure all documents are clear and legible.",
-        },
-        {
-          category: "Additional Documents for Business Visa",
-          documents: [
-            "Invitation letter from the Egyptian company",
-            "Business registration documents",
-            "Proof of past business dealings (if applicable)",
-          ],
-        },
-      ],
-      applyProcess: [
-        {
-          step: 1,
-          title: "Submit Application",
-          description: "Fill and submit the visa application form.",
-          icon: "/icons/pay-online.svg",
-        },
-        {
-          step: 2,
-          title: "Upload Documents",
-          description: "Provide all required documents for the visa.",
-          icon: "/icons/upload-document.svg",
-        },
-        {
-          step: 3,
-          title: "Pay Visa Fee",
-          description: "Make the payment for the visa fee.",
-          icon: "/icons/pay-online.svg",
-        },
-        {
-          step: 4,
-          title: "Processing & Approval",
-          description: "Wait for 3-5 business days for visa processing.",
-          icon: "/icons/verifications.svg",
-        },
-        {
-          step: 5,
-          title: "Collect Your Visa",
-          description: "Download your e-visa or collect it from the embassy.",
-          icon: "/icons/approved.svg",
-        },
-      ],
-      sampleVisaCopy: "/pdf/visa-sample/egypt-visa-sample.pdf",
-      faqs: [
-        {
-          question: "How long is an Egypt tourist visa valid?",
-          answer: "It is valid for 3 months with a stay period of up to 30 days.",
-        },
-        {
-          question: "Is an e-visa available for Egypt?",
-          answer: "Yes, you can apply for an Egypt e-visa for certain nationalities.",
-        },
-        {
-          question: "How much does an Egypt tourist visa cost?",
-          answer: "The single-entry Egypt tourist visa fee is USD 25.",
-        },
-      ],
-    },
+   
     {
       name: "Nigeria",
       flag: "/images/flags/ng.webp",
