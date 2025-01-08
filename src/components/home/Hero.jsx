@@ -86,6 +86,8 @@ const HeroSection = () => {
         </motion.div>
       </div>
 
+
+
       {/* Pagination Dots */}
       <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-20">
         {backgroundImages.map((_, index) => (

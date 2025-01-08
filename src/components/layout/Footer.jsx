@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { FaInstagram } from "react-icons/fa6";
 
+
 const Footer = () => {
   const [isQuickLinksOpen, setQuickLinksOpen] = useState(false);
   const [isServicesOpen, setServicesOpen] = useState(false);
@@ -201,7 +202,38 @@ const Footer = () => {
         </div>
       </div>
     </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   );
 };
 
 export default Footer;
+
+
+
