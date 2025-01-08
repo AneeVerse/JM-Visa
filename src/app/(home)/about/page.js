@@ -119,10 +119,10 @@ const AboutUsPage = () => {
       {/* Our Numbers Section */}
       <div className="container mx-auto mt-20 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {[
-          { value: "50k+", label: "Happy Clients" },
-          { value: "25+", label: "Years of Experience" },
-          { value: "40+", label: "Countries Covered" },
-          { value: "100+", label: "Industry Awards" },
+          { value: "500+", label: "Happy Clients" },
+          { value: "4+", label: "Years of Experience" },
+          { value: "200+", label: "Countries Covered" },
+          { value: "7", label: "Industry Awards" },
         ].map((stat, index) => (
           <motion.div
             key={index}
