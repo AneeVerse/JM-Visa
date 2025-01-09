@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { FaWhatsapp, FaEnvelope, FaPhone } from 'react-icons/fa';
 import { IoIosClose, IoIosAdd, IoIosRemove } from "react-icons/io";
 import { MdContentCopy } from 'react-icons/md';
+import { IoClose } from "react-icons/io5";
 
 const FloatingActionButton = () => {
   const [open, setOpen] = useState(false);
@@ -30,7 +31,7 @@ const FloatingActionButton = () => {
 
   return (
     <div className="fixed bottom-3 right-3 sm:bottom-6 sm:right-6 z-40">
-      {open && (
+      {!open && (
         <motion.div 
           initial="hidden" 
           animate="visible" 
@@ -161,7 +162,7 @@ const FloatingActionButton = () => {
         whileTap="tap"
         variants={buttonVariants}
       >
-        <span>{open ? <IoIosRemove className="self-center h-8 w-8" /> : <IoIosAdd className="self-center h-8 w-8" />}</span> 
+        <div>{open ?<div className='self-center'><IoIosAdd className="self-center h-8 w-8 block sm:hidden" />  <IoIosRemove className="self-center h-8 w-8 hidden sm:block" /> </div> : <div className='self-center'><IoIosAdd className="self-center h-8 w-8 hidden sm:block" /> <IoClose className='self-center h-7 w-7 block sm:hidden' /> </div> } </div> 
       </motion.button>
     </div>
   );
