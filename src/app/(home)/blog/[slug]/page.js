@@ -190,7 +190,7 @@ const BlogDetails = () => {
               />
               <div className="flex flex-col text-sm">
                 <span className="font-semibold">
-                  {(blog?.author?.name && blog.author.name ) || "Amrita Vijaykumar Thakar"}
+                  {(blog?.author?.name && blog.author.name ) || "Amrita Thakar"}
                 </span>
                 <span>
                   Date: {new Date(blog?.date).toLocaleDateString() || "Unknown Date"}
