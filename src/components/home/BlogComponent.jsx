@@ -99,7 +99,7 @@ const BlogComponent = () => {
                 <Link
                   href={`/blog/${blog.slug}`}
                   key={blog.id}
-                  className="w-[280px] min-w-[280px] sm:w-[300px] lg:w-[340px] mb-3  bg-white flex flex-col gap-3 p-5 border  rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-all duration-300 cursor-pointer group"
+                  className="w-[280px] min-w-[280px] sm:w-[300px] sm:min-w-[300px] lg:w-[340px] lg:min-w-[340px] mb-3  bg-white flex flex-col gap-3 p-5 border  rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-all duration-300 cursor-pointer group"
                 >
                   {/* Blog Image */}
                   <img
