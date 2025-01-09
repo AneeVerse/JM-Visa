@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { FaInstagram } from "react-icons/fa6";
+import { FaInstagram , FaFacebook, FaXTwitter} from "react-icons/fa6";
 
 
 const Footer = () => {
@@ -83,7 +83,13 @@ const Footer = () => {
             {/* follow social link */}
             <div className="mt-4 flex gap-4">
               <Link href={"https://www.instagram.com/jmvisaservices"} target="_blank">
-              <FaInstagram className="text-blue-50 hover:text-blue-100" />
+              <FaInstagram className="text-blue-50 hover:text-blue-100 text-2xl hover:scale-110 duration-200" />
+              </Link>
+              <Link href={"https://www.facebook.com/p/JM-Visa-Services"} target="_blank">
+              <FaFacebook className="text-blue-50 hover:text-blue-100 text-2xl hover:scale-110 duration-200" />
+              </Link>
+              <Link href={"#"} target="_blank">
+              <FaXTwitter className="text-blue-50 hover:text-blue-100 text-2xl hover:scale-110 duration-200" />
               </Link>
               </div>
           </div>
