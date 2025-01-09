@@ -6,22 +6,22 @@ import { FaTwitter, FaLinkedin, FaEnvelope } from "react-icons/fa";
 const teamMembers = [
   {
     name: "Jayesh More",
-    role: "Co-Founder & CEO",
+    role: "Founder & CEO",
     image: "/images/team1.jpeg", // Replace with your image paths
-    bio: "I am the co-founder of JM Visa and we’ve pushed our limits to make it successful.",
+    bio: "I am the founder of JM Visa and we’ve pushed our limits to make it successful.",
     linkedin: "https://www.linkedin.com/in/jayesh-jaywant-more-156360292",
     twitter: "#",
     email: "mailto:harsh@example.com",
   },
-  // {
-  //   name: "Alexa Kimberly",
-  //   role: "Lead Designer",
-  //   image: "/images/profile.webp", // Replace with your image paths
-  //   bio: "I’ve been lead designer since the beginning and enjoyed every bit.",
-  //   linkedin: "https://linkedin.com/in/alexa",
-  //   twitter: "https://twitter.com/alexa",
-  //   email: "mailto:alexa@example.com",
-  // },
+  {
+    name: "Amrita Vijaykumar Thakar",
+    role: "Co-Founder",
+    image: "/images/team2.jpg", // Replace with your image paths
+    bio: "I am the co-founder of JM Visa and we’ve pushed our limits to make it successful.",
+    linkedin: "https://www.linkedin.com/in/amrita-vijaykumar-thakar-8845a0114/",
+    twitter: "https://twitter.com/alexa",
+    email: "mailto:alexa@example.com",
+  },
 ];
 
 const OurTeamSection = () => {

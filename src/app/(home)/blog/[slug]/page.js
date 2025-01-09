@@ -182,15 +182,15 @@ const BlogDetails = () => {
             </h1>
             <div className="mt-6 text-gray-600 flex gap-3 items-center">
               <Image
-                src={"/images/team1.jpeg"}
+                src={"/images/team2.jpg"}
                 alt={blog?.author?.name || "Author"}
                 width={35}
                 height={35}
-                className="rounded-full min-w-fit object-cover"
+                className="rounded-full min-w-fit w-[50px] h-[50px] self-center object-cover"
               />
               <div className="flex flex-col text-sm">
                 <span className="font-semibold">
-                  {blog?.author?.name && blog.author.name}
+                  {(blog?.author?.name && blog.author.name ) || "Amrita Vijaykumar Thakar"}
                 </span>
                 <span>
                   Date: {new Date(blog?.date).toLocaleDateString() || "Unknown Date"}
