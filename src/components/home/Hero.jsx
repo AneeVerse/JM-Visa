@@ -93,7 +93,8 @@ const HeroSection = () => {
         {backgroundImages.map((_, index) => (
           <span
             key={index}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+            onClick={() => setCurrentBgIndex(index)}
+            className={`w-3 h-3 rounded-full cursor-pointer transition-all duration-300 ${
               currentBgIndex === index ? "bg-blue-500" : "bg-gray-300"
             }`}
           ></span>
