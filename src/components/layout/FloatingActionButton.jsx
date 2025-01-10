@@ -36,7 +36,7 @@ const FloatingActionButton = () => {
           initial="hidden" 
           animate="visible" 
           exit="exit" 
-          className="flex md:hidden flex-col items-center gap-3 mb-4"
+          className="flex flex-col items-center gap-3 mb-4"
         >
           <motion.a
             href="https://wa.me/+919321315524"
@@ -74,7 +74,7 @@ const FloatingActionButton = () => {
           initial="hidden" 
           animate="visible" 
           exit="exit" 
-          className="fixed inset-0 bg-gray-900 bg-opacity-50 hidden md:flex items-center justify-center z-50"
+          className="fixed inset-0 bg-gray-900 bg-opacity-50 hidden  items-center justify-center z-50"
         >
           <motion.div
             className="bg-white relative rounded-xl shadow-lg p-8 max-w-md md:max-w-lg w-full text-center"
@@ -162,7 +162,7 @@ const FloatingActionButton = () => {
         whileTap="tap"
         variants={buttonVariants}
       >
-        <div>{open ?<div className='self-center'><IoIosAdd className="self-center h-8 w-8 block sm:hidden" />  <IoIosRemove className="self-center h-8 w-8 hidden sm:block" /> </div> : <div className='self-center'><IoIosAdd className="self-center h-8 w-8 hidden sm:block" /> <IoClose className='self-center h-7 w-7 block sm:hidden' /> </div> } </div> 
+        <div>{open ?<div className='self-center'><IoIosAdd className="self-center h-8 w-8 block " />  <IoIosRemove className="self-center h-8 w-8 hidden " /> </div> : <div className='self-center'><IoIosAdd className="self-center h-8 w-8 hidden " /> <IoClose className='self-center h-7 w-7 block ' /> </div> } </div> 
       </motion.button>
     </div>
   );
