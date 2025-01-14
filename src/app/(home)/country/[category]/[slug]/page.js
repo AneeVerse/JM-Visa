@@ -362,7 +362,7 @@ const CountryDetails = () => {
 {/* Why Choose Us */}
 <div className="mb-12">
   <h2 className="text-3xl font-semibold text-gray-800 text-left mb-8">
-    Why Choose <span className="">JM Visa?</span>
+    Why Choose <span className="">JM Visa Services?</span>
   </h2>
   <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-8">
     {[

@@ -13,7 +13,7 @@ const points = [
     icon: "🔍",
     title: "Find the Right Visa",
     description:
-      "Discover visa options tailored to your travel, education, and work needs with JM Visa.",
+      "Discover visa options tailored to your travel, education, and work needs with JM Visa Services.",
   },
   {
     icon: "📋",

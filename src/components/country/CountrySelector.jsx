@@ -41,7 +41,7 @@ const CountrySelector = () => {
           })) || [];
 
     const filtered = allCountries.filter((country) =>
-      country.name.toLowerCase().includes(searchTerm.toLowerCase())
+      country.searchName.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setFilteredCountries(filtered);
   }, [searchTerm, activeCategory, categories]);
@@ -86,7 +86,7 @@ const CountrySelector = () => {
 
         {/* Categories */}
         <div className="flex justify-center gap-4 mb-8 flex-wrap">
-          {["All", ...Object.keys(categories)].map((category) => (
+          {["All", "Asia","MiddleEast", "Europe", "NorthAmerica","SouthAmerica","Africa","Oceania"].map((category) => (
             <button
               key={category}
               onClick={() => setActiveCategory(category)}

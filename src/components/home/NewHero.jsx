@@ -50,7 +50,7 @@ const HeroSection = () => {
 
           {/* Subtext */}
           <p className="mt-4 text-lg text-gray-600">
-            At JM Visa, we make travel, work, and immigration processes
+            At JM Visa Services, we make travel, work, and immigration processes
             seamless. <span  className="hidden sm:inline"> Trusted by thousands, we ensure a smooth experience
             tailored to your needs.</span>
           </p>

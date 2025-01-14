@@ -49,7 +49,7 @@ const AboutUsPage = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            ✈️ About JM Visa
+            ✈️ About JM Visa Services
           </motion.div>
 
           <motion.h1
@@ -66,7 +66,7 @@ const AboutUsPage = () => {
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
           >
-            JM Visa is a trusted partner for thousands of clients globally,
+            JM Visa Services is a trusted partner for thousands of clients globally,
             offering tailored visa services for travel, education, and work. We
             take pride in our streamlined processes, transparent approach, and
             customer-centric service.

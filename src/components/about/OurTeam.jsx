@@ -1,26 +1,28 @@
 "use client";
 
+import Link from "next/link";
 import React from "react";
-import { FaTwitter, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { FaWhatsapp, FaLinkedin, FaEnvelope } from "react-icons/fa";
+
 
 const teamMembers = [
   {
     name: "Jayesh More",
     role: "Founder & CEO",
     image: "/images/team1.jpeg", // Replace with your image paths
-    bio: "I am the founder of JM Visa and we’ve pushed our limits to make it successful.",
+    bio: "I am the founder of JM Visa Services and we’ve pushed our limits to make it successful.",
     linkedin: "https://www.linkedin.com/in/jayesh-jaywant-more-156360292",
-    twitter: "#",
-    email: "mailto:harsh@example.com",
+    twitter: "https://wa.me/+919321315524",
+    email: "mailto:info@jmvisaservices.com",
   },
   {
     name: "Amrita Vijaykumar Thakar",
     role: "Co-Founder",
     image: "/images/team2.jpg", // Replace with your image paths
-    bio: "I am the co-founder of JM Visa and we’ve pushed our limits to make it successful.",
+    bio: "I am the co-founder of JM Visa Services and we’ve pushed our limits to make it successful.",
     linkedin: "https://www.linkedin.com/in/amrita-vijaykumar-thakar-8845a0114/",
-    twitter: "https://twitter.com/alexa",
-    email: "mailto:alexa@example.com",
+    twitter: "https://wa.me/+919321315524",
+    email: "mailto:info@jmvisaservices.com",
   },
 ];
 
@@ -65,28 +67,28 @@ const OurTeamSection = () => {
 
                 {/* Social Links */}
                 <div className="mt-4 flex gap-4">
-                  <a
+                  <Link
                     href={member.twitter}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-500 hover:text-blue-500 transition"
                   >
-                    <FaTwitter size={20} />
-                  </a>
-                  <a
+                    <FaWhatsapp size={20} />
+                  </Link>
+                  <Link
                     href={member.email}
                     className="text-gray-500 hover:text-blue-500 transition"
                   >
                     <FaEnvelope size={20} />
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     href={member.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-500 hover:text-blue-500 transition"
                   >
                     <FaLinkedin size={20} />
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

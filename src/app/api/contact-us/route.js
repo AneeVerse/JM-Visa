@@ -23,7 +23,7 @@ export const POST = async (req) => {
 
     // Email options
     const mailOptions = {
-      from: `"JM Visa Contact" <${process.env.NEXT_PUBLIC_EMAIL_USER}>`,
+      from: `"JM Visa Services Contact" <${process.env.NEXT_PUBLIC_EMAIL_USER}>`,
       to: process.env.NEXT_PUBLIC_EMAIL_RECEIVER, // Receiver's email
       subject: 'New Contact Form Submission',
       html: `

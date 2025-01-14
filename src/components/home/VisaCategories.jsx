@@ -80,19 +80,19 @@ const VisaCategories = () => {
     },
     {
       title: "Foreign Exchange",
-      image: "/images/foreign-exchange.png",
+      image: "/images/foreign-exchange.jpg",
       url: "/foreign-exchange",
       description: "Get the best foreign exchange rates for your international travel.",
     },
     {
       title: "Passport Services",
-      image: "/images/passport-services.png",
+      image: "/images/passport-services.jpg",
       url: "/passport-services",
       description: "Get your passport processed quickly and efficiently.",
     },
     {
       title: "US Interview Dates",
-      image: "/images/us-interview-dates.png",
+      image: "/images/us-interview-dates.jpg",
       url: "/us-interview-dates",
       description: "Schedule your US visa interview with ease.",
     }

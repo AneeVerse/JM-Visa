@@ -157,30 +157,38 @@ const services = [
   },
   {
     title: "Dummy Booking",
-    description: "Book dummy tickets for visa processing.",
+    description: "Book dummy tickets and hotel reservations for visa processing.",
     image: "/images/dummy-ticket-booking.png",
     url: "/dummy-ticket-booking",
     content: {
-      overview:
-        "Our Dummy Ticket Booking service provides verified itineraries for visa processing without actual bookings.",
+      overview: "Our Dummy Booking service provides verified itineraries and hotel reservations for visa processing without actual bookings.",
       highlights: [
         "Genuine ticket confirmations for visa applications.",
+        "Verified hotel reservations for travel plans.",
         "Cost-effective solutions for travel requirements.",
         "Flexible dates for rescheduling as needed.",
-        "Quick turnaround times.",
+        "Quick turnaround times."
       ],
       faqs: [
         {
-          question: "Are dummy tickets acceptable for visa processing?",
-          answer: "Yes, they are widely accepted as proof of travel plans.",
+          "question": "Are dummy tickets acceptable for visa processing?",
+          "answer": "Yes, they are widely accepted as proof of travel plans."
         },
         {
-          question: "Can I convert a dummy ticket into a real booking?",
-          answer: "No, a dummy ticket is only for visa processing purposes.",
+          "question": "Can I convert a dummy ticket into a real booking?",
+          "answer": "No, a dummy ticket is only for visa processing purposes."
         },
-      ],
-    },
-  },
+        {
+          "question": "Are dummy hotel reservations necessary for visa applications?",
+          "answer": "Many visa applications require proof of accommodation, and dummy hotel reservations serve this purpose."
+        },
+        {
+          "question": "How long does it take to receive a dummy hotel reservation?",
+          "answer": "Our team provides dummy hotel reservations within 24 hours."
+        }
+      ]
+    }
+  },  
   {
     title: "English Proficiency Test",
     description: "Prepare for TOEFL, IELTS, and more.",
@@ -210,7 +218,7 @@ const services = [
   {
     title: "Foreign Exchange",
     description: "Easily exchange currency for travel.",
-    image: "/images/foreign-exchange.png",
+    image: "/images/foreign-exchange.jpg",
     url: "/foreign-exchange",
     content: {
       overview:
@@ -236,7 +244,7 @@ const services = [
   {
     title: "Passport Services",
     description: "Hassle-free passport application assistance.",
-    image: "/images/passport-services.png",
+    image: "/images/passport-services.jpg",
     url: "/passport-services",
     content: {
       overview:
@@ -262,7 +270,7 @@ const services = [
   {
     title: "US Interview Dates",
     description: "Get the earliest interview dates for the US.",
-    image: "/images/us-interview-dates.png",
+    image: "/images/us-interview-dates.jpg",
     url: "/us-interview-dates",
     content: {
       overview:

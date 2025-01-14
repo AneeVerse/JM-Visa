@@ -45,7 +45,7 @@ const Footer = () => {
             <Link href={"/"} className="flex flex-row items-center gap-2">
               <Image
                 src={"/logo/logo.png"}
-                alt="JM Visa Logo"
+                alt="JM Visa Services Logo"
                 width={50}
                 height={50}
               />
@@ -159,13 +159,13 @@ const Footer = () => {
             </h3>
             <ul className="text-sm space-y-3 text-white">
               <li>
-                Mon - Fri: <span className="text-gray-100">9 AM - 6 PM</span>
+                Mon - Fri: <span className="text-gray-100">9 AM - 10 PM</span>
               </li>
               <li>
                 Sat: <span className="text-gray-100">10 AM - 3 PM</span>
               </li>
               <li>
-                Sun: <span className="text-gray-100">Closed</span>
+                Sun: <span className="text-gray-100"> on requirement based</span>
               </li>
             </ul>
           </div>
@@ -174,7 +174,7 @@ const Footer = () => {
         {/* Divider */}
         <div className="border-t border-gray-400 mt-12 pt-6 flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm text-gray-100">
-            Copyright © {new Date().getFullYear()} JM Visa. All rights reserved.
+            Copyright © {new Date().getFullYear()} JM Visa Services. All rights reserved.
           </p>
           <ul className="flex space-x-6 mt-3 sm:mt-0">
             {footerLinks.map((link) => (

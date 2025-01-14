@@ -45,7 +45,7 @@ export const POST = async (req) => {
 
           <!-- Footer -->
           <div style="background-color: #f8f9fa; padding: 15px; text-align: center; color: #777777; font-size: 0.9rem;">
-            <p style="margin: 0;">This email was generated from the Visa Application Form on JM Visa.</p>
+            <p style="margin: 0;">This email was generated from the Visa Application Form on JM Visa Services.</p>
           </div>
         </div>
       `,

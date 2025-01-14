@@ -16,8 +16,8 @@ const geistMono = localFont({
   weight: "100 900",
 });
 export const metadata = {
-  title: "JM Visa",
-  description: "JM Visa",
+  title: "JM Visa Services",
+  description: "JM Visa Services",
   // Add favicon icon and device-specific icons
   icons: {
     icon: "/favicon.ico", // Default favicon

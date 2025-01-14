@@ -201,12 +201,20 @@ const VisaForm = () => {
               >
                 <option value="Travel">Travel</option>
                 <option value="Business">Business</option>
+                <option value="Study">Study</option>
+                <option value="Work">Work</option>
+                <option value="Residence">Residence</option>
+                <option value="Tourist">Tourist</option>
+                <option value="other">Other</option>
+
+
+                
               </select>
             </div>
 
             {/* First Name */}
             <div className="flex flex-col">
-              <label className="text-white mb-2">First Name</label>
+              <label className="text-white mb-2">Name</label>
               <input
                 type="text"
                 name="firstName"

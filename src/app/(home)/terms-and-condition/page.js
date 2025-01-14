@@ -27,7 +27,7 @@ const TermsAndConditions = () => {
           <section className="mb-8">
             <h2 className="text-2xl font-bold text-gray-800 mb-4">1. Introduction</h2>
             <p className="text-gray-600 leading-relaxed">
-              Welcome to JM Visa! By accessing or using our website and
+              Welcome to JM Visa Services! By accessing or using our website and
               services, you agree to comply with and be bound by these Terms and
               Conditions. If you disagree with any part of these terms, you
               should not use our services.
@@ -50,7 +50,7 @@ const TermsAndConditions = () => {
           <section className="mb-8">
             <h2 className="text-2xl font-bold text-gray-800 mb-4">3. Services</h2>
             <p className="text-gray-600 leading-relaxed">
-              JM Visa offers visa consultancy and related services. Our services
+              JM Visa Services offers visa consultancy and related services. Our services
               include, but are not limited to, providing information, assisting
               with documentation, and submitting applications. We do not have
               control over the approval process conducted by government
@@ -101,7 +101,7 @@ const TermsAndConditions = () => {
               6. Disclaimer of Liability
             </h2>
             <p className="text-gray-600 leading-relaxed">
-              JM Visa provides services based on the information you provide. We
+              JM Visa Services provides services based on the information you provide. We
               are not liable for:
             </p>
             <ul className="list-disc list-inside text-gray-600 leading-relaxed">
@@ -123,7 +123,7 @@ const TermsAndConditions = () => {
             </h2>
             <p className="text-gray-600 leading-relaxed">
               All content, including text, images, and logos, on our website is
-              the property of JM Visa. You may not reproduce, distribute, or
+              the property of JM Visa Services. You may not reproduce, distribute, or
               modify any part of our content without prior written consent.
             </p>
           </section>
@@ -159,7 +159,7 @@ const TermsAndConditions = () => {
               10. Changes to Terms
             </h2>
             <p className="text-gray-600 leading-relaxed">
-              JM Visa reserves the right to modify these Terms and Conditions at
+              JM Visa Services reserves the right to modify these Terms and Conditions at
               any time. Updates will be posted on our website, and continued use
               of our services constitutes acceptance of the updated terms.
             </p>

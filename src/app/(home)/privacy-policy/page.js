@@ -15,7 +15,7 @@ const PrivacyPolicy = () => {
             Privacy Policy
           </h1>
           <p className="mt-4 text-lg text-gray-600">
-            Learn how JM Visa collects, uses, and protects your personal data.
+            Learn how JM Visa  Services collects, uses, and protects your personal data.
           </p>
         </div>
 
@@ -27,7 +27,7 @@ const PrivacyPolicy = () => {
               1. Introduction
             </h2>
             <p className="text-gray-600 leading-relaxed">
-              At JM Visa, we value your trust and are committed to safeguarding
+              At  , we value your trust and are committed to safeguarding
               your personal information. This Privacy Policy outlines how we
               collect, use, and protect your data.
             </p>
