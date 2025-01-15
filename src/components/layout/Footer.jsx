@@ -88,7 +88,7 @@ const Footer = () => {
               <Link href={"https://www.facebook.com/p/JM-Visa-Services"} target="_blank">
               <FaFacebook className="text-blue-50 hover:text-blue-100 text-2xl hover:scale-110 duration-200" />
               </Link>
-              <Link href={"#"} target="_blank">
+              <Link href={"https://www.linkedin.com/company/jmvisa-services/"} target="_blank">
               <FaLinkedin className="text-blue-50 hover:text-blue-100 text-2xl hover:scale-110 duration-200" />
               </Link>
               </div>
