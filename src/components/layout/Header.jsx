@@ -62,7 +62,7 @@ const Header = () => {
           {/* CTA Button */}
           <Link
             href="/contact"
-            className="px-5 py-2 flex items-center gap-1 text-sm bg-[#FF7043] text-white rounded-full font-semibold duration-300 shadow-md hover:scale-105"
+            className="px-5 booty-animation py-2 flex items-center gap-1 text-sm bg-[#FF7043] text-white rounded-full font-semibold duration-300 shadow-md hover:shadow-lg"
           >
             <span>{("Free Counselling").toUpperCase()}</span> <MdLocalPhone />
           </Link>
@@ -119,7 +119,7 @@ const Header = () => {
         {/* CTA Button */}
         <Link
           href="/contact"
-          className="mt-4 px-6 py-2 bg-[#FF7043] text-white rounded-full font-semibold hover:scale-105 flex gap-2 items-center transition-transform duration-300 shadow-md"
+          className="mt-4 booty-animation px-6 py-2 bg-[#FF7043] text-white rounded-full font-semibold hover:scale-105 flex gap-2 items-center transition-transform duration-300 shadow-md"
           onClick={toggleSidebar}
         >
           <span>{("Free Counselling").toUpperCase()}</span> <MdLocalPhone />

@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaWhatsapp, FaEnvelope, FaPhone } from 'react-icons/fa';
-import { IoIosClose, IoIosAdd, IoIosRemove } from "react-icons/io";
+import { IoIosClose, IoIosAdd, IoIosRemove,IoMdChatboxes } from "react-icons/io";
 import { MdContentCopy } from 'react-icons/md';
 import { IoClose } from "react-icons/io5";
 
@@ -162,7 +162,7 @@ const FloatingActionButton = () => {
         whileTap="tap"
         variants={buttonVariants}
       >
-        <div>{open ?<div className='self-center'><IoIosAdd className="self-center h-8 w-8 block " />  <IoIosRemove className="self-center h-8 w-8 hidden " /> </div> : <div className='self-center'><IoIosAdd className="self-center h-8 w-8 hidden " /> <IoClose className='self-center h-7 w-7 block ' /> </div> } </div> 
+        <div>{open ?<div className='self-center'><IoMdChatboxes className="self-center h-8 w-8 block " />  <IoIosRemove className="self-center h-8 w-8 hidden " /> </div> : <div className='self-center'><IoMdChatboxes className="self-center h-8 w-8 hidden " /> <IoClose className='self-center h-7 w-7 block ' /> </div> } </div> 
       </motion.button>
     </div>
   );

@@ -8,9 +8,9 @@ const PromoSection = () => {
   const [counters, setCounters] = useState([0, 0, 0, 0]);
 
   const stats = [
-    { value: 500, label: "+ Visas Approved" },
+    { value: 500, label: "Visas Approved" },
     { value: 4, label: "Years of Experience" },
-    { value: 200, label: "+ Happy Clients" },
+    { value: 200, label: "Happy Clients" },
     { value: 7, label: "Awards Won" },
   ];
 
@@ -56,7 +56,7 @@ const PromoSection = () => {
               className="p-4 sm:p-6 bg-white bg-opacity-10 border-gray-200 border-[1px] backdrop-blur-lg shadow-lg rounded-xl text-center hover:shadow-2xl hover:scale-105 transition-transform"
             >
               <h3 className="text-2xl sm:text-4xl font-extrabold text-white">
-                {counters[index]}
+                {counters[index]}{(index === 0 || index == 2 )?<sup className="text-md">+</sup> : ""}
               </h3>
               <p className="mt-2 text-gray-100 text-sm sm:text-lg font-medium">
                 {stat.label}

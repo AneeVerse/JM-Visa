@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { FaInstagram , FaFacebook, FaXTwitter} from "react-icons/fa6";
+import { FaInstagram , FaFacebook, FaXTwitter, FaLinkedin} from "react-icons/fa6";
 
 
 const Footer = () => {
@@ -89,7 +89,7 @@ const Footer = () => {
               <FaFacebook className="text-blue-50 hover:text-blue-100 text-2xl hover:scale-110 duration-200" />
               </Link>
               <Link href={"#"} target="_blank">
-              <FaXTwitter className="text-blue-50 hover:text-blue-100 text-2xl hover:scale-110 duration-200" />
+              <FaLinkedin className="text-blue-50 hover:text-blue-100 text-2xl hover:scale-110 duration-200" />
               </Link>
               </div>
           </div>
@@ -159,10 +159,10 @@ const Footer = () => {
             </h3>
             <ul className="text-sm space-y-3 text-white">
               <li>
-                Mon - Fri: <span className="text-gray-100">9 AM - 10 PM</span>
+                Mon - Fri: <span className="text-gray-100">10 AM - 8 PM</span>
               </li>
               <li>
-                Sat: <span className="text-gray-100">10 AM - 3 PM</span>
+                Sat: <span className="text-gray-100">10 AM - 5 PM</span>
               </li>
               <li>
                 Sun: <span className="text-gray-100"> on requirement based</span>

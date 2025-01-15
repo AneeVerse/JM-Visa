@@ -152,6 +152,8 @@
   background-color: #f9f9f9;
 }
 
+
+
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
   .article-blog h1 {
@@ -191,5 +193,24 @@
 
   .article-blog blockquote {
     font-size: 1rem;
+  }
+}
+
+
+
+
+.booty-animation{
+  
+  transition: transform 0.3s ease;
+  animation: popup 1.5s ease-in-out infinite;
+
+}
+
+@keyframes popup {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
   }
 }
