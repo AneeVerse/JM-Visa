@@ -177,24 +177,30 @@ const TermsAndConditions = () => {
             <p className="text-gray-600">
               <strong>Email:</strong>{" "}
               <a
-                href="mailto:support@jmvisa.com"
+                href="mailto:info@jmvisaservices.com"
                 className="text-blue-500 hover:underline"
               >
-                support@jmvisa.com
+                info@jmvisaservices.com
               </a>
             </p>
-            <p className="text-gray-600">
+            <p className="text-gray-600 flex gap-1 items-center flex-wrap">
               <strong>Phone:</strong>{" "}
               <a
-                href="tel:+1234567890"
+                href="tel:+919321315524"
                 className="text-blue-500 hover:underline"
               >
-                +1 234-567-890
+                +91 9321315524
+              </a>
+
+              <a
+                href="tel:+918591070718"
+                className="text-blue-500 hover:underline"
+              >
+                +91 8591070718
               </a>
             </p>
             <p className="text-gray-600">
-              <strong>Address:</strong> JM Visa Services, 123 Travel Lane,
-              Cityville, Country
+              <strong>Address:</strong> Shop No 11, City Light CHS, CBSE School, Plot No.25, near Terna Orchids The International School, Sector 1, Kopar Khairane, Navi Mumbai, Maharashtra 400709
             </p>
           </section>
         </div>
