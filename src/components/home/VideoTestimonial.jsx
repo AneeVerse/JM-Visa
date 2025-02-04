@@ -73,6 +73,7 @@ const VideoTestimonials = () => {
               testimonials.length === 2 ? " justify-start sm:justify-center " : ""
             } overflow-x-auto scroll-smooth pb-4`}
           >
+            {/* some */}
             {testimonials.map((testimonial) => (
               <div
                 key={testimonial.id}
