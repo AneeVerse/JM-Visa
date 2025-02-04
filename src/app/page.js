@@ -27,7 +27,7 @@ export default function Home() {
       <div className="absolute top-20 left-0 bg-gradient-to-br from-blue-200 via-white to-white blur-2xl bg-opacity-60   w-full  h-[500px] -z-10"> </div>
       </div>
       <FeedbackReviewComponent/>
-      {/* <VideoTestimonial/> */}
+      <VideoTestimonial/>
       <BlogComponent/>
       <div className="bg-gradient-to-br from-blue-900 via-blue-700 to-blue-500">
       <VisaForm/>

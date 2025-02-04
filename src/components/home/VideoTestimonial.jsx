@@ -8,13 +8,9 @@ const VideoTestimonials = () => {
   const scrollContainerRef = useRef(null);
 
   const testimonials = [
-    { id: 1, videoUrl: "/videos/reels1.mp4", description: "Client 1" },
-    { id: 2, videoUrl: "/videos/reels1.mp4", description: "Client 2" },
-    { id: 3, videoUrl: "/videos/reels1.mp4", description: "Client 3" },
-    { id: 4, videoUrl: "/videos/reels1.mp4", description: "Client 4" },
-    { id: 5, videoUrl: "/videos/reels1.mp4", description: "Client 5" },
-    { id: 6, videoUrl: "/videos/reels1.mp4", description: "Client 6" },
-    { id: 7, videoUrl: "/videos/reels1.mp4", description: "Client 7" },
+    { id: 1, videoUrl: "/videos/vid1.mp4", description: "Client 1" },
+    { id: 2, videoUrl: "/videos/vid2.mov", description: "Client 2" },
+   
   ];
 
   const handleVideoClick = (videoUrl) => {
