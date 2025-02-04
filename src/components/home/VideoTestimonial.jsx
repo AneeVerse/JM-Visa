@@ -8,8 +8,8 @@ const VideoTestimonials = () => {
   const scrollContainerRef = useRef(null);
 
   const testimonials = [
-    { id: 1, videoUrl: "/videos/vid1.mp4", description: "Client 1" },
-    { id: 2, videoUrl: "/videos/vid2.mov", description: "Client 2" },
+    { id: 1, videoUrl: "/videos/vid1.mp4", description: "" },
+    { id: 2, videoUrl: "/videos/vid2.mov", description: "" },
    
   ];
 
