@@ -70,7 +70,7 @@ const VideoTestimonials = () => {
               WebkitOverflowScrolling: "touch",
             }}
             className={`relative flex gap-6 ${
-              testimonials.length === 1 ? "justify-center" : ""
+              testimonials.length === 2 ? " justify-start sm:justify-center " : ""
             } overflow-x-auto scroll-smooth pb-4`}
           >
             {testimonials.map((testimonial) => (
