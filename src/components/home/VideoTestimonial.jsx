@@ -83,9 +83,9 @@ const MediaTestimonials = () => {
                     className="w-full h-full object-cover"
                   />
                 )}
-                <div className="absolute bottom-0 w-full bg-gradient-to-t from-black/70 to-transparent text-white p-4 text-sm sm:text-base font-medium">
+                {/* <div className="absolute bottom-0 w-full bg-gradient-to-t from-black/70 to-transparent text-white p-4 text-sm sm:text-base font-medium">
                   {testimonial.description}
-                </div>
+                </div> */}
               </div>
             ))}
           </div>
