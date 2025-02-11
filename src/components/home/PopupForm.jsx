@@ -111,6 +111,7 @@ const PopupForm = () => {
                   <input
                     type="text"
                     name="name"
+                    placeholder="John Doe"
                     value={formData.name}
                     onChange={handleChange}
                     className="mt-1 w-full p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500"
@@ -123,6 +124,7 @@ const PopupForm = () => {
                   <input
                     type="email"
                     name="email"
+                    placeholder="abhi@aneeverse.com"
                     value={formData.email}
                     onChange={handleChange}
                     className="mt-1 w-full p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500"
@@ -135,6 +137,7 @@ const PopupForm = () => {
                   <input
                     type="text"
                     name="phone"
+                    placeholder="1234567890"
                     value={formData.phone}
                     onChange={handleChange}
                     className="mt-1 w-full p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500"
