@@ -19,6 +19,55 @@ const MediaTestimonials = () => {
     { id: 7, type: "image", mediaUrl: "/images/testimonials/5.png", description: "Client Review 6" },
     { id: 9, type: "image", mediaUrl: "/images/testimonials/7.png", description: "Client Review 7" },
     { id: 10, type: "image", mediaUrl: "/images/testimonials/client-with-certificate.jpg", description: "Client Review 8" },
+    {
+      id: 11,
+      type: "image",
+      mediaUrl: "/images/testimonials/client-1.jpg",
+      description: "Client Review 9"
+    },
+    {
+      id: 12,
+      type: "image",
+      mediaUrl: "/images/testimonials/client-2.jpg",
+      description: "Client Review 10"
+    },
+    {
+      id: 13,
+      type: "image",
+      mediaUrl: "/images/testimonials/client-3.jpg",
+      description: "Client Review 11"
+    },
+    {
+      id: 14,
+      type: "image",
+      mediaUrl: "/images/testimonials/client-4.jpg",
+      description: "Client Review 12"
+    },
+    {
+      id: 15,
+      type: "image",
+      mediaUrl: "/images/testimonials/client-5.jpg",
+      description: "Client Review 13"
+    },
+    {
+      id: 16,
+      type: "image",
+      mediaUrl: "/images/testimonials/client-6.jpg",
+      description: "Client Review 14"
+    },
+    {
+      id: 17,
+      type: "image",
+      mediaUrl: "/images/testimonials/client-7.jpg",
+      description: "Client Review 15"
+    },
+    {
+      id: 18,
+      type: "image",
+      mediaUrl: "/images/testimonials/client-8.jpg",
+      description: "Client Review 16"
+    },
+  
   ];
 
   // Reset scroll position when media changes
