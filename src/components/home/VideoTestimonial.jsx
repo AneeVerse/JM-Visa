@@ -1,11 +1,12 @@
 "use client";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 
 const MediaTestimonials = () => {
-  const [selectedMedia, setSelectedMedia] = useState(null);
-  const scrollContainerRef = useRef(null);
+  const [selectedIndex, setSelectedIndex] = useState(null); // Track selected media index
+  const scrollContainerRef = useRef(null); // Ref for the carousel container
+  const mediaContainerRef = useRef(null); // Ref for the popup media container
 
   const testimonials = [
     { id: 1, type: "video", mediaUrl: "/videos/vid1.mp4", description: "Client Testimonial 1" },
@@ -20,14 +21,14 @@ const MediaTestimonials = () => {
     { id: 10, type: "image", mediaUrl: "/images/testimonials/client-with-certificate.jpg", description: "Client Review 8" },
   ];
 
-  const handleMediaClick = (mediaUrl) => {
-    setSelectedMedia(mediaUrl);
-  };
+  // Reset scroll position when media changes
+  useEffect(() => {
+    if (mediaContainerRef.current && selectedIndex !== null) {
+      mediaContainerRef.current.scrollTo(0, 0);
+    }
+  }, [selectedIndex]);
 
-  const closePopup = () => {
-    setSelectedMedia(null);
-  };
-
+  // Handle carousel scroll
   const scroll = (direction) => {
     const container = scrollContainerRef.current;
     if (container) {
@@ -50,6 +51,7 @@ const MediaTestimonials = () => {
     <section className="relative pb-16">
       <div className="container mx-auto px-5 sm:px-6 lg:px-12">
         <div className="relative">
+          {/* Left scroll button */}
           <button
             onClick={() => scroll("left")}
             className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-black/50 text-white h-10 w-10 rounded-full hidden sm:flex items-center justify-center shadow-lg z-10"
@@ -57,16 +59,17 @@ const MediaTestimonials = () => {
             <FaAngleLeft size={20} className="text-white self-center" />
           </button>
 
+          {/* Carousel container */}
           <div
             ref={scrollContainerRef}
             style={{ scrollbarWidth: "none", msOverflowStyle: "none", WebkitOverflowScrolling: "touch" }}
             className="relative flex gap-6 overflow-x-auto scroll-smooth pb-4"
           >
-            {testimonials.map((testimonial) => (
+            {testimonials.map((testimonial, index) => (
               <div
                 key={testimonial.id}
                 className="relative min-w-[220px] sm:min-w-[220px] h-[340px] hover:shadow-md rounded-lg overflow-hidden shadow-md transition-transform cursor-pointer"
-                onClick={() => handleMediaClick(testimonial.mediaUrl)}
+                onClick={() => setSelectedIndex(index)}
               >
                 {testimonial.type === "video" ? (
                   <video
@@ -84,13 +87,11 @@ const MediaTestimonials = () => {
                     className="w-full h-full object-cover"
                   />
                 )}
-                {/* <div className="absolute bottom-0 w-full bg-gradient-to-t from-black/70 to-transparent text-white p-4 text-sm sm:text-base font-medium">
-                  {testimonial.description}
-                </div> */}
               </div>
             ))}
           </div>
 
+          {/* Right scroll button */}
           <button
             onClick={() => scroll("right")}
             className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-black/50 text-white h-10 w-10 rounded-full hidden sm:flex items-center justify-center shadow-lg z-10"
@@ -100,29 +101,56 @@ const MediaTestimonials = () => {
         </div>
       </div>
 
-      {selectedMedia && (
-        <div className="fixed top-0 bottom-0 w-full h-full bg-black/90 z-50 flex p-2 justify-center ">
-          <div className="relative w-full max-w-3xl">
+      {/* Popup for selected media */}
+      {selectedIndex !== null && (
+        <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
+          <div className="relative w-full h-full flex items-center justify-center">
+            {/* Close button */}
             <button
-              className="absolute top-4 right-4 text-white text-2xl z-50 bg-black/50 p-2 rounded-full"
-              onClick={closePopup}
+              className="absolute top-4 right-4 text-white z-50 bg-black/50 p-2 rounded-full"
+              onClick={() => setSelectedIndex(null)}
             >
-              <IoClose className="w-5 h-5" />
+              <IoClose className="w-6 h-6" />
             </button>
-            {selectedMedia.endsWith(".mp4") || selectedMedia.endsWith(".mov") ? (
-              <video
-                src={selectedMedia}
-                controls
-                autoPlay
-                className="w-full h-full rounded-lg shadow-lg"
-              ></video>
-            ) : (
-              <img
-                src={selectedMedia}
-                alt="Selected Media"
-                className="w-full h-full object-cover rounded-lg shadow-lg"
-              />
-            )}
+
+            {/* Left navigation button */}
+            <button
+              onClick={() => setSelectedIndex((prev) => Math.max(prev - 1, 0))}
+              disabled={selectedIndex === 0}
+              className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white h-10 w-10 rounded-full flex items-center justify-center shadow-lg z-10 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <FaAngleLeft size={20} />
+            </button>
+
+            {/* Right navigation button */}
+            <button
+              onClick={() => setSelectedIndex((prev) => Math.min(prev + 1, testimonials.length - 1))}
+              disabled={selectedIndex === testimonials.length - 1}
+              className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white h-10 w-10 rounded-full flex items-center justify-center shadow-lg z-10 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <FaAngleRight size={20} />
+            </button>
+
+            {/* Media container */}
+            <div
+              ref={mediaContainerRef}
+              className="relative max-w-3xl w-full h-full max-h-[90vh]"
+            >
+              {testimonials[selectedIndex].type === "video" ? (
+                <video
+                  src={testimonials[selectedIndex].mediaUrl}
+                  controls
+                  autoPlay
+                  className="w-full h-full object-contain"
+                />
+              ) : (
+                <img
+                  src={testimonials[selectedIndex].mediaUrl}
+                  alt={testimonials[selectedIndex].description}
+                  className="w-full h-full max-w-fit mx-auto object-cover"
+                />
+              )}
+            </div>
           </div>
         </div>
       )}
