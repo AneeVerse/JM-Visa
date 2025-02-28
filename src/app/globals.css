@@ -7,7 +7,9 @@
   --foreground: #171717;
 }
 
-
+html{
+  scroll-behavior: smooth;
+}
 .article-blog {
   font-family: "Arial", sans-serif;
   line-height: 1.6;
