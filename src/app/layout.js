@@ -1,6 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import HeaderWithSidebar from "@/components/layout/Header";
+import Script from "next/script";
 
 import NextTopLoader from "nextjs-toploader";
 import FloatingActionButton from "@/components/layout/FloatingActionButton";
@@ -34,6 +35,22 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+
+{/* <!-- Google tag (gtag.js) --> */}
+<head>
+<Script async src="https://www.googletagmanager.com/gtag/js?id=G-FRJ05XSJ3S"></Script>
+<Script id="google-analytics">
+ {` window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FRJ05XSJ3S');`
+ }
+  </Script>
+
+</head>
+<Script async src="https://www.googletagmanager.com/gtag/js?id=G-FRJ05XSJ3S"></Script>
+
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
