@@ -78,26 +78,55 @@ export const POST = async (req) => {
 <body>
   <div class="container">
     <div class="header">
-      <h1>Consent for Visa Application Services</h1>
+      <h1>Terms and Conditions</h1>
     </div>
     <div class="content">
       <p>Dear Applicant,</p>
-      <p>Thank you for choosing JM Visa Services for your visa assistance. We value your trust and are committed to providing professional guidance throughout the visa application process. Kindly review the following consent statement carefully:</p>
+      <p>Thank you for choosing JM Visa Services for your visa assistance. We value your trust and are committed to providing professional guidance throughout the visa application process. Kindly review the following terms and conditions carefully:</p>
 
-      <p><strong>1. No Guarantee of Visa Approval:</strong><br>
-        JM Visa Services provides professional visa guidance and application assistance but does not guarantee visa approval. The decision is solely made by the respective embassy/consulate.
+      <p><strong>1. Introduction</strong><br>
+        By using JM Visa Services, you agree to our terms. We assist with visa applications but do not guarantee approval.
       </p>
 
-      <p><strong>2. Accuracy of Information:</strong><br>
-        It is your responsibility to ensure that all information and documents provided are accurate and complete. JM Visa Services is not liable for any visa rejection due to false, misleading, or incomplete information provided.
+      <p><strong>2. Services Provided</strong><br>
+        We process tourist, business, and student visas. The final decision is made by the immigration authorities. We also process every visa for which the client is eligible and in accordance with the rules.
       </p>
 
-      <p><strong>3. Limitation of Liability:</strong><br>
-        JM Visa Services will not be held responsible for any visa rejection, processing delays, or travel disruptions resulting from decisions made by the embassy/consulate.
+      <p><strong>3. Client Responsibilities</strong></p>
+      <ul>
+        <li>Clients must provide accurate documents and comply with visa rules.</li>
+        <li>We process and hand over your visa but are not responsible for your actions afterward.</li>
+        <li>We issue tourist visa, if you do any illegal activities on this visa at any country, we are not responsible.</li>
+      </ul>
+
+      <p><strong>4. Fees and Payments</strong></p>
+      <ul>
+        <li>Service fees cover processing and consultation only; embassy fees are separate.</li>
+        <li>Our Service Fees are non-refundable once processing begins.</li>
+      </ul>
+
+      <p><strong>5. No Guarantee of Approval</strong><br>
+        The visa decision rests solely with the consulate/embassy, and we have no control or influence over their decision.
       </p>
 
-      <p><strong>4. Non-Refundable Payments:</strong><br>
-        All payments made to the embassy and JM Visa Services are strictly non-refundable, regardless of the outcome of the visa application.
+      <p><strong>6. Confidentiality</strong><br>
+        We protect your data but are not liable for breaches beyond our control.
+      </p>
+
+      <p><strong>7. Limitation of Liability</strong><br>
+        We are not responsible for delays, rejections, or policy changes by immigration authorities.
+      </p>
+
+      <p><strong>8. Refund Policy</strong><br>
+        No refunds are issued after submission, even if the visa is rejected.
+      </p>
+
+      <p><strong>9. Termination of Services</strong><br>
+        We may refuse service for false information, non-payment, or unethical conduct.
+      </p>
+
+      <p><strong>10. Governing Law</strong><br>
+        These terms are governed by the laws of our country.
       </p>
 
       <p><strong>Terms and Conditions:</strong></p>
@@ -114,19 +143,19 @@ export const POST = async (req) => {
         <li>Document exchange will occur via email only.</li>
         <li>Documents in regional languages must be duly translated into English.</li>
       </ul>
-          <p style="font-size: 1.1rem; color: #333333;">
-            <strong>By replying to this email with "I Agree," you confirm that you have read, understood, and accepted the above terms and conditions.</strong>
-          </p>
 
-          <div style="background-color: #f1f5f9; text-align: center; padding: 15px; font-size: 0.9rem; color: #555555;">
-            <p style="margin: 0;">This email was sent from JM Visa Services.</p>
-            <p style="margin: 0;">For assistance, you can contact us at:</p>
-            <p style="margin: 0;">Phone: +91 9321315524</p>
-            <p style="margin: 0;">Email: <a href="mailto:jayeshmore@jmvisaservices.com">jayeshmore@jmvisaservices.com</a></p>
-            <p style="margin: 0;">Website: <a href="http://www.jmvisaservices.com" target="_blank">www.jmvisaservices.com</a></p>
-          </div>
-        </div>
+      <p style="font-size: 1.1rem; color: #333333; margin-top: 20px;">
+        <strong>By replying to this email with "I Agree," you confirm that you have read, understood, and accepted the above terms and conditions.</strong>
+      </p>
 
+      <div style="background-color: #f1f5f9; text-align: center; padding: 15px; font-size: 0.9rem; color: #555555; margin-top: 30px;">
+        <p style="margin: 0;">For any questions regarding these Terms and Conditions, you can reach us at:</p>
+        <p style="margin: 5px 0;"><strong>Email:</strong> <a href="mailto:info@jmvisaservices.com">info@jmvisaservices.com</a></p>
+        <p style="margin: 5px 0;"><strong>Phone:</strong> <a href="tel:+919321315524">+91 9321315524</a> | <a href="tel:+918591070718">+91 8591070718</a></p>
+        <p style="margin: 5px 0;"><strong>Address:</strong> Shop No 11, City Light CHS, CBSE School, Plot No.25, near Terna Orchids The International School, Sector 1, Kopar Khairane, Navi Mumbai, Maharashtra 400709</p>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
     `;
