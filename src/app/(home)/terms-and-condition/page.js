@@ -27,39 +27,90 @@ const TermsAndConditions = () => {
           <section className="mb-8">
             <h2 className="text-2xl font-bold text-gray-800 mb-4">Dear Applicant,</h2>
             <p className="text-gray-600 leading-relaxed">
-              Thank you for choosing JM Visa Services for your visa assistance. We value your trust and are committed to providing professional guidance throughout the visa application process. Kindly review the following terms and conditions carefully:
+              Thank you for choosing JM Visa Services for your visa assistance. We value your trust and are committed to providing professional guidance throughout the visa application process. Kindly review the following consent statement carefully:
             </p>
           </section>
 
-          {/* No Guarantee of Visa Approval */}
+          {/* Introduction */}
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">1. No Guarantee of Visa Approval</h2>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">1. Introduction</h2>
             <p className="text-gray-600 leading-relaxed">
-              JM Visa Services provides professional visa guidance and application assistance but does not guarantee visa approval. The decision is solely made by the respective embassy/consulate.
+              By using JM Visa Services, you agree to our terms. We assist with visa applications but do not guarantee approval.
             </p>
           </section>
 
-          {/* Accuracy of Information */}
+          {/* Services Provided */}
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">2. Accuracy of Information</h2>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">2. Services Provided</h2>
             <p className="text-gray-600 leading-relaxed">
-              It is your responsibility to ensure that all information and documents provided are accurate and complete. JM Visa Services is not liable for any visa rejection due to false, misleading, or incomplete information provided.
+              We process tourist, business, and student visas. The final decision is made by the immigration authorities. We also process every visa for which the client is eligible and in accordance with the rules.
+            </p>
+          </section>
+
+          {/* Client Responsibilities */}
+          <section className="mb-8">
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">3. Client Responsibilities</h2>
+            <ul className="list-disc ml-4 text-gray-600 leading-relaxed space-y-2">
+              <li className="ml-1 [&>*]:ml-[-1.25rem]">Clients must provide accurate documents and comply with visa rules.</li>
+              <li className="ml-1 [&>*]:ml-[-1.25rem]">We process and hand over your visa but are not responsible for your actions afterward.</li>
+              <li className="ml-1 [&>*]:ml-[-1.25rem]">We issue tourist visa, if you do any illegal activities on this visa at any country, we are not responsible.</li>
+            </ul>
+          </section>
+
+          {/* Fees and Payments */}
+          <section className="mb-8">
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">4. Fees and Payments</h2>
+            <ul className="list-disc ml-4 text-gray-600 leading-relaxed space-y-2">
+              <li className="ml-1 [&>*]:ml-[-1.25rem]">Service fees cover processing and consultation only; embassy fees are separate.</li>
+              <li className="ml-1 [&>*]:ml-[-1.25rem]">Our Service Fees are non-refundable once processing begins.</li>
+            </ul>
+          </section>
+
+          {/* No Guarantee of Approval */}
+          <section className="mb-8">
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">5. No Guarantee of Approval</h2>
+            <p className="text-gray-600 leading-relaxed">
+              The visa decision rests solely with the consulate/embassy, and we have no control or influence over their decision.
+            </p>
+          </section>
+
+          {/* Confidentiality */}
+          <section className="mb-8">
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">6. Confidentiality</h2>
+            <p className="text-gray-600 leading-relaxed">
+              We protect your data but are not liable for breaches beyond our control.
             </p>
           </section>
 
           {/* Limitation of Liability */}
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">3. Limitation of Liability</h2>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">7. Limitation of Liability</h2>
             <p className="text-gray-600 leading-relaxed">
-              JM Visa Services will not be held responsible for any visa rejection, processing delays, or travel disruptions resulting from decisions made by the embassy/consulate.
+              We are not responsible for delays, rejections, or policy changes by immigration authorities.
             </p>
           </section>
 
-          {/* Non-Refundable Payments */}
+          {/* Refund Policy */}
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">4. Non-Refundable Payments</h2>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">8. Refund Policy</h2>
             <p className="text-gray-600 leading-relaxed">
-              All payments made to the embassy and JM Visa Services are strictly non-refundable, regardless of the outcome of the visa application.
+              No refunds are issued after submission, even if the visa is rejected.
+            </p>
+          </section>
+
+          {/* Termination of Services */}
+          <section className="mb-8">
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">9. Termination of Services</h2>
+            <p className="text-gray-600 leading-relaxed">
+              We may refuse service for false information, non-payment, or unethical conduct.
+            </p>
+          </section>
+
+          {/* Governing Law */}
+          <section className="mb-8">
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">10. Governing Law</h2>
+            <p className="text-gray-600 leading-relaxed">
+              These terms are governed by the laws of our country.
             </p>
           </section>
 
