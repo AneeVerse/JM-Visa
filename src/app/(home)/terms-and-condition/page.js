@@ -25,144 +25,111 @@ const TermsAndConditions = () => {
         <div className=" p-4 sm:p-8">
           {/* Introduction */}
           <section className="mb-8">
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">Dear Applicant,</h2>
+            <p className="text-gray-600 leading-relaxed">
+              Thank you for choosing JM Visa Services for your visa assistance. We value your trust and are committed to providing professional guidance throughout the visa application process. Kindly review the following consent statement carefully:
+            </p>
+          </section>
+
+          {/* Introduction */}
+          <section className="mb-8">
             <h2 className="text-2xl font-bold text-gray-800 mb-4">1. Introduction</h2>
             <p className="text-gray-600 leading-relaxed">
-              Welcome to JM Visa Services! By accessing or using our website and
-              services, you agree to comply with and be bound by these Terms and
-              Conditions. If you disagree with any part of these terms, you
-              should not use our services.
+              By using JM Visa Services, you agree to our terms. We assist with visa applications but do not guarantee approval.
             </p>
           </section>
 
-          {/* Eligibility */}
+          {/* Services Provided */}
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">
-              2. Eligibility
-            </h2>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">2. Services Provided</h2>
             <p className="text-gray-600 leading-relaxed">
-              You must be at least 18 years of age to use our services. By using
-              our services, you warrant that you meet this age requirement and
-              have the legal authority to enter into a binding agreement.
+              We process tourist, business, and student visas. The final decision is made by the immigration authorities. We also process every visa for which the client is eligible and in accordance with the rules.
             </p>
           </section>
 
-          {/* Services */}
+          {/* Client Responsibilities */}
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">3. Services</h2>
-            <p className="text-gray-600 leading-relaxed">
-              JM Visa Services offers visa consultancy and related services. Our services
-              include, but are not limited to, providing information, assisting
-              with documentation, and submitting applications. We do not have
-              control over the approval process conducted by government
-              authorities.
-            </p>
-          </section>
-
-          {/* User Responsibilities */}
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">
-              4. User Responsibilities
-            </h2>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">3. Client Responsibilities</h2>
             <ul className="list-disc list-inside text-gray-600 leading-relaxed">
-              <li>
-                Provide accurate and complete information required for visa
-                processing.
-              </li>
-              <li>
-                Comply with the laws and regulations of your destination
-                country.
-              </li>
-              <li>
-                Refrain from using our services for any illegal or unauthorized
-                purpose.
-              </li>
-              <li>
-                Promptly notify us of any changes to your information or
-                circumstances.
-              </li>
+              <li>Clients must provide accurate documents and comply with visa rules.</li>
+              <li>We process and hand over your visa but are not responsible for your actions afterward.</li>
+              <li>We issue tourist visa, if you do any illegal activities on this visa at any country, we are not responsible.</li>
             </ul>
           </section>
 
           {/* Fees and Payments */}
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">
-              5. Fees and Payments
-            </h2>
-            <p className="text-gray-600 leading-relaxed">
-              Our services are subject to applicable fees, which will be
-              communicated to you before proceeding. All payments must be made
-              in advance, and fees are non-refundable unless stated otherwise.
-            </p>
-          </section>
-
-          {/* Disclaimer of Liability */}
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">
-              6. Disclaimer of Liability
-            </h2>
-            <p className="text-gray-600 leading-relaxed">
-              JM Visa Services provides services based on the information you provide. We
-              are not liable for:
-            </p>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">4. Fees and Payments</h2>
             <ul className="list-disc list-inside text-gray-600 leading-relaxed">
-              <li>
-                Delays, rejections, or errors caused by government authorities.
-              </li>
-              <li>
-                Inaccurate information or incomplete documentation provided by
-                you.
-              </li>
-              <li>Third-party services or websites linked from our platform.</li>
+              <li>Service fees cover processing and consultation only; embassy fees are separate.</li>
+              <li>Our Service Fees are non-refundable once processing begins.</li>
             </ul>
           </section>
 
-          {/* Intellectual Property */}
+          {/* No Guarantee of Approval */}
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">
-              7. Intellectual Property
-            </h2>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">5. No Guarantee of Approval</h2>
             <p className="text-gray-600 leading-relaxed">
-              All content, including text, images, and logos, on our website is
-              the property of JM Visa Services. You may not reproduce, distribute, or
-              modify any part of our content without prior written consent.
+              The visa decision rests solely with the consulate/embassy, and we have no control or influence over their decision.
             </p>
           </section>
 
-          {/* Termination */}
+          {/* Confidentiality */}
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">
-              8. Termination
-            </h2>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">6. Confidentiality</h2>
             <p className="text-gray-600 leading-relaxed">
-              We reserve the right to terminate or suspend your access to our
-              services at any time, without prior notice, if you breach these
-              Terms and Conditions.
+              We protect your data but are not liable for breaches beyond our control.
+            </p>
+          </section>
+
+          {/* Limitation of Liability */}
+          <section className="mb-8">
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">7. Limitation of Liability</h2>
+            <p className="text-gray-600 leading-relaxed">
+              We are not responsible for delays, rejections, or policy changes by immigration authorities.
+            </p>
+          </section>
+
+          {/* Refund Policy */}
+          <section className="mb-8">
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">8. Refund Policy</h2>
+            <p className="text-gray-600 leading-relaxed">
+              No refunds are issued after submission, even if the visa is rejected.
+            </p>
+          </section>
+
+          {/* Termination of Services */}
+          <section className="mb-8">
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">9. Termination of Services</h2>
+            <p className="text-gray-600 leading-relaxed">
+              We may refuse service for false information, non-payment, or unethical conduct.
             </p>
           </section>
 
           {/* Governing Law */}
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">
-              9. Governing Law
-            </h2>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">10. Governing Law</h2>
             <p className="text-gray-600 leading-relaxed">
-              These Terms and Conditions are governed by and construed in
-              accordance with the laws of [Your Country/State]. Any disputes
-              arising from these terms will be resolved in the courts of [Your
-              Jurisdiction].
+              These terms are governed by the laws of our country.
             </p>
           </section>
 
-          {/* Changes to Terms */}
+          {/* Additional Terms and Conditions */}
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">
-              10. Changes to Terms
-            </h2>
-            <p className="text-gray-600 leading-relaxed">
-              JM Visa Services reserves the right to modify these Terms and Conditions at
-              any time. Updates will be posted on our website, and continued use
-              of our services constitutes acceptance of the updated terms.
-            </p>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">Additional Terms and Conditions:</h2>
+            <ul className="list-disc ml-4 text-gray-600 leading-relaxed space-y-2">
+              <li className="ml-1 [&>*]:ml-[-1.25rem]">This is a basic document list; the Embassy reserves the right to request additional documents after submission. These must be provided for further processing.</li>
+              <li className="ml-1 [&>*]:ml-[-1.25rem]">Confirmed air tickets and hotel bookings are not mandatory for the visa process.</li>
+              <li className="ml-1 [&>*]:ml-[-1.25rem]">JM Visa Services is not responsible for the cost of confirmed air tickets and hotel bookings purchased before or during the visa process and decision.</li>
+              <li className="ml-1 [&>*]:ml-[-1.25rem]">We cannot influence visa decisions or processing times in any manner.</li>
+              <li className="ml-1 [&>*]:ml-[-1.25rem]">Visa fees are non-refundable once paid to the authorities under any circumstances.</li>
+              <li className="ml-1 [&>*]:ml-[-1.25rem]">JM Visa Services charges and air ticket blocking charges are non-refundable once the application is submitted, regardless of the circumstances.</li>
+              <li className="ml-1 [&>*]:ml-[-1.25rem]">We do not have any influence over visa processing and decision-making processes.</li>
+              <li className="ml-1 [&>*]:ml-[-1.25rem]">We cannot expedite the visa process once an application is submitted.</li>
+              <li className="ml-1 [&>*]:ml-[-1.25rem]">All communications will be conducted via our company landline and email address only.</li>
+              <li className="ml-1 [&>*]:ml-[-1.25rem]">Document exchange will occur via email only.</li>
+              <li className="ml-1 [&>*]:ml-[-1.25rem]">Documents in regional languages must be duly translated into English.</li>
+            </ul>
           </section>
 
           {/* Contact Information */}
