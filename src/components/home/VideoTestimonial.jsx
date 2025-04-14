@@ -18,6 +18,7 @@ const MediaTestimonials = () => {
     { id: 4, type: "image", mediaUrl: "/images/testimonials/4.png", description: "Client Review 5" },
     { id: 7, type: "image", mediaUrl: "/images/testimonials/5.png", description: "Client Review 6" },
     { id: 9, type: "image", mediaUrl: "/images/testimonials/7.png", description: "Client Review 7" },
+    { id: 10, type: "image", mediaUrl: "/images/testimonials/8.JPG", description: "Client Review 8" },
     { id: 10, type: "image", mediaUrl: "/images/testimonials/client-with-certificate.jpg", description: "Client Review 8" },
     {
       id: 11,
