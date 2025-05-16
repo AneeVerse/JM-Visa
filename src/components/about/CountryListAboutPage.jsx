@@ -1,32 +1,68 @@
 "use client";
 import Link from "next/link";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { MdFormatListBulleted } from "react-icons/md";
 
 const CountryListAboutPage = () => {
   const scrollContainerRef = useRef(null);
 
-  // Enhanced Smooth Scroll Function
+  // Improved Smooth Scroll Function with Dynamic Width
   const scroll = (direction) => {
     const container = scrollContainerRef.current;
     if (container) {
-      const scrollDistance = 300; // Total distance to scroll
-      const step = 10; // Smaller step size for smoother scrolling
-      let remainingDistance = scrollDistance;
-
-      const scrollStep = () => {
-        if (remainingDistance <= 0) return; // Stop when the distance is covered
-        const stepDistance = Math.min(step, remainingDistance);
-        container.scrollLeft += direction === "left" ? -stepDistance : stepDistance;
-        remainingDistance -= stepDistance;
-        requestAnimationFrame(scrollStep); // Smoothly transition frame by frame
-      };
-
-      scrollStep();
+      // Get the first card to calculate its width dynamically
+      const cards = container.querySelectorAll('a');
+      if (cards.length === 0) return;
+      
+      // Calculate actual card width including margin/gap
+      const cardRect = cards[0].getBoundingClientRect();
+      const cardWidth = cardRect.width;
+      const containerWidth = container.clientWidth;
+      
+      // Scroll by one full card width for smoother experience
+      const scrollAmount = direction === "left" ? -cardWidth : cardWidth;
+      
+      container.scrollBy({
+        left: scrollAmount,
+        behavior: "smooth"
+      });
     }
   };
-
+  
+  // Add touch scroll support
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+    
+    let startX, startScrollLeft;
+    
+    const touchStart = (e) => {
+      startX = e.touches[0].pageX;
+      startScrollLeft = container.scrollLeft;
+    };
+    
+    const touchMove = (e) => {
+      if (!startX) return;
+      const x = e.touches[0].pageX;
+      const distance = startX - x;
+      container.scrollLeft = startScrollLeft + distance;
+    };
+    
+    const touchEnd = () => {
+      startX = null;
+    };
+    
+    container.addEventListener('touchstart', touchStart);
+    container.addEventListener('touchmove', touchMove);
+    container.addEventListener('touchend', touchEnd);
+    
+    return () => {
+      container.removeEventListener('touchstart', touchStart);
+      container.removeEventListener('touchmove', touchMove);
+      container.removeEventListener('touchend', touchEnd);
+    };
+  }, []);
 
   const countries = [
     {
@@ -152,7 +188,7 @@ const CountryListAboutPage = () => {
           {/* Left Scroll Button */}
           <button
             onClick={() => scroll("left")}
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white h-[40px] w-[40px] rounded-full hidden sm:flex items-center justify-center shadow-lg z-10"
+            className="absolute left-2 md:left-0 top-1/2 transform -translate-y-1/2 bg-blue-500 hover:bg-blue-600 text-white h-[40px] w-[40px] rounded-full flex items-center justify-center shadow-lg z-10 transition-all duration-300"
           >
             <FaAngleLeft size={20} className="text-white self-center" />
           </button>
@@ -160,10 +196,11 @@ const CountryListAboutPage = () => {
           {/* Horizontal Scroll Container */}
           <div
             ref={scrollContainerRef}
-            className="flex overflow-x-auto scroll-smooth gap-6 pb-4"
+            className="flex overflow-x-auto scroll-smooth gap-6 pb-4 py-2"
             style={{
               scrollbarWidth: "none", // Hide scrollbar in Firefox
               msOverflowStyle: "none", // Hide scrollbar in IE/Edge
+              WebkitOverflowScrolling: "touch", // Smooth scrolling on iOS
             }}
           >
             {countries.map((country, index) => (
@@ -198,7 +235,7 @@ const CountryListAboutPage = () => {
           {/* Right Scroll Button */}
           <button
             onClick={() => scroll("right")}
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white h-[40px] w-[40px] rounded-full hidden sm:flex items-center justify-center shadow-lg z-10"
+            className="absolute right-2 md:right-0 top-1/2 transform -translate-y-1/2 bg-blue-500 hover:bg-blue-600 text-white h-[40px] w-[40px] rounded-full flex items-center justify-center shadow-lg z-10 transition-all duration-300"
           >
             <FaAngleRight size={20} className="text-white self-center" />
           </button>

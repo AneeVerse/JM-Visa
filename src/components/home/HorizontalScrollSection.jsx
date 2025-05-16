@@ -7,11 +7,20 @@ import { MdFormatListBulleted } from "react-icons/md";
 const HorizontalScrollSection = () => {
   const scrollContainerRef = useRef(null);
 
-  // Improved Smooth Scroll Function
+  // Improved Smooth Scroll Function with Dynamic Width
   const scroll = (direction) => {
     const container = scrollContainerRef.current;
     if (container) {
-      const cardWidth = 300; // Approximate width of a card including margin
+      // Get the first card to calculate its width dynamically
+      const cards = container.querySelectorAll('a');
+      if (cards.length === 0) return;
+      
+      // Calculate actual card width including margin/gap
+      const cardRect = cards[0].getBoundingClientRect();
+      const cardWidth = cardRect.width;
+      const containerWidth = container.clientWidth;
+      
+      // Scroll by approximately 1 card width, but make sure we don't scroll too much
       const scrollAmount = direction === "left" ? -cardWidth : cardWidth;
       
       container.scrollBy({
