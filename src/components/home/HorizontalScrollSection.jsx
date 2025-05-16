@@ -7,24 +7,17 @@ import { MdFormatListBulleted } from "react-icons/md";
 const HorizontalScrollSection = () => {
   const scrollContainerRef = useRef(null);
 
-  // Enhanced Smooth Scroll Function
+  // Improved Smooth Scroll Function
   const scroll = (direction) => {
     const container = scrollContainerRef.current;
     if (container) {
-      const scrollDistance = 300; // Total distance to scroll
-      const step = 10; // Smaller step size for smoother scrolling
-      let remainingDistance = scrollDistance;
-
-      const scrollStep = () => {
-        if (remainingDistance <= 0) return; // Stop when the distance is covered
-        const stepDistance = Math.min(step, remainingDistance);
-        container.scrollLeft +=
-          direction === "left" ? -stepDistance : stepDistance;
-        remainingDistance -= stepDistance;
-        requestAnimationFrame(scrollStep); // Smoothly transition frame by frame
-      };
-
-      scrollStep();
+      const cardWidth = 300; // Approximate width of a card including margin
+      const scrollAmount = direction === "left" ? -cardWidth : cardWidth;
+      
+      container.scrollBy({
+        left: scrollAmount,
+        behavior: "smooth"
+      });
     }
   };
 

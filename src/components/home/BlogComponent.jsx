@@ -32,23 +32,17 @@ const BlogComponent = () => {
     fetchBlogs();
   }, []);
 
-  // Enhanced Scroll Function
+  // Improved Smooth Scroll Function
   const scroll = (direction) => {
     const container = scrollContainerRef.current;
     if (container) {
-      const scrollDistance = 300; // Total distance to scroll
-      const step = 10; // Smaller step for smoother transition
-      let remainingDistance = scrollDistance;
-
-      const scrollStep = () => {
-        if (remainingDistance <= 0) return; // Stop scrolling when distance is covered
-        const stepDistance = Math.min(step, remainingDistance);
-        container.scrollLeft += direction === "left" ? -stepDistance : stepDistance;
-        remainingDistance -= stepDistance;
-        requestAnimationFrame(scrollStep); // Smoothly transition frame by frame
-      };
-
-      scrollStep();
+      const cardWidth = 300; // Approximate width of a card including margin
+      const scrollAmount = direction === "left" ? -cardWidth : cardWidth;
+      
+      container.scrollBy({
+        left: scrollAmount,
+        behavior: "smooth"
+      });
     }
   };
 

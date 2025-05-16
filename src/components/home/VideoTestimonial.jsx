@@ -78,22 +78,17 @@ const MediaTestimonials = () => {
     }
   }, [selectedIndex]);
 
-  // Handle carousel scroll
+  // Improved Smooth Scroll Function
   const scroll = (direction) => {
     const container = scrollContainerRef.current;
     if (container) {
-      const scrollDistance = 300;
-      const step = 10;
-      let remainingDistance = scrollDistance;
-
-      const scrollStep = () => {
-        if (remainingDistance <= 0) return;
-        const stepDistance = Math.min(step, remainingDistance);
-        container.scrollLeft += direction === "left" ? -stepDistance : stepDistance;
-        remainingDistance -= stepDistance;
-        requestAnimationFrame(scrollStep);
-      };
-      scrollStep();
+      const cardWidth = 250; // Approximate width of a card including margin
+      const scrollAmount = direction === "left" ? -cardWidth : cardWidth;
+      
+      container.scrollBy({
+        left: scrollAmount,
+        behavior: "smooth"
+      });
     }
   };
 
