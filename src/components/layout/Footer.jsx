@@ -191,7 +191,7 @@ const Footer = () => {
           <div className="mt-3 sm:mt-1 md:mt-0">
             Design & Managed by{" "}
             <Link
-              href={"https://aneeverse.com/"}
+              href={"https://www.aneeverse.com/"}
               target="_blank"
               className="hover:underline inline-flex flex-row items-center gap-2 min-h-fit"
             >
