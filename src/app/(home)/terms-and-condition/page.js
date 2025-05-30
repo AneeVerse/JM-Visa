@@ -1,6 +1,6 @@
 "use client";
 
-import TermsAndConditionsPopup from "../../components/TandC/TermsAndConditionsPopup";
+import TermsAndConditionsPopup from "../../../components/TandC/TermsAndConditionsPopup";
 import React from "react";
 
 const TermsAndConditions = () => {

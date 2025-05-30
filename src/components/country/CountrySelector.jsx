@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import CountryData from "@/data/CountryData";
+import CountryData from "../../data/CountryData";
 import Link from "next/link";
 
 const CountrySelector = () => {

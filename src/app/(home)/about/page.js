@@ -3,9 +3,9 @@ import React from "react";
 import { motion } from "framer-motion";
 import { AiOutlineSolution, AiOutlineUser } from "react-icons/ai";
 import { FiPhoneCall } from "react-icons/fi";
-import FeedbackReviewComponent from "../../components/home/FeedbackReviewComponent";
-import VideoTestimonials from "../../components/home/VideoTestimonial";
-import OurTeam from "../../components/about/OurTeam";
+import FeedbackReviewComponent from "../../../components/home/FeedbackReviewComponent";
+import VideoTestimonials from "../../../components/home/VideoTestimonial";
+import OurTeam from "../../../components/about/OurTeam";
 import Link from "next/link";
 
 const AboutUsPage = () => {
@@ -90,7 +90,7 @@ const AboutUsPage = () => {
             </h3>
             <p className="text-gray-600 text-sm">
               Our team of dedicated professionals ensures a hassle-free visa
-              experience for every client. With decades of expertise, we've
+              experience for every client. With decades of expertise, we&apos;ve
               helped individuals achieve their travel and relocation dreams.
             </p>
           </div>

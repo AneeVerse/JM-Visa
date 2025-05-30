@@ -4,9 +4,9 @@ import { useParams, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { BiMessageDetail } from "react-icons/bi";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
-import services from "../../../data/ServicesData";
-import CountryListAboutPage from "../../../components/about/CountryListAboutPage";
-import VisaServicesAboutPage from "../../../components/about/VisaServicesAboutPage";
+import services from "../../../../data/ServicesData";
+import CountryListAboutPage from "../../../../components/about/CountryListAboutPage";
+import VisaServicesAboutPage from "../../../../components/about/VisaServicesAboutPage";
 
 const ServiceDetails = () => {
   const params = useParams();
