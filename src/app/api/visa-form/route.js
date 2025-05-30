@@ -1,4 +1,5 @@
 import nodemailer from "nodemailer";
+import env from "../../../config/env";
 
 export const POST = async (req) => {
   try {
@@ -16,15 +17,15 @@ export const POST = async (req) => {
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: process.env.NEXT_PUBLIC_EMAIL_USER,
-        pass: process.env.NEXT_PUBLIC_EMAIL_APP_PASS,
+        user: env.NEXT_PUBLIC_EMAIL_USER,
+        pass: env.NEXT_PUBLIC_EMAIL_APP_PASS,
       },
     });
 
     // HTML Email Content
     const mailOptions = {
-      from: `"Visa Form Submission" <${process.env.NEXT_PUBLIC_EMAIL_USER}>`,
-      to: process.env.NEXT_PUBLIC_EMAIL_RECEIVER,
+      from: `"Visa Form Submission" <${env.NEXT_PUBLIC_EMAIL_USER}>`,
+      to: env.NEXT_PUBLIC_EMAIL_RECEIVER,
       subject: "New Visa Application Submission",
       html: `
         <div style="max-width: 600px; margin: 0 auto; font-family: Arial, sans-serif; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); border-radius: 8px; overflow: hidden;">
