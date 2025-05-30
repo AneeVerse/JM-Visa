@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useRouter, useParams } from "next/navigation";
-import CountryData from "@/data/CountryData";
+import CountryData from "../../../../data/CountryData";
 import { BiBuildingHouse, BiMessageDetail, BiSupport, BiWorld } from "react-icons/bi";
 import { AiOutlinePlus, AiOutlineMinus, AiOutlineFieldTime } from "react-icons/ai";
 import { AnimatePresence , motion} from "framer-motion";

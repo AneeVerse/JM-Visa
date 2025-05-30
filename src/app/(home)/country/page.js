@@ -1,4 +1,4 @@
-import CountrySelector from '@/components/country/CountrySelector'
+import CountrySelector from "../../components/country/CountrySelector"
 import React from 'react'
 
 const page = () => {

@@ -3,7 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FiArrowRight } from "react-icons/fi";
 import Link from "next/link";
-import services from "@/data/ServicesData";
+import services from "../../data/ServicesData";
 
 
 const ServicesPage = () => {

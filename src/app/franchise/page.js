@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { BiMessageDetail } from "react-icons/bi";
-import Footer from "@/components/layout/Footer";
+import Footer from "../../components/layout/Footer";
 
 const Franchise = () => {
     const [formData, setFormData] = useState({

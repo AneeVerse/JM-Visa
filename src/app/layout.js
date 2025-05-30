@@ -1,10 +1,10 @@
 import localFont from "next/font/local";
 import "./globals.css";
-import HeaderWithSidebar from "@/components/layout/Header";
+import Header from "../components/layout/Header";
 import Script from "next/script";
 
 import NextTopLoader from "nextjs-toploader";
-import FloatingActionButton from "@/components/layout/FloatingActionButton";
+import FloatingActionButton from "../components/layout/FloatingActionButton";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -63,7 +63,7 @@ export default function RootLayout({ children }) {
          speed={500}
          shadow="0 0 10px #2299DD,0 0 5px #2299DD"
          />
-        <HeaderWithSidebar/>
+        <Header/>
         {children}
         <FloatingActionButton/>
       </body>

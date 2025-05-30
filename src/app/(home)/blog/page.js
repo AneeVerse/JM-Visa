@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { getAllPosts } from "../../../sanity/lib/client";
+import { urlFor } from "../../../sanity/lib/client";
 
 const BlogPage = () => {
   const [blogs, setBlogs] = useState([]);
@@ -10,17 +12,8 @@ const BlogPage = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await fetch(
-          "https://app.jmvisaservices.com/api/blogs?populate=*&sort[0]=createdAt:desc"
-        );
-        const data = await response.json();
-        console.log("Fetched blogs:", data);
-
-        if (data?.data) {
-          setBlogs(data.data);
-        } else {
-          console.error("Invalid response structure:", data);
-        }
+        const posts = await getAllPosts();
+        setBlogs(posts);
       } catch (error) {
         console.error("Error fetching blogs:", error);
       } finally {
@@ -36,25 +29,25 @@ const BlogPage = () => {
       <div className="container mx-auto">
         {/* Header */}
         <motion.div
-        className="text-center"
-        initial="hidden"
-        animate="visible"
-        variants={{
-          hidden: { opacity: 0, y: 50 },
-          visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-        }}
-      >
-        <div className="text-center mb-8">
-          <div className="inline-block px-4 py-2 bg-blue-200/50 text-blue-600 font-medium rounded-full backdrop-blur-lg shadow-md">
-            📰 Explore Our Blogs
+          className="text-center"
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: { opacity: 0, y: 50 },
+            visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+          }}
+        >
+          <div className="text-center mb-8">
+            <div className="inline-block px-4 py-2 bg-blue-200/50 text-blue-600 font-medium rounded-full backdrop-blur-lg shadow-md">
+              📰 Explore Our Blogs
+            </div>
+            <h1 className="mt-4 text-3xl font-extrabold text-gray-800">
+              Stay Updated with <span className="text-blue-500">Insights</span>
+            </h1>
+            <p className="mt-2 text-lg text-gray-600">
+              Browse through our latest articles and updates tailored for you.
+            </p>
           </div>
-          <h1 className="mt-4 text-3xl font-extrabold text-gray-800">
-            Stay Updated with <span className="text-blue-500">Insights</span>
-          </h1>
-          <p className="mt-2 text-lg text-gray-600">
-            Browse through our latest articles and updates tailored for you.
-          </p>
-        </div>
         </motion.div>
 
         {/* Blog Grid */}
@@ -64,35 +57,50 @@ const BlogPage = () => {
           </div>
         ) : blogs.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {blogs.map((blog) => {
-              return (
-                <Link href={`/blog/${blog.slug}`} 
-                  key={blog.id}
-                  className="relative group bg-white/20 border border-white/30 backdrop-blur-md rounded-lg shadow-lg hover:shadow-xl transition-all cursor-pointer overflow-hidden"
-                >
-                  {/* Blog Image */}
+            {blogs.map((blog) => (
+              <Link 
+                href={`/blog/${blog.slug.current}`} 
+                key={blog._id}
+                className="relative group bg-white/20 border border-white/30 backdrop-blur-md rounded-lg shadow-lg hover:shadow-xl transition-all cursor-pointer overflow-hidden"
+              >
+                {/* Blog Image */}
+                {blog.mainImage && (
                   <img
-                    src={`https://app.jmvisaservices.com${blog.thumbnail.url}` || "/images/default-thumbnail.jpg"}
-                    alt={blog.title || "Blog"}
+                    src={urlFor(blog.mainImage).url()}
+                    alt={blog.title}
                     className="w-full h-48 object-cover group-hover:scale-105 transition-transform"
                   />
-                  {/* Blog Content */}
-                  <div className="p-4">
-                    <h3 className="text-lg line-clamp-2 font-semibold text-gray-800">
-                      {blog.title || "Untitled Blog"}
-                    </h3>
-                    {/* <p className="text-sm text-gray-600 mt-2 line-clamp-2">
-                      {blog.description || "No description available."}
-                    </p> */}
-                    <span
-                      className="mt-4 inline-block text-blue-500 font-medium hover:underline"
-                    >
+                )}
+                {/* Blog Content */}
+                <div className="p-4">
+                  <h3 className="text-lg line-clamp-2 font-semibold text-gray-800">
+                    {blog.title}
+                  </h3>
+                  {blog.excerpt && (
+                    <p className="text-sm text-gray-600 mt-2 line-clamp-2">
+                      {blog.excerpt}
+                    </p>
+                  )}
+                  <div className="mt-4 flex items-center justify-between">
+                    <span className="text-blue-500 font-medium hover:underline">
                       Read More ➔
                     </span>
                   </div>
-                </Link>
-              );
-            })}
+                  {blog.categories && blog.categories.length > 0 && (
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {blog.categories.map((category) => (
+                        <span
+                          key={category}
+                          className="px-2 py-1 bg-blue-100 text-blue-600 text-xs rounded-full"
+                        >
+                          {category}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </Link>
+            ))}
           </div>
         ) : (
           <p className="text-center text-gray-500">
