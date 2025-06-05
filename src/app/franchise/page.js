@@ -17,7 +17,7 @@ const Franchise = () => {
 
     const franchiseContent = {
         stats: [
-            { number: "50+", label: "Successful Franchises" },
+            { number: "3+", label: "Successful Franchises" },
             { number: "95%", label: "Success Rate" },
             { number: "24/7", label: "Support System" },
             { number: "5", label: "Continents Covered" },
