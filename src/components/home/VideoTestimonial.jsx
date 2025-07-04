@@ -11,7 +11,10 @@ const MediaTestimonials = () => {
   const testimonials = [
     { id: 1, type: "video", mediaUrl: "/videos/vid1.mp4", description: "Client Testimonial 1" },
     { id: 2, type: "video", mediaUrl: "/videos/vid2.mov", description: "Client Testimonial 2" },
+    { id: 3, type: "video", mediaUrl: "/videos/vid3.mP4", description: "Client Testimonial 3" },
     { id: 5, type: "image", mediaUrl: "/images/testimonials/3.png", description: "Client Review 1" },
+    { id: 11, type: "image", mediaUrl: "/images/testimonials/9.jpg", description: "Client Review 1" },
+    { id: 12, type: "image", mediaUrl: "/images/testimonials/10.jpg", description: "Client Review 1" },
     { id: 8, type: "image", mediaUrl: "/images/testimonials/6.png", description: "Client Review 2" },
     { id: 6, type: "image", mediaUrl: "/images/testimonials/2.png", description: "Client Review 3" },
     { id: 3, type: "image", mediaUrl: "/images/testimonials/1.png", description: "Client Review 4" },
