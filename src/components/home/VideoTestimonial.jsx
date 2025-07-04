@@ -11,7 +11,7 @@ const MediaTestimonials = () => {
   const testimonials = [
     { id: 1, type: "video", mediaUrl: "/videos/vid1.mp4", description: "Client Testimonial 1" },
     { id: 2, type: "video", mediaUrl: "/videos/vid2.mov", description: "Client Testimonial 2" },
-    { id: 3, type: "video", mediaUrl: "/videos/vid3.mP4", description: "Client Testimonial 3" },
+    { id: 3, type: "video", mediaUrl: "/videos/vid3.mp4", description: "Client Testimonial 3" },
     { id: 5, type: "image", mediaUrl: "/images/testimonials/3.png", description: "Client Review 1" },
     { id: 11, type: "image", mediaUrl: "/images/testimonials/9.jpg", description: "Client Review 1" },
     { id: 12, type: "image", mediaUrl: "/images/testimonials/10.jpg", description: "Client Review 1" },
@@ -22,7 +22,7 @@ const MediaTestimonials = () => {
     { id: 7, type: "image", mediaUrl: "/images/testimonials/5.png", description: "Client Review 6" },
     { id: 9, type: "image", mediaUrl: "/images/testimonials/7.png", description: "Client Review 7" },
     { id: 10, type: "image", mediaUrl: "/images/testimonials/8.JPG", description: "Client Review 8" },
-    { id: 10, type: "image", mediaUrl: "/images/testimonials/client-with-certificate.jpg", description: "Client Review 8" },
+    { id: 10, type: "image", mediaUrl: "/images/testimonials/client-with-certificate.jpg", description: "Client Review 8" }, 
     {
       id: 11,
       type: "image",
