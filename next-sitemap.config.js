@@ -50,57 +50,11 @@ module.exports = {
   generateIndexSitemap: false,
   exclude: ['/studio/*'],
   
-  // Transform function to add dynamic content
-  async transform(config, path) {
-    // Add blog posts
-    if (path === '/blog') {
-      const posts = await fetchBlogPosts();
-      const blogUrls = posts.map(post => ({
-        loc: `/blog/${post.slug}`,
-        lastmod: post._updatedAt || new Date().toISOString(),
-        changefreq: 'weekly',
-        priority: 0.7,
-      }));
-      
-      // Return the main blog page plus all individual blog posts
-      return [
-        {
-          loc: path,
-          lastmod: new Date().toISOString(),
-          changefreq: 'weekly',
-          priority: 0.8,
-        },
-        ...blogUrls
-      ];
-    }
-    
-    // Add categories
-    if (path === '/blog/categories') {
-      const categories = await fetchCategories();
-      const categoryUrls = categories.map(category => ({
-        loc: `/blog/category/${category.slug}`,
-        lastmod: category._updatedAt || new Date().toISOString(),
-        changefreq: 'monthly',
-        priority: 0.6,
-      }));
-      
-      return categoryUrls;
-    }
-    
-    // Default transformation for other pages
-    return {
-      loc: path,
-      lastmod: new Date().toISOString(),
-      changefreq: 'monthly',
-      priority: 0.8,
-    };
-  },
-  
-  // Additional paths to include
+  // This is the key - we'll add all dynamic content here
   additionalPaths: async (config) => {
     const paths = [];
     
-    // Add blog posts
+    // Add all blog posts
     const posts = await fetchBlogPosts();
     posts.forEach(post => {
       paths.push({
@@ -111,7 +65,7 @@ module.exports = {
       });
     });
     
-    // Add categories
+    // Add all categories
     const categories = await fetchCategories();
     categories.forEach(category => {
       paths.push({
@@ -122,6 +76,57 @@ module.exports = {
       });
     });
     
+    // Add all static service pages
+    const servicePages = [
+      '/services/study-abroad',
+      '/services/work-visa',
+      '/services/tourist-visa',
+      '/services/business-visa',
+      '/services/residence-visa',
+      '/services/overseas-education',
+      '/services/dummy-ticket-booking',
+      '/services/english-proficiency-test',
+      '/services/foreign-exchange',
+      '/services/passport-services',
+      '/services/us-interview-dates',
+    ];
+    
+    servicePages.forEach(service => {
+      paths.push({
+        loc: service,
+        lastmod: new Date().toISOString(),
+        changefreq: 'monthly',
+        priority: 0.8,
+      });
+    });
+    
+    // Add country pages
+    const countryPages = [
+      '/country/Oceania/Australia',
+      '/country/Oceania/New%20Zealand',
+      '/country/NorthAmerica/United%20States',
+      '/country/NorthAmerica/Canada',
+      '/country/Europe/United%20Kingdom',
+      '/country/Europe/Ireland',
+      '/country/Europe/Austria',
+      '/country/Europe/Belgium',
+      '/country/Europe/Denmark',
+      '/country/Europe/Finland',
+      '/country/Europe/France',
+      '/country/Europe/Germany',
+      '/country/Europe/Greece',
+    ];
+    
+    countryPages.forEach(country => {
+      paths.push({
+        loc: country,
+        lastmod: new Date().toISOString(),
+        changefreq: 'monthly',
+        priority: 0.8,
+      });
+    });
+    
+    console.log(`🚀 Added ${paths.length} total paths to sitemap`);
     return paths;
   },
 };
