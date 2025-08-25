@@ -2,74 +2,15 @@
 import React, { useState, useRef, useEffect } from "react";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
+import Link from "next/link";
+import { MdFormatListBulleted } from "react-icons/md";
+import testimonials from "./VideoTestimonialData";
 
 const MediaTestimonials = () => {
   const [selectedIndex, setSelectedIndex] = useState(null); // Track selected media index
+  const [viewAll, setViewAll] = useState(false); // Toggle for view all mode
   const scrollContainerRef = useRef(null); // Ref for the carousel container
   const mediaContainerRef = useRef(null); // Ref for the popup media container
-
-  const testimonials = [
-    { id: 1, type: "video", mediaUrl: "/videos/vid1.mp4", description: "Client Testimonial 1" },
-    { id: 2, type: "video", mediaUrl: "/videos/vid2.mov", description: "Client Testimonial 2" },
-    { id: 5, type: "image", mediaUrl: "/images/testimonials/3.png", description: "Client Review 1" },
-    { id: 8, type: "image", mediaUrl: "/images/testimonials/6.png", description: "Client Review 2" },
-    { id: 6, type: "image", mediaUrl: "/images/testimonials/2.png", description: "Client Review 3" },
-    { id: 3, type: "image", mediaUrl: "/images/testimonials/1.png", description: "Client Review 4" },
-    { id: 4, type: "image", mediaUrl: "/images/testimonials/4.png", description: "Client Review 5" },
-    { id: 7, type: "image", mediaUrl: "/images/testimonials/5.png", description: "Client Review 6" },
-    { id: 9, type: "image", mediaUrl: "/images/testimonials/7.png", description: "Client Review 7" },
-    { id: 10, type: "image", mediaUrl: "/images/testimonials/8.JPG", description: "Client Review 8" },
-    { id: 10, type: "image", mediaUrl: "/images/testimonials/client-with-certificate.jpg", description: "Client Review 8" },
-    {
-      id: 11,
-      type: "image",
-      mediaUrl: "/images/testimonials/client-1.jpg",
-      description: "Client Review 9"
-    },
-    {
-      id: 12,
-      type: "image",
-      mediaUrl: "/images/testimonials/client-2.jpg",
-      description: "Client Review 10"
-    },
-    {
-      id: 13,
-      type: "image",
-      mediaUrl: "/images/testimonials/client-3.jpg",
-      description: "Client Review 11"
-    },
-    {
-      id: 14,
-      type: "image",
-      mediaUrl: "/images/testimonials/client-4.jpg",
-      description: "Client Review 12"
-    },
-    {
-      id: 15,
-      type: "image",
-      mediaUrl: "/images/testimonials/client-5.jpg",
-      description: "Client Review 13"
-    },
-    {
-      id: 16,
-      type: "image",
-      mediaUrl: "/images/testimonials/client-6.jpg",
-      description: "Client Review 14"
-    },
-    {
-      id: 17,
-      type: "image",
-      mediaUrl: "/images/testimonials/client-7.jpg",
-      description: "Client Review 15"
-    },
-    {
-      id: 18,
-      type: "image",
-      mediaUrl: "/images/testimonials/client-8.jpg",
-      description: "Client Review 16"
-    },
-  
-  ];
 
   // Reset scroll position when media changes
   useEffect(() => {
@@ -95,25 +36,83 @@ const MediaTestimonials = () => {
   return (
     <section className="relative pb-16">
       <div className="container mx-auto px-5 sm:px-6 lg:px-12">
-        <div className="relative">
-          {/* Left scroll button */}
-          <button
-            onClick={() => scroll("left")}
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-black/50 text-white h-10 w-10 rounded-full hidden sm:flex items-center justify-center shadow-lg z-10"
-          >
-            <FaAngleLeft size={20} className="text-white self-center" />
-          </button>
-
-          {/* Carousel container */}
-          <div
-            ref={scrollContainerRef}
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none", WebkitOverflowScrolling: "touch" }}
-            className="relative flex gap-6 overflow-x-auto scroll-smooth pb-4"
-          >
+        {/* Heading and View All */}
+        <div className="flex items-center justify-between mb-6">
+          <h2 className="text-3xl font-bold text-gray-800">
+            Client <span className="text-blue-500">Testimonials</span>
+          </h2>
+          {!viewAll && (
+            <Link
+              href="/testimonials"
+              className="py-2 self-end text-blue-500 min-w-fit flex gap-1 items-center justify-center font-semibold"
+            >
+              <MdFormatListBulleted className="text-4" /> <span>View All</span>
+            </Link>
+          )}
+          {viewAll && (
+            <button
+              onClick={() => setViewAll(false)}
+              className="py-2 self-end text-blue-500 min-w-fit flex gap-1 items-center justify-center font-semibold"
+            >
+              <FaAngleLeft className="text-4" /> <span>Back to Carousel</span>
+            </button>
+          )}
+        </div>
+        {/* Carousel or Grid */}
+        {!viewAll ? (
+          <div className="relative">
+            {/* Left scroll button */}
+            <button
+              onClick={() => scroll("left")}
+              className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-black/50 text-white h-10 w-10 rounded-full hidden sm:flex items-center justify-center shadow-lg z-10"
+            >
+              <FaAngleLeft size={20} className="text-white self-center" />
+            </button>
+            {/* Carousel container */}
+            <div
+              ref={scrollContainerRef}
+              style={{ scrollbarWidth: "none", msOverflowStyle: "none", WebkitOverflowScrolling: "touch" }}
+              className="relative flex gap-6 overflow-x-auto scroll-smooth pb-4"
+            >
+              {testimonials.map((testimonial, index) => (
+                <div
+                  key={testimonial.id}
+                  className="relative min-w-[220px] sm:min-w-[220px] h-[340px] hover:shadow-md rounded-lg overflow-hidden shadow-md transition-transform cursor-pointer"
+                  onClick={() => setSelectedIndex(index)}
+                >
+                  {testimonial.type === "video" ? (
+                    <video
+                      src={testimonial.mediaUrl}
+                      muted
+                      loop
+                      autoPlay
+                      playsInline
+                      className="w-full h-full object-cover"
+                    ></video>
+                  ) : (
+                    <img
+                      src={testimonial.mediaUrl}
+                      alt={testimonial.description}
+                      className="w-full h-full object-cover"
+                    />
+                  )}
+                </div>
+              ))}
+            </div>
+            {/* Right scroll button */}
+            <button
+              onClick={() => scroll("right")}
+              className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-black/50 text-white h-10 w-10 rounded-full hidden sm:flex items-center justify-center shadow-lg z-10"
+            >
+              <FaAngleRight size={20} className="text-white self-center" />
+            </button>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {testimonials.map((testimonial, index) => (
               <div
                 key={testimonial.id}
-                className="relative min-w-[220px] sm:min-w-[220px] h-[340px] hover:shadow-md rounded-lg overflow-hidden shadow-md transition-transform cursor-pointer"
+                className="relative h-[340px] hover:shadow-md rounded-lg overflow-hidden shadow-md transition-transform cursor-pointer"
                 onClick={() => setSelectedIndex(index)}
               >
                 {testimonial.type === "video" ? (
@@ -135,17 +134,8 @@ const MediaTestimonials = () => {
               </div>
             ))}
           </div>
-
-          {/* Right scroll button */}
-          <button
-            onClick={() => scroll("right")}
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-black/50 text-white h-10 w-10 rounded-full hidden sm:flex items-center justify-center shadow-lg z-10"
-          >
-            <FaAngleRight size={20} className="text-white self-center" />
-          </button>
-        </div>
+        )}
       </div>
-
       {/* Popup for selected media */}
       {selectedIndex !== null && (
         <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-2">
@@ -157,7 +147,6 @@ const MediaTestimonials = () => {
             >
               <IoClose className="w-6 h-6" />
             </button>
-
             {/* Left navigation button */}
             <button
               onClick={() => setSelectedIndex((prev) => Math.max(prev - 1, 0))}
@@ -166,7 +155,6 @@ const MediaTestimonials = () => {
             >
               <FaAngleLeft size={20} />
             </button>
-
             {/* Right navigation button */}
             <button
               onClick={() => setSelectedIndex((prev) => Math.min(prev + 1, testimonials.length - 1))}
@@ -175,7 +163,6 @@ const MediaTestimonials = () => {
             >
               <FaAngleRight size={20} />
             </button>
-
             {/* Media container */}
             <div
               ref={mediaContainerRef}

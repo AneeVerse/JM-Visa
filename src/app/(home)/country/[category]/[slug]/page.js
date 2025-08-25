@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useRouter, useParams } from "next/navigation";
-import CountryData from "@/data/CountryData";
+import CountryData from "../../../../../data/CountryData";
 import { BiBuildingHouse, BiMessageDetail, BiSupport, BiWorld } from "react-icons/bi";
 import { AiOutlinePlus, AiOutlineMinus, AiOutlineFieldTime } from "react-icons/ai";
 import { AnimatePresence , motion} from "framer-motion";
@@ -95,7 +95,6 @@ const CountryDetails = () => {
     if (!category || !slug) return;
     console.log(category, slug);
 
-
     const foundCountry = CountryData[category]?.find(
       (c) =>
         c.name.toLowerCase().replace(" ", "") ===
@@ -107,7 +106,7 @@ const CountryDetails = () => {
     } else {
       setCountry(foundCountry);
     }
-  }, [params, router]);
+  }, [params, router, category, slug]);
 
   if (!country) {
     return (

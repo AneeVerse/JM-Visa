@@ -1,5 +1,5 @@
-import VisaForm from "@/components/home/VisaForm";
-import Footer from "@/components/layout/Footer";
+import VisaForm from "../../components/home/VisaForm";
+import Footer from "../../components/layout/Footer";
 import React from "react";
 
 const layout = ({ children }) => {

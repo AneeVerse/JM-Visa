@@ -3,32 +3,25 @@ import Link from "next/link";
 import React, { useState, useEffect, useRef } from "react";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { MdFormatListBulleted } from "react-icons/md";
+import { getAllPosts, urlFor } from "../../sanity/lib/client";
 
 const BlogComponent = () => {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const scrollContainerRef = useRef(null);
 
-  // Fetch Blogs from API
+  // Fetch Blogs from Sanity
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await fetch(
-          "https://app.jmvisaservices.com/api/blogs?populate=*&sort[0]=createdAt:desc"
-        );
-        const data = await response.json();
-        if (data?.data) {
-          setBlogs(data.data);
-        } else {
-          console.error("Invalid response structure:", data);
-        }
+        const posts = await getAllPosts();
+        setBlogs(posts);
       } catch (error) {
         console.error("Error fetching blogs:", error);
       } finally {
         setLoading(false);
       }
     };
-
     fetchBlogs();
   }, []);
 
@@ -100,22 +93,27 @@ const BlogComponent = () => {
             >
               {blogs.map((blog) => (
                 <Link
-                  href={`/blog/${blog.slug}`}
-                  key={blog.id}
+                  href={`/blog/${blog.slug.current}`}
+                  key={blog._id}
                   className="w-[280px] min-w-[280px] sm:w-[300px] sm:min-w-[300px] lg:w-[340px] lg:min-w-[340px] mb-3  bg-white flex flex-col gap-3 p-5 border  rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-all duration-300 cursor-pointer group"
                 >
                   {/* Blog Image */}
-                  <img
-                    src={
-                      `https://app.jmvisaservices.com${blog?.thumbnail?.url}` || "/images/default-thumbnail.jpg"
-                    }
-                    alt={blog?.attributes?.title || "Blog"}
-                    className="w-full h-48 object-cover rounded-xl  transition duration-300"
-                  />
+                  {blog.mainImage && (
+                    <img
+                      src={urlFor(blog.mainImage).url()}
+                      alt={blog.title}
+                      className="w-full h-48 object-cover rounded-xl  transition duration-300"
+                    />
+                  )}
                   {/* Blog Content */}
-                    <h3 className="text-xl line-clamp-2 font-semibold text-gray-800 ">
-                      {blog?.title || "Untitled Blog"}
-                    </h3>
+                  <h3 className="text-xl line-clamp-2 font-semibold text-gray-800 ">
+                    {blog.title}
+                  </h3>
+                  {blog.excerpt && (
+                    <p className="text-sm text-gray-600 mt-2 line-clamp-2">
+                      {blog.excerpt}
+                    </p>
+                  )}
                 </Link>
               ))}
             </div>

@@ -1,14 +1,14 @@
-import AboutUs from "@/components/home/AboutUs";
-import BlogComponent from "@/components/home/BlogComponent";
-import FeedbackReviewComponent from "@/components/home/FeedbackReviewComponent";
-import HeroSection from "@/components/home/Hero";
-import HorizontalScrollSection from "@/components/home/HorizontalScrollSection";
-import PopupForm from "@/components/home/PopupForm";
-import PromoSection from "@/components/home/PromoSection";
-import VideoTestimonial from "@/components/home/VideoTestimonial";
-import VisaCategories from "@/components/home/VisaCategories";
-import VisaForm from "@/components/home/VisaForm";
-import Footer from "@/components/layout/Footer";
+import AboutUs from "../components/home/AboutUs";
+import BlogComponent from "../components/home/BlogComponent";
+import FeedbackReviewComponent from "../components/home/FeedbackReviewComponent";
+import HeroSection from "../components/home/Hero";
+import HorizontalScrollSection from "../components/home/HorizontalScrollSection";
+import PopupForm from "../components/home/PopupForm";
+import PromoSection from "../components/home/PromoSection";
+import VideoTestimonial from "../components/home/VideoTestimonial";
+import VisaCategories from "../components/home/VisaCategories";
+import VisaForm from "../components/home/VisaForm";
+import Footer from "../components/layout/Footer";
 
 export default function Home() {
   return (
