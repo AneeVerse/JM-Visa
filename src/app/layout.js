@@ -17,8 +17,26 @@ const geistMono = localFont({
   weight: "100 900",
 });
 export const metadata = {
-  title: "JM Visa Services",
-  description: "JM Visa Services",
+  title: "JM Visa Services - Professional Visa & Immigration Services",
+  description: "JM Visa Services provides comprehensive visa and immigration services including study abroad, work visas, tourist visas, business visas, and more. Expert guidance for your international journey.",
+  keywords: "visa services, immigration, study abroad, work visa, tourist visa, business visa, overseas education",
+  authors: [{ name: "JM Visa Services" }],
+  creator: "JM Visa Services",
+  publisher: "JM Visa Services",
+  robots: "index, follow",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://www.jmvisaservices.com",
+    title: "JM Visa Services - Professional Visa & Immigration Services",
+    description: "Comprehensive visa and immigration services for study abroad, work visas, tourist visas, and more.",
+    siteName: "JM Visa Services",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "JM Visa Services - Professional Visa & Immigration Services",
+    description: "Comprehensive visa and immigration services for study abroad, work visas, tourist visas, and more.",
+  },
   // Add favicon icon and device-specific icons
   icons: {
     icon: "/favicon.ico", // Default favicon
@@ -29,6 +47,7 @@ export const metadata = {
     ],
   },
   manifest: "/site.webmanifest", // Optional: Link to your manifest.json file
+  metadataBase: new URL("https://www.jmvisaservices.com"),
 };
 
 
