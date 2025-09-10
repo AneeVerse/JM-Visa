@@ -76,6 +76,28 @@ module.exports = {
       });
     });
     
+    // Add main pages first
+    const mainPages = [
+      { loc: '/', priority: 1.0, changefreq: 'daily' },
+      { loc: '/about', priority: 0.8, changefreq: 'monthly' },
+      { loc: '/contact', priority: 0.8, changefreq: 'monthly' },
+      { loc: '/services', priority: 0.8, changefreq: 'monthly' },
+      { loc: '/blog', priority: 0.8, changefreq: 'weekly' },
+      { loc: '/country', priority: 0.8, changefreq: 'monthly' },
+      { loc: '/franchise', priority: 0.7, changefreq: 'monthly' },
+      { loc: '/privacy-policy', priority: 0.5, changefreq: 'yearly' },
+      { loc: '/terms-and-condition', priority: 0.5, changefreq: 'yearly' },
+    ];
+    
+    mainPages.forEach(page => {
+      paths.push({
+        loc: page.loc,
+        lastmod: new Date().toISOString(),
+        changefreq: page.changefreq,
+        priority: page.priority,
+      });
+    });
+    
     // Add all static service pages
     const servicePages = [
       '/services/study-abroad',

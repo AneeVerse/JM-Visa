@@ -73,7 +73,25 @@ async function generateSitemap() {
         priority: 0.8,
       },
       {
+        url: `${baseUrl}/contact`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly',
+        priority: 0.8,
+      },
+      {
         url: `${baseUrl}/services`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly',
+        priority: 0.8,
+      },
+      {
+        url: `${baseUrl}/blog`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly',
+        priority: 0.8,
+      },
+      {
+        url: `${baseUrl}/country`,
         lastModified: new Date(),
         changeFrequency: 'monthly',
         priority: 0.8,
@@ -263,6 +281,24 @@ async function generateSitemap() {
         lastModified: new Date(),
         changeFrequency: 'monthly',
         priority: 0.6,
+      },
+      {
+        url: `${baseUrl}/franchise`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly',
+        priority: 0.7,
+      },
+      {
+        url: `${baseUrl}/privacy-policy`,
+        lastModified: new Date(),
+        changeFrequency: 'yearly',
+        priority: 0.5,
+      },
+      {
+        url: `${baseUrl}/terms-and-condition`,
+        lastModified: new Date(),
+        changeFrequency: 'yearly',
+        priority: 0.5,
       },
     ];
 

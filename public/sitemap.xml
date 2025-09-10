@@ -1,45 +1,243 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://www.jmvisaservices.com/blog/20-unmissable-experiences-why-japan-should-be-your-next-travel-destination-in-2025</loc><lastmod>2025-05-30T06:45:00Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.jmvisaservices.com/blog/is-it-possible-for-your-spouse-to-work-full-time-while-you-study-in-australia</loc><lastmod>2025-05-30T07:17:22Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.jmvisaservices.com/blog/top-countries-for-work-visas-a-guide-for-indian-professionals</loc><lastmod>2025-05-30T07:48:02Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.jmvisaservices.com/blog/visa-free-countries-for-us-visa-holders</loc><lastmod>2025-08-23T06:19:00Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.jmvisaservices.com/blog/the-ultimate-guide-to-studying-in-the-united-states-tips-for-international-students</loc><lastmod>2025-05-30T06:55:12Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.jmvisaservices.com/blog/how-to-get-a-student-visa-for-new-zealand</loc><lastmod>2025-05-30T07:37:02Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.jmvisaservices.com/blog/discover-the-hidden-gems-of-japan-a-traveler-s-guide</loc><lastmod>2025-05-30T06:17:27Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.jmvisaservices.com/blog/business-visa-guide-b1-b2-visa-requirements-for-the-usa</loc><lastmod>2025-05-30T07:31:19Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.jmvisaservices.com/blog/understanding-the-importance-of-professional-visa-services-how-jm-visa-can-help</loc><lastmod>2025-05-30T06:22:54Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.jmvisaservices.com/blog/how-to-invite-your-parents-to-the-uk-for-your-graduation-ceremony</loc><lastmod>2025-05-30T06:33:44Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.jmvisaservices.com/blog/why-australia-is-the-best-destination-for-international-students</loc><lastmod>2025-05-30T08:01:38Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.jmvisaservices.com/blog/countries-you-can-visit-with-schengen-visa</loc><lastmod>2025-08-23T13:28:11Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.jmvisaservices.com/blog/why-the-united-kingdom-is-a-top-choice-for-international-students-in-2025-1</loc><lastmod>2025-05-30T07:09:32Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.jmvisaservices.com/blog/countries-you-can-visit-with-us-visa-visa-free-on-arrival-and-evisa</loc><lastmod>2025-08-23T10:52:50Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.jmvisaservices.com/blog/student-and-dependent-visas-work-and-study-in-the-uk</loc><lastmod>2025-05-30T07:23:38Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.jmvisaservices.com/blog/can-your-partner-work-full-time-while-you-pursue-studies-in-australia</loc><lastmod>2025-05-30T07:13:22Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.jmvisaservices.com/blog/experience-the-magic-of-sakura-season-when-where-and-how-to-see-cherry-blossoms-in-full-bloom</loc><lastmod>2025-05-30T06:03:23Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.jmvisaservices.com/blog/category/seo</loc><lastmod>2025-05-29T10:45:07Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-<url><loc>https://www.jmvisaservices.com/services/study-abroad</loc><lastmod>2025-08-25T10:45:39.962Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-<url><loc>https://www.jmvisaservices.com/services/work-visa</loc><lastmod>2025-08-25T10:45:39.963Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-<url><loc>https://www.jmvisaservices.com/services/tourist-visa</loc><lastmod>2025-08-25T10:45:39.963Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-<url><loc>https://www.jmvisaservices.com/services/business-visa</loc><lastmod>2025-08-25T10:45:39.963Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-<url><loc>https://www.jmvisaservices.com/services/residence-visa</loc><lastmod>2025-08-25T10:45:39.963Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-<url><loc>https://www.jmvisaservices.com/services/overseas-education</loc><lastmod>2025-08-25T10:45:39.963Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-<url><loc>https://www.jmvisaservices.com/services/dummy-ticket-booking</loc><lastmod>2025-08-25T10:45:39.963Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-<url><loc>https://www.jmvisaservices.com/services/english-proficiency-test</loc><lastmod>2025-08-25T10:45:39.963Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-<url><loc>https://www.jmvisaservices.com/services/foreign-exchange</loc><lastmod>2025-08-25T10:45:39.963Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-<url><loc>https://www.jmvisaservices.com/services/passport-services</loc><lastmod>2025-08-25T10:45:39.963Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-<url><loc>https://www.jmvisaservices.com/services/us-interview-dates</loc><lastmod>2025-08-25T10:45:39.963Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-<url><loc>https://www.jmvisaservices.com/country/Oceania/Australia</loc><lastmod>2025-08-25T10:45:39.963Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-<url><loc>https://www.jmvisaservices.com/country/Oceania/New%20Zealand</loc><lastmod>2025-08-25T10:45:39.963Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-<url><loc>https://www.jmvisaservices.com/country/NorthAmerica/United%20States</loc><lastmod>2025-08-25T10:45:39.963Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-<url><loc>https://www.jmvisaservices.com/country/NorthAmerica/Canada</loc><lastmod>2025-08-25T10:45:39.963Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-<url><loc>https://www.jmvisaservices.com/country/Europe/United%20Kingdom</loc><lastmod>2025-08-25T10:45:39.963Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-<url><loc>https://www.jmvisaservices.com/country/Europe/Ireland</loc><lastmod>2025-08-25T10:45:39.963Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-<url><loc>https://www.jmvisaservices.com/country/Europe/Austria</loc><lastmod>2025-08-25T10:45:39.963Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-<url><loc>https://www.jmvisaservices.com/country/Europe/Belgium</loc><lastmod>2025-08-25T10:45:39.963Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-<url><loc>https://www.jmvisaservices.com/country/Europe/Denmark</loc><lastmod>2025-08-25T10:45:39.963Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-<url><loc>https://www.jmvisaservices.com/country/Europe/Finland</loc><lastmod>2025-08-25T10:45:39.963Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-<url><loc>https://www.jmvisaservices.com/country/Europe/France</loc><lastmod>2025-08-25T10:45:39.963Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-<url><loc>https://www.jmvisaservices.com/country/Europe/Germany</loc><lastmod>2025-08-25T10:45:39.963Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-<url><loc>https://www.jmvisaservices.com/country/Europe/Greece</loc><lastmod>2025-08-25T10:45:39.963Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://www.jmvisaservices.com</loc>
+    <lastmod>2025-09-10T06:20:34.718Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>https://www.jmvisaservices.com/about</loc>
+    <lastmod>2025-09-10T06:20:34.718Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.jmvisaservices.com/contact</loc>
+    <lastmod>2025-09-10T06:20:34.718Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.jmvisaservices.com/services</loc>
+    <lastmod>2025-09-10T06:20:34.718Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.jmvisaservices.com/blog</loc>
+    <lastmod>2025-09-10T06:20:34.718Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.jmvisaservices.com/country</loc>
+    <lastmod>2025-09-10T06:20:34.718Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.jmvisaservices.com/services/study-abroad</loc>
+    <lastmod>2025-09-10T06:20:34.718Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.jmvisaservices.com/services/work-visa</loc>
+    <lastmod>2025-09-10T06:20:34.718Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.jmvisaservices.com/services/tourist-visa</loc>
+    <lastmod>2025-09-10T06:20:34.718Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.jmvisaservices.com/services/business-visa</loc>
+    <lastmod>2025-09-10T06:20:34.718Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.jmvisaservices.com/services/residence-visa</loc>
+    <lastmod>2025-09-10T06:20:34.718Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.jmvisaservices.com/services/overseas-education</loc>
+    <lastmod>2025-09-10T06:20:34.718Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.jmvisaservices.com/services/dummy-ticket-booking</loc>
+    <lastmod>2025-09-10T06:20:34.718Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.jmvisaservices.com/services/english-proficiency-test</loc>
+    <lastmod>2025-09-10T06:20:34.718Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.jmvisaservices.com/services/foreign-exchange</loc>
+    <lastmod>2025-09-10T06:20:34.718Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.jmvisaservices.com/services/passport-services</loc>
+    <lastmod>2025-09-10T06:20:34.718Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.jmvisaservices.com/services/us-interview-dates</loc>
+    <lastmod>2025-09-10T06:20:34.718Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.jmvisaservices.com/country</loc>
+    <lastmod>2025-09-10T06:20:34.718Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.jmvisaservices.com/country/Oceania/Australia</loc>
+    <lastmod>2025-09-10T06:20:34.718Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.jmvisaservices.com/country/Oceania/New%20Zealand</loc>
+    <lastmod>2025-09-10T06:20:34.718Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.jmvisaservices.com/country/NorthAmerica/United%20States</loc>
+    <lastmod>2025-09-10T06:20:34.718Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.jmvisaservices.com/country/NorthAmerica/Canada</loc>
+    <lastmod>2025-09-10T06:20:34.718Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.jmvisaservices.com/country/Europe/United%20Kingdom</loc>
+    <lastmod>2025-09-10T06:20:34.718Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.jmvisaservices.com/country/Europe/Ireland</loc>
+    <lastmod>2025-09-10T06:20:34.718Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.jmvisaservices.com/country/Europe/Austria</loc>
+    <lastmod>2025-09-10T06:20:34.718Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.jmvisaservices.com/country/Europe/Belgium</loc>
+    <lastmod>2025-09-10T06:20:34.718Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.jmvisaservices.com/country/Europe/Denmark</loc>
+    <lastmod>2025-09-10T06:20:34.718Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.jmvisaservices.com/country/Europe/Finland</loc>
+    <lastmod>2025-09-10T06:20:34.718Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.jmvisaservices.com/country/Europe/France</loc>
+    <lastmod>2025-09-10T06:20:34.718Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.jmvisaservices.com/country/Europe/Germany</loc>
+    <lastmod>2025-09-10T06:20:34.718Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.jmvisaservices.com/country/Europe/Greece</loc>
+    <lastmod>2025-09-10T06:20:34.718Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.jmvisaservices.com/blog</loc>
+    <lastmod>2025-09-10T06:20:34.718Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.jmvisaservices.com/franchise</loc>
+    <lastmod>2025-09-10T06:20:34.718Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.jmvisaservices.com/contact</loc>
+    <lastmod>2025-09-10T06:20:34.718Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.jmvisaservices.com/privacy-policy</loc>
+    <lastmod>2025-09-10T06:20:34.718Z</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.jmvisaservices.com/terms-and-condition</loc>
+    <lastmod>2025-09-10T06:20:34.718Z</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.jmvisaservices.com/testimonials</loc>
+    <lastmod>2025-09-10T06:20:34.718Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.jmvisaservices.com/franchise</loc>
+    <lastmod>2025-09-10T06:20:34.718Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.jmvisaservices.com/privacy-policy</loc>
+    <lastmod>2025-09-10T06:20:34.718Z</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.jmvisaservices.com/terms-and-condition</loc>
+    <lastmod>2025-09-10T06:20:34.718Z</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
 </urlset>
