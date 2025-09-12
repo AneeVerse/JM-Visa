@@ -45,8 +45,8 @@ export default function BreadcrumbJsonLdDynamic({
     });
   });
 
-  // Avoid rendering during prerender/build and duplicate breadcrumb for root-only path
-  if (!isMounted || itemListElements.length <= 1) return null;
+  // Avoid rendering during prerender/build
+  if (!isMounted) return null;
 
   return (
     <BreadcrumbJsonLd
