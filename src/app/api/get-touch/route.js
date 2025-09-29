@@ -63,11 +63,52 @@ export const POST = async (req) => {
       text: `New submission from ${name} (${email},${phone}, ${other}`,
     };
 
+    // Aggressive IST time function
+    const getIndianTime = () => {
+      const now = new Date();
+      const utcTime = now.getTime();
+      const istOffset = 5.5 * 60 * 60 * 1000; // 5.5 hours in milliseconds
+      const istTime = new Date(utcTime + istOffset);
+      const year = istTime.getUTCFullYear();
+      const month = String(istTime.getUTCMonth() + 1).padStart(2, '0');
+      const day = String(istTime.getUTCDate()).padStart(2, '0');
+      let hours = istTime.getUTCHours();
+      const minutes = String(istTime.getUTCMinutes()).padStart(2, '0');
+      const seconds = String(istTime.getUTCSeconds()).padStart(2, '0');
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+      hours = hours % 12;
+      hours = hours ? hours : 12;
+      const displayHours = String(hours).padStart(2, '0');
+      return `${day}/${month}/${year}, ${displayHours}:${minutes}:${seconds} ${ampm} (IST)`;
+    };
+
+    const indianTime = getIndianTime();
+
     // Send the email
     const info = await transporter.sendMail(mailOptions);
 
     // Log successful email sending
     console.log("Email sent successfully:", info.messageId);
+
+    // Send to Google Sheets
+    try {
+      await fetch('https://script.google.com/macros/s/AKfycbyFjUGmoLofjOWl4AwEDRmCG7PRYC0c9CDBB9nkbwe2n8n0ihHJeHhPtoRsXKuXiYZb/exec', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          pageSource: other || 'Contact Form - Home Page',
+          formType: 'Contact Form',
+          name: name || '',
+          email: email || '',
+          phone: phone || '',
+          message: `Contact request from ${name} (${email}) - Phone: ${phone}`,
+          extraInfo: `Submitted from contact form at ${indianTime}`
+        }),
+      });
+      console.log('Data sent to Google Sheets successfully');
+    } catch (sheetError) {
+      console.error('Error sending data to Google Sheets:', sheetError);
+    }
 
     // Success response
     return new Response(

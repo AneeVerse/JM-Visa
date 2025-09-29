@@ -3,7 +3,7 @@ import env from "../../../config/env";
 
 export const POST = async (req) => {
   try {
-    const { citizen, travellingTo, category, firstName, email, phoneNumber } = await req.json();
+    const { citizen, travellingTo, category, firstName, email, phoneNumber, pageSource } = await req.json();
 
     // Validate required fields
     if (!firstName || !email || !travellingTo) {
@@ -53,8 +53,52 @@ export const POST = async (req) => {
       text: `Visa Form Submission:\nCitizen: ${citizen}\nTravelling To: ${travellingTo}\nCategory: ${category}\nName: ${firstName}\nEmail: ${email}\nPhone: ${phoneNumber || "N/A"}`,
     };
 
+    // Aggressive IST time function
+    const getIndianTime = () => {
+      const now = new Date();
+      const utcTime = now.getTime();
+      const istOffset = 5.5 * 60 * 60 * 1000; // 5.5 hours in milliseconds
+      const istTime = new Date(utcTime + istOffset);
+      const year = istTime.getUTCFullYear();
+      const month = String(istTime.getUTCMonth() + 1).padStart(2, '0');
+      const day = String(istTime.getUTCDate()).padStart(2, '0');
+      let hours = istTime.getUTCHours();
+      const minutes = String(istTime.getUTCMinutes()).padStart(2, '0');
+      const seconds = String(istTime.getUTCSeconds()).padStart(2, '0');
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+      hours = hours % 12;
+      hours = hours ? hours : 12;
+      const displayHours = String(hours).padStart(2, '0');
+      return `${day}/${month}/${year}, ${displayHours}:${minutes}:${seconds} ${ampm} (IST)`;
+    };
+
+    const indianTime = getIndianTime();
+
     // Send the email
     await transporter.sendMail(mailOptions);
+
+    // Send to Google Sheets
+    try {
+      await fetch('https://script.google.com/macros/s/AKfycbyFjUGmoLofjOWl4AwEDRmCG7PRYC0c9CDBB9nkbwe2n8n0ihHJeHhPtoRsXKuXiYZb/exec', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          pageSource: pageSource || 'Visa Application - Unknown Page',
+          formType: 'Visa Application',
+          name: firstName || '',
+          email: email || '',
+          phone: phoneNumber || '',
+          message: `Visa application for ${travellingTo} - Category: ${category}`,
+          visaType: category || '',
+          citizen: citizen || '',
+          travellingTo: travellingTo || '',
+          extraInfo: `Submitted from visa form at ${indianTime}`
+        }),
+      });
+      console.log('Visa form data sent to Google Sheets successfully');
+    } catch (sheetError) {
+      console.error('Error sending visa form data to Google Sheets:', sheetError);
+    }
 
     return new Response(
       JSON.stringify({ success: true, message: "Form submitted successfully!" }),

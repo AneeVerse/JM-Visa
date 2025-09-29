@@ -18,6 +18,71 @@ const VisaForm = () => {
   const [popup, setPopup] = useState({ show: false, message: "", success: false });
   const [errors, setErrors] = useState({});
 
+  // Function to detect current page source dynamically
+  const getCurrentPageSource = () => {
+    if (typeof window === 'undefined') return 'Visa Application - Server Side';
+    
+    const path = window.location.pathname;
+    const title = document.title;
+    
+    // Home page
+    if (path === '/') return 'Home Page - Visa Form';
+    
+    // Dynamic page detection based on URL structure
+    const pathSegments = path.split('/').filter(segment => segment !== '');
+    
+    if (pathSegments.length === 0) {
+      return 'Home Page - Visa Form';
+    }
+    
+    // First segment determines the main section
+    const mainSection = pathSegments[0];
+    
+    // Format section name (capitalize first letter, replace hyphens with spaces)
+    const formatSectionName = (section) => {
+      return section
+        .split('-')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
+    };
+    
+    // Handle different page structures
+    switch (mainSection) {
+      case 'blog':
+        if (pathSegments.length === 1) {
+          return 'Blog Page - Visa Form';
+        } else {
+          const articleSlug = pathSegments.slice(1).join('/');
+          return `Blog Article (${articleSlug}) - Visa Form`;
+        }
+      
+      case 'country':
+        if (pathSegments.length === 1) {
+          return 'Countries Page - Visa Form';
+        } else {
+          const countryName = formatSectionName(pathSegments[1]);
+          return `${countryName} Country Page - Visa Form`;
+        }
+      
+      case 'services':
+        if (pathSegments.length === 1) {
+          return 'Services Page - Visa Form';
+        } else {
+          const serviceName = formatSectionName(pathSegments[1]);
+          return `${serviceName} Service Page - Visa Form`;
+        }
+      
+      default:
+        // For any other page, use the title if available, otherwise format the path
+        if (title && title !== 'JM Visa Services') {
+          return `${title} - Visa Form`;
+        } else {
+          const pageName = formatSectionName(mainSection);
+          return `${pageName} Page - Visa Form`;
+        }
+    }
+  };
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -47,7 +112,13 @@ const VisaForm = () => {
     }
 
     try {
-      const response = await axios.post("/api/visa-form", formData);
+      // Add page source to form data
+      const submissionData = {
+        ...formData,
+        pageSource: getCurrentPageSource()
+      };
+      
+      const response = await axios.post("/api/visa-form", submissionData);
 
       if (response.data.success) {
         setPopup({ show: true, message: "Form submitted successfully!", success: true });
