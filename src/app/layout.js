@@ -1,6 +1,6 @@
 import localFont from "next/font/local";
 import "./globals.css";
-import Header from "../components/layout/Header";
+import ConditionalHeader from "../components/layout/ConditionalHeader";
 import Script from "next/script";
 
 import NextTopLoader from "nextjs-toploader";
@@ -84,7 +84,7 @@ export default function RootLayout({ children }) {
          shadow="0 0 10px #2299DD,0 0 5px #2299DD"
          />
         <BreadcrumbJsonLdDynamic />
-        <Header/>
+        <ConditionalHeader/>
         {children}
         <FloatingActionButton/>
       </body>
