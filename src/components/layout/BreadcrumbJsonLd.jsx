@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { BreadcrumbJsonLd } from "next-seo";
 
 function toTitleCase(segment) {
   return decodeURIComponent(segment)
@@ -48,10 +47,21 @@ export default function BreadcrumbJsonLdDynamic({
   // Avoid rendering during prerender/build
   if (!isMounted) return null;
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: itemListElements.map((item) => ({
+      "@type": "ListItem",
+      position: item.position,
+      name: item.name,
+      item: item.item,
+    })),
+  };
+
   return (
-    <BreadcrumbJsonLd
-      useAppDir
-      itemListElements={itemListElements}
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
     />
   );
 }
