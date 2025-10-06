@@ -25,25 +25,27 @@ const portableTextComponents = {
       const header = value.rows[0];
       const bodyRows = value.rows.slice(1);
       return (
-        <div className="overflow-x-auto my-6">
-          <table className="min-w-full border border-gray-300">
-            <thead>
-              <tr className="bg-blue-500">
-                {header.cells.map((cell, j) => (
-                  <th key={j} className="px-4 py-3 text-white font-bold border border-blue-500 text-left">{cell}</th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {bodyRows.map((row, i) => (
-                <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
-                  {row.cells.map((cell, j) => (
-                    <td key={j} className="border px-4 py-3 align-top">{cell}</td>
+        <div className="overflow-x-auto my-6 shadow-sm rounded-lg -mx-4 sm:mx-0">
+          <div className="inline-block min-w-full align-middle">
+            <table className="min-w-full border border-gray-300 text-sm">
+              <thead>
+                <tr className="bg-blue-500">
+                  {header.cells.map((cell, j) => (
+                    <th key={j} className="px-2 sm:px-3 py-2 text-white font-semibold border border-blue-500 text-left text-xs sm:text-sm whitespace-nowrap">{cell}</th>
                   ))}
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {bodyRows.map((row, i) => (
+                  <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+                    {row.cells.map((cell, j) => (
+                      <td key={j} className="border px-2 sm:px-3 py-2 align-top text-xs sm:text-sm text-gray-700 leading-relaxed max-w-xs break-words">{cell}</td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       );
     },
