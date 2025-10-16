@@ -17,7 +17,7 @@ const Header = () => {
     { name: "Visa", href: "/services" },
     { name: "Study Abroad", href: "/services/study-abroad" },
     // {name: "Dummy Bookings", href: "/services/dummy-ticket-booking"},
-    { name: "Country", href: "/country" },
+    { name: "Countries", href: "/country" },
     // { name: "Franchise", href: "/franchise" },
     { name: "Blog", href: "/blog" },
   ];

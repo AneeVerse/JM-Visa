@@ -65,7 +65,7 @@ const CountrySelector = () => {
             </div>
             <h1 className="mt-4 text-2xl font-extrabold text-gray-800 leading-snug">
               Discover Famous Landmarks by <br />
-              <span className="text-blue-500">Region and Country</span>
+              <span className="text-blue-500">Region and Countries</span>
             </h1>
             <p className="mt-2 text-lg text-gray-600">
               Select a region to explore popular countries and their landmarks.
