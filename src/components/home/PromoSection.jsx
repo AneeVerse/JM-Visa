@@ -36,7 +36,7 @@ const PromoSection = () => {
         }, interval);
       });
     }
-  }, [inView]);
+  }, [inView, stats]);
 
   return (
     <section

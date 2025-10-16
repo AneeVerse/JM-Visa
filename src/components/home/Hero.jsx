@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 
 const HeroSection = () => {
   const backgroundImages = [
@@ -35,12 +36,15 @@ const HeroSection = () => {
           style={{ transform: `translateX(-${currentBgIndex * 100}%)` }}
         >
           {backgroundImages.map((bg, index) => (
-            <img
+            <Image
               key={index}
               src={bg}
               alt={`Background ${index + 1}`}
               className="w-full h-full object-cover flex-shrink-0"
               style={{ width: "100%" }}
+              width={1920}
+              height={1080}
+              priority={index === 0}
             />
           ))}
         </div>

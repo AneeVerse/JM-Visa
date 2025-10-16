@@ -6,6 +6,7 @@ import { GoOrganization } from "react-icons/go";
 import { CiHeart } from "react-icons/ci";
 import Link from "next/link";
 import { MdFormatListBulleted } from "react-icons/md";
+import Image from "next/image";
 
 
 const points = [
@@ -93,7 +94,7 @@ const AboutUs = () => {
     }, 3000); // Change image every 5 seconds
 
     return () => clearInterval(interval); // Clear interval on unmount
-  }, [CountryList.length]);
+  }, []);
 
   
 
@@ -174,11 +175,13 @@ const AboutUs = () => {
           {/* <div className="absolute bg-gradient-to-br -z-20 w-full from-blue-50  h-[400px] to-blue-400 blur-2xl p-2 rounded-full bottom-10 right-4"/> */}
           {/* Main Image */}
             {/* Main Image */}
-            <img
+            <Image
               key={CountryList[countryIndex].landmark}
               src={CountryList[countryIndex].landmark}
               alt={CountryList[countryIndex].landmarkName}
               className="w-full h-[330px] object-cover rounded-lg mb-6 shadow-md"
+              width={500}
+              height={330}
             />
 
           {/* Details Section */}

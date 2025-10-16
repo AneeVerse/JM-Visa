@@ -171,7 +171,7 @@ const PaymentGateway = ({
           </button>
 
           <p className="text-xs text-gray-500 text-center mt-3">
-            By clicking "Pay", you agree to our terms and conditions
+            By clicking &quot;Pay&quot;, you agree to our terms and conditions
           </p>
         </div>
       </div>
