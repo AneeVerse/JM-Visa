@@ -11,7 +11,8 @@ export const revalidate = 60;
 
 // ✅ Generate Dynamic Metadata
 export async function generateMetadata({ params }) {
-  const slugParam = params.slug;
+  const resolvedParams = await params;
+  const slugParam = resolvedParams.slug;
   // Fetch post data from Sanity
   const query = `*[_type == "post" && slug.current == $slug][0]{
     title,
@@ -196,9 +197,11 @@ const portableTextComponents = {
 };
 
 import BlogForm from "../../../../components/blog/BlogForm";
+import FAQItem from "../../../../components/blog/FAQItem";
 
 async function BlogDetailsPage({ params }) {
-  const { slug } = params;
+  const resolvedParams = await params;
+  const { slug } = resolvedParams;
   
   try {
     const blog = await getPostBySlug(slug);
@@ -269,16 +272,30 @@ async function BlogDetailsPage({ params }) {
 
           {/* Main Content and Related Blogs Section */}
           <div className="mt-16 flex flex-col lg:flex-row gap-12">
-            {/* Blog Content */}
-            <div className="lg:w-2/3 w-full">
+            {/* Blog Content - Expanded to use more space */}
+            <div className="lg:w-3/4 w-full">
               <article className="prose prose-lg max-w-none article-blog bg-white bg-opacity-50 p-10 rounded-md shadow-sm">
                 <PortableText value={blog.body} components={portableTextComponents} />
               </article>
             </div>
 
-            {/* Related Blogs and Contact Form */}
+            {/* Related Blogs and Contact Form - Reduced width */}
             <BlogForm blog={blog} relatedBlogs={relatedBlogs} />
           </div>
+
+          {/* FAQ Section - Moved to the end */}
+          {blog.faqs && blog.faqs.length > 0 && (
+            <div className="mt-16 max-w-4xl mx-auto">
+              <h2 className="text-3xl font-semibold text-gray-800 mb-8 text-center">Frequently Asked Questions</h2>
+              <div className="bg-white bg-opacity-50 rounded-md shadow-sm p-8">
+                <div className="space-y-6">
+                  {blog.faqs.map((faq, index) => (
+                    <FAQItem key={index} faq={faq} index={index} />
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </section>
     );

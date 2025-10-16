@@ -13,7 +13,6 @@ const BlogForm = ({ blog, relatedBlogs }) => {
   const [popup, setPopup] = useState({ show: false, message: "", success: false });
   const [isAccepted, setIsAccepted] = useState(false);
   const [errors, setErrors] = useState({ name: "", email: "", phone: "" });
-  const [expandedFaqIndex, setExpandedFaqIndex] = useState(null);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -104,44 +103,6 @@ const BlogForm = ({ blog, relatedBlogs }) => {
           </motion.div>
         )}
       </AnimatePresence>
-
-      {/* FAQ Section */}
-      {blog.faqs && blog.faqs.length > 0 && (
-        <div className="mt-12 mb-12">
-          <h2 className="text-3xl font-semibold text-gray-800 mb-6">FAQs</h2>
-          <div className="space-y-4">
-            {blog.faqs.map((faq, index) => (
-              <div key={index} className="border-b border-gray-300 pb-4">
-                <button
-                  type="button"
-                  className="flex justify-between items-center w-full text-left text-gray-800 font-medium py-3"
-                  onClick={() => setExpandedFaqIndex(expandedFaqIndex === index ? null : index)}
-                >
-                  <span>{faq.question}</span>
-                  {expandedFaqIndex === index ? (
-                    <span className="text-blue-500">-</span>
-                  ) : (
-                    <span className="text-blue-500">+</span>
-                  )}
-                </button>
-                <AnimatePresence>
-                  {expandedFaqIndex === index && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="overflow-hidden"
-                    >
-                      <p className="text-gray-600 mt-2">{faq.answer}</p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
 
       {/* Related Blogs and Contact Form */}
       <aside className="lg:w-1/3 w-full">
