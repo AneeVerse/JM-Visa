@@ -72,6 +72,12 @@ export const blockContentType = defineType({
         }
       ]
     }),
+    // Table of Contents block
+    defineArrayMember({
+      type: 'tableOfContents',
+      name: 'tableOfContents',
+      title: 'Table of Contents',
+    }),
     // Table block
     defineArrayMember({
       type: 'table',

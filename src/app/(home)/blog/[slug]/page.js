@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { getPostBySlug, getAllPosts, client } from "../../../../sanity/lib/client";
 import { urlFor } from "../../../../sanity/lib/client";
 import Link from "next/link";
+import TableOfContents from "../../../../components/blog/TableOfContents";
 
 export const revalidate = 60;
 
@@ -193,6 +194,14 @@ const portableTextComponents = {
         </div>
       );
     },
+    tableOfContents: ({ value }) => (
+      <TableOfContents
+        title={value?.title}
+        showInlineTOC={value?.showInlineTOC}
+        includeFAQSection={value?.includeFAQSection}
+        faqSectionTitle={value?.faqSectionTitle}
+      />
+    ),
   },
 };
 
