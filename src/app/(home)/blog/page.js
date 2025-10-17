@@ -68,7 +68,7 @@ const BlogPage = () => {
                   <img
                     src={urlFor(blog.mainImage).url()}
                     alt={blog.title}
-                    className="w-full h-64 object-cover group-hover:scale-105 transition-transform"
+                    className="w-full h-70 object-cover group-hover:scale-105 transition-transform"
                   />
                 )}
                 {/* Blog Content */}
