@@ -9,10 +9,12 @@ import VideoTestimonial from "../components/home/VideoTestimonial";
 import VisaCategories from "../components/home/VisaCategories";
 import VisaForm from "../components/home/VisaForm";
 import Footer from "../components/layout/Footer";
+import HomePageSchema from "../components/layout/HomePageSchema";
 
 export default function Home() {
   return (
    <div>
+      <HomePageSchema />
       <HeroSection/>
       <VisaCategories/>
       <HorizontalScrollSection/>
