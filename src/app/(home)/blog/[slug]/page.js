@@ -7,6 +7,7 @@ import { getPostBySlug, getAllPosts, client } from "../../../../sanity/lib/clien
 import { urlFor } from "../../../../sanity/lib/client";
 import Link from "next/link";
 import TableOfContents from "../../../../components/blog/TableOfContents";
+import BlogSchema from "../../../../components/layout/BlogSchema";
 
 export const revalidate = 60;
 
@@ -229,6 +230,7 @@ async function BlogDetailsPage({ params }) {
 
     return (
       <section className="relative mt-[60px] py-16 bg-gradient-to-br from-blue-50 via-white to-blue-100 px-4 sm:px-8 lg:px-16">
+        <BlogSchema post={blog} />
         <div className="max-w-[1280px] mx-auto">
           {/* Blog Header */}
           <div className="flex flex-col lg:flex-row gap-10 items-start">
