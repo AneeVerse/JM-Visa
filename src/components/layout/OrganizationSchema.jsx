@@ -36,16 +36,16 @@ export default function OrganizationSchema() {
     "email": "info@jmvisaservices.com",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Office Address - JM Visa Services",
-      "addressLocality": "Mumbai",
+      "streetAddress": "Shop No 11, City Light CHS, CBSE School, Plot No.25, near Terna Orchids The International School, Sector 1, Kopar Khairane",
+      "addressLocality": "Navi Mumbai",
       "addressRegion": "Maharashtra",
-      "postalCode": "400001",
+      "postalCode": "400709",
       "addressCountry": "IN"
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": 0.0, // Replace with actual coordinates
-      "longitude": 0.0
+      "latitude": "19.1107866",
+      "longitude": "73.006725"
     },
     "openingHours": [
       "Mo-Fr 10:00-20:00",

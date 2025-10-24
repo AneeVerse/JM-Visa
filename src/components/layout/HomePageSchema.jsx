@@ -18,20 +18,20 @@ const HomePageSchema = () => {
         },
         "image": "https://www.jmvisaservices.com/images/jm-banner.jpg",
         "description": "JM Visa Services provides professional visa and immigration services for travel, education, and work. Expert guidance for student visas, work permits, tourist visas, business visas, and immigration consulting across 40+ countries including US, UK, Canada, Australia, Germany, and Europe.",
-        "telephone": ["+91-9136036603", "+91-9136036604"],
+        "telephone": ["+91-9321315524", "+91-8591070718"],
         "email": "info@jmvisaservices.com",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Office No. 1, 1st Floor, Kasturi Building, Opposite Matunga Railway Station (East), Matunga East",
-          "addressLocality": "Mumbai",
+          "streetAddress": "Shop No 11, City Light CHS, CBSE School, Plot No.25, near Terna Orchids The International School, Sector 1, Kopar Khairane",
+          "addressLocality": "Navi Mumbai",
           "addressRegion": "Maharashtra",
-          "postalCode": "400019",
+          "postalCode": "400709",
           "addressCountry": "IN"
         },
         "geo": {
           "@type": "GeoCoordinates",
-          "latitude": "19.0270",
-          "longitude": "72.8570"
+          "latitude": "19.1107866",
+          "longitude": "73.006725"
         },
         "areaServed": [
           {
@@ -271,19 +271,19 @@ const HomePageSchema = () => {
         "priceRange": "₹₹",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Office No. 1, 1st Floor, Kasturi Building, Opposite Matunga Railway Station (East), Matunga East",
-          "addressLocality": "Mumbai",
+          "streetAddress": "Shop No 11, City Light CHS, CBSE School, Plot No.25, near Terna Orchids The International School, Sector 1, Kopar Khairane",
+          "addressLocality": "Navi Mumbai",
           "addressRegion": "Maharashtra",
-          "postalCode": "400019",
+          "postalCode": "400709",
           "addressCountry": "IN"
         },
         "geo": {
           "@type": "GeoCoordinates",
-          "latitude": "19.0270",
-          "longitude": "72.8570"
+          "latitude": "19.1107866",
+          "longitude": "73.006725"
         },
         "url": "https://www.jmvisaservices.com",
-        "telephone": ["+91-9136036603", "+91-9136036604"],
+        "telephone": ["+91-9321315524", "+91-8591070718"],
         "openingHoursSpecification": [
           {
             "@type": "OpeningHoursSpecification",
