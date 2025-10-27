@@ -1,20 +1,18 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from 'react';
 
-export default function OrganizationSchema() {
-  const [isMounted, setIsMounted] = useState(false);
-
+const OrganizationSchema = () => {
   useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  // Avoid rendering during prerender/build
-  if (!isMounted) return null;
+    // Remove any existing organization schema to avoid duplicates
+    const existingScript = document.querySelector('script[data-schema="organization"]');
+    if (existingScript) {
+      existingScript.remove();
+    }
 
   const organizationSchema = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": ["Organization", "TravelAgency"],
     "@id": "https://www.jmvisaservices.com/#organization",
     "name": "JM Visa Services",
     "alternateName": "JM Visa",
@@ -23,8 +21,8 @@ export default function OrganizationSchema() {
     "logo": {
       "@type": "ImageObject",
       "url": "https://www.jmvisaservices.com/logo/logo.png",
-      "width": 300,
-      "height": 100
+      "width": 600,
+      "height": 60
     },
     "image": {
       "@type": "ImageObject",
@@ -44,17 +42,9 @@ export default function OrganizationSchema() {
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": "19.1107866",
-      "longitude": "73.006725"
+      "latitude": 19.1107866,
+      "longitude": 73.006725
     },
-    "openingHours": [
-      "Mo-Fr 10:00-20:00",
-      "Sa 10:00-17:00", 
-      "Su by appointment"
-    ],
-    "priceRange": "$$",
-    "currenciesAccepted": "INR, USD, EUR",
-    "paymentAccepted": "Cash, Credit Card, Debit Card, Bank Transfer, Online Payment",
     "serviceArea": {
       "@type": "Country",
       "name": "India"
@@ -133,18 +123,17 @@ export default function OrganizationSchema() {
     },
     "sameAs": [
         "https://www.instagram.com/jmvisaservices",
-        "https://www.facebook.com/p/JM-Visa-Services", 
-        "https://www.linkedin.com/company/jmvisa-services/"
+        "https://www.facebook.com/jmvisaservices/", 
+        "https://www.linkedin.com/company/jm-visa-services/"
       ],
     "founder": {
       "@type": "Person",
-      "name": "Founder Name" // Replace with actual founder name
+      "name": "JM Visa Services Team"
     },
-    "foundingDate": "2020", // Replace with actual founding date
+    "foundingDate": "2010",
     "numberOfEmployees": {
       "@type": "QuantitativeValue",
-      "minValue": 10,
-      "maxValue": 50
+      "value": "25"
     },
     "knowsAbout": [
       "Visa Processing",
@@ -159,31 +148,29 @@ export default function OrganizationSchema() {
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.8",
-      "reviewCount": "150",
+      "reviewCount": "500",
       "bestRating": "5",
       "worstRating": "1"
-    },
-    "review": [
-      {
-        "@type": "Review",
-        "author": {
-          "@type": "Person",
-          "name": "Sample Customer"
-        },
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5",
-          "bestRating": "5"
-        },
-        "reviewBody": "Excellent visa services with professional guidance throughout the process."
-      }
-    ]
-  };
+    }
+    };
 
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-    />
-  );
-}
+    // Create and append the script tag
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.setAttribute('data-schema', 'organization');
+    script.textContent = JSON.stringify(organizationSchema);
+    document.head.appendChild(script);
+
+    // Cleanup function to remove script when component unmounts
+    return () => {
+      const scriptToRemove = document.querySelector('script[data-schema="organization"]');
+      if (scriptToRemove) {
+        scriptToRemove.remove();
+      }
+    };
+  }, []);
+
+  return null; // This component doesn't render anything visible
+};
+
+export default OrganizationSchema;

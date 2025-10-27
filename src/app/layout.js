@@ -7,6 +7,8 @@ import NextTopLoader from "nextjs-toploader";
 import FloatingActionButton from "../components/layout/FloatingActionButton";
 import BreadcrumbJsonLdDynamic from "../components/layout/BreadcrumbJsonLd";
 import OrganizationSchema from "../components/layout/OrganizationSchema";
+import LocalBusinessSchema from "../components/layout/LocalBusinessSchema";
+import WebPageSchema from "../components/layout/WebPageSchema";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -85,6 +87,8 @@ export default function RootLayout({ children }) {
          shadow="0 0 10px #2299DD,0 0 5px #2299DD"
          />
         <OrganizationSchema />
+        <LocalBusinessSchema />
+        <WebPageSchema />
         <BreadcrumbJsonLdDynamic />
         <ConditionalHeader/>
         {children}

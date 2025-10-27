@@ -30,8 +30,8 @@ const HomePageSchema = () => {
         },
         "geo": {
           "@type": "GeoCoordinates",
-          "latitude": "19.1107866",
-          "longitude": "73.006725"
+          "latitude": 19.1107866,
+          "longitude": 73.006725
         },
         "areaServed": [
           {
@@ -279,11 +279,11 @@ const HomePageSchema = () => {
         },
         "geo": {
           "@type": "GeoCoordinates",
-          "latitude": "19.1107866",
-          "longitude": "73.006725"
+          "latitude": 19.1107866,
+          "longitude": 73.006725
         },
         "url": "https://www.jmvisaservices.com",
-        "telephone": ["+91-9321315524", "+91-8591070718"],
+        "telephone": ["+919321315524", "+918591070718"],
         "openingHoursSpecification": [
           {
             "@type": "OpeningHoursSpecification",
@@ -308,8 +308,8 @@ const HomePageSchema = () => {
         "currenciesAccepted": "INR"
       },
       {
-        "@type": "WebSite",
-        "@id": "https://www.jmvisaservices.com/#website",
+        "@type": "WebPage",
+        "@id": "https://www.jmvisaservices.com/#webpage",
         "url": "https://www.jmvisaservices.com",
         "name": "JM Visa Services",
         "description": "Professional visa and immigration services for travel, education, and work across 40+ countries",

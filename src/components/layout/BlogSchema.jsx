@@ -3,12 +3,13 @@
 import { useMemo } from "react";
 
 /**
- * BlogSchema Component - Generates BlogPosting structured data for blog posts
- * Follows Google's 2025 best practices for BlogPosting schema
+ * BlogSchema Component - Generates Article structured data for blog posts
+ * Follows Google's 2025 best practices for Article schema
  * 
  * @param {Object} post - Blog post data from Sanity
  * @param {string} post.title - Blog post title
- * @param {string} post.slug - Blog post slug
+ * @param {Object} post.slug - Blog post slug object
+ * @param {string} post.slug.current - Blog post slug current value
  * @param {string} post.metaDescription - Blog post meta description
  * @param {Object} post.author - Author information
  * @param {string} post.author.name - Author name
@@ -65,12 +66,12 @@ export default function BlogSchema({
 
     return {
       "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "@id": `${baseUrl}/blog/${post.slug}#blogposting`,
+      "@type": "Article",
+      "@id": `${baseUrl}/blog/${post.slug.current}#article`,
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": `${baseUrl}/blog/${post.slug}`,
-        "url": `${baseUrl}/blog/${post.slug}`
+        "@id": `${baseUrl}/blog/${post.slug.current}`,
+        "url": `${baseUrl}/blog/${post.slug.current}`
       },
       "headline": post.title,
       "name": post.title,
@@ -84,7 +85,7 @@ export default function BlogSchema({
       },
       "author": {
         "@type": "Person",
-        "@id": `${baseUrl}/author/${post.author?.slug || 'jm-visa-team'}#person`,
+        "@id": `${baseUrl}/author/${post.author?.slug?.current || 'jm-visa-team'}#person`,
         "name": post.author?.name || "JM Visa Services Team",
         "description": post.author?.bio || "Expert visa and immigration consultants",
         "image": {
@@ -154,7 +155,7 @@ export default function BlogSchema({
       "articleSection": "Visa & Immigration",
       "wordCount": wordCount,
       "timeRequired": `PT${readingTime}M`,
-      "url": `${baseUrl}/blog/${post.slug}`,
+      "url": `${baseUrl}/blog/${post.slug.current}`,
       "isPartOf": {
         "@type": "Blog",
         "@id": `${baseUrl}/blog#blog`,
@@ -170,7 +171,7 @@ export default function BlogSchema({
         "@type": "ReadAction",
         "target": {
           "@type": "EntryPoint",
-          "urlTemplate": `${baseUrl}/blog/${post.slug}`,
+          "urlTemplate": `${baseUrl}/blog/${post.slug.current}`,
           "actionPlatform": [
             "http://schema.org/DesktopWebPlatform",
             "http://schema.org/MobileWebPlatform"
