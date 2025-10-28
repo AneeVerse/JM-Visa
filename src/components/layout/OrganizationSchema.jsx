@@ -1,18 +1,7 @@
-"use client";
-
-import { useEffect } from 'react';
-
 const OrganizationSchema = () => {
-  useEffect(() => {
-    // Remove any existing organization schema to avoid duplicates
-    const existingScript = document.querySelector('script[data-schema="organization"]');
-    if (existingScript) {
-      existingScript.remove();
-    }
-
   const organizationSchema = {
     "@context": "https://schema.org",
-    "@type": ["Organization", "TravelAgency"],
+    "@type": ["Organization"],
     "@id": "https://www.jmvisaservices.com/#organization",
     "name": "JM Visa Services",
     "alternateName": "JM Visa",
@@ -122,7 +111,7 @@ const OrganizationSchema = () => {
       ]
     },
     "sameAs": [
-        "https://www.instagram.com/jmvisaservices",
+        "https://www.instagram.com/jmvisaservices/",
         "https://www.facebook.com/jmvisaservices/", 
         "https://www.linkedin.com/company/jm-visa-services/"
       ],
@@ -154,23 +143,12 @@ const OrganizationSchema = () => {
     }
     };
 
-    // Create and append the script tag
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.setAttribute('data-schema', 'organization');
-    script.textContent = JSON.stringify(organizationSchema);
-    document.head.appendChild(script);
-
-    // Cleanup function to remove script when component unmounts
-    return () => {
-      const scriptToRemove = document.querySelector('script[data-schema="organization"]');
-      if (scriptToRemove) {
-        scriptToRemove.remove();
-      }
-    };
-  }, []);
-
-  return null; // This component doesn't render anything visible
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+    />
+  );
 };
 
 export default OrganizationSchema;

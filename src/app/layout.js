@@ -9,6 +9,7 @@ import BreadcrumbJsonLdDynamic from "../components/layout/BreadcrumbJsonLd";
 import OrganizationSchema from "../components/layout/OrganizationSchema";
 import LocalBusinessSchema from "../components/layout/LocalBusinessSchema";
 import WebPageSchema from "../components/layout/WebPageSchema";
+import WebSiteSchema from "../components/layout/WebSiteSchema";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -35,11 +36,20 @@ export const metadata = {
     title: "JM Visa Services - Professional Visa & Immigration Services",
     description: "Comprehensive visa and immigration services for study abroad, work visas, tourist visas, and more.",
     siteName: "JM Visa Services",
+    images: [
+      {
+        url: "https://www.jmvisaservices.com/images/jm-banner.jpg",
+        width: 1200,
+        height: 630,
+        alt: "JM Visa Services - Professional Visa & Immigration Services"
+      }
+    ]
   },
   twitter: {
     card: "summary_large_image",
     title: "JM Visa Services - Professional Visa & Immigration Services",
     description: "Comprehensive visa and immigration services for study abroad, work visas, tourist visas, and more.",
+    images: ["https://www.jmvisaservices.com/images/jm-banner.jpg"]
   },
   // Add favicon icon and device-specific icons
   icons: {
@@ -54,29 +64,36 @@ export const metadata = {
   metadataBase: new URL("https://www.jmvisaservices.com"),
 };
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+};
+
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-
-{/* <!-- Google tag (gtag.js) --> */}
-<head>
-<Script async src="https://www.googletagmanager.com/gtag/js?id=G-FRJ05XSJ3S"></Script>
-<Script id="google-analytics">
- {` window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-FRJ05XSJ3S');`
- }
-  </Script>
-
-</head>
-<Script async src="https://www.googletagmanager.com/gtag/js?id=G-FRJ05XSJ3S"></Script>
+      <head>
+        <meta charSet="UTF-8" />
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-FRJ05XSJ3S"></Script>
+        <Script id="google-analytics">
+          {` window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-FRJ05XSJ3S');`
+          }
+        </Script>
+      </head>
 
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <OrganizationSchema />
+        <LocalBusinessSchema />
+        <WebSiteSchema />
+        <WebPageSchema />
+        <BreadcrumbJsonLdDynamic />
          <NextTopLoader
          color="#0e2f50"
          initialPosition={0.08}
@@ -86,10 +103,6 @@ export default function RootLayout({ children }) {
          speed={500}
          shadow="0 0 10px #2299DD,0 0 5px #2299DD"
          />
-        <OrganizationSchema />
-        <LocalBusinessSchema />
-        <WebPageSchema />
-        <BreadcrumbJsonLdDynamic />
         <ConditionalHeader/>
         {children}
         <FloatingActionButton/>

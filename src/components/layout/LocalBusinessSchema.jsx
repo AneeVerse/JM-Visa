@@ -1,16 +1,5 @@
-"use client";
-
-import { useEffect } from 'react';
-
 const LocalBusinessSchema = () => {
-  useEffect(() => {
-    // Remove any existing local business schema to avoid duplicates
-    const existingScript = document.querySelector('script[data-schema="local-business"]');
-    if (existingScript) {
-      existingScript.remove();
-    }
-
-    const localBusinessSchema = {
+  const localBusinessSchema = {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       "@id": "https://www.jmvisaservices.com/#localbusiness",
@@ -92,10 +81,10 @@ const LocalBusinessSchema = () => {
         }
       ],
       "sameAs": [
-        "https://www.linkedin.com/company/jm-visa-services",
-        "https://www.facebook.com/jmvisaservices",
-        "https://www.instagram.com/jmvisaservices",
-        "https://twitter.com/jmvisaservices"
+        "https://www.linkedin.com/company/jm-visa-services/",
+        "https://www.facebook.com/jmvisaservices/",
+        "https://www.instagram.com/jmvisaservices/",
+        "https://twitter.com/jmvisaservices/"
       ],
       "paymentAccepted": "Cash, Credit Card, Debit Card, UPI, Net Banking",
       "currenciesAccepted": "INR",
@@ -146,23 +135,12 @@ const LocalBusinessSchema = () => {
       }
     };
 
-    // Create and append the script tag
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.setAttribute('data-schema', 'local-business');
-    script.textContent = JSON.stringify(localBusinessSchema);
-    document.head.appendChild(script);
-
-    // Cleanup function to remove script when component unmounts
-    return () => {
-      const scriptToRemove = document.querySelector('script[data-schema="local-business"]');
-      if (scriptToRemove) {
-        scriptToRemove.remove();
-      }
-    };
-  }, []);
-
-  return null; // This component doesn't render anything visible
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+    />
+  );
 };
 
 export default LocalBusinessSchema;

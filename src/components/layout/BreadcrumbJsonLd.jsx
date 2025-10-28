@@ -88,12 +88,7 @@ export default function BreadcrumbJsonLdDynamic({
       "@type": "ListItem",
       position: item.position,
       name: item.name,
-      item: {
-        "@type": "WebPage",
-        "@id": item.item,
-        url: item.item,
-        name: item.name
-      }
+      item: item.item
     })),
   };
 
