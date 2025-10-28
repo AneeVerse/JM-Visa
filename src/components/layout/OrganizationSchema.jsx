@@ -29,11 +29,6 @@ const OrganizationSchema = () => {
       "postalCode": "400709",
       "addressCountry": "IN"
     },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 19.1107866,
-      "longitude": 73.006725
-    },
     "serviceArea": {
       "@type": "Country",
       "name": "India"
