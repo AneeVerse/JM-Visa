@@ -479,7 +479,7 @@ const PopupForm = () => {
                     <BiCheckShield className="text-blue-600 mr-1 text-xs" />
                     <div>
                     I agreed to the{" "}
-                    <a href="/terms" className="text-blue-600 hover:underline ml-0.5">
+                    <a href="/terms-and-condition" className="text-blue-600 hover:underline ml-0.5">
                       terms and conditions
                     </a></div>
                   </div>
