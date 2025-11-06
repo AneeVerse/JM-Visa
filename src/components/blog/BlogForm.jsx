@@ -5,16 +5,24 @@ import { BiMessageDetail } from "react-icons/bi";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { urlFor } from "../../sanity/lib/client";
+import CountryCodeDropdown from "../home/CountryCodeDropdown";
 
 const BlogForm = ({ blog, relatedBlogs }) => {
   const router = useRouter();
-  const [formData, setFormData] = useState({ name: "", email: "", phone: "" });
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "", countryCode: "+91" });
   const [isLoading, setIsLoading] = useState(false);
   const [popup, setPopup] = useState({ show: false, message: "", success: false });
   const [errors, setErrors] = useState({ name: "", email: "", phone: "" });
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleCountryCodeChange = (code) => {
+    setFormData({
+      ...formData,
+      countryCode: code
+    });
   };
 
   const validateForm = () => {
@@ -53,16 +61,24 @@ const BlogForm = ({ blog, relatedBlogs }) => {
     setPopup({ show: false });
 
     try {
+      // Combine country code with phone number
+      const fullPhoneNumber = `${formData.countryCode} ${formData.phone}`;
+      
       const response = await fetch("/api/get-touch", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData, other: "From Blog Page" }),
+        body: JSON.stringify({ 
+          name: formData.name,
+          email: formData.email,
+          phone: fullPhoneNumber,
+          other: "From Blog Page" 
+        }),
       });
 
       const result = await response.json();
       if (result.success) {
         setPopup({ show: true, message: "Form submitted successfully!", success: true });
-        setFormData({ name: "", email: "", phone: "" });
+        setFormData({ name: "", email: "", phone: "", countryCode: "+91" });
       } else {
         setPopup({ show: true, message: "Failed to send the message. Try again.", success: false });
       }
@@ -174,14 +190,16 @@ const BlogForm = ({ blog, relatedBlogs }) => {
               </div>
 
               {/* Phone Field */}
-              <div className="flex gap-2">
-                <div className="relative w-20">
-                  <select className="w-full py-3 px-2 bg-blue-700/50 border border-blue-600/50 rounded-lg text-white focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-200 text-sm">
-                    <option value="+91">🇮🇳 +91</option>
-                    <option value="+1">🇺🇸 +1</option>
-                    <option value="+44">🇬🇧 +44</option>
-                  </select>
-                </div>
+              <div className="flex gap-0">
+                <CountryCodeDropdown
+                  value={formData.countryCode}
+                  onChange={handleCountryCodeChange}
+                  error={errors.phone}
+                  height="h-12"
+                  bgColor="bg-blue-700/50"
+                  borderColor="border-blue-600/50"
+                  className="rounded-l-lg"
+                />
                 <div className="relative flex-1">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <svg className="w-5 h-5 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -195,7 +213,7 @@ const BlogForm = ({ blog, relatedBlogs }) => {
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="9876543210"
-                    className="w-full pl-10 pr-4 py-3 bg-blue-700/50 border border-blue-600/50 rounded-lg text-white placeholder-blue-200 focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-200"
+                    className={`w-full pl-10 pr-4 py-3 bg-blue-700/50 border border-l-0 border-blue-600/50 rounded-r-lg text-white placeholder-blue-200 focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-200 ${errors.phone ? 'border-red-500' : ''}`}
                     required
                   />
                 </div>
