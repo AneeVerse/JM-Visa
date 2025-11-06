@@ -74,8 +74,75 @@ export const POST = async (req) => {
 
     const indianTime = getIndianTime();
 
-    // Send the email
+    // Send the email to admin
     await transporter.sendMail(mailOptions);
+
+    // Send confirmation email to the person who submitted the form
+    try {
+      const confirmationMailOptions = {
+        from: `"JM Visa Services" <${env.NEXT_PUBLIC_EMAIL_USER}>`,
+        to: email,
+        subject: "Thank You for Your Visa Application - JM Visa Services",
+        html: `
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 20px auto; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+            <!-- Header -->
+            <div style="background-color: #007BFF; color: #ffffff; padding: 20px; text-align: center;">
+              <h1 style="margin: 0; font-size: 1.8rem; font-weight: bold;">Thank You for Your Application!</h1>
+            </div>
+
+            <!-- Body -->
+            <div style="padding: 20px; background-color: #ffffff; color: #333333;">
+              <p style="font-size: 1.1rem; margin-bottom: 15px;">Dear ${firstName},</p>
+              
+              <p style="font-size: 1rem; line-height: 1.6; margin-bottom: 15px;">
+                Thank you for submitting your visa application to <strong>JM Visa Services</strong>. We have successfully received your application and our team will review it shortly.
+              </p>
+
+              <div style="background-color: #f8f9fa; padding: 15px; border-radius: 5px; margin: 20px 0;">
+                <p style="margin: 5px 0; font-size: 0.95rem;"><strong>Your Application Details:</strong></p>
+                <p style="margin: 5px 0; font-size: 0.95rem;"><strong>Name:</strong> ${firstName}</p>
+                <p style="margin: 5px 0; font-size: 0.95rem;"><strong>Email:</strong> ${email}</p>
+                ${phoneNumber ? `<p style="margin: 5px 0; font-size: 0.95rem;"><strong>Phone:</strong> ${phoneNumber}</p>` : ''}
+                <p style="margin: 5px 0; font-size: 0.95rem;"><strong>Citizen of:</strong> ${citizen}</p>
+                <p style="margin: 5px 0; font-size: 0.95rem;"><strong>Travelling To:</strong> ${travellingTo}</p>
+                <p style="margin: 5px 0; font-size: 0.95rem;"><strong>Category:</strong> ${category}</p>
+                <p style="margin: 5px 0; font-size: 0.95rem;"><strong>Submitted On:</strong> ${indianTime}</p>
+              </div>
+
+              <p style="font-size: 1rem; line-height: 1.6; margin-bottom: 15px;">
+                Our visa experts will review your application and contact you within 24-48 hours with the next steps. If you have any urgent queries, please feel free to reach us directly.
+              </p>
+
+              <div style="margin: 20px 0; padding: 15px; background-color: #e7f3ff; border-left: 4px solid #007BFF; border-radius: 4px;">
+                <p style="margin: 0; font-size: 0.95rem;"><strong>Need Immediate Assistance?</strong></p>
+                <p style="margin: 5px 0 0 0; font-size: 0.95rem;">
+                  📞 Call us: <a href="tel:+919321315524" style="color: #007BFF; text-decoration: none;">+91 9321315524</a><br>
+                  📧 Email: <a href="mailto:info@jmvisaservices.com" style="color: #007BFF; text-decoration: none;">info@jmvisaservices.com</a><br>
+                  💬 WhatsApp: <a href="https://wa.me/+919321315524" style="color: #007BFF; text-decoration: none;">+91 9321315524</a>
+                </p>
+              </div>
+
+              <p style="font-size: 1rem; line-height: 1.6; margin-top: 20px;">
+                Best regards,<br>
+                <strong>The JM Visa Services Team</strong>
+              </p>
+            </div>
+
+            <!-- Footer -->
+            <div style="background-color: #f8f9fa; padding: 15px; text-align: center; color: #666666; font-size: 0.9rem;">
+              <p style="margin: 0;">This is an automated confirmation email. Please do not reply to this email.</p>
+              <p style="margin: 5px 0 0 0;">© ${new Date().getFullYear()} JM Visa Services. All rights reserved.</p>
+            </div>
+          </div>
+        `,
+        text: `Dear ${firstName},\n\nThank you for submitting your visa application to JM Visa Services. We have successfully received your application and our team will review it shortly.\n\nYour Application Details:\nName: ${firstName}\nEmail: ${email}\n${phoneNumber ? `Phone: ${phoneNumber}\n` : ''}Citizen of: ${citizen}\nTravelling To: ${travellingTo}\nCategory: ${category}\nSubmitted On: ${indianTime}\n\nOur visa experts will review your application and contact you within 24-48 hours.\n\nBest regards,\nThe JM Visa Services Team`,
+      };
+
+      await transporter.sendMail(confirmationMailOptions);
+      console.log("Confirmation email sent successfully to user");
+    } catch (confirmationError) {
+      console.error("Error sending confirmation email to user:", confirmationError);
+    }
 
     // Send to Google Sheets
     try {
