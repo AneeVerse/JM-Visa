@@ -374,7 +374,7 @@ const PopupForm = () => {
                       className={`w-full pl-9 pr-3 py-2 text-sm border border-l-0 rounded-r-lg ${
                         errors.phone ? "border-red-500" : "border-gray-300"
                       } focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all`}
-                      placeholder="9876543210"
+                      placeholder="9321315524"
                     />
                     <BiPhone className="absolute left-3 top-3 text-gray-400 text-sm" />
                   </div>

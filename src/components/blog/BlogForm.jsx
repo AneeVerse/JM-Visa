@@ -212,7 +212,7 @@ const BlogForm = ({ blog, relatedBlogs }) => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    placeholder="9876543210"
+                    placeholder="9321315524"
                     className={`w-full pl-10 pr-4 py-3 bg-blue-700/50 border border-l-0 border-blue-600/50 rounded-r-lg text-white placeholder-blue-200 focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-200 ${errors.phone ? 'border-red-500' : ''}`}
                     required
                   />
