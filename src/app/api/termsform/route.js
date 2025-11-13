@@ -3,11 +3,11 @@ import nodemailer from 'nodemailer';
 export const POST = async (req) => {
   try {
     // Parse the incoming JSON data
-    const { email } = await req.json();
+    const { name, email, phone } = await req.json();
 
-    if (!email) {
+    if (!name || !email || !phone) {
       return new Response(
-        JSON.stringify({ error: 'Email is required!' }),
+        JSON.stringify({ error: 'Name, Email, and Phone are required!' }),
         { status: 400, headers: { 'Content-Type': 'application/json' } }
       );
     }
@@ -200,7 +200,9 @@ export const POST = async (req) => {
         body: JSON.stringify({
           pageSource: 'Terms Page',
           formType: 'Terms Consent',
+          name: name || '',
           email: email || '',
+          phone: phone || '',
           extraInfo: `Terms consent requested at ${indianTime}`
         }),
       });

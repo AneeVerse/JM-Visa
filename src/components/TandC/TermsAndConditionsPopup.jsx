@@ -1,10 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import CountryCodeDropdown from "../home/CountryCodeDropdown";
 
 const TermsAndConditionsPopup = () => {
   const [showPopup, setShowPopup] = useState(true);
-  const [formData, setFormData] = useState({ name: "", email: "" });
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "", countryCode: "+91" });
   const [isLoading, setIsLoading] = useState(false);
   const [popupMessage, setPopupMessage] = useState("");
   const [hideButton, setHideButton] = useState(false);
@@ -14,6 +15,13 @@ const TermsAndConditionsPopup = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const handleCountryCodeChange = (code) => {
+    setFormData((prev) => ({
+      ...prev,
+      countryCode: code,
+    }));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setHideButton(true);
@@ -21,10 +29,12 @@ const TermsAndConditionsPopup = () => {
     setPopupMessage("Submitting...");
 
     try {
+      const fullPhoneNumber = formData.phone ? `${formData.countryCode} ${formData.phone}` : "";
+
       const response = await fetch("/api/termsform", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, phone: fullPhoneNumber }),
       });
 
       const result = await response.json();
@@ -85,6 +95,33 @@ const TermsAndConditionsPopup = () => {
                     placeholder="Enter your email"
                     required
                   />
+                </div>
+                <div className="mb-4">
+                  <label className="block text-base font-medium text-gray-700 mb-1">
+                    Your Phone
+                  </label>
+                  <div className="flex gap-0 border-2 border-gray-300 rounded-md focus-within:border-blue-500 transition-colors">
+                    <div className="flex-shrink-0">
+                      <CountryCodeDropdown
+                        value={formData.countryCode}
+                        onChange={handleCountryCodeChange}
+                        height="h-[50px]"
+                        bgColor="bg-white"
+                        borderColor="border-transparent"
+                        className="!rounded-l-md !border-0 !border-r !border-gray-200"
+                      />
+                    </div>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      placeholder="9321315524"
+                      pattern="[0-9]{6,15}"
+                      className="flex-1 h-[50px] px-3 border-0 rounded-r-md focus:outline-none bg-transparent"
+                      required
+                    />
+                  </div>
                 </div>
 
                 <div className="text-center">
