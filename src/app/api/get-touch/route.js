@@ -1,7 +1,26 @@
 import nodemailer from "nodemailer";
 import env from "../../../config/env";
+import { enforceRateLimit, attachRateLimitCookie } from "../../../utils/rateLimit";
 
 export const POST = async (req) => {
+  const rateLimit = enforceRateLimit(req);
+
+  if (!rateLimit.allowed) {
+    return new Response(
+      JSON.stringify({
+        success: false,
+        message: rateLimit.message,
+      }),
+      {
+        status: 429,
+        headers: {
+          "Content-Type": "application/json",
+          "Retry-After": rateLimit.retryAfterSeconds.toString(),
+        },
+      }
+    );
+  }
+
   try {
     // Parse the incoming request body
     const { name, email, phone, other } = await req.json();
@@ -177,13 +196,15 @@ export const POST = async (req) => {
     }
 
     // Success response
-    return new Response(
+    const response = new Response(
       JSON.stringify({
         success: true,
         message: "Your message has been sent successfully!",
       }),
       { status: 200, headers: { "Content-Type": "application/json" } }
     );
+    attachRateLimitCookie(response, rateLimit.cookieValue);
+    return response;
   } catch (error) {
     console.error("Error sending email:", error);
 

@@ -1,6 +1,22 @@
 import nodemailer from 'nodemailer';
+import { enforceRateLimit, attachRateLimitCookie } from '../../../utils/rateLimit';
 
 export const POST = async (req) => {
+  const rateLimit = enforceRateLimit(req);
+
+  if (!rateLimit.allowed) {
+    return new Response(
+      JSON.stringify({ success: false, message: rateLimit.message }),
+      {
+        status: 429,
+        headers: {
+          "Content-Type": "application/json",
+          "Retry-After": rateLimit.retryAfterSeconds.toString(),
+        },
+      }
+    );
+  }
+
   try {
     // Parse the incoming JSON data
     const { name, email, phone } = await req.json();
@@ -211,10 +227,12 @@ export const POST = async (req) => {
       console.error('Error sending terms data to Google Sheets:', sheetError);
     }
 
-    return new Response(
+    const response = new Response(
       JSON.stringify({ success: true, message: 'Consent email sent successfully!' }),
       { status: 200, headers: { 'Content-Type': 'application/json' } }
     );
+    attachRateLimitCookie(response, rateLimit.cookieValue);
+    return response;
   } catch (error) {
     console.error('Error sending email:', error.message);
 
