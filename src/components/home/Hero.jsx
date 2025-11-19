@@ -28,7 +28,7 @@ const HeroSection = () => {
   }, [ backgroundImages.length]);
 
   return (
-    <section className="relative  h-screen lg:min-h-none flex items-center lg:pt-0 sm:h-[700px] overflow-hidden">
+    <section className="relative  h-screen lg:min-h-none flex items-center lg:pt-0 sm:h-[750px] overflow-hidden">
       {/* Background Image Slider */}
       <div className="absolute -z-40 inset-0 overflow-hidden">
         <div
