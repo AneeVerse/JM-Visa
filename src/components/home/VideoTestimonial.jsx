@@ -33,6 +33,14 @@ const MediaTestimonials = () => {
     }
   };
 
+  const videoTestimonials = testimonials.filter((item) => item.type === "video");
+  const imageTestimonials = testimonials.filter((item) => item.type !== "video");
+  const limitedTestimonials = [...videoTestimonials.slice(0, 5), ...imageTestimonials];
+  const displayedTestimonials = viewAll ? testimonials : limitedTestimonials;
+
+  const getOriginalIndex = (testimonialId) =>
+    testimonials.findIndex((item) => item.id === testimonialId);
+
   return (
     <section className="relative pb-16">
       <div className="container mx-auto px-5 sm:px-6 lg:px-12">
@@ -74,11 +82,13 @@ const MediaTestimonials = () => {
               style={{ scrollbarWidth: "none", msOverflowStyle: "none", WebkitOverflowScrolling: "touch" }}
               className="relative flex gap-6 overflow-x-auto scroll-smooth pb-4"
             >
-              {testimonials.map((testimonial, index) => (
+              {displayedTestimonials.map((testimonial) => {
+                const originalIndex = getOriginalIndex(testimonial.id);
+                return (
                 <div
                   key={testimonial.id}
                   className="relative min-w-[220px] sm:min-w-[220px] h-[340px] hover:shadow-md rounded-lg overflow-hidden shadow-md transition-transform cursor-pointer"
-                  onClick={() => setSelectedIndex(index)}
+                  onClick={() => setSelectedIndex(originalIndex)}
                 >
                   {testimonial.type === "video" ? (
                     <video
@@ -97,7 +107,8 @@ const MediaTestimonials = () => {
                     />
                   )}
                 </div>
-              ))}
+                );
+              })}
             </div>
             {/* Right scroll button */}
             <button
@@ -109,11 +120,13 @@ const MediaTestimonials = () => {
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {testimonials.map((testimonial, index) => (
+            {displayedTestimonials.map((testimonial) => {
+              const originalIndex = getOriginalIndex(testimonial.id);
+              return (
               <div
                 key={testimonial.id}
                 className="relative h-[340px] hover:shadow-md rounded-lg overflow-hidden shadow-md transition-transform cursor-pointer"
-                onClick={() => setSelectedIndex(index)}
+                onClick={() => setSelectedIndex(originalIndex)}
               >
                 {testimonial.type === "video" ? (
                   <video
@@ -132,7 +145,8 @@ const MediaTestimonials = () => {
                   />
                 )}
               </div>
-            ))}
+              );
+            })}
           </div>
         )}
       </div>
