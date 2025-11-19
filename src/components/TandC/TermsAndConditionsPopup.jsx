@@ -62,11 +62,11 @@ const TermsAndConditionsPopup = () => {
           setShowPopup(false);
         }, 600);
       } else {
-        setPopupMessage("Failed to submit. Please try again.");
+        setPopupMessage(result.message || "Failed to submit. Please try again.");
         setHideButton(false);
       }
     } catch (error) {
-      setPopupMessage("Error occurred. Please try again.");
+      setPopupMessage(error?.message || "Error occurred. Please try again.");
       setHideButton(false);
     } finally {
       setIsLoading(false);

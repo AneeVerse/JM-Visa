@@ -23,7 +23,7 @@ export const enforceRateLimit = (req) => {
     return {
       allowed: false,
       retryAfterSeconds,
-      message: `You can submit only once every 2 hours. Please try again in about ${minutes} minute(s).`,
+      message: `You can submit only once every 2 hours from the same device. Please try again in about ${minutes} minute(s), or WhatsApp us directly at +91 9321315524 for urgent help.`,
     };
   }
 

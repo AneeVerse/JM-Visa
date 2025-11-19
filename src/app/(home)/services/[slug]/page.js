@@ -99,14 +99,22 @@ const ServiceDetails = () => {
         }
         setCaptchaToken(null);
       } else {
-        setPopup({ show: true, message: "Failed to send the message. Try again.", success: false });
+        setPopup({
+          show: true,
+          message: result.message || "Failed to send the message. Try again.",
+          success: false,
+        });
       }
 
       setTimeout(() => {
         setPopup({ show: false });
       }, 5000); // Auto-hide popup after 5 seconds
     } catch (error) {
-      setPopup({ show: true, message: "Server error! Please try later.", success: false });
+      setPopup({
+        show: true,
+        message: error?.message || "Server error! Please try later.",
+        success: false,
+      });
       setTimeout(() => {
         setPopup({ show: false });
       }, 5000);

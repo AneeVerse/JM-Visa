@@ -150,11 +150,19 @@ const VisaForm = () => {
         }
         setCaptchaToken(null);
       } else {
-        setPopup({ show: true, message: "Submission failed. Try again!", success: false });
+        setPopup({
+          show: true,
+          message: response.data.message || "Submission failed. Try again!",
+          success: false,
+        });
       }
     } catch (error) {
       console.error(error);
-      setPopup({ show: true, message: "Server error! Please try later.", success: false });
+      const message =
+        error?.response?.data?.message ||
+        error?.message ||
+        "Server error! Please try later.";
+      setPopup({ show: true, message, success: false });
     } finally {
       setIsLoading(false);
       setTimeout(() => setPopup({ show: false }), 5000); // Hide popup after 5 seconds

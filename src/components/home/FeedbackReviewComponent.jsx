@@ -52,17 +52,19 @@ const FeedbackReviewComponent = () => {
         body: JSON.stringify({ message, recaptchaToken: captchaToken }),
       });
 
-      if (response.ok) {
-        setNotification({ type: "success", message: "Your message has been submitted." });
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        setNotification({ type: "success", message: result.message || "Your message has been submitted." });
         if (recaptchaRef.current) {
           recaptchaRef.current.reset();
         }
         setCaptchaToken(null);
       } else {
-        setNotification({ type: "error", message: "Error submitting your message." });
+        setNotification({ type: "error", message: result.message || "Error submitting your message." });
       }
     } catch (error) {
-      setNotification({ type: "error", message: "Error submitting your message." });
+      setNotification({ type: "error", message: error?.message || "Error submitting your message." });
     } finally {
       setIsSubmitting(false);
       setShowThankYouPopup(false);
