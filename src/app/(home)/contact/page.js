@@ -1,8 +1,11 @@
 "use client";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiPhone, FiMail, FiMapPin } from "react-icons/fi";
 import Link from "next/link";
+import ReCAPTCHA from "react-google-recaptcha";
+
+const SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
 const ContactUsPage = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +17,8 @@ const ContactUsPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [popup, setPopup] = useState({ show: false, message: "", success: false });
   const [errors, setErrors] = useState({});
+  const [captchaToken, setCaptchaToken] = useState(null);
+  const recaptchaRef = useRef(null);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -47,17 +52,27 @@ const ContactUsPage = () => {
       return;
     }
 
+    if (!captchaToken) {
+      setErrors((prev) => ({ ...prev, captcha: "Please complete the reCAPTCHA challenge" }));
+      setIsLoading(false);
+      return;
+    }
+
     try {
       const response = await fetch("/api/contact-us", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, recaptchaToken: captchaToken }),
       });
 
       const result = await response.json();
       if (result.success) {
         setPopup({ show: true, message: "Form submitted successfully!", success: true });
         setFormData({ name: "", email: "", phone: "", message: "" });
+        if (recaptchaRef.current) {
+          recaptchaRef.current.reset();
+        }
+        setCaptchaToken(null);
       } else {
         setPopup({ show: true, message: "Failed to send the message. Try again.", success: false });
       }
@@ -151,6 +166,27 @@ const ContactUsPage = () => {
               ></textarea>
               {errors.message && <p className="text-red-500 text-sm">{errors.message}</p>}
             </div>
+            {SITE_KEY ? (
+              <div>
+                <ReCAPTCHA
+                  ref={recaptchaRef}
+                  sitekey={SITE_KEY}
+                  onChange={(value) => {
+                    setCaptchaToken(value);
+                    setErrors((prev) => {
+                      const updated = { ...prev };
+                      delete updated.captcha;
+                      return updated;
+                    });
+                  }}
+                />
+                {errors.captcha && <p className="text-red-500 text-sm mt-2">{errors.captcha}</p>}
+              </div>
+            ) : (
+              <p className="text-red-500 text-sm">
+                reCAPTCHA site key is missing. Please set NEXT_PUBLIC_RECAPTCHA_SITE_KEY.
+              </p>
+            )}
             <button
               type="submit"
               disabled={isLoading}

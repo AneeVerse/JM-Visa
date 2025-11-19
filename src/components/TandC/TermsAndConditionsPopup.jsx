@@ -1,7 +1,10 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import CountryCodeDropdown from "../home/CountryCodeDropdown";
+import ReCAPTCHA from "react-google-recaptcha";
+
+const SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
 const TermsAndConditionsPopup = () => {
   const [showPopup, setShowPopup] = useState(true);
@@ -9,6 +12,9 @@ const TermsAndConditionsPopup = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [popupMessage, setPopupMessage] = useState("");
   const [hideButton, setHideButton] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState(null);
+  const [captchaError, setCaptchaError] = useState("");
+  const recaptchaRef = useRef(null);
 
 
   const handleChange = (e) => {
@@ -31,15 +37,26 @@ const TermsAndConditionsPopup = () => {
     try {
       const fullPhoneNumber = formData.phone ? `${formData.countryCode} ${formData.phone}` : "";
 
+      if (!captchaToken) {
+        setCaptchaError("Please verify you are not a robot.");
+        setIsLoading(false);
+        setHideButton(false);
+        return;
+      }
+
       const response = await fetch("/api/termsform", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData, phone: fullPhoneNumber }),
+        body: JSON.stringify({ ...formData, phone: fullPhoneNumber, recaptchaToken: captchaToken }),
       });
 
       const result = await response.json();
       if (result.success) {
         setPopupMessage("Form submitted successfully!");
+        if (recaptchaRef.current) {
+          recaptchaRef.current.reset();
+        }
+        setCaptchaToken(null);
         // Close the popup after 2 seconds
         setTimeout(() => {
           setShowPopup(false);
@@ -123,6 +140,24 @@ const TermsAndConditionsPopup = () => {
                     />
                   </div>
                 </div>
+
+                {SITE_KEY ? (
+                  <div className="mb-4">
+                    <ReCAPTCHA
+                      ref={recaptchaRef}
+                      sitekey={SITE_KEY}
+                      onChange={(value) => {
+                        setCaptchaToken(value);
+                        setCaptchaError("");
+                      }}
+                    />
+                    {captchaError && <p className="text-red-500 text-sm mt-2">{captchaError}</p>}
+                  </div>
+                ) : (
+                  <p className="text-red-500 text-sm mb-4">
+                    reCAPTCHA site key missing. Please set NEXT_PUBLIC_RECAPTCHA_SITE_KEY.
+                  </p>
+                )}
 
                 <div className="text-center">
                   <button

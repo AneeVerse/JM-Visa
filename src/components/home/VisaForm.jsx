@@ -1,7 +1,10 @@
 "use client";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import axios from "axios";
 import { AnimatePresence, motion } from "framer-motion";
+import ReCAPTCHA from "react-google-recaptcha";
+
+const SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
 const VisaForm = () => {
   const [formData, setFormData] = useState({
@@ -17,6 +20,9 @@ const VisaForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [popup, setPopup] = useState({ show: false, message: "", success: false });
   const [errors, setErrors] = useState({});
+  const [captchaToken, setCaptchaToken] = useState(null);
+  const [captchaError, setCaptchaError] = useState("");
+  const recaptchaRef = useRef(null);
 
   // Function to detect current page source dynamically
   const getCurrentPageSource = () => {
@@ -111,11 +117,18 @@ const VisaForm = () => {
       return;
     }
 
+    if (!captchaToken) {
+      setCaptchaError("Please complete the reCAPTCHA verification.");
+      setIsLoading(false);
+      return;
+    }
+
     try {
       // Add page source to form data
       const submissionData = {
         ...formData,
-        pageSource: getCurrentPageSource()
+        pageSource: getCurrentPageSource(),
+        recaptchaToken: captchaToken
       };
       
       const response = await axios.post("/api/visa-form", submissionData);
@@ -132,6 +145,10 @@ const VisaForm = () => {
           otherCitizen: "",
           otherTravellingTo: "",
         });
+        if (recaptchaRef.current) {
+          recaptchaRef.current.reset();
+        }
+        setCaptchaToken(null);
       } else {
         setPopup({ show: true, message: "Submission failed. Try again!", success: false });
       }
@@ -328,11 +345,28 @@ const VisaForm = () => {
             </div>
 
             {/* Submit */}
-            <div className="md:col-span-2 flex justify-center">
+            <div className="md:col-span-2 flex flex-col items-center gap-4">
+              {SITE_KEY ? (
+                <div className="w-full flex flex-col items-center">
+                  <ReCAPTCHA
+                    ref={recaptchaRef}
+                    sitekey={SITE_KEY}
+                    onChange={(value) => {
+                      setCaptchaToken(value);
+                      setCaptchaError("");
+                    }}
+                  />
+                  {captchaError && <p className="text-red-500 text-sm mt-2">{captchaError}</p>}
+                </div>
+              ) : (
+                <p className="text-red-500 text-sm text-center w-full">
+                  reCAPTCHA site key missing. Please set NEXT_PUBLIC_RECAPTCHA_SITE_KEY.
+                </p>
+              )}
               <button
                 type="submit"
                 disabled={isLoading}
-                className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold transition"
+                className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold transition w-full sm:w-auto"
               >
                 {isLoading ? "Submitting..." : "Check Requirements"}
               </button>

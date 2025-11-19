@@ -1,12 +1,15 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { BiSupport, BiUser, BiEnvelope, BiPhone, BiCheckShield, BiWorld, BiTask, BiX } from 'react-icons/bi';
 import { FiArrowRight } from 'react-icons/fi';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import CountryCodeDropdown from './CountryCodeDropdown';
 import services from '../../data/ServicesData';
+import ReCAPTCHA from "react-google-recaptcha";
+
+const SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
 const PopupForm = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -24,6 +27,9 @@ const PopupForm = () => {
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [isAccepted, setIsAccepted] = useState(true);
+  const [captchaToken, setCaptchaToken] = useState(null);
+  const [captchaError, setCaptchaError] = useState('');
+  const recaptchaRef = useRef(null);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -152,8 +158,11 @@ const PopupForm = () => {
       // Combine country code with phone number (with space)
       const fullPhoneNumber = `${formData.countryCode} ${formData.phone}`;
       
-      // For Google Sheets compatibility, also create a version without special characters
-      const googleSheetsPhone = `${formData.countryCode.replace('+', '')}${formData.phone}`;
+      if (!captchaToken) {
+        setCaptchaError("Please complete the reCAPTCHA verification.");
+        setIsLoading(false);
+        return;
+      }
       
       const response = await fetch('/api/get-touch', {
         method: 'POST',
@@ -164,7 +173,8 @@ const PopupForm = () => {
           name: `${formData.firstName} ${formData.lastName}`,
           email: formData.email,
           phone: fullPhoneNumber,
-          other: `${formData.service} - ${formData.country} (Homepage Popup)`
+          other: `${formData.service} - ${formData.country} (Homepage Popup)`,
+          recaptchaToken: captchaToken
         }),
       });
 
@@ -189,6 +199,10 @@ const PopupForm = () => {
       setTimeout(() => {
         setIsVisible(false);
       }, 2000);
+      if (recaptchaRef.current) {
+        recaptchaRef.current.reset();
+      }
+      setCaptchaToken(null);
       
     } catch (error) {
       toast.error(error.message || 'Failed to submit form. Please try again later.', {
@@ -485,6 +499,24 @@ const PopupForm = () => {
                   </div>
                 </label>
               </div>
+
+              {SITE_KEY ? (
+                <div>
+                  <ReCAPTCHA
+                    ref={recaptchaRef}
+                    sitekey={SITE_KEY}
+                    onChange={(value) => {
+                      setCaptchaToken(value);
+                      setCaptchaError('');
+                    }}
+                  />
+                  {captchaError && <p className="text-red-500 text-xs mt-2">{captchaError}</p>}
+                </div>
+              ) : (
+                <p className="text-red-500 text-xs">
+                  reCAPTCHA site key missing. Please set NEXT_PUBLIC_RECAPTCHA_SITE_KEY.
+                </p>
+              )}
 
               {/* Submit Button */}
               <button

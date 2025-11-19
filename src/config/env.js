@@ -10,6 +10,10 @@ const env = {
   NEXT_PUBLIC_EMAIL_APP_PASS: process.env.NEXT_PUBLIC_EMAIL_APP_PASS || 'gdwv vyog pcjn fhpo',
   NEXT_PUBLIC_EMAIL_RECEIVER: process.env.NEXT_PUBLIC_EMAIL_RECEIVER || 'info@jmvisaservices.com',
 
+  // Google reCAPTCHA
+  NEXT_PUBLIC_RECAPTCHA_SITE_KEY: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '',
+  RECAPTCHA_SECRET_KEY: process.env.RECAPTCHA_SECRET_KEY || '',
+
   // Node Environment
   NODE_ENV: process.env.NODE_ENV || 'development',
 };

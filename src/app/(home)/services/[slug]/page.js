@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { BiMessageDetail } from "react-icons/bi";
@@ -7,6 +7,9 @@ import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import services from "../../../../data/ServicesData";
 import CountryListAboutPage from "../../../../components/about/CountryListAboutPage";
 import VisaServicesAboutPage from "../../../../components/about/VisaServicesAboutPage";
+import ReCAPTCHA from "react-google-recaptcha";
+
+const SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
 const ServiceDetails = () => {
   const params = useParams();
@@ -18,6 +21,9 @@ const ServiceDetails = () => {
   const [popup, setPopup] = useState({ show: false, message: "", success: false });
   const [isAccepted, setIsAccepted] = useState(false); // State to track checkbox
   const [errors, setErrors] = useState({ name: "", email: "", phone: "" });
+  const [captchaToken, setCaptchaToken] = useState(null);
+  const [captchaError, setCaptchaError] = useState("");
+  const recaptchaRef = useRef(null);
 
   useEffect(() => {
     if (!params?.slug) return;
@@ -72,16 +78,26 @@ const ServiceDetails = () => {
     setPopup({ show: false });
 
     try {
+      if (!captchaToken) {
+        setCaptchaError("Please complete the reCAPTCHA verification.");
+        setIsLoading(false);
+        return;
+      }
+
       const response = await fetch("/api/get-touch", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData, other: service?.title }),
+        body: JSON.stringify({ ...formData, other: service?.title, recaptchaToken: captchaToken }),
       });
 
       const result = await response.json();
       if (result.success) {
         setPopup({ show: true, message: "Form submitted successfully!", success: true });
         setFormData({ name: "", email: "", phone: "" });
+        if (recaptchaRef.current) {
+          recaptchaRef.current.reset();
+        }
+        setCaptchaToken(null);
       } else {
         setPopup({ show: true, message: "Failed to send the message. Try again.", success: false });
       }
@@ -268,6 +284,24 @@ const ServiceDetails = () => {
                     I accept the <a href="/terms-and-condition" className="text-blue-500">terms and conditions</a>.
                   </label>
                 </div>
+
+                {SITE_KEY ? (
+                  <div className="mb-6">
+                    <ReCAPTCHA
+                      ref={recaptchaRef}
+                      sitekey={SITE_KEY}
+                      onChange={(value) => {
+                        setCaptchaToken(value);
+                        setCaptchaError("");
+                      }}
+                    />
+                    {captchaError && <p className="text-red-500 text-sm mt-2">{captchaError}</p>}
+                  </div>
+                ) : (
+                  <p className="text-red-500 text-sm mb-6">
+                    reCAPTCHA site key missing. Please set NEXT_PUBLIC_RECAPTCHA_SITE_KEY.
+                  </p>
+                )}
 
                 <button
                   type="submit"

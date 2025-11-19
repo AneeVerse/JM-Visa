@@ -1,5 +1,7 @@
 import nodemailer from 'nodemailer';
+import env from '../../../config/env';
 import { enforceRateLimit, attachRateLimitCookie } from '../../../utils/rateLimit';
+import { verifyRecaptchaToken } from '../../../utils/verifyRecaptcha';
 
 export const POST = async (req) => {
   const rateLimit = enforceRateLimit(req);
@@ -19,7 +21,7 @@ export const POST = async (req) => {
 
   try {
     // Parse the incoming JSON data
-    const { name, email, phone } = await req.json();
+    const { name, email, phone, recaptchaToken } = await req.json();
 
     if (!name || !email || !phone) {
       return new Response(
@@ -28,12 +30,21 @@ export const POST = async (req) => {
       );
     }
 
+    const captchaResult = await verifyRecaptchaToken(recaptchaToken);
+
+    if (!captchaResult.success) {
+      return new Response(
+        JSON.stringify({ success: false, message: captchaResult.message || 'reCAPTCHA verification failed.' }),
+        { status: 400, headers: { 'Content-Type': 'application/json' } }
+      );
+    }
+
     // Nodemailer transporter setup
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: process.env.NEXT_PUBLIC_EMAIL_USER,
-        pass: process.env.NEXT_PUBLIC_EMAIL_APP_PASS,
+        user: env.NEXT_PUBLIC_EMAIL_USER,
+        pass: env.NEXT_PUBLIC_EMAIL_APP_PASS,
       },
     });
 
@@ -178,7 +189,7 @@ export const POST = async (req) => {
 
     // Email options
     const mailOptions = {
-      from: `"JM Visa Services" <${process.env.NEXT_PUBLIC_EMAIL_USER}>`,
+      from: `"JM Visa Services" <${env.NEXT_PUBLIC_EMAIL_USER}>`,
       to: email,
       subject: 'Consent for Visa Application Services',
       html: emailContent,

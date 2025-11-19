@@ -1,11 +1,14 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useRouter, useParams } from "next/navigation";
 import CountryData from "../../../../../data/CountryData";
 import { BiBuildingHouse, BiMessageDetail, BiSupport, BiWorld } from "react-icons/bi";
 import { AiOutlinePlus, AiOutlineMinus, AiOutlineFieldTime } from "react-icons/ai";
 import { AnimatePresence , motion} from "framer-motion";
 import CountryCodeDropdown from "../../../../../components/home/CountryCodeDropdown";
+import ReCAPTCHA from "react-google-recaptcha";
+
+const SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
 const CountryDetails = () => {
   const params = useParams();
@@ -17,7 +20,10 @@ const CountryDetails = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [popup, setPopup] = useState({ show: false, message: "", success: false });
   const [isAccepted, setIsAccepted] = useState(false); // State to track checkbox
-    const [errors, setErrors] = useState({ name: "", email: "", phone: "" });
+  const [errors, setErrors] = useState({ name: "", email: "", phone: "" });
+  const [captchaToken, setCaptchaToken] = useState(null);
+  const [captchaError, setCaptchaError] = useState("");
+  const recaptchaRef = useRef(null);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -74,6 +80,12 @@ const CountryDetails = () => {
     try {
       // Combine country code with phone number
       const fullPhoneNumber = `${formData.countryCode} ${formData.phone}`;
+
+      if (!captchaToken) {
+        setCaptchaError("Please complete the reCAPTCHA verification.");
+        setIsLoading(false);
+        return;
+      }
       
       const response = await fetch("/api/get-touch", {
         method: "POST",
@@ -82,7 +94,8 @@ const CountryDetails = () => {
           name: formData.name,
           email: formData.email,
           phone: fullPhoneNumber,
-          other: country.name 
+          other: country.name,
+          recaptchaToken: captchaToken 
         }),
       });
 
@@ -90,6 +103,10 @@ const CountryDetails = () => {
       if (result.success) {
         setPopup({ show: true, message: "Form submitted successfully!", success: true });
         setFormData({ name: "", lastName: "", email: "", phone: "", countryCode: "+91", service: "" });
+        if (recaptchaRef.current) {
+          recaptchaRef.current.reset();
+        }
+        setCaptchaToken(null);
       } else {
         setPopup({ show: true, message: "Failed to send the message. Try again.", success: false });
       }
@@ -572,6 +589,24 @@ const CountryDetails = () => {
                       I accept the <a href="/terms-and-condition" className="text-white underline">terms and conditions</a>.
                     </label>
                   </div>
+
+                  {SITE_KEY ? (
+                    <div>
+                      <ReCAPTCHA
+                        ref={recaptchaRef}
+                        sitekey={SITE_KEY}
+                        onChange={(value) => {
+                          setCaptchaToken(value);
+                          setCaptchaError("");
+                        }}
+                      />
+                      {captchaError && <p className="text-red-300 text-sm mt-2">{captchaError}</p>}
+                    </div>
+                  ) : (
+                    <p className="text-red-300 text-sm">
+                      reCAPTCHA site key missing. Please set NEXT_PUBLIC_RECAPTCHA_SITE_KEY.
+                    </p>
+                  )}
 
                   {/* Submit Button */}
                   <button

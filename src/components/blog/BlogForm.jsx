@@ -1,11 +1,14 @@
 "use client";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { BiMessageDetail } from "react-icons/bi";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { urlFor } from "../../sanity/lib/client";
 import CountryCodeDropdown from "../home/CountryCodeDropdown";
+import ReCAPTCHA from "react-google-recaptcha";
+
+const SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
 const BlogForm = ({ blog, relatedBlogs }) => {
   const router = useRouter();
@@ -13,6 +16,9 @@ const BlogForm = ({ blog, relatedBlogs }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [popup, setPopup] = useState({ show: false, message: "", success: false });
   const [errors, setErrors] = useState({ name: "", email: "", phone: "" });
+  const [captchaToken, setCaptchaToken] = useState(null);
+  const [captchaError, setCaptchaError] = useState("");
+  const recaptchaRef = useRef(null);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -63,6 +69,12 @@ const BlogForm = ({ blog, relatedBlogs }) => {
     try {
       // Combine country code with phone number
       const fullPhoneNumber = `${formData.countryCode} ${formData.phone}`;
+
+      if (!captchaToken) {
+        setCaptchaError("Please complete the reCAPTCHA verification.");
+        setIsLoading(false);
+        return;
+      }
       
       const response = await fetch("/api/get-touch", {
         method: "POST",
@@ -71,7 +83,8 @@ const BlogForm = ({ blog, relatedBlogs }) => {
           name: formData.name,
           email: formData.email,
           phone: fullPhoneNumber,
-          other: "From Blog Page" 
+          other: "From Blog Page",
+          recaptchaToken: captchaToken 
         }),
       });
 
@@ -79,6 +92,10 @@ const BlogForm = ({ blog, relatedBlogs }) => {
       if (result.success) {
         setPopup({ show: true, message: "Form submitted successfully!", success: true });
         setFormData({ name: "", email: "", phone: "", countryCode: "+91" });
+        if (recaptchaRef.current) {
+          recaptchaRef.current.reset();
+        }
+        setCaptchaToken(null);
       } else {
         setPopup({ show: true, message: "Failed to send the message. Try again.", success: false });
       }
@@ -250,7 +267,23 @@ const BlogForm = ({ blog, relatedBlogs }) => {
                 </div>
               </div>
 
-
+              {SITE_KEY ? (
+                <div>
+                  <ReCAPTCHA
+                    ref={recaptchaRef}
+                    sitekey={SITE_KEY}
+                    onChange={(value) => {
+                      setCaptchaToken(value);
+                      setCaptchaError("");
+                    }}
+                  />
+                  {captchaError && <p className="text-red-300 text-sm mt-2">{captchaError}</p>}
+                </div>
+              ) : (
+                <p className="text-red-300 text-sm">
+                  reCAPTCHA site key missing. Please set NEXT_PUBLIC_RECAPTCHA_SITE_KEY.
+                </p>
+              )}
 
               {/* Submit Button */}
                 <button

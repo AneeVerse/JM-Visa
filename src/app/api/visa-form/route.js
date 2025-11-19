@@ -1,6 +1,7 @@
 import nodemailer from "nodemailer";
 import env from "../../../config/env";
 import { enforceRateLimit, attachRateLimitCookie } from "../../../utils/rateLimit";
+import { verifyRecaptchaToken } from "../../../utils/verifyRecaptcha";
 
 export const POST = async (req) => {
   const rateLimit = enforceRateLimit(req);
@@ -19,12 +20,21 @@ export const POST = async (req) => {
   }
 
   try {
-    const { citizen, travellingTo, category, firstName, email, phoneNumber, pageSource } = await req.json();
+    const { citizen, travellingTo, category, firstName, email, phoneNumber, pageSource, recaptchaToken } = await req.json();
 
     // Validate required fields
     if (!firstName || !email || !travellingTo) {
       return new Response(
         JSON.stringify({ success: false, message: "Missing required fields." }),
+        { status: 400, headers: { "Content-Type": "application/json" } }
+      );
+    }
+
+    const captchaResult = await verifyRecaptchaToken(recaptchaToken);
+
+    if (!captchaResult.success) {
+      return new Response(
+        JSON.stringify({ success: false, message: captchaResult.message || "reCAPTCHA verification failed." }),
         { status: 400, headers: { "Content-Type": "application/json" } }
       );
     }

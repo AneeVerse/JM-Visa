@@ -1,6 +1,9 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import ReCAPTCHA from "react-google-recaptcha";
+
+const SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
 const FeedbackReviewComponent = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -9,6 +12,9 @@ const FeedbackReviewComponent = () => {
   const [message, setMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [notification, setNotification] = useState(null);
+  const [captchaToken, setCaptchaToken] = useState(null);
+  const [captchaError, setCaptchaError] = useState("");
+  const recaptchaRef = useRef(null);
 
   // ✅ Load Elfsight Script
   useEffect(() => {
@@ -32,16 +38,26 @@ const FeedbackReviewComponent = () => {
 
   // ✅ Handle Message Submission
   const handleSubmitMessage = async () => {
+    if (!message.trim()) return;
+    if (!captchaToken) {
+      setCaptchaError("Please complete the reCAPTCHA verification.");
+      return;
+    }
+
     setIsSubmitting(true);
     try {
       const response = await fetch("/api/submitFeedback", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message }),
+        body: JSON.stringify({ message, recaptchaToken: captchaToken }),
       });
 
       if (response.ok) {
         setNotification({ type: "success", message: "Your message has been submitted." });
+        if (recaptchaRef.current) {
+          recaptchaRef.current.reset();
+        }
+        setCaptchaToken(null);
       } else {
         setNotification({ type: "error", message: "Error submitting your message." });
       }
@@ -130,6 +146,23 @@ const FeedbackReviewComponent = () => {
                   className="w-full p-3 border rounded-md border-gray-300"
                   rows={4}
                 ></textarea>
+                {SITE_KEY ? (
+                  <div className="mt-4">
+                    <ReCAPTCHA
+                      ref={recaptchaRef}
+                      sitekey={SITE_KEY}
+                      onChange={(value) => {
+                        setCaptchaToken(value);
+                        setCaptchaError("");
+                      }}
+                    />
+                    {captchaError && <p className="text-red-500 text-sm mt-2">{captchaError}</p>}
+                  </div>
+                ) : (
+                  <p className="text-red-500 text-sm mt-4">
+                    reCAPTCHA site key missing. Please set NEXT_PUBLIC_RECAPTCHA_SITE_KEY.
+                  </p>
+                )}
                 <button
                   onClick={handleSubmitMessage}
                   className="mt-4 px-6 py-3 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600"
