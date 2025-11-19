@@ -3,40 +3,50 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useEffect, useState } from "react";
 
+const stats = [
+  { value: 500, label: "Visas Approved", showPlus: true },
+  { value: 7, label: "Years of Experience" },
+  { value: 300, label: "Happy Clients", showPlus: true },
+  { value: 3, label: "Awards Won" },
+];
+
 const PromoSection = () => {
   const [ref, inView] = useInView({ triggerOnce: true }); // Hook to detect when section comes into view
-  const [counters, setCounters] = useState([0, 0, 0, 0]);
-
-  const stats = [
-    { value: 500, label: "Visas Approved" },
-    { value: 4, label: "Years of Experience" },
-    { value: 200, label: "Happy Clients" },
-    { value: 7, label: "Awards Won" },
-  ];
+  const [counters, setCounters] = useState(stats.map(() => 0));
 
   useEffect(() => {
-    if (inView) {
-      stats.forEach((stat, index) => {
-        const duration = 1500; // Duration in ms
-        const interval = 30; // Update interval in ms
-        const increment = Math.ceil(stat.value / (duration / interval));
+    if (!inView) return;
 
-        let count = 0;
-        const timer = setInterval(() => {
-          count += increment;
+    const timers = stats.map((stat, index) => {
+      const duration = 1200; // Slightly slower animation in ms
+      const interval = 25; // Update interval in ms
+      const steps = Math.max(1, Math.floor(duration / interval));
+      const increment = Math.ceil(stat.value / steps);
+
+      let count = 0;
+      const timer = setInterval(() => {
+        count += increment;
+        setCounters((prev) => {
+          const newCounters = [...prev];
+          newCounters[index] = Math.min(count, stat.value);
+          return newCounters;
+        });
+
+        if (count >= stat.value) {
           setCounters((prev) => {
             const newCounters = [...prev];
-            newCounters[index] = Math.min(count, stat.value);
+            newCounters[index] = stat.value;
             return newCounters;
           });
+          clearInterval(timer);
+        }
+      }, interval);
 
-          if (count >= stat.value) {
-            clearInterval(timer);
-          }
-        }, interval);
-      });
-    }
-  }, [inView, stats]);
+      return timer;
+    });
+
+    return () => timers.forEach((timer) => timer && clearInterval(timer));
+  }, [inView]);
 
   return (
     <section
@@ -56,7 +66,8 @@ const PromoSection = () => {
               className="p-4 sm:p-6 bg-white bg-opacity-10 border-gray-200 border-[1px] backdrop-blur-lg shadow-lg rounded-xl text-center hover:shadow-2xl hover:scale-105 transition-transform"
             >
               <h3 className="text-2xl sm:text-4xl font-extrabold text-white">
-                {counters[index]}{(index === 0 || index == 2 )?<sup className="text-md">+</sup> : ""}
+                {counters[index]}
+                {stat.showPlus && <sup className="text-md">+</sup>}
               </h3>
               <p className="mt-2 text-gray-100 text-sm sm:text-lg font-medium">
                 {stat.label}

@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { PiShareFatFill } from "react-icons/pi";
 import { GoOrganization } from "react-icons/go";
@@ -91,10 +91,25 @@ const AboutUs = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCountryIndex((prevIndex) => (prevIndex + 1) % CountryList.length);
-    }, 3000); // Change image every 5 seconds
+    }, 3000); // Change image every 3 seconds
 
     return () => clearInterval(interval); // Clear interval on unmount
   }, []);
+
+  // Memoize stats section to prevent re-renders when countryIndex changes
+  const statsSection = useMemo(() => (
+    <div className="mt-4 flex items-center justify-between">
+      <div className="flex items-center gap-2">
+        <GoOrganization className="text-xl text-white flex-shrink-0" />
+        <p className="text-white text-sm font-semibold whitespace-nowrap">
+          40<span className="text-xl align-super">+</span> Countries
+        </p>
+      </div>
+      <Link href={"/country"} className="px-4 py-2 text-sm border-[1px] bg-white bg-opacity-10 backdrop-blur-lg border-blue-500 text-white rounded-lg shadow-sm hover:bg-blue-600 transition flex-shrink-0">
+        Explore Countries
+      </Link>
+    </div>
+  ), []); // Empty dependency array means it never re-renders
 
   
 
@@ -196,45 +211,36 @@ const AboutUs = () => {
             {/* <p className="text-white text-sm">14-29 July | by JM Visa</p> */}
 
             {/* Progress Section */}
-              {/* Progress Section */}
-              <div className="mt-4 flex items-center gap-4">
-              <motion.img
-                key={CountryList[countryIndex].flag}
-                src={CountryList[countryIndex].flag}
-                alt={CountryList[countryIndex].name}
-                className="w-12 h-12 rounded-full object-cover border-2 border-white shadow-md"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.6 }}
-              />
-              <div className="w-full">
-                <p className="text-sm text-white font-semibold">Explore</p>
-                <motion.p
-                  key={CountryList[countryIndex].name}
-                  initial={{ x: -50, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  exit={{ x: 50, opacity: 0 }}
-                  transition={{ duration: 0.6 }}
-                  className="text-sm text-white"
-                >
-                  {CountryList[countryIndex].name}
-                </motion.p>
+            <AnimatePresence mode="wait">
+              <div key={countryIndex} className="mt-4 flex items-center gap-4">
+                <motion.img
+                  key={`flag-${countryIndex}`}
+                  src={CountryList[countryIndex].flag}
+                  alt={CountryList[countryIndex].name}
+                  className="w-12 h-12 rounded-full object-cover border-2 border-white shadow-md flex-shrink-0"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  transition={{ duration: 0.3 }}
+                />
+                <div className="w-full min-w-0">
+                  <p className="text-sm text-white font-semibold">Explore</p>
+                  <motion.p
+                    key={`name-${countryIndex}`}
+                    initial={{ x: -50, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    exit={{ x: 50, opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="text-sm text-white"
+                  >
+                    {CountryList[countryIndex].name}
+                  </motion.p>
+                </div>
               </div>
-            </div>
+            </AnimatePresence>
 
-            {/* Stats */}
-            <div className="mt-4 flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <GoOrganization className="text-xl text-white" />
-                <p className="text-white text-sm font-semibold">
-                  40 <span className="text-xl -ml-[2px] mt-[-30px]">+</span> Countries
-                </p>
-              </div>
-              <Link href={"/country"} className="px-4 py-2 text-sm border-[1px] bg-white bg-opacity-10 backdrop-blur-lg border-blue-500 text-white rounded-lg shadow-sm hover:bg-blue-600 transition">
-                Explore Countries
-              </Link>
-            </div>
+            {/* Stats - Memoized to prevent re-renders */}
+            {statsSection}
           </div>
         </motion.div>
       </div>
