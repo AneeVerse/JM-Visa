@@ -1,14 +1,49 @@
-import AboutUs from "../components/home/AboutUs";
-import BlogComponent from "../components/home/BlogComponent";
-import FeedbackReviewComponent from "../components/home/FeedbackReviewComponent";
-import HeroSection from "../components/home/Hero";
-import HorizontalScrollSection from "../components/home/HorizontalScrollSection";
-import PopupForm from "../components/home/PopupForm";
-import PromoSection from "../components/home/PromoSection";
-import VideoTestimonial from "../components/home/VideoTestimonial";
-import VisaCategories from "../components/home/VisaCategories";
-import VisaForm from "../components/home/VisaForm";
-import Footer from "../components/layout/Footer";
+import dynamic from "next/dynamic";
+
+const skeletonBlock = (height = "200px") => (
+  <div
+    className="w-full rounded-2xl bg-gray-100 animate-pulse"
+    style={{ minHeight: height }}
+  />
+);
+
+const HeroSection = dynamic(() => import("../components/home/Hero"), {
+  loading: () => skeletonBlock("520px")
+});
+const VisaCategories = dynamic(() => import("../components/home/VisaCategories"), {
+  loading: () => skeletonBlock("280px")
+});
+const HorizontalScrollSection = dynamic(
+  () => import("../components/home/HorizontalScrollSection"),
+  {
+    loading: () => skeletonBlock("260px")
+  }
+);
+const AboutUs = dynamic(() => import("../components/home/AboutUs"), {
+  loading: () => skeletonBlock("320px")
+});
+const PromoSection = dynamic(() => import("../components/home/PromoSection"), {
+  loading: () => skeletonBlock("260px")
+});
+const FeedbackReviewComponent = dynamic(
+  () => import("../components/home/FeedbackReviewComponent"),
+  {
+    loading: () => skeletonBlock("300px")
+  }
+);
+const VideoTestimonial = dynamic(() => import("../components/home/VideoTestimonial"), {
+  loading: () => skeletonBlock("360px")
+});
+const BlogComponent = dynamic(() => import("../components/home/BlogComponent"), {
+  loading: () => skeletonBlock("320px")
+});
+const VisaForm = dynamic(() => import("../components/home/VisaForm"), {
+  loading: () => skeletonBlock("360px")
+});
+const Footer = dynamic(() => import("../components/layout/Footer"), {
+  loading: () => skeletonBlock("200px")
+});
+import PopupForm from "../components/home/PopupFormLazy";
 
 export default function Home() {
   return (

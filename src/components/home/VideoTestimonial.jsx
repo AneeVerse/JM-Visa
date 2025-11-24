@@ -8,9 +8,32 @@ import testimonials from "./VideoTestimonialData";
 
 const MediaTestimonials = () => {
   const [selectedIndex, setSelectedIndex] = useState(null); // Track selected media index
-  const [viewAll, setViewAll] = useState(false); // Toggle for view all mode
-  const scrollContainerRef = useRef(null); // Ref for the carousel container
   const mediaContainerRef = useRef(null); // Ref for the popup media container
+  const sectionRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  // Lazy render the section when it enters the viewport
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+            observer.disconnect();
+          }
+        });
+      },
+      {
+        rootMargin: "200px"
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   // Reset scroll position when media changes
   useEffect(() => {
@@ -19,137 +42,61 @@ const MediaTestimonials = () => {
     }
   }, [selectedIndex]);
 
-  // Improved Smooth Scroll Function
-  const scroll = (direction) => {
-    const container = scrollContainerRef.current;
-    if (container) {
-      const cardWidth = 250; // Approximate width of a card including margin
-      const scrollAmount = direction === "left" ? -cardWidth : cardWidth;
-      
-      container.scrollBy({
-        left: scrollAmount,
-        behavior: "smooth"
-      });
-    }
-  };
-
   const videoTestimonials = testimonials.filter((item) => item.type === "video");
-  const imageTestimonials = testimonials.filter((item) => item.type !== "video");
-  const limitedTestimonials = [...videoTestimonials.slice(0, 5), ...imageTestimonials];
-  const displayedTestimonials = viewAll ? testimonials : limitedTestimonials;
+  const initialTestimonials = videoTestimonials.slice(0, 5);
+  const displayedTestimonials = initialTestimonials;
+  const hasMoreTestimonials = testimonials.length > initialTestimonials.length;
 
   const getOriginalIndex = (testimonialId) =>
     testimonials.findIndex((item) => item.id === testimonialId);
 
   return (
-    <section className="relative pb-16">
-      <div className="container mx-auto px-5 sm:px-6 lg:px-12">
-        {/* Heading and View All */}
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-3xl font-bold text-gray-800">
-            Client <span className="text-blue-500">Testimonials</span>
-          </h2>
-          {!viewAll && (
-            <Link
-              href="/testimonials"
-              className="py-2 self-end text-blue-500 min-w-fit flex gap-1 items-center justify-center font-semibold"
-            >
-              <MdFormatListBulleted className="text-4" /> <span>View All</span>
-            </Link>
-          )}
-          {viewAll && (
-            <button
-              onClick={() => setViewAll(false)}
-              className="py-2 self-end text-blue-500 min-w-fit flex gap-1 items-center justify-center font-semibold"
-            >
-              <FaAngleLeft className="text-4" /> <span>Back to Carousel</span>
-            </button>
-          )}
+    <section ref={sectionRef} className="relative pb-16">
+      {!isVisible ? (
+        <div className="container mx-auto px-5 sm:px-6 lg:px-12">
+          <div className="h-[360px] w-full rounded-2xl bg-gray-100 animate-pulse" />
         </div>
-        {/* Carousel or Grid */}
-        {!viewAll ? (
-          <div className="relative">
-            {/* Left scroll button */}
-            <button
-              onClick={() => scroll("left")}
-              className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-black/50 text-white h-10 w-10 rounded-full hidden sm:flex items-center justify-center shadow-lg z-10"
-            >
-              <FaAngleLeft size={20} className="text-white self-center" />
-            </button>
-            {/* Carousel container */}
-            <div
-              ref={scrollContainerRef}
-              style={{ scrollbarWidth: "none", msOverflowStyle: "none", WebkitOverflowScrolling: "touch" }}
-              className="relative flex gap-6 overflow-x-auto scroll-smooth pb-4"
-            >
-              {displayedTestimonials.map((testimonial) => {
-                const originalIndex = getOriginalIndex(testimonial.id);
-                return (
-                <div
-                  key={testimonial.id}
-                  className="relative min-w-[220px] sm:min-w-[220px] h-[340px] hover:shadow-md rounded-lg overflow-hidden shadow-md transition-transform cursor-pointer"
-                  onClick={() => setSelectedIndex(originalIndex)}
-                >
-                  {testimonial.type === "video" ? (
-                    <video
-                      src={testimonial.mediaUrl}
-                      muted
-                      loop
-                      autoPlay
-                      playsInline
-                      className="w-full h-full object-cover"
-                    ></video>
-                  ) : (
-                    <img
-                      src={testimonial.mediaUrl}
-                      alt={testimonial.description}
-                      className="w-full h-full object-cover"
-                    />
-                  )}
-                </div>
-                );
-              })}
-            </div>
-            {/* Right scroll button */}
-            <button
-              onClick={() => scroll("right")}
-              className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-black/50 text-white h-10 w-10 rounded-full hidden sm:flex items-center justify-center shadow-lg z-10"
-            >
-              <FaAngleRight size={20} className="text-white self-center" />
-            </button>
+      ) : (
+        <div className="container mx-auto px-5 sm:px-6 lg:px-12">
+          {/* Heading and View All */}
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-3xl font-bold text-gray-800">
+              Client <span className="text-blue-500">Testimonials</span>
+            </h2>
+            {hasMoreTestimonials && (
+              <Link
+                href="/testimonials"
+                className="py-2 self-end text-blue-500 min-w-fit flex gap-1 items-center justify-center font-semibold"
+              >
+                <MdFormatListBulleted className="text-4" /> <span>View All</span>
+              </Link>
+            )}
           </div>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {/* Highlight grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
             {displayedTestimonials.map((testimonial) => {
               const originalIndex = getOriginalIndex(testimonial.id);
               return (
-              <div
-                key={testimonial.id}
-                className="relative h-[340px] hover:shadow-md rounded-lg overflow-hidden shadow-md transition-transform cursor-pointer"
-                onClick={() => setSelectedIndex(originalIndex)}
-              >
-                {testimonial.type === "video" ? (
+                <div
+                  key={testimonial.id}
+                  className="relative aspect-[9/16] rounded-2xl overflow-hidden shadow-md bg-black/80 cursor-pointer transition-transform hover:scale-[1.01]"
+                  onClick={() => setSelectedIndex(originalIndex)}
+                >
                   <video
                     src={testimonial.mediaUrl}
                     muted
                     loop
-                    autoPlay
                     playsInline
-                    className="w-full h-full object-cover"
-                  ></video>
-                ) : (
-                  <img
-                    src={testimonial.mediaUrl}
-                    alt={testimonial.description}
+                    autoPlay={isVisible}
+                    preload={isVisible ? "metadata" : "none"}
                     className="w-full h-full object-cover"
                   />
-                )}
-              </div>
+                </div>
               );
             })}
           </div>
-        )}
-      </div>
+        </div>
+      )}
       {/* Popup for selected media */}
       {selectedIndex !== null && (
         <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-2">
