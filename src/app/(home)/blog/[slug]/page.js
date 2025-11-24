@@ -179,7 +179,7 @@ const portableTextComponents = {
       if (!value || !value.url) return null;
       // Extract the YouTube video ID from the URL
       const match = value.url.match(
-        /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/
+        /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?\&]v=)|youtu\.be\/)([^"\&?\/\s]{11})/
       );
       const videoId = match ? match[1] : null;
       if (!videoId) return null;
@@ -202,8 +202,27 @@ const portableTextComponents = {
         showInlineTOC={value?.showInlineTOC}
         includeFAQSection={value?.includeFAQSection}
         faqSectionTitle={value?.faqSectionTitle}
+        excludedHeadings={value?.excludedHeadings || []}
       />
     ),
+  },
+  block: {
+    h1: ({ children, value }) => {
+      const excludeFromTOC = value?.excludeFromTOC === true;
+      return <h1 data-exclude-from-toc={excludeFromTOC ? 'true' : 'false'}>{children}</h1>;
+    },
+    h2: ({ children, value }) => {
+      const excludeFromTOC = value?.excludeFromTOC === true;
+      return <h2 data-exclude-from-toc={excludeFromTOC ? 'true' : 'false'}>{children}</h2>;
+    },
+    h3: ({ children, value }) => {
+      const excludeFromTOC = value?.excludeFromTOC === true;
+      return <h3 data-exclude-from-toc={excludeFromTOC ? 'true' : 'false'}>{children}</h3>;
+    },
+    h4: ({ children, value }) => {
+      const excludeFromTOC = value?.excludeFromTOC === true;
+      return <h4 data-exclude-from-toc={excludeFromTOC ? 'true' : 'false'}>{children}</h4>;
+    },
   },
 };
 

@@ -1,11 +1,12 @@
 "use client";
 import React, { useEffect, useState } from 'react';
 
-const TableOfContents = ({ 
-  title = "IN THIS ARTICLE", 
-  showInlineTOC = true, 
-  includeFAQSection = false, 
-  faqSectionTitle = "FAQ Section" 
+const TableOfContents = ({
+  title = "IN THIS ARTICLE",
+  showInlineTOC = true,
+  includeFAQSection = false,
+  faqSectionTitle = "FAQ Section",
+  excludedHeadings = []
 }) => {
   const [headings, setHeadings] = useState([]);
 
@@ -35,7 +36,10 @@ const TableOfContents = ({
         };
       });
 
-      return headingsList;
+      // Filter out headings that are in the excludedHeadings array
+      return headingsList.filter(heading =>
+        !excludedHeadings.includes(heading.text)
+      );
     };
 
     // Wait for content to load, then find headings
@@ -45,7 +49,7 @@ const TableOfContents = ({
     }, 100);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [excludedHeadings]);
 
   const scrollToHeading = (headingId) => {
     const element = document.getElementById(headingId);
@@ -66,7 +70,7 @@ const TableOfContents = ({
     const faqSection = Array.from(document.querySelectorAll('h2')).find(
       h2 => h2.textContent.toLowerCase().includes('frequently asked questions')
     );
-    
+
     if (faqSection) {
       const offset = 100;
       const elementPosition = faqSection.getBoundingClientRect().top;
@@ -88,7 +92,7 @@ const TableOfContents = ({
       <div className="text-sm font-medium text-black mb-4">
         {title}
       </div>
-      
+
       {headings.length > 0 ? (
         <ul className="space-y-3">
           {headings.map((heading, index) => (
@@ -101,7 +105,7 @@ const TableOfContents = ({
               </button>
             </li>
           ))}
-          
+
           {includeFAQSection && (
             <li>
               <button

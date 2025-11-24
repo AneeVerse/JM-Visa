@@ -1,5 +1,5 @@
-import {defineType, defineField} from 'sanity'
-import {DocumentIcon} from '@sanity/icons'
+import { defineType, defineField } from 'sanity'
+import { DocumentIcon } from '@sanity/icons'
 
 export const tableOfContentsType = defineType({
   name: 'tableOfContents',
@@ -22,6 +22,16 @@ export const tableOfContentsType = defineType({
       description: 'Toggle to show/hide the inline table of contents'
     }),
     defineField({
+      name: 'excludedHeadings',
+      title: 'Select Headings to Show/Hide',
+      type: 'array',
+      description: 'Toggle headings on/off for the Table of Contents',
+      of: [{ type: 'string' }],
+      components: {
+        input: require('../components/HeadingSelector').HeadingSelector,
+      },
+    }),
+    defineField({
       name: 'includeFAQSection',
       title: 'Include FAQ Section',
       type: 'boolean',
@@ -34,7 +44,7 @@ export const tableOfContentsType = defineType({
       type: 'string',
       initialValue: 'FAQ Section',
       description: 'Title for the FAQ section in TOC',
-      hidden: ({parent}) => !parent?.includeFAQSection
+      hidden: ({ parent }) => !parent?.includeFAQSection
     })
   ],
   preview: {
@@ -42,7 +52,7 @@ export const tableOfContentsType = defineType({
       title: 'title',
       showInlineTOC: 'showInlineTOC'
     },
-    prepare({title, showInlineTOC}) {
+    prepare({ title, showInlineTOC }) {
       return {
         title: title || 'Table of Contents',
         subtitle: showInlineTOC ? 'Visible' : 'Hidden',
