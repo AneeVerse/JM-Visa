@@ -83,6 +83,9 @@ export const blockContentType = defineType({
       type: 'table',
       name: 'table',
       title: 'Table',
+      components: {
+        input: require('../components/TablePasteInput').TablePasteInput,
+      },
     }),
     // YouTube embed block
     defineArrayMember({
