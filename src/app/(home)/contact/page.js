@@ -149,7 +149,7 @@ const ContactUsPage = () => {
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 tracking-tight"
           >
-            Let's Start a <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">Conversation</span>
+            Let&apos;s Start a <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">Conversation</span>
           </motion.h1>
 
           <motion.p
