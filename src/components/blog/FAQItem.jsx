@@ -6,16 +6,22 @@ const FAQItem = ({ faq, index }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div className="border-b border-gray-200 pb-6 last:border-b-0">
+    <div className="border-2 border-gray-200 rounded-2xl overflow-hidden hover:border-blue-300 transition-all duration-300 shadow-sm hover:shadow-md">
       <button
         type="button"
-        className="flex justify-between items-center w-full text-left text-gray-800 font-medium py-3 hover:text-blue-600 transition-colors"
+        className="flex justify-between items-center w-full text-left px-6 py-4 bg-white hover:bg-gray-50 transition-colors duration-200"
         onClick={() => setIsExpanded(!isExpanded)}
       >
-        <span className="text-lg">{faq.question}</span>
-        <span className={`text-blue-500 text-xl transition-transform duration-200 ${isExpanded ? 'rotate-45' : ''}`}>
-          +
+        <span className="text-base sm:text-lg font-medium text-gray-800 pr-4">
+          Q: {faq.question}
         </span>
+        <motion.span
+          animate={{ rotate: isExpanded ? 45 : 0 }}
+          transition={{ duration: 0.2 }}
+          className="text-blue-600 text-2xl font-light flex-shrink-0 w-8 h-8 flex items-center justify-center"
+        >
+          +
+        </motion.span>
       </button>
       <AnimatePresence>
         {isExpanded && (
@@ -23,10 +29,12 @@ const FAQItem = ({ faq, index }) => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="overflow-hidden"
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="overflow-hidden bg-gray-50"
           >
-            <p className="text-gray-600 mt-3 leading-relaxed">{faq.answer}</p>
+            <p className="text-gray-700 px-6 py-4 leading-relaxed border-t border-gray-200">
+              {faq.answer}
+            </p>
           </motion.div>
         )}
       </AnimatePresence>

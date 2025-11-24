@@ -70,7 +70,7 @@ export async function generateMetadata({ params }) {
   // Basic metadata
   const metaTitle = post.seo?.metaTitle || post.title;
   const metaDescription = truncate(post.metaDescription || post.seo?.metaDescription || post.shortDescription || "Read this article on JM Visa.", 155);
-  
+
   // Open Graph
   const ogTitle = metaTitle;
   const ogDescription = truncate(post.metaDescription || post.seo?.ogDescription || post.shortDescription || metaDescription, 155);
@@ -80,8 +80,8 @@ export async function generateMetadata({ params }) {
   const ogLocaleAlternate = (post.seo?.ogLocaleAlternate && post.seo.ogLocaleAlternate.length > 0)
     ? post.seo.ogLocaleAlternate
     : [
-        "en_US", "en_GB", "fr_FR", "de_DE", "es_ES", "it_IT", "pt_PT", "ru_RU", "zh_CN", "ja_JP", "ko_KR", "hi_IN"
-      ];
+      "en_US", "en_GB", "fr_FR", "de_DE", "es_ES", "it_IT", "pt_PT", "ru_RU", "zh_CN", "ja_JP", "ko_KR", "hi_IN"
+    ];
   const ogSiteName = post.seo?.ogSiteName || 'JM Visa';
   const ogImage = post.seo?.ogImage || post.thumbnail;
 
@@ -90,12 +90,12 @@ export async function generateMetadata({ params }) {
   const twitterTitle = post.seo?.twitterTitle || ogTitle;
   const twitterDescription = post.seo?.twitterDescription || ogDescription;
   const twitterImage = post.seo?.twitterImage || ogImage;
-  
+
   // Other SEO
   const keywords = post.seo?.keywords || [];
   const canonicalUrl = post.seo?.canonicalUrl || ogUrl;
   const publishedTime = post.seo?.articlePublishedTime || post.date;
-  
+
   const metadata = {
     title: metaTitle,
     description: metaDescription,
@@ -131,7 +131,7 @@ export async function generateMetadata({ params }) {
     alternates: { canonical: canonicalUrl },
     robots: post.seo?.noIndex ? { index: false, follow: true } : undefined
   };
-  
+
   return metadata;
 }
 
@@ -213,7 +213,7 @@ import FAQItem from "../../../../components/blog/FAQItem";
 async function BlogDetailsPage({ params }) {
   const resolvedParams = await params;
   const { slug } = resolvedParams;
-  
+
   try {
     const blog = await getPostBySlug(slug);
     const allPosts = await getAllPosts();
@@ -290,25 +290,23 @@ async function BlogDetailsPage({ params }) {
               <article className="prose prose-lg max-w-none article-blog bg-white bg-opacity-50 p-10 rounded-md shadow-sm">
                 <PortableText value={blog.body} components={portableTextComponents} />
               </article>
+
+              {/* FAQ Section - Inside blog content area */}
+              {blog.faqs && blog.faqs.length > 0 && (
+                <div className="mt-12">
+                  <h2 className="text-3xl font-bold text-gray-900 mb-8">Frequently Asked Questions</h2>
+                  <div className="space-y-4">
+                    {blog.faqs.map((faq, index) => (
+                      <FAQItem key={index} faq={faq} index={index} />
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Related Blogs and Contact Form - Reduced width */}
             <BlogForm blog={blog} relatedBlogs={relatedBlogs} />
           </div>
-
-          {/* FAQ Section - Moved to the end */}
-          {blog.faqs && blog.faqs.length > 0 && (
-            <div className="mt-16 max-w-4xl mx-auto">
-              <h2 className="text-3xl font-semibold text-gray-800 mb-8 text-center">Frequently Asked Questions</h2>
-              <div className="bg-white bg-opacity-50 rounded-md shadow-sm p-8">
-                <div className="space-y-6">
-                  {blog.faqs.map((faq, index) => (
-                    <FAQItem key={index} faq={faq} index={index} />
-                  ))}
-                </div>
-              </div>
-            </div>
-          )}
         </div>
       </section>
     );
