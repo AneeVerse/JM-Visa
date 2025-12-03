@@ -184,15 +184,17 @@ const portableTextComponents = {
       const videoId = match ? match[1] : null;
       if (!videoId) return null;
       return (
-        <div className="my-6 w-full aspect-w-16 aspect-h-9">
-          <iframe
-            src={`https://www.youtube.com/embed/${videoId}`}
-            title="YouTube video"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            className="w-full h-64 md:h-96 rounded-lg shadow-md"
-          ></iframe>
+        <div className="my-6 w-full aspect-w-16 aspect-h-9 -mx-4 sm:mx-0 px-4 sm:px-0">
+          <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+            <iframe
+              src={`https://www.youtube.com/embed/${videoId}`}
+              title="YouTube video"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="absolute top-0 left-0 w-full h-full rounded-lg shadow-md"
+            ></iframe>
+          </div>
         </div>
       );
     },
@@ -250,7 +252,7 @@ async function BlogDetailsPage({ params }) {
     }
 
     return (
-      <section className="relative mt-[60px] py-16 bg-gradient-to-br from-blue-50 via-white to-blue-100 px-4 sm:px-8 lg:px-16">
+      <section className="relative mt-[60px] py-8 sm:py-12 lg:py-16 bg-gradient-to-br from-blue-50 via-white to-blue-100 px-4 sm:px-6 lg:px-8 xl:px-16">
         <BlogSchema post={blog} />
         <FAQSchema faqs={blog.faqs} />
         <div className="max-w-[1280px] mx-auto">
@@ -267,22 +269,22 @@ async function BlogDetailsPage({ params }) {
                 </Link>
               </div>
               <h1
-                className="text-3xl sm:text-4xl xl:text-5xl font-extrabold text-gray-800 leading-tight"
+                className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-gray-800 leading-tight px-2 sm:px-0"
                 style={{ lineHeight: "1.3" }}
               >
                 {blog.title}
               </h1>
-              <div className="mt-6 text-gray-600 flex gap-3 items-center">
+              <div className="mt-4 sm:mt-6 text-gray-600 flex gap-2 sm:gap-3 items-center px-2 sm:px-0">
                 {blog.authorImage && (
                   <Image
                     src={urlFor(blog.authorImage).url()}
                     alt={blog.author}
                     width={50}
                     height={50}
-                    className="rounded-full min-w-fit w-[50px] h-[50px] self-center object-cover"
+                    className="rounded-full min-w-fit w-[40px] h-[40px] sm:w-[50px] sm:h-[50px] self-center object-cover"
                   />
                 )}
-                <div className="flex flex-col text-sm">
+                <div className="flex flex-col text-xs sm:text-sm">
                   <span className="font-semibold">{blog.author}</span>
                   <span>
                     Date: {new Date(blog.publishedAt).toLocaleDateString()}
@@ -292,7 +294,7 @@ async function BlogDetailsPage({ params }) {
             </div>
             <div className="lg:w-1/2 w-full">
               {blog.mainImage && (
-                <div className="aspect-w-16 max-w-[500px] aspect-h-9 rounded-lg h-[300px] mr-auto ml-auto lg:mr-0 lg:ml-auto overflow-hidden shadow-md">
+                <div className="aspect-w-16 max-w-[500px] aspect-h-9 rounded-lg h-[200px] sm:h-[250px] lg:h-[300px] mr-auto ml-auto lg:mr-0 lg:ml-auto overflow-hidden shadow-md">
                   <img
                     src={urlFor(blog.mainImage).url()}
                     alt={blog.title}
@@ -307,15 +309,15 @@ async function BlogDetailsPage({ params }) {
           <div className="mt-16 flex flex-col lg:flex-row gap-12">
             {/* Blog Content - Expanded to use more space */}
             <div className="lg:w-3/4 w-full">
-              <article className="prose prose-lg max-w-none article-blog bg-white bg-opacity-50 p-10 rounded-md shadow-sm">
+              <article className="prose prose-lg max-w-none article-blog bg-white bg-opacity-50 p-4 sm:p-6 lg:p-8 xl:p-10 rounded-md shadow-sm">
                 <PortableText value={blog.body} components={portableTextComponents} />
               </article>
 
               {/* FAQ Section - Inside blog content area */}
               {blog.faqs && blog.faqs.length > 0 && (
-                <div className="mt-12">
-                  <h2 className="text-3xl font-bold text-gray-900 mb-8">Frequently Asked Questions</h2>
-                  <div className="space-y-4">
+                <div className="mt-8 sm:mt-12">
+                  <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8">Frequently Asked Questions</h2>
+                  <div className="space-y-3 sm:space-y-4">
                     {blog.faqs.map((faq, index) => (
                       <FAQItem key={index} faq={faq} index={index} />
                     ))}
@@ -324,12 +326,12 @@ async function BlogDetailsPage({ params }) {
               )}
 
               {/* Client Testimonials Section */}
-              <div className="mt-12">
-                <div className="text-center mb-6">
-                  <h2 className="text-2xl font-bold text-gray-800">
+              <div className="mt-8 sm:mt-12">
+                <div className="text-center mb-4 sm:mb-6">
+                  <h2 className="text-xl sm:text-2xl font-bold text-gray-800">
                     ✈️ Feedback
                   </h2>
-                  <p className="text-lg text-blue-500 font-semibold mt-1">
+                  <p className="text-base sm:text-lg text-blue-500 font-semibold mt-1">
                     See What Our Happy Clients Say
                   </p>
                 </div>

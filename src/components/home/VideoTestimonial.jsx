@@ -72,14 +72,20 @@ const MediaTestimonials = () => {
               </Link>
             )}
           </div>
-          {/* Highlight grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+          {/* Highlight grid - horizontal scroll on mobile */}
+          <div 
+            className="flex sm:grid sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6 overflow-x-auto pb-4 sm:pb-0 scroll-smooth -mx-5 sm:mx-0 px-5 sm:px-0 hide-scrollbar"
+            style={{
+              scrollbarWidth: "none", // Hide scrollbar in Firefox
+              msOverflowStyle: "none", // Hide scrollbar in IE/Edge
+            }}
+          >
             {displayedTestimonials.map((testimonial) => {
               const originalIndex = getOriginalIndex(testimonial.id);
               return (
                 <div
                   key={testimonial.id}
-                  className="relative aspect-[9/16] rounded-2xl overflow-hidden shadow-md bg-black/80 cursor-pointer transition-transform hover:scale-[1.01]"
+                  className="relative aspect-[9/16] rounded-2xl overflow-hidden shadow-md bg-black/80 cursor-pointer transition-transform hover:scale-[1.01] flex-shrink-0 w-[140px] sm:w-full"
                   onClick={() => setSelectedIndex(originalIndex)}
                 >
                   <video

@@ -9,10 +9,10 @@ const FAQItem = ({ faq, index }) => {
     <div className="border-2 border-gray-200 rounded-2xl overflow-hidden hover:border-blue-300 transition-all duration-300 shadow-sm hover:shadow-md">
       <button
         type="button"
-        className="flex justify-between items-center w-full text-left px-6 py-4 bg-white hover:bg-gray-50 transition-colors duration-200"
+        className="flex justify-between items-center w-full text-left px-4 sm:px-6 py-3 sm:py-4 bg-white hover:bg-gray-50 transition-colors duration-200"
         onClick={() => setIsExpanded(!isExpanded)}
       >
-        <span className="text-base sm:text-lg font-medium text-gray-800 pr-4">
+        <span className="text-sm sm:text-base lg:text-lg font-medium text-gray-800 pr-2 sm:pr-4 flex-1">
           Q: {faq.question}
         </span>
         <motion.span
@@ -32,7 +32,7 @@ const FAQItem = ({ faq, index }) => {
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="overflow-hidden bg-gray-50"
           >
-            <p className="text-gray-700 px-6 py-4 leading-relaxed border-t border-gray-200">
+            <p className="text-gray-700 px-4 sm:px-6 py-3 sm:py-4 text-sm sm:text-base leading-relaxed border-t border-gray-200">
               {faq.answer}
             </p>
           </motion.div>

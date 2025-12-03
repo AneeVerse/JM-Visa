@@ -41,10 +41,10 @@ const BlogPage = () => {
             <div className="inline-block px-4 py-2 bg-blue-200/50 text-blue-600 font-medium rounded-full backdrop-blur-lg shadow-md">
               📰 Explore Our Blogs
             </div>
-            <h1 className="mt-4 text-3xl font-extrabold text-gray-800">
+            <h1 className="mt-4 text-2xl sm:text-3xl font-extrabold text-gray-800">
               Stay Updated with <span className="text-blue-500">Insights</span>
             </h1>
-            <p className="mt-2 text-lg text-gray-600">
+            <p className="mt-2 text-base sm:text-lg text-gray-600 px-2">
               Browse through our latest articles and updates tailored for you.
             </p>
           </div>
@@ -68,7 +68,7 @@ const BlogPage = () => {
                   <img
                     src={urlFor(blog.mainImage).url()}
                     alt={blog.title}
-                    className="w-full h-70 object-cover group-hover:scale-105 transition-transform"
+                    className="w-full h-48 sm:h-56 object-cover group-hover:scale-105 transition-transform"
                   />
                 )}
                 {/* Blog Content */}

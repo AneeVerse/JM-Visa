@@ -88,8 +88,8 @@ const TableOfContents = ({
   }
 
   return (
-    <div className="my-8 bg-blue-50/30 border border-gray-200 rounded-2xl p-6 shadow-sm">
-      <div className="text-sm font-medium text-black mb-4">
+    <div className="my-6 sm:my-8 bg-blue-50/30 border border-gray-200 rounded-2xl p-4 sm:p-6 shadow-sm">
+      <div className="text-xs sm:text-sm font-medium text-black mb-3 sm:mb-4">
         {title}
       </div>
 

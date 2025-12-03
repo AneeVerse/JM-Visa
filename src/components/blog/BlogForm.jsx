@@ -148,22 +148,22 @@ const BlogForm = ({ blog, relatedBlogs }) => {
       </AnimatePresence>
 
       {/* Related Blogs and Contact Form */}
-      <aside className="lg:w-1/3 w-full">
-        <div className="sticky top-[100px] space-y-8">
+      <aside className="lg:w-1/3 w-full mt-8 lg:mt-0">
+        <div className="lg:sticky lg:top-[100px] space-y-6 sm:space-y-8">
           {/* Contact Form */}
-          <div className="bg-gradient-to-br from-blue-900 to-blue-800 rounded-3xl shadow-2xl p-8 w-full max-w-sm mx-auto border border-blue-700/60">
+          <div className="bg-gradient-to-br from-blue-900 to-blue-800 rounded-2xl sm:rounded-3xl shadow-2xl p-5 sm:p-6 lg:p-8 w-full max-w-full sm:max-w-sm mx-auto border border-blue-700/60">
             {/* Header */}
-            <div className="text-center mb-8 space-y-1">
-              <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-white/15 text-white">
-                <BiMessageDetail className="text-xl" />
+            <div className="text-center mb-6 sm:mb-8 space-y-1">
+              <div className="mx-auto flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-white/15 text-white">
+                <BiMessageDetail className="text-lg sm:text-xl" />
               </div>
-              <h3 className="text-xl font-semibold text-white">Free Visa Consultation</h3>
-              <p className="text-blue-100 text-sm">Get expert advice for your visa application</p>
+              <h3 className="text-lg sm:text-xl font-semibold text-white">Free Visa Consultation</h3>
+              <p className="text-blue-100 text-xs sm:text-sm">Get expert advice for your visa application</p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-5">
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
               {/* Name Fields */}
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <div className="grid grid-cols-1 gap-3 sm:gap-4 sm:grid-cols-2">
                 <div>
                   <input
                     type="text"
@@ -172,10 +172,10 @@ const BlogForm = ({ blog, relatedBlogs }) => {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="First Name*"
-                    className="w-full rounded-lg border border-white/20 bg-white/15 px-4 py-3 text-white placeholder-blue-200 focus:border-blue-300 focus:bg-white/25 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    className="w-full rounded-lg border border-white/20 bg-white/15 px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base text-white placeholder-blue-200 focus:border-blue-300 focus:bg-white/25 focus:outline-none focus:ring-2 focus:ring-blue-400"
                     required
                   />
-                  {errors.name && <p className="mt-1 text-sm text-red-300">{errors.name}</p>}
+                  {errors.name && <p className="mt-1 text-xs sm:text-sm text-red-300">{errors.name}</p>}
                 </div>
 
                 <div>
@@ -186,7 +186,7 @@ const BlogForm = ({ blog, relatedBlogs }) => {
                     value={formData.lastName}
                     onChange={handleChange}
                     placeholder="Last Name"
-                    className="w-full rounded-lg border border-white/20 bg-white/15 px-4 py-3 text-white placeholder-blue-200 focus:border-blue-300 focus:bg-white/25 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    className="w-full rounded-lg border border-white/20 bg-white/15 px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base text-white placeholder-blue-200 focus:border-blue-300 focus:bg-white/25 focus:outline-none focus:ring-2 focus:ring-blue-400"
                   />
                 </div>
               </div>
@@ -200,10 +200,10 @@ const BlogForm = ({ blog, relatedBlogs }) => {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="Email Address*"
-                  className="w-full rounded-lg border border-white/20 bg-white/15 px-4 py-3 text-white placeholder-blue-200 focus:border-blue-300 focus:bg-white/25 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  className="w-full rounded-lg border border-white/20 bg-white/15 px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base text-white placeholder-blue-200 focus:border-blue-300 focus:bg-white/25 focus:outline-none focus:ring-2 focus:ring-blue-400"
                   required
                 />
-                {errors.email && <p className="mt-1 text-sm text-red-300">{errors.email}</p>}
+                {errors.email && <p className="mt-1 text-xs sm:text-sm text-red-300">{errors.email}</p>}
               </div>
 
               {/* Phone Field */}
@@ -213,7 +213,7 @@ const BlogForm = ({ blog, relatedBlogs }) => {
                     value={formData.countryCode}
                     onChange={handleCountryCodeChange}
                     error={errors.phone}
-                    height="h-12"
+                    height="h-10 sm:h-12"
                     bgColor="bg-transparent"
                     borderColor="border-transparent"
                     className="rounded-l-lg text-white"
@@ -225,13 +225,13 @@ const BlogForm = ({ blog, relatedBlogs }) => {
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="Phone Number*"
-                    className={`flex-1 rounded-r-lg border-l border-white/10 bg-transparent px-4 py-3 text-white placeholder-blue-200 focus:border-blue-300 focus:bg-white/10 focus:outline-none focus:ring-2 focus:ring-blue-400 ${
+                    className={`flex-1 rounded-r-lg border-l border-white/10 bg-transparent px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base text-white placeholder-blue-200 focus:border-blue-300 focus:bg-white/10 focus:outline-none focus:ring-2 focus:ring-blue-400 ${
                       errors.phone ? "border-red-500" : ""
                     }`}
                     required
                   />
                 </div>
-                {errors.phone && <p className="mt-1 text-sm text-red-300">{errors.phone}</p>}
+                {errors.phone && <p className="mt-1 text-xs sm:text-sm text-red-300">{errors.phone}</p>}
               </div>
 
               {/* Service Selection */}
@@ -242,7 +242,7 @@ const BlogForm = ({ blog, relatedBlogs }) => {
                     name="service"
                     value={formData.service || ""}
                     onChange={handleChange}
-                    className="w-full appearance-none rounded-lg border border-white/20 bg-white/15 px-4 py-3 text-white focus:border-blue-300 focus:bg-white/25 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    className="w-full appearance-none rounded-lg border border-white/20 bg-white/15 px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base text-white focus:border-blue-300 focus:bg-white/25 focus:outline-none focus:ring-2 focus:ring-blue-400"
                   >
                     <option value="">Select Service</option>
                     <option value="tourist-visa">Tourist Visa</option>
@@ -284,7 +284,7 @@ const BlogForm = ({ blog, relatedBlogs }) => {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full rounded-xl bg-gradient-to-r from-blue-500 to-blue-600 py-3.5 font-semibold text-white transition-all duration-200 hover:from-blue-600 hover:to-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-200 focus:ring-offset-2 focus:ring-offset-blue-900 disabled:cursor-not-allowed disabled:opacity-50"
+                className="w-full rounded-xl bg-gradient-to-r from-blue-500 to-blue-600 py-2.5 sm:py-3.5 text-sm sm:text-base font-semibold text-white transition-all duration-200 hover:from-blue-600 hover:to-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-200 focus:ring-offset-2 focus:ring-offset-blue-900 disabled:cursor-not-allowed disabled:opacity-50"
               >
                 {isLoading ? (
                   <div className="flex items-center justify-center gap-2">
@@ -312,29 +312,29 @@ const BlogForm = ({ blog, relatedBlogs }) => {
 
           {/* Related Blogs */}
           {relatedBlogs.length > 0 && (
-            <div className="bg-white/80 backdrop-blur-lg border border-white/30 rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300">
+            <div className="bg-white/80 backdrop-blur-lg border border-white/30 rounded-2xl shadow-xl p-5 sm:p-6 lg:p-8 hover:shadow-2xl transition-all duration-300">
               {/* Header */}
-              <div className="text-center mb-8">
-                <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl shadow-lg mb-4">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="text-center mb-6 sm:mb-8">
+                <div className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl shadow-lg mb-3 sm:mb-4">
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-800 mb-2">Related Posts</h3>
-                <p className="text-gray-600 text-sm">Discover more articles you might find interesting</p>
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-1 sm:mb-2">Related Posts</h3>
+                <p className="text-gray-600 text-xs sm:text-sm">Discover more articles you might find interesting</p>
               </div>
 
               {/* Related Posts List */}
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-6">
                 {relatedBlogs.map((relatedBlog, index) => (
                   <Link
                     key={relatedBlog._id}
                     href={`/blog/${relatedBlog.slug.current}`}
                     className="block group"
                   >
-                    <div className="flex gap-4 items-start p-4 rounded-xl bg-white/50 border border-white/20 hover:bg-white/70 hover:border-blue-200 transition-all duration-300 hover:shadow-lg">
+                    <div className="flex gap-3 sm:gap-4 items-start p-3 sm:p-4 rounded-xl bg-white/50 border border-white/20 hover:bg-white/70 hover:border-blue-200 transition-all duration-300 hover:shadow-lg">
                       {relatedBlog.mainImage && (
-                        <div className="w-20 h-20 flex-shrink-0">
+                        <div className="w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0">
                           <img
                             src={urlFor(relatedBlog.mainImage).width(80).height(80).url()}
                             alt={relatedBlog.title}
@@ -343,7 +343,7 @@ const BlogForm = ({ blog, relatedBlogs }) => {
                         </div>
                       )}
                       <div className="flex-1 min-w-0">
-                        <h4 className="font-semibold text-gray-800 group-hover:text-blue-600 transition-colors duration-300 line-clamp-2 mb-2">
+                        <h4 className="font-semibold text-sm sm:text-base text-gray-800 group-hover:text-blue-600 transition-colors duration-300 line-clamp-2 mb-1 sm:mb-2">
                           {relatedBlog.title}
                         </h4>
                         <div className="flex items-center text-xs text-gray-500">

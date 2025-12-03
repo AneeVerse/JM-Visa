@@ -216,3 +216,8 @@ html{
     transform: scale(1.05);
   }
 }
+
+/* Hide scrollbar for webkit browsers */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
