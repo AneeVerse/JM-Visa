@@ -23,6 +23,7 @@ const CountryDetails = () => {
   const [errors, setErrors] = useState({ name: "", email: "", phone: "" });
   const [captchaToken, setCaptchaToken] = useState(null);
   const [captchaError, setCaptchaError] = useState("");
+  const [isDownloading, setIsDownloading] = useState(false);
   const recaptchaRef = useRef(null);
 
   const handleChange = (e) => {
@@ -148,6 +149,72 @@ const CountryDetails = () => {
       setCountry(foundCountry);
     }
   }, [params, router, category, slug]);
+
+  const handleDownloadChecklists = async () => {
+    if (!country || !country.name) return;
+
+    setIsDownloading(true);
+    try {
+      const response = await fetch(
+        `/api/download-checklists?country=${encodeURIComponent(country.name)}`
+      );
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to download checklists');
+      }
+
+      const data = await response.json();
+      
+      if (!data.success || !data.pdfs || data.pdfs.length === 0) {
+        throw new Error('No PDF files found for this country');
+      }
+
+      // Download each PDF file individually with a small delay between downloads
+      for (let i = 0; i < data.pdfs.length; i++) {
+        const pdf = data.pdfs[i];
+        
+        // Create download link for each PDF
+        const link = document.createElement('a');
+        link.href = pdf.url;
+        link.download = pdf.filename;
+        link.style.display = 'none';
+        document.body.appendChild(link);
+        link.click();
+        
+        // Cleanup
+        setTimeout(() => {
+          document.body.removeChild(link);
+        }, 100);
+
+        // Add delay between downloads to avoid browser blocking multiple downloads
+        if (i < data.pdfs.length - 1) {
+          await new Promise(resolve => setTimeout(resolve, 300));
+        }
+      }
+
+      setPopup({
+        show: true,
+        message: `Successfully downloaded ${data.count} document checklist(s)!`,
+        success: true,
+      });
+      setTimeout(() => {
+        setPopup({ show: false });
+      }, 3000);
+    } catch (error) {
+      console.error('Error downloading checklists:', error);
+      setPopup({
+        show: true,
+        message: error.message || 'Failed to download document checklists. Please try again.',
+        success: false,
+      });
+      setTimeout(() => {
+        setPopup({ show: false });
+      }, 5000);
+    } finally {
+      setIsDownloading(false);
+    }
+  };
 
   if (!country) {
     return (
@@ -303,18 +370,26 @@ const CountryDetails = () => {
 </div>
 
 
-{/* Sample Visa Copy */}
-{country.sampleVisaCopy && (
-  <div className="mb-12 text-center">
-    <a
-      href={country.sampleVisaCopy}
-      download
-      className="inline-block px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-600 transition duration-300"
-    >
-      Download Sample Visa Copy
-    </a>
-  </div>
-)}
+{/* Download All Document Checklists */}
+<div className="mb-12 text-center">
+  <button
+    onClick={handleDownloadChecklists}
+    disabled={isDownloading}
+    className="inline-block px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-600 transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+  >
+    {isDownloading ? (
+      <span className="flex items-center gap-2">
+        <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        Downloading...
+      </span>
+    ) : (
+      'Download All Document Checklist'
+    )}
+  </button>
+</div>
 
           {/* Application Process */}
 <div className="mb-12">
