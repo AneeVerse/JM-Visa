@@ -180,7 +180,7 @@ export const POST = async (req) => {
           formType: 'Visa Application',
           name: firstName || '',
           email: email || '',
-          phone: phoneNumber || '',
+          phone: phoneNumber ? phoneNumber.replace(/\+/g, '') : '',
           message: `Visa application for ${travellingTo} - Category: ${category}`,
           visaType: category || '',
           citizen: citizen || '',

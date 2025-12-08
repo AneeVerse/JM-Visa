@@ -185,7 +185,7 @@ export const POST = async (req) => {
           formType: 'Contact Us Form',
           name: name || '',
           email: email || '',
-          phone: phone || '',
+          phone: phone ? phone.replace(/\+/g, '') : '',
           message: message || '',
           extraInfo: `Submitted from contact-us form at ${indianTime}`
         }),

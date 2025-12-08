@@ -83,7 +83,7 @@ export const POST = async (req) => {
           formType: 'Franchise Application',
           name: name || '',
           email: email || '',
-          phone: phone || '',
+          phone: phone ? phone.replace(/\+/g, '') : '',
           experience: experience || '',
           message: experience || '',
           extraInfo: `Submitted from franchise form at ${indianTime}`

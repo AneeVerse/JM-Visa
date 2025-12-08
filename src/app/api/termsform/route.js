@@ -229,7 +229,7 @@ export const POST = async (req) => {
           formType: 'Terms Consent',
           name: name || '',
           email: email || '',
-          phone: phone || '',
+          phone: phone ? phone.replace(/\+/g, '') : '',
           extraInfo: `Terms consent requested at ${indianTime}`
         }),
       });

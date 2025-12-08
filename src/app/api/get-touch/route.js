@@ -27,7 +27,7 @@ export const POST = async (req) => {
     const { name, email, phone, other, recaptchaToken } = await req.json();
 
     // Input validation
-    if (!name || !email ) {
+    if (!name || !email) {
       return new Response(
         JSON.stringify({
           success: false,
@@ -190,6 +190,7 @@ export const POST = async (req) => {
 
     // Send to Google Sheets
     try {
+      const cleanPhone = phone ? phone.replace(/\+/g, '') : '';
       await fetch('https://script.google.com/macros/s/AKfycbyFjUGmoLofjOWl4AwEDRmCG7PRYC0c9CDBB9nkbwe2n8n0ihHJeHhPtoRsXKuXiYZb/exec', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -198,8 +199,8 @@ export const POST = async (req) => {
           formType: 'Contact Form',
           name: name || '',
           email: email || '',
-          phone: phone || '',
-          message: `Contact request from ${name} (${email}) - Phone: ${phone}`,
+          phone: cleanPhone,
+          message: `Contact request from ${name} (${email}) - Phone: ${cleanPhone}`,
           extraInfo: `Submitted from contact form at ${indianTime}`
         }),
       });
