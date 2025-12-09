@@ -17,8 +17,10 @@ const testimonials = [
   { id: 13, type: "video", mediaUrl: "/videos/jm%20visa%20video/WhatsApp%20Video%202025-07-09%20at%203.58.00%20PM.mp4", description: "Client Testimonial 13" },
   { id: 14, type: "video", mediaUrl: "/videos/jm%20visa%20video/WhatsApp%20Video%202025-07-09%20at%203.57.37%20PM.mp4", description: "Client Testimonial 14" },
   { id: 15, type: "video", mediaUrl: "/videos/jm%20visa%20video/WhatsApp%20Video%202025-07-09%20at%203.57.12%20PM.mp4", description: "Client Testimonial 15" },
+  // New testimonial image (first after videos)
+  { id: 16, type: "image", mediaUrl: "/images/testimonials/1000178410.jpeg", description: "Client Review 1" },
   // Existing images (first batch)
-  { id: 16, type: "image", mediaUrl: "/images/testimonials/11.jpg", description: "Client Review 1" },
+  { id: 17, type: "image", mediaUrl: "/images/testimonials/11.jpg", description: "Client Review 2" },
   { id: 17, type: "image", mediaUrl: "/images/testimonials/3.png", description: "Client Review 2" },
   { id: 18, type: "image", mediaUrl: "/images/testimonials/9.jpg", description: "Client Review 3" },
   { id: 19, type: "image", mediaUrl: "/images/testimonials/10.jpg", description: "Client Review 4" },
