@@ -150,7 +150,10 @@ const PrivacyPolicy = () => {
               </a>
             </p>
             <p className="text-gray-600">
-              <strong>Address:</strong> Shop No 11, City Light CHS, CBSE School, Plot No.25, near Terna Orchids The International School, Sector 1, Kopar Khairane, Navi Mumbai, Maharashtra 400709
+              <strong>Head Office:</strong> Shop No 11, City Light CHS, CBSE School, Plot No.25, near Terna Orchids The International School, Sector 1, Kopar Khairane, Navi Mumbai, Maharashtra 400709
+            </p>
+            <p className="text-gray-600">
+              <strong>Branch Office:</strong> Ballal Sankul, 3rd Floor, Charwark, Chowk, Indira Nagar, Nashik, Maharashtra - 422009
             </p>
           </section>
         </div>

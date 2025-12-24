@@ -179,7 +179,8 @@ export const POST = async (req) => {
         <p style="margin: 0;">For any questions regarding these Terms and Conditions, you can reach us at:</p>
         <p style="margin: 5px 0;"><strong>Email:</strong> <a href="mailto:info@jmvisaservices.com">info@jmvisaservices.com</a></p>
         <p style="margin: 5px 0;"><strong>Phone:</strong> <a href="tel:+919321315524">+91 9321315524</a> | <a href="tel:+918591070718">+91 8591070718</a></p>
-        <p style="margin: 5px 0;"><strong>Address:</strong> Shop No 11, City Light CHS, CBSE School, Plot No.25, near Terna Orchids The International School, Sector 1, Kopar Khairane, Navi Mumbai, Maharashtra 400709</p>
+        <p style="margin: 5px 0;"><strong>Head Office:</strong> Shop No 11, City Light CHS, CBSE School, Plot No.25, near Terna Orchids The International School, Sector 1, Kopar Khairane, Navi Mumbai, Maharashtra 400709</p>
+        <p style="margin: 5px 0;"><strong>Branch Office:</strong> Ballal Sankul, 3rd Floor, Charwark, Chowk, Indira Nagar, Nashik, Maharashtra - 422009</p>
       </div>
     </div>
   </div>

@@ -352,11 +352,22 @@ const ContactUsPage = () => {
                   <div className="p-4 bg-blue-50 rounded-2xl text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
                     <FiMapPin className="text-2xl" />
                   </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-1">Visit Us</h3>
-                    <p className="text-gray-600 leading-relaxed font-medium">
-                      Shop No 11, City Light CHS, CBSE School, Plot No.25, near Terna Orchids The International School, Sector 1, Kopar Khairane, Navi Mumbai, Maharashtra 400709
-                    </p>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-bold text-gray-900 mb-3">Visit Us</h3>
+                    <div className="space-y-3">
+                      <div>
+                        <p className="text-sm font-semibold text-gray-800 mb-1">Head Office:</p>
+                        <p className="text-gray-600 leading-relaxed font-medium">
+                          Shop No 11, City Light CHS, CBSE School, Plot No.25, near Terna Orchids The International School, Sector 1, Kopar Khairane, Navi Mumbai, Maharashtra - 400709
+                        </p>
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-800 mb-1">Branch Office:</p>
+                        <p className="text-gray-600 leading-relaxed font-medium">
+                          Ballal Sankul, 3rd Floor, Charwark, Chowk, Indira Nagar, Nashik, Maharashtra - 422009
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </motion.div>
