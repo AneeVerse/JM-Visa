@@ -9,6 +9,8 @@ import Link from "next/link";
 import TableOfContents from "../../../../components/blog/TableOfContents";
 import BlogSchema from "../../../../components/layout/BlogSchema";
 import FAQSchema from "../../../../components/layout/FAQSchema";
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 export const revalidate = 60;
 
@@ -207,6 +209,49 @@ const portableTextComponents = {
         excludedHeadings={value?.excludedHeadings || []}
       />
     ),
+    // Markdown Table - renders markdown tables from the new markdownTable block type
+    markdownTable: ({ value }) => {
+      if (!value || !value.tableContent) return null;
+      return (
+        <div className="overflow-x-auto my-6 shadow-sm rounded-lg -mx-4 sm:mx-0">
+          <div className="inline-block min-w-full align-middle markdown-table-wrapper">
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              components={{
+                table: ({ children }) => (
+                  <table className="min-w-full border border-gray-300 text-sm">
+                    {children}
+                  </table>
+                ),
+                thead: ({ children }) => <thead>{children}</thead>,
+                tbody: ({ children }) => <tbody>{children}</tbody>,
+                tr: ({ children, ...props }) => {
+                  // Check if this is in thead or tbody for styling
+                  const isHeader = props.node?.parentNode?.tagName === 'thead';
+                  return (
+                    <tr className={isHeader ? "bg-blue-500" : "even:bg-white odd:bg-gray-50"}>
+                      {children}
+                    </tr>
+                  );
+                },
+                th: ({ children }) => (
+                  <th className="px-2 sm:px-3 py-2 text-white font-semibold border border-blue-500 text-left text-xs sm:text-sm whitespace-nowrap">
+                    {children}
+                  </th>
+                ),
+                td: ({ children }) => (
+                  <td className="border px-2 sm:px-3 py-2 align-top text-xs sm:text-sm text-gray-700 leading-relaxed max-w-xs break-words">
+                    {children}
+                  </td>
+                ),
+              }}
+            >
+              {value.tableContent}
+            </ReactMarkdown>
+          </div>
+        </div>
+      );
+    },
   },
   block: {
     h1: ({ children, value }) => {

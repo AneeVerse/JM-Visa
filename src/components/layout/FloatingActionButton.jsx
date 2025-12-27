@@ -2,12 +2,19 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaWhatsapp, FaEnvelope, FaPhone } from 'react-icons/fa';
-import { IoIosClose, IoIosAdd, IoIosRemove,IoMdChatboxes } from "react-icons/io";
+import { IoIosClose, IoIosAdd, IoIosRemove, IoMdChatboxes } from "react-icons/io";
 import { MdContentCopy } from 'react-icons/md';
 import { IoClose } from "react-icons/io5";
+import { usePathname } from 'next/navigation';
 
 const FloatingActionButton = () => {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
+  // Hide on studio pages
+  if (pathname?.startsWith('/studio')) {
+    return null;
+  }
 
   const handleCopy = (text) => {
     navigator.clipboard.writeText(text)
@@ -32,10 +39,10 @@ const FloatingActionButton = () => {
   return (
     <div className="fixed bottom-3 right-3 sm:bottom-6 sm:right-6 z-40">
       {!open && (
-        <motion.div 
-          initial="hidden" 
-          animate="visible" 
-          exit="exit" 
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          exit="exit"
           className="flex flex-col items-center gap-3 mb-4"
         >
           <motion.a
@@ -70,10 +77,10 @@ const FloatingActionButton = () => {
       )}
 
       {open && (
-        <motion.div 
-          initial="hidden" 
-          animate="visible" 
-          exit="exit" 
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          exit="exit"
           className="fixed inset-0 bg-gray-900 bg-opacity-50 hidden  items-center justify-center z-50"
         >
           <motion.div
@@ -89,7 +96,7 @@ const FloatingActionButton = () => {
               <IoIosClose className="self-center h-8 w-8" />
             </motion.button>
             <div className="flex flex-col gap-5">
-              <motion.div 
+              <motion.div
                 className="flex items-center justify-between p-4 border border-blue-600 rounded-xl"
                 whileHover={{ scale: 1.05 }}
               >
@@ -110,8 +117,8 @@ const FloatingActionButton = () => {
                   <MdContentCopy size={20} />
                 </motion.button>
               </motion.div>
-              
-              <motion.div 
+
+              <motion.div
                 className="flex items-center justify-between p-4 border border-blue-600 rounded-xl"
                 whileHover={{ scale: 1.05 }}
               >
@@ -131,7 +138,7 @@ const FloatingActionButton = () => {
                 </motion.button>
               </motion.div>
 
-              <motion.div 
+              <motion.div
                 className="flex items-center justify-between p-4 border border-blue-600 rounded-xl"
                 whileHover={{ scale: 1.05 }}
               >
@@ -162,7 +169,7 @@ const FloatingActionButton = () => {
         whileTap="tap"
         variants={buttonVariants}
       >
-        <div>{open ?<div className='self-center'><IoMdChatboxes className="self-center h-8 w-8 block " />  <IoIosRemove className="self-center h-8 w-8 hidden " /> </div> : <div className='self-center'><IoMdChatboxes className="self-center h-8 w-8 hidden " /> <IoClose className='self-center h-7 w-7 block ' /> </div> } </div> 
+        <div>{open ? <div className='self-center'><IoMdChatboxes className="self-center h-8 w-8 block " />  <IoIosRemove className="self-center h-8 w-8 hidden " /> </div> : <div className='self-center'><IoMdChatboxes className="self-center h-8 w-8 hidden " /> <IoClose className='self-center h-7 w-7 block ' /> </div>} </div>
       </motion.button>
     </div>
   );

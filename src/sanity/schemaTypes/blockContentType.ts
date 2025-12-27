@@ -78,13 +78,45 @@ export const blockContentType = defineType({
       name: 'tableOfContents',
       title: 'Table of Contents',
     }),
-    // Table block
+    // Existing Table block (KEEPING THIS FOR BACKWARDS COMPATIBILITY)
     defineArrayMember({
       type: 'table',
       name: 'table',
-      title: 'Table',
-      components: {
-        input: require('../components/TablePasteInput').TablePasteInput,
+      title: '🚫 Legacy Table (Do Not Use)',
+      // We remove the custom input component to avoid crashes on old tables
+      // components: {
+      //   input: require('../components/TablePasteInput').TablePasteInput,
+      // },
+    }),
+    // NEW: Markdown Table block - stores as markdown string (Paste Supported)
+    defineArrayMember({
+      type: 'object',
+      name: 'markdownTable',
+      title: 'Table (Paste Supported)',
+      icon: () => '📊',
+      fields: [
+        defineField({
+          name: 'tableContent',
+          title: 'Table Content',
+          type: 'markdown',
+          components: {
+            input: require('../components/MarkdownTableInput').MarkdownTableInput,
+          },
+        }),
+      ],
+      preview: {
+        select: {
+          content: 'tableContent',
+        },
+        prepare({ content }) {
+          // Count rows from markdown
+          const lines = (content || '').split('\n').filter((l: string) => l.trim() && !l.includes('---'));
+          const rowCount = lines.length;
+          return {
+            title: `Table (${rowCount} rows)`,
+            subtitle: lines[0]?.substring(0, 50) || 'Empty table',
+          };
+        },
       },
     }),
     // YouTube embed block
