@@ -24,7 +24,12 @@ const CountryDetails = () => {
   const [captchaToken, setCaptchaToken] = useState(null);
   const [captchaError, setCaptchaError] = useState("");
   const [isDownloading, setIsDownloading] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [availableChecklists, setAvailableChecklists] = useState([]);
+  const [isLoadingChecklists, setIsLoadingChecklists] = useState(false);
+  const [hasChecklists, setHasChecklists] = useState(null); // null = checking, true = available, false = unavailable
   const recaptchaRef = useRef(null);
+  const dropdownRef = useRef(null);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -147,32 +152,135 @@ const CountryDetails = () => {
       router.push(`/country`);
     } else {
       setCountry(foundCountry);
+      // Reset states when country changes
+      setIsDropdownOpen(false);
+      setAvailableChecklists([]);
+      setHasChecklists(null);
+      // Check if checklists are available for this country
+      checkChecklistsAvailability(foundCountry.name);
     }
   }, [params, router, category, slug]);
 
-  const handleDownloadChecklists = async () => {
-    if (!country || !country.name) return;
-
-    setIsDownloading(true);
+  const checkChecklistsAvailability = async (countryName) => {
+    if (!countryName) return;
+    
+    setHasChecklists(null); // Set to checking state
     try {
       const response = await fetch(
-        `/api/download-checklists?country=${encodeURIComponent(country.name)}`
+        `/api/download-checklists?country=${encodeURIComponent(countryName)}`
       );
 
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Failed to download checklists');
+        setHasChecklists(false);
+        return;
       }
 
       const data = await response.json();
       
-      if (!data.success || !data.pdfs || data.pdfs.length === 0) {
-        throw new Error('No PDF files found for this country');
+      if (data.success && data.pdfs && data.pdfs.length > 0) {
+        setHasChecklists(true);
+        setAvailableChecklists(data.pdfs);
+      } else {
+        setHasChecklists(false);
       }
+    } catch (error) {
+      console.error('Error checking checklists availability:', error);
+      setHasChecklists(false);
+    }
+  };
 
+  const handleToggleDropdown = async () => {
+    if (!country || !country.name || hasChecklists === false) return;
+
+    // If checklists are already loaded, just toggle dropdown
+    if (availableChecklists.length > 0) {
+      setIsDropdownOpen(!isDropdownOpen);
+      return;
+    }
+
+    // If opening dropdown and checklists not loaded yet, fetch them
+    if (!isDropdownOpen) {
+      setIsLoadingChecklists(true);
+      try {
+        const response = await fetch(
+          `/api/download-checklists?country=${encodeURIComponent(country.name)}`
+        );
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.error || 'Failed to fetch checklists');
+        }
+
+        const data = await response.json();
+        
+        if (!data.success || !data.pdfs || data.pdfs.length === 0) {
+          setHasChecklists(false);
+          setPopup({
+            show: true,
+            message: 'No PDF checklists found for this country.',
+            success: false,
+          });
+          setTimeout(() => {
+            setPopup({ show: false });
+          }, 3000);
+          setIsLoadingChecklists(false);
+          return;
+        }
+
+        setAvailableChecklists(data.pdfs);
+        setHasChecklists(true);
+        setIsDropdownOpen(true);
+      } catch (error) {
+        console.error('Error fetching checklists:', error);
+        setHasChecklists(false);
+        setPopup({
+          show: true,
+          message: error.message || 'Failed to fetch document checklists. Please try again.',
+          success: false,
+        });
+        setTimeout(() => {
+          setPopup({ show: false });
+        }, 5000);
+        setIsLoadingChecklists(false);
+        return;
+      } finally {
+        setIsLoadingChecklists(false);
+      }
+    } else {
+      setIsDropdownOpen(false);
+    }
+  };
+
+  const handleDownloadIndividual = (pdf) => {
+    const link = document.createElement('a');
+    link.href = pdf.url;
+    link.download = pdf.filename;
+    link.style.display = 'none';
+    document.body.appendChild(link);
+    link.click();
+    
+    setTimeout(() => {
+      document.body.removeChild(link);
+    }, 100);
+
+    setPopup({
+      show: true,
+      message: `Downloading ${pdf.filename}...`,
+      success: true,
+    });
+    setTimeout(() => {
+      setPopup({ show: false });
+    }, 2000);
+  };
+
+  const handleDownloadAll = async () => {
+    if (!availableChecklists || availableChecklists.length === 0) return;
+
+    setIsDownloading(true);
+    try {
       // Download each PDF file individually with a small delay between downloads
-      for (let i = 0; i < data.pdfs.length; i++) {
-        const pdf = data.pdfs[i];
+      for (let i = 0; i < availableChecklists.length; i++) {
+        const pdf = availableChecklists[i];
         
         // Create download link for each PDF
         const link = document.createElement('a');
@@ -188,14 +296,14 @@ const CountryDetails = () => {
         }, 100);
 
         // Add delay between downloads to avoid browser blocking multiple downloads
-        if (i < data.pdfs.length - 1) {
+        if (i < availableChecklists.length - 1) {
           await new Promise(resolve => setTimeout(resolve, 300));
         }
       }
 
       setPopup({
         show: true,
-        message: `Successfully downloaded ${data.count} document checklist(s)!`,
+        message: `Successfully downloaded ${availableChecklists.length} document checklist(s)!`,
         success: true,
       });
       setTimeout(() => {
@@ -215,6 +323,23 @@ const CountryDetails = () => {
       setIsDownloading(false);
     }
   };
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    if (isDropdownOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isDropdownOpen]);
 
   if (!country) {
     return (
@@ -371,24 +496,127 @@ const CountryDetails = () => {
 
 
 {/* Download All Document Checklists */}
-<div className="mb-12 text-center">
-  <button
-    onClick={handleDownloadChecklists}
-    disabled={isDownloading}
-    className="inline-block px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-600 transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-  >
-    {isDownloading ? (
-      <span className="flex items-center gap-2">
-        <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-        </svg>
-        Downloading...
-      </span>
-    ) : (
-      'Download All Document Checklist'
+<div className="mb-12 flex justify-center relative" ref={dropdownRef}>
+  <div className="relative inline-block">
+    <button
+      onClick={handleToggleDropdown}
+      disabled={isLoadingChecklists || hasChecklists === false || hasChecklists === null}
+      className={`inline-flex items-center gap-2 px-6 py-3 font-semibold rounded-lg shadow-lg transition duration-300 disabled:cursor-not-allowed ${
+        hasChecklists === false
+          ? 'bg-gray-400 text-white cursor-not-allowed'
+          : hasChecklists === null
+          ? 'bg-gray-300 text-white cursor-wait'
+          : 'bg-blue-500 text-white hover:bg-blue-600'
+      } ${isLoadingChecklists ? 'opacity-50' : ''}`}
+    >
+      {isLoadingChecklists || hasChecklists === null ? (
+        <>
+          <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+          {hasChecklists === null ? 'Checking...' : 'Loading...'}
+        </>
+      ) : hasChecklists === false ? (
+        <>
+          Download All Document Checklist Unavailable
+          <svg 
+            className="w-5 h-5" 
+            fill="none" 
+            stroke="currentColor" 
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </>
+      ) : (
+        <>
+          Download All Document Checklist
+          <svg 
+            className={`w-5 h-5 transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`} 
+            fill="none" 
+            stroke="currentColor" 
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          </svg>
+        </>
+      )}
+    </button>
+
+  {/* Dropdown Menu */}
+  <AnimatePresence>
+    {isDropdownOpen && availableChecklists.length > 0 && (
+      <motion.div
+        initial={{ opacity: 0, y: -10, scale: 0.95 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, y: -10, scale: 0.95 }}
+        transition={{ duration: 0.2 }}
+        className="absolute left-4 right-4 sm:left-1/2 sm:right-auto sm:transform sm:-translate-x-1/2 mt-2 w-auto sm:w-[500px] bg-white rounded-lg shadow-xl border border-gray-200 z-50 overflow-hidden"
+        style={{ top: '100%' }}
+      >
+        <div className="p-4 border-b border-gray-200 bg-blue-50">
+          <h3 className="text-lg font-semibold text-gray-800">
+            Available Document Checklists
+          </h3>
+          <p className="text-sm text-gray-600 mt-1">
+            Select a checklist to download individually
+          </p>
+        </div>
+        
+        <div className="max-h-96 overflow-y-auto">
+          <ul className="divide-y divide-gray-200">
+            {availableChecklists.map((pdf, index) => (
+              <li key={index} className="hover:bg-gray-50 transition-colors">
+                <div className="flex items-center justify-between p-4">
+                  <div className="flex items-center gap-3 flex-1 min-w-0">
+                    <svg className="w-6 h-6 text-blue-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                    </svg>
+                    <span className="text-gray-800 font-medium truncate" title={pdf.filename}>
+                      {pdf.filename.replace('.pdf', '')}
+                    </span>
+                  </div>
+                  <button
+                    onClick={() => handleDownloadIndividual(pdf)}
+                    className="ml-4 px-4 py-2 bg-blue-500 text-white text-sm font-medium rounded-lg hover:bg-blue-600 transition-colors flex-shrink-0"
+                  >
+                    Download
+                  </button>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="p-4 border-t border-gray-200 bg-gray-50">
+          <button
+            onClick={handleDownloadAll}
+            disabled={isDownloading}
+            className="w-full px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+          >
+            {isDownloading ? (
+              <>
+                <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Downloading All...
+              </>
+            ) : (
+              <>
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+                Download All ({availableChecklists.length})
+              </>
+            )}
+          </button>
+        </div>
+      </motion.div>
     )}
-  </button>
+  </AnimatePresence>
+  </div>
 </div>
 
           {/* Application Process */}
