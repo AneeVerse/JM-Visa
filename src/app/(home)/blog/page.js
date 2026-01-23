@@ -58,8 +58,8 @@ const BlogPage = () => {
         ) : blogs.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {blogs.map((blog) => (
-              <Link 
-                href={`/blog/${blog.slug.current}`} 
+              <Link
+                href={`/blog/${blog.slug.current}`}
                 key={blog._id}
                 className="relative group bg-white/20 border border-white/30 backdrop-blur-md rounded-lg shadow-lg hover:shadow-xl transition-all cursor-pointer overflow-hidden"
               >
@@ -68,7 +68,7 @@ const BlogPage = () => {
                   <img
                     src={urlFor(blog.mainImage).url()}
                     alt={blog.title}
-                    className="w-full h-48 sm:h-56 object-cover group-hover:scale-105 transition-transform"
+                    className="w-full h-56 sm:h-60 object-cover group-hover:scale-105 transition-transform"
                   />
                 )}
                 {/* Blog Content */}
