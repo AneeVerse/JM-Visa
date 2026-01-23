@@ -339,7 +339,7 @@ async function BlogDetailsPage({ params }) {
             </div>
             <div className="lg:w-1/2 w-full">
               {blog.mainImage && (
-                <div className="aspect-w-16 max-w-[500px] aspect-h-9 rounded-lg h-[200px] sm:h-[250px] lg:h-[300px] mr-auto ml-auto lg:mr-0 lg:ml-auto overflow-hidden shadow-md">
+                <div className="aspect-w-16 max-w-[500px] aspect-h-9 rounded-lg h-[240px] sm:h-[250px] lg:h-[300px] mr-auto ml-auto lg:mr-0 lg:ml-auto overflow-hidden shadow-md">
                   <img
                     src={urlFor(blog.mainImage).url()}
                     alt={blog.title}
