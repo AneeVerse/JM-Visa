@@ -47,29 +47,29 @@ import PopupForm from "../components/home/PopupFormLazy";
 
 export default function Home() {
   return (
-   <div>
-      <HeroSection/>
-      <VisaCategories/>
-      <HorizontalScrollSection/>
+    <div>
+      <HeroSection />
+      <VisaCategories />
+      <HorizontalScrollSection />
       <div className="relative ">
 
-      <div className="bg-gradient-to-br from-blue-900 via-blue-700 to-blue-500">
-      <AboutUs/>
-      <PromoSection/>
-      </div>
-      <div className="absolute bottom-20 bg-gradient-to-br from-white via-white to-blue-200 blur-2xl bg-opacity-60  w-full min-h-full h-[500px] -z-10"> </div>
+        <div className="bg-gradient-to-br from-blue-900 via-blue-700 to-blue-500">
+          <AboutUs />
+          <PromoSection />
+        </div>
+        <div className="absolute bottom-20 bg-gradient-to-br from-white via-white to-blue-200 blur-2xl bg-opacity-60  w-full min-h-full h-[500px] -z-10"> </div>
 
-      <div className="absolute top-20 left-0 bg-gradient-to-br from-blue-200 via-white to-white blur-2xl bg-opacity-60   w-full  h-[500px] -z-10"> </div>
+        <div className="absolute top-20 left-0 bg-gradient-to-br from-blue-200 via-white to-white blur-2xl bg-opacity-60   w-full  h-[500px] -z-10"> </div>
       </div>
-      <FeedbackReviewComponent/>
-      <VideoTestimonial/>
-      <BlogComponent/>
+      <VideoTestimonial />
+      {/* <FeedbackReviewComponent /> */}
+      <BlogComponent />
       <div className="bg-gradient-to-br from-blue-900 via-blue-700 to-blue-500">
-      <VisaForm/>
+        <VisaForm />
 
-      <Footer/>
-      <PopupForm/>
+        <Footer />
+        <PopupForm />
       </div>
-   </div>
+    </div>
   );
 }

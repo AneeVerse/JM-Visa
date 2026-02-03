@@ -275,7 +275,7 @@ const portableTextComponents = {
 
 import BlogForm from "../../../../components/blog/BlogForm";
 import FAQItem from "../../../../components/blog/FAQItem";
-import VideoTestimonial from "../../../../components/home/VideoTestimonial";
+import FeedbackReviewComponent from "../../../../components/home/FeedbackReviewComponent";
 
 async function BlogDetailsPage({ params }) {
   const resolvedParams = await params;
@@ -370,17 +370,9 @@ async function BlogDetailsPage({ params }) {
                 </div>
               )}
 
-              {/* Client Testimonials Section */}
+              {/* Google Reviews Section */}
               <div className="mt-8 sm:mt-12">
-                <div className="text-center mb-4 sm:mb-6">
-                  <h2 className="text-xl sm:text-2xl font-bold text-gray-800">
-                    ✈️ Feedback
-                  </h2>
-                  <p className="text-base sm:text-lg text-blue-500 font-semibold mt-1">
-                    See What Our Happy Clients Say
-                  </p>
-                </div>
-                <VideoTestimonial />
+                <FeedbackReviewComponent />
               </div>
             </div>
 
