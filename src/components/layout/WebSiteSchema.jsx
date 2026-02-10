@@ -11,15 +11,7 @@ export default function WebSiteSchema() {
     "publisher": {
       "@id": "https://www.jmvisaservices.com/#organization"
     },
-    "inLanguage": "en-US",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": "https://www.jmvisaservices.com/search?q={search_term_string}"
-      },
-      "query-input": "required name=search_term_string"
-    }
+    "inLanguage": "en-US"
   };
 
   return (

@@ -28,30 +28,16 @@ export const metadata = {
   authors: [{ name: "JM Visa Services" }],
   creator: "JM Visa Services",
   publisher: "JM Visa Services",
-  robots: "index, follow",
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://www.jmvisaservices.com",
-    title: "JM Visa Services - Professional Visa & Immigration Services",
-    description: "Comprehensive visa and immigration services for study abroad, work visas, tourist visas, and more.",
-    siteName: "JM Visa Services",
-    images: [
-      {
-        url: "https://www.jmvisaservices.com/images/jm-banner.jpg",
-        width: 1200,
-        height: 630,
-        alt: "JM Visa Services - Professional Visa & Immigration Services"
-      }
-    ]
+  robots: {
+    index: true,
+    follow: true,
+    'max-image-preview': 'large',
+    'max-snippet': -1,
+    'max-video-preview': -1,
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "JM Visa Services - Professional Visa & Immigration Services",
-    description: "Comprehensive visa and immigration services for study abroad, work visas, tourist visas, and more.",
-    images: ["https://www.jmvisaservices.com/images/jm-banner.jpg"]
+  alternates: {
+    canonical: '/',
   },
-  // Add favicon icon and device-specific icons
   icons: {
     icon: "/favicon.ico", // Default favicon
     apple: "/apple-touch-icon.png", // Apple touch icon
@@ -94,18 +80,18 @@ export default function RootLayout({ children }) {
         <WebSiteSchema />
         <WebPageSchema />
         <BreadcrumbJsonLdDynamic />
-         <NextTopLoader
-         color="#0e2f50"
-         initialPosition={0.08}
-         height={3}
-         showSpinner={false}
-         easing="ease"
-         speed={500}
-         shadow="0 0 10px #2299DD,0 0 5px #2299DD"
-         />
-        <ConditionalHeader/>
+        <NextTopLoader
+          color="#0e2f50"
+          initialPosition={0.08}
+          height={3}
+          showSpinner={false}
+          easing="ease"
+          speed={500}
+          shadow="0 0 10px #2299DD,0 0 5px #2299DD"
+        />
+        <ConditionalHeader />
         {children}
-        <FloatingActionButton/>
+        <FloatingActionButton />
       </body>
     </html>
   );

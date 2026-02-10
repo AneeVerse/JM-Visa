@@ -17,7 +17,7 @@ async function fetchBlogPosts() {
         _updatedAt
       }
     `);
-    
+
     console.log(`📝 Found ${posts.length} blog posts from Sanity`);
     return posts;
   } catch (error) {
@@ -35,7 +35,7 @@ async function fetchCategories() {
         _updatedAt
       }
     `);
-    
+
     console.log(`🏷️  Found ${categories.length} categories from Sanity`);
     return categories;
   } catch (error) {
@@ -46,14 +46,14 @@ async function fetchCategories() {
 
 module.exports = {
   siteUrl: 'https://www.jmvisaservices.com',
-  generateRobotsTxt: true,
+  generateRobotsTxt: false,
   generateIndexSitemap: false,
   exclude: ['/studio/*'],
-  
+
   // This is the key - we'll add all dynamic content here
   additionalPaths: async (config) => {
     const paths = [];
-    
+
     // Add all blog posts
     const posts = await fetchBlogPosts();
     posts.forEach(post => {
@@ -64,7 +64,7 @@ module.exports = {
         priority: 0.7,
       });
     });
-    
+
     // Add all categories
     const categories = await fetchCategories();
     categories.forEach(category => {
@@ -75,7 +75,7 @@ module.exports = {
         priority: 0.6,
       });
     });
-    
+
     // Add main pages first
     const mainPages = [
       { loc: '/', priority: 1.0, changefreq: 'daily' },
@@ -88,7 +88,7 @@ module.exports = {
       { loc: '/privacy-policy', priority: 0.5, changefreq: 'yearly' },
       { loc: '/terms-and-condition', priority: 0.5, changefreq: 'yearly' },
     ];
-    
+
     mainPages.forEach(page => {
       paths.push({
         loc: page.loc,
@@ -97,7 +97,7 @@ module.exports = {
         priority: page.priority,
       });
     });
-    
+
     // Add all static service pages
     const servicePages = [
       '/services/study-abroad',
@@ -112,7 +112,7 @@ module.exports = {
       '/services/passport-services',
       '/services/us-interview-dates',
     ];
-    
+
     servicePages.forEach(service => {
       paths.push({
         loc: service,
@@ -121,7 +121,7 @@ module.exports = {
         priority: 0.8,
       });
     });
-    
+
     // Add country pages
     const countryPages = [
       '/country/Oceania/Australia',
@@ -138,7 +138,7 @@ module.exports = {
       '/country/Europe/Germany',
       '/country/Europe/Greece',
     ];
-    
+
     countryPages.forEach(country => {
       paths.push({
         loc: country,
@@ -147,7 +147,7 @@ module.exports = {
         priority: 0.8,
       });
     });
-    
+
     console.log(`🚀 Added ${paths.length} total paths to sitemap`);
     return paths;
   },
