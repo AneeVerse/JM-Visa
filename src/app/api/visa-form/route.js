@@ -20,7 +20,7 @@ export const POST = async (req) => {
   }
 
   try {
-    const { citizen, travellingTo, category, firstName, email, phoneNumber, pageSource, recaptchaToken } = await req.json();
+    const { citizen, travellingTo, category, firstName, email, phoneNumber, pageSource, recaptchaToken, userLocation, userPincode, userIp } = await req.json();
 
     // Validate required fields
     if (!firstName || !email || !travellingTo) {
@@ -68,6 +68,13 @@ export const POST = async (req) => {
             <p style="font-size: 1.1rem; margin: 0 0 10px;"><strong>Name:</strong> ${firstName}</p>
             <p style="font-size: 1.1rem; margin: 0 0 10px;"><strong>Email:</strong> <a href="mailto:${email}" style="color: #4a90e2; text-decoration: none;">${email}</a></p>
             <p style="font-size: 1.1rem; margin: 0 0 10px;"><strong>Phone:</strong> ${phoneNumber || "N/A"}</p>
+            
+            <!-- Geolocation Details -->
+            <div style="margin-top: 20px; padding: 15px; background-color: #f0f7ff; border: 1px dashed #4a90e2; border-radius: 8px;">
+              <p style="margin: 0 0 5px; font-size: 0.95rem; color: #333333;"><strong>User Location:</strong> ${userLocation || 'Unknown'}</p>
+              <p style="margin: 0 0 5px; font-size: 0.95rem; color: #333333;"><strong>Pincode:</strong> ${userPincode || 'Unknown'}</p>
+              <p style="margin: 0; font-size: 0.95rem; color: #333333;"><strong>IP Address:</strong> ${userIp || 'Unknown'}</p>
+            </div>
           </div>
 
           <!-- Footer -->
@@ -181,7 +188,7 @@ export const POST = async (req) => {
           name: firstName || '',
           email: email || '',
           phone: phoneNumber ? phoneNumber.replace(/\+/g, '') : '',
-          message: `Visa application for ${travellingTo} - Category: ${category}`,
+          message: `Visa application for ${travellingTo} - Category: ${category} [Location: ${userLocation || 'Unknown'} | Pincode: ${userPincode || 'Unknown'} | IP: ${userIp || 'Unknown'}]`,
           visaType: category || '',
           citizen: citizen || '',
           travellingTo: travellingTo || '',

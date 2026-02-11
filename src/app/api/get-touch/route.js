@@ -24,7 +24,7 @@ export const POST = async (req) => {
 
   try {
     // Parse the incoming request body
-    const { name, email, phone, other, recaptchaToken } = await req.json();
+    const { name, email, phone, other, recaptchaToken, userLocation, userPincode, userIp } = await req.json();
 
     // Input validation
     if (!name || !email) {
@@ -81,9 +81,13 @@ export const POST = async (req) => {
             <p style="font-size: 1.1rem; margin-bottom: 10px;">
               <strong>Email:</strong> <a href="mailto:${email}" style="color: #007BFF; text-decoration: none;">${email}</a>
             </p>
-            <p style="font-size: 1.1rem; margin-bottom: 10px;">
-                <strong>From:</strong> <span style="color: #007BFF;">${other || "Home Page"}</span>
                 </p>
+            <!-- Geolocation Details -->
+            <div style="margin-top: 20px; padding: 15px; background-color: #f0f7ff; border: 1px dashed #007BFF; border-radius: 8px;">
+              <p style="margin: 0 0 5px; font-size: 0.95rem; color: #333333;"><strong>User Location:</strong> ${userLocation || 'Unknown'}</p>
+              <p style="margin: 0 0 5px; font-size: 0.95rem; color: #333333;"><strong>Pincode:</strong> ${userPincode || 'Unknown'}</p>
+              <p style="margin: 0; font-size: 0.95rem; color: #333333;"><strong>IP Address:</strong> ${userIp || 'Unknown'}</p>
+            </div>
           </div>
 
           <!-- Footer -->
@@ -200,7 +204,7 @@ export const POST = async (req) => {
           name: name || '',
           email: email || '',
           phone: cleanPhone,
-          message: `Contact request from ${name} (${email}) - Phone: ${cleanPhone}`,
+          message: `Contact request from ${name} (${email}) - Phone: ${cleanPhone} [Location: ${userLocation || 'Unknown'} | Pincode: ${userPincode || 'Unknown'} | IP: ${userIp || 'Unknown'}]`,
           extraInfo: `Submitted from contact form at ${indianTime}`
         }),
       });

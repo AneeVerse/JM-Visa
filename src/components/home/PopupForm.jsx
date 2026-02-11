@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import CountryCodeDropdown from './CountryCodeDropdown';
 import services from '../../data/ServicesData';
 import ReCAPTCHA from "react-google-recaptcha";
+import useGeoLocation from '../../hooks/useGeoLocation';
 
 const SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
@@ -28,6 +29,7 @@ const PopupForm = () => {
   const [isAccepted, setIsAccepted] = useState(true);
   const [captchaToken, setCaptchaToken] = useState(null);
   const [captchaError, setCaptchaError] = useState('');
+  const userGeo = useGeoLocation();
   const recaptchaRef = useRef(null);
 
   useEffect(() => {
@@ -49,7 +51,7 @@ const PopupForm = () => {
     const newErrors = {};
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phoneRegex = /^[0-9]{10,15}$/;
-    
+
     if (!formData.firstName.trim()) {
       newErrors.firstName = 'First name is required';
     }
@@ -129,13 +131,13 @@ const PopupForm = () => {
     try {
       // Combine country code with phone number (with space)
       const fullPhoneNumber = `${formData.countryCode} ${formData.phone}`;
-      
+
       if (!captchaToken) {
         setCaptchaError("Please complete the reCAPTCHA verification.");
         setIsLoading(false);
         return;
       }
-      
+
       const response = await fetch('/api/get-touch', {
         method: 'POST',
         headers: {
@@ -146,7 +148,10 @@ const PopupForm = () => {
           email: formData.email,
           phone: fullPhoneNumber,
           other: `${formData.service} (Homepage Popup)`,
-          recaptchaToken: captchaToken
+          recaptchaToken: captchaToken,
+          userLocation: userGeo ? `${userGeo.city}, ${userGeo.region}, ${userGeo.country}` : "Unknown",
+          userPincode: userGeo ? userGeo.pincode : "Unknown",
+          userIp: userGeo ? userGeo.ip : "Unknown",
         }),
       });
 
@@ -175,7 +180,7 @@ const PopupForm = () => {
         recaptchaRef.current.reset();
       }
       setCaptchaToken(null);
-      
+
     } catch (error) {
       toast.error(error.message || 'Failed to submit form. Please try again later.', {
         position: "top-right",
@@ -195,7 +200,7 @@ const PopupForm = () => {
 
   return (
     <>
-      <ToastContainer 
+      <ToastContainer
         position="top-right"
         autoClose={5000}
         className={"mt-[70px]"}
@@ -207,17 +212,17 @@ const PopupForm = () => {
         draggable
         pauseOnHover
       />
-      
+
       <div className="fixed inset-0 bg-black/30 backdrop-blur-[4px] bg-opacity-20 z-50 flex items-center justify-center p-4">
         <div className="bg-white rounded-xl shadow-2xl overflow-hidden max-w-4xl w-full flex flex-col lg:flex-row">
           {/* Close Button */}
-          <button 
+          <button
             onClick={closePopup}
             className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 focus:outline-none z-10"
           >
             <BiX className="text-2xl md:text-4xl bg-white rounded-full p-1" />
           </button>
-          
+
           {/* Left Section - Blue Theme */}
           <div className="hidden lg:block lg:w-1/3 bg-gradient-to-br from-blue-600 to-blue-700 relative">
             <div className="absolute inset-0 bg-gradient-to-b from-blue-600/90 to-blue-700/90"></div>
@@ -246,14 +251,14 @@ const PopupForm = () => {
               </div>
             </div>
           </div>
-          
+
           {/* Form Section */}
           <div className="lg:w-2/3 p-6 sm:p-8">
             <div className="mb-6">
               <h3 className="text-2xl font-bold text-gray-800">Free Visa Consultation</h3>
               <p className="text-gray-600 hidden lg:block">Fill out the form and our expert will contact you shortly</p>
             </div>
-            
+
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
@@ -317,9 +322,8 @@ const PopupForm = () => {
                     aria-label="Email Address"
                     value={formData.email}
                     onChange={handleChange}
-                    className={`w-full pl-9 pr-3 py-2 text-sm border rounded-lg ${
-                      errors.email ? "border-red-500" : "border-gray-300"
-                    } focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all`}
+                    className={`w-full pl-9 pr-3 py-2 text-sm border rounded-lg ${errors.email ? "border-red-500" : "border-gray-300"
+                      } focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all`}
                     placeholder="Email Address*"
                   />
                   <BiEnvelope className="absolute left-3 top-3 text-gray-400 text-sm" />
@@ -353,9 +357,8 @@ const PopupForm = () => {
                       aria-label="Phone Number"
                       value={formData.phone}
                       onChange={handleChange}
-                      className={`w-full pl-9 pr-3 py-2 text-sm border border-l-0 rounded-r-lg ${
-                        errors.phone ? "border-red-500" : "border-gray-300"
-                      } focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all`}
+                      className={`w-full pl-9 pr-3 py-2 text-sm border border-l-0 rounded-r-lg ${errors.phone ? "border-red-500" : "border-gray-300"
+                        } focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all`}
                       placeholder="Phone Number*"
                     />
                     <BiPhone className="absolute left-3 top-3 text-gray-400 text-sm" />
@@ -381,9 +384,8 @@ const PopupForm = () => {
                     aria-label="Service"
                     value={formData.service}
                     onChange={handleChange}
-                    className={`w-full pl-9 pr-8 py-2 text-sm border rounded-lg appearance-none ${
-                      errors.service ? "border-red-500" : "border-gray-300"
-                    } focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all`}
+                    className={`w-full pl-9 pr-8 py-2 text-sm border rounded-lg appearance-none ${errors.service ? "border-red-500" : "border-gray-300"
+                      } focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all`}
                   >
                     <option value="">Select Service*</option>
                     {serviceOptions.map((service, index) => (
@@ -422,10 +424,10 @@ const PopupForm = () => {
                   <div className="flex items-center">
                     <BiCheckShield className="text-blue-600 mr-1 text-xs" />
                     <div>
-                    I agreed to the{" "}
-                    <a href="/terms-and-condition" className="text-blue-600 hover:underline ml-0.5">
-                      terms and conditions
-                    </a></div>
+                      I agreed to the{" "}
+                      <a href="/terms-and-condition" className="text-blue-600 hover:underline ml-0.5">
+                        terms and conditions
+                      </a></div>
                   </div>
                 </label>
               </div>
@@ -452,11 +454,10 @@ const PopupForm = () => {
               <button
                 type="submit"
                 disabled={isLoading || !isAccepted}
-                className={`w-full mt-4 py-3 px-4 rounded-lg text-sm font-medium flex items-center justify-center space-x-2 ${
-                  isLoading || !isAccepted
+                className={`w-full mt-4 py-3 px-4 rounded-lg text-sm font-medium flex items-center justify-center space-x-2 ${isLoading || !isAccepted
                     ? "bg-gray-300 cursor-not-allowed"
                     : "bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white shadow-md"
-                } transition-all duration-300`}
+                  } transition-all duration-300`}
               >
                 {isLoading ? (
                   <>

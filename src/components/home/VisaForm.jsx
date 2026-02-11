@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import ReCAPTCHA from "react-google-recaptcha";
 import { FaGlobeAmericas, FaPlaneDeparture, FaUser, FaEnvelope, FaPhone, FaPassport } from "react-icons/fa";
 import { BiCategory } from "react-icons/bi";
+import useGeoLocation from "../../hooks/useGeoLocation";
 
 const SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
@@ -24,6 +25,7 @@ const VisaForm = () => {
   const [errors, setErrors] = useState({});
   const [captchaToken, setCaptchaToken] = useState(null);
   const [captchaError, setCaptchaError] = useState("");
+  const userGeo = useGeoLocation();
   const recaptchaRef = useRef(null);
 
   // Function to detect current page source dynamically
@@ -130,7 +132,10 @@ const VisaForm = () => {
       const submissionData = {
         ...formData,
         pageSource: getCurrentPageSource(),
-        recaptchaToken: captchaToken
+        recaptchaToken: captchaToken,
+        userLocation: userGeo ? `${userGeo.city}, ${userGeo.region}, ${userGeo.country}` : "Unknown",
+        userPincode: userGeo ? userGeo.pincode : "Unknown",
+        userIp: userGeo ? userGeo.ip : "Unknown",
       };
 
       const response = await axios.post("/api/visa-form", submissionData);

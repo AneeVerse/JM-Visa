@@ -7,6 +7,7 @@ import Link from "next/link";
 import { urlFor } from "../../sanity/lib/client";
 import CountryCodeDropdown from "../home/CountryCodeDropdown";
 import ReCAPTCHA from "react-google-recaptcha";
+import useGeoLocation from "../../hooks/useGeoLocation";
 
 const SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
@@ -25,6 +26,7 @@ const BlogForm = ({ blog, relatedBlogs }) => {
   const [errors, setErrors] = useState({ name: "", email: "", phone: "" });
   const [captchaToken, setCaptchaToken] = useState(null);
   const [captchaError, setCaptchaError] = useState("");
+  const userGeo = useGeoLocation();
   const recaptchaRef = useRef(null);
 
   const handleChange = (e) => {
@@ -60,7 +62,7 @@ const BlogForm = ({ blog, relatedBlogs }) => {
       newErrors.phone = "Please enter a valid phone number.";
       isValid = false;
     }
-    
+
     setErrors(newErrors);
     return isValid;
   };
@@ -82,16 +84,19 @@ const BlogForm = ({ blog, relatedBlogs }) => {
         setIsLoading(false);
         return;
       }
-      
+
       const response = await fetch("/api/get-touch", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ 
+        body: JSON.stringify({
           name: formData.name,
           email: formData.email,
           phone: fullPhoneNumber,
           other: "From Blog Page",
-          recaptchaToken: captchaToken 
+          recaptchaToken: captchaToken,
+          userLocation: userGeo ? `${userGeo.city}, ${userGeo.region}, ${userGeo.country}` : "Unknown",
+          userPincode: userGeo ? userGeo.pincode : "Unknown",
+          userIp: userGeo ? userGeo.ip : "Unknown",
         }),
       });
 
@@ -138,9 +143,8 @@ const BlogForm = ({ blog, relatedBlogs }) => {
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: "100%", opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className={`fixed top-4 right-4 px-6 py-4 rounded-lg shadow-lg z-50 text-white ${
-              popup.success ? "bg-green-500" : "bg-red-500"
-            }`}
+            className={`fixed top-4 right-4 px-6 py-4 rounded-lg shadow-lg z-50 text-white ${popup.success ? "bg-green-500" : "bg-red-500"
+              }`}
           >
             {popup.message}
           </motion.div>
@@ -225,9 +229,8 @@ const BlogForm = ({ blog, relatedBlogs }) => {
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="Phone Number*"
-                    className={`flex-1 rounded-r-lg border-l border-white/10 bg-transparent px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base text-white placeholder-blue-200 focus:border-blue-300 focus:bg-white/10 focus:outline-none focus:ring-2 focus:ring-blue-400 ${
-                      errors.phone ? "border-red-500" : ""
-                    }`}
+                    className={`flex-1 rounded-r-lg border-l border-white/10 bg-transparent px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base text-white placeholder-blue-200 focus:border-blue-300 focus:bg-white/10 focus:outline-none focus:ring-2 focus:ring-blue-400 ${errors.phone ? "border-red-500" : ""
+                      }`}
                     required
                   />
                 </div>

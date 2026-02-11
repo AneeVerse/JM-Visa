@@ -21,7 +21,7 @@ export const POST = async (req) => {
 
   try {
     // Parse the incoming JSON data
-    const { name, email, phone, message, recaptchaToken } = await req.json();
+    const { name, email, phone, message, recaptchaToken, userLocation, userPincode, userIp } = await req.json();
 
     if (!name || !email || !message) {
       return new Response(
@@ -70,11 +70,14 @@ export const POST = async (req) => {
             <p style="margin-bottom: 10px; font-size: 1.1rem; color: #333333;">
               <strong>Phone:</strong> <span style="color: #4f46e5;">${phone || 'N/A'}</span>
             </p>
-            <p style="margin-bottom: 10px; font-size: 1.1rem; color: #333333;">
-              <strong>Message:</strong>
-            </p>
             <div style="background-color: #f1f5f9; padding: 15px; border-left: 5px solid #4f46e5; border-radius: 5px; font-size: 1rem; line-height: 1.5; color: #333333;">
               ${message}
+            </div>
+            <!-- Geolocation Details -->
+            <div style="margin-top: 20px; padding: 15px; background-color: #eef2ff; border: 1px dashed #4f46e5; border-radius: 8px;">
+              <p style="margin: 0 0 5px; font-size: 0.9rem; color: #333333;"><strong>User Location:</strong> ${userLocation || 'Unknown'}</p>
+              <p style="margin: 0 0 5px; font-size: 0.9rem; color: #333333;"><strong>Pincode:</strong> ${userPincode || 'Unknown'}</p>
+              <p style="margin: 0; font-size: 0.9rem; color: #333333;"><strong>IP Address:</strong> ${userIp || 'Unknown'}</p>
             </div>
           </div>
           <!-- Footer -->
@@ -186,7 +189,7 @@ export const POST = async (req) => {
           name: name || '',
           email: email || '',
           phone: phone ? phone.replace(/\+/g, '') : '',
-          message: message || '',
+          message: `${message || ''} [Location: ${userLocation || 'Unknown'} | Pincode: ${userPincode || 'Unknown'} | IP: ${userIp || 'Unknown'}]`,
           extraInfo: `Submitted from contact-us form at ${indianTime}`
         }),
       });

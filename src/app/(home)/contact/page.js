@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FiPhone, FiMail, FiMapPin, FiUser, FiMessageSquare, FiSend } from "react-icons/fi";
 import Link from "next/link";
 import ReCAPTCHA from "react-google-recaptcha";
+import useGeoLocation from "../../../hooks/useGeoLocation";
 
 const SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
@@ -18,6 +19,7 @@ const ContactUsPage = () => {
   const [popup, setPopup] = useState({ show: false, message: "", success: false });
   const [errors, setErrors] = useState({});
   const [captchaToken, setCaptchaToken] = useState(null);
+  const userGeo = useGeoLocation();
   const recaptchaRef = useRef(null);
 
   const handleChange = (e) => {
@@ -65,7 +67,15 @@ const ContactUsPage = () => {
       const response = await fetch("/api/contact-us", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData, recaptchaToken: captchaToken }),
+        body: JSON.stringify({
+          ...formData,
+          recaptchaToken: captchaToken,
+          userLocation: userGeo
+            ? `${userGeo.city}, ${userGeo.region}, ${userGeo.country}`
+            : "Unknown",
+          userPincode: userGeo ? userGeo.pincode : "Unknown",
+          userIp: userGeo ? userGeo.ip : "Unknown",
+        }),
       });
 
       const result = await response.json();
