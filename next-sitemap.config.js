@@ -124,19 +124,19 @@ module.exports = {
 
     // Add country pages
     const countryPages = [
-      '/country/Oceania/Australia',
-      '/country/Oceania/New%20Zealand',
-      '/country/NorthAmerica/United%20States',
-      '/country/NorthAmerica/Canada',
-      '/country/Europe/United%20Kingdom',
-      '/country/Europe/Ireland',
-      '/country/Europe/Austria',
-      '/country/Europe/Belgium',
-      '/country/Europe/Denmark',
-      '/country/Europe/Finland',
-      '/country/Europe/France',
-      '/country/Europe/Germany',
-      '/country/Europe/Greece',
+      '/country/oceania/australia',
+      '/country/oceania/new-zealand',
+      '/country/north-america/united-states',
+      '/country/north-america/canada',
+      '/country/europe/united-kingdom',
+      '/country/europe/ireland',
+      '/country/europe/austria',
+      '/country/europe/belgium',
+      '/country/europe/denmark',
+      '/country/europe/finland',
+      '/country/europe/france',
+      '/country/europe/germany',
+      '/country/europe/greece',
     ];
 
     countryPages.forEach(country => {

@@ -142,10 +142,19 @@ const CountryDetails = () => {
     if (!category || !slug) return;
     console.log(category, slug);
 
-    const foundCountry = CountryData[category]?.find(
+    const foundCategoryKey = Object.keys(CountryData).find(
+      (key) => key.toLowerCase() === category.toLowerCase().replace(/-/g, "")
+    );
+
+    if (!foundCategoryKey) {
+      router.push(`/country`);
+      return;
+    }
+
+    const foundCountry = CountryData[foundCategoryKey]?.find(
       (c) =>
-        c.name.toLowerCase().replace(" ", "") ===
-        slug.toLowerCase().replace("%20", "")
+        c.name.toLowerCase().replace(/[\s-]/g, "") ===
+        slug.toLowerCase().replace(/[\s-]|%20/g, "")
     );
 
     if (!foundCountry) {
@@ -501,10 +510,10 @@ const CountryDetails = () => {
                   onClick={handleToggleDropdown}
                   disabled={isLoadingChecklists || hasChecklists === false || hasChecklists === null}
                   className={`inline-flex items-center gap-2 px-6 py-3 font-semibold rounded-lg shadow-lg transition duration-300 disabled:cursor-not-allowed ${hasChecklists === false
-                      ? 'bg-gray-400 text-white cursor-not-allowed'
-                      : hasChecklists === null
-                        ? 'bg-gray-300 text-white cursor-wait'
-                        : 'bg-blue-500 text-white hover:bg-blue-600'
+                    ? 'bg-gray-400 text-white cursor-not-allowed'
+                    : hasChecklists === null
+                      ? 'bg-gray-300 text-white cursor-wait'
+                      : 'bg-blue-500 text-white hover:bg-blue-600'
                     } ${isLoadingChecklists ? 'opacity-50' : ''}`}
                 >
                   {isLoadingChecklists || hasChecklists === null ? (

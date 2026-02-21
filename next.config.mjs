@@ -14,7 +14,7 @@ const nextConfig = {
       config.output.chunkFilename = 'chunks/[name].js';
     }
     return config;
-  }
+  },
 }
 
 export default nextConfig;
