@@ -255,25 +255,25 @@ const VisaForm = () => {
                       }}
                       className="w-full bg-white/5 border border-white/20 text-white rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400/60 focus:border-transparent focus:bg-white/10 transition-all appearance-none cursor-pointer hover:bg-white/10 hover:border-white/30 shadow-inner"
                     >
-                      <option className="bg-gray-900 text-white" value="India">India</option>
-                      <option className="bg-gray-900 text-white" value="USA">Australia</option>
-                      <option className="bg-gray-900 text-white" value="New Zealand">New Zealand</option>
-                      <option className="bg-gray-900 text-white" value="USA">USA</option>
-                      <option className="bg-gray-900 text-white" value="Canada">Canada</option>
-                      <option className="bg-gray-900 text-white" value="UK">UK</option>
-                      <option className="bg-gray-900 text-white" value="Ireland">Ireland</option>
-                      <option className="bg-gray-900 text-white" value="Austria">Austria</option>
-                      <option className="bg-gray-900 text-white" value="Belgium">Belgium</option>
-                      <option className="bg-gray-900 text-white" value="Croatia">Croatia</option>
-                      <option className="bg-gray-900 text-white" value="Czech Republic">Czech Republic</option>
-                      <option className="bg-gray-900 text-white" value="Denmark">Denmark</option>
-                      <option className="bg-gray-900 text-white" value="Estonia">Estonia</option>
-                      <option className="bg-gray-900 text-white" value="Finland">Finland</option>
-                      <option className="bg-gray-900 text-white" value="France">France</option>
-                      <option className="bg-gray-900 text-white" value="Georgia">Georgia</option>
-                      <option className="bg-gray-900 text-white" value="Germany">Germany</option>
-                      <option className="bg-gray-900 text-white" value="Greece">Greece</option>
-                      <option className="bg-gray-900 text-white" value="other">Other</option>
+                      <option className="text-gray-900" value="India">India</option>
+                      <option className="text-gray-900" value="USA">Australia</option>
+                      <option className="text-gray-900" value="New Zealand">New Zealand</option>
+                      <option className="text-gray-900" value="USA">USA</option>
+                      <option className="text-gray-900" value="Canada">Canada</option>
+                      <option className="text-gray-900" value="UK">UK</option>
+                      <option className="text-gray-900" value="Ireland">Ireland</option>
+                      <option className="text-gray-900" value="Austria">Austria</option>
+                      <option className="text-gray-900" value="Belgium">Belgium</option>
+                      <option className="text-gray-900" value="Croatia">Croatia</option>
+                      <option className="text-gray-900" value="Czech Republic">Czech Republic</option>
+                      <option className="text-gray-900" value="Denmark">Denmark</option>
+                      <option className="text-gray-900" value="Estonia">Estonia</option>
+                      <option className="text-gray-900" value="Finland">Finland</option>
+                      <option className="text-gray-900" value="France">France</option>
+                      <option className="text-gray-900" value="Georgia">Georgia</option>
+                      <option className="text-gray-900" value="Germany">Germany</option>
+                      <option className="text-gray-900" value="Greece">Greece</option>
+                      <option className="text-gray-900" value="other">Other</option>
                     </select>
                     <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
                       <svg className="w-4 h-4 text-blue-300/70 group-hover/input:text-blue-200 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7"></path></svg>
@@ -309,26 +309,26 @@ const VisaForm = () => {
                       }}
                       className="w-full bg-white/5 border border-white/20 text-white rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400/60 focus:border-transparent focus:bg-white/10 transition-all appearance-none cursor-pointer hover:bg-white/10 hover:border-white/30 shadow-inner"
                     >
-                      <option className="bg-gray-900 text-white" value="">Select Country</option>
-                      <option className="bg-gray-900 text-white" value="USA">Australia</option>
-                      <option className="bg-gray-900 text-white" value="New Zealand">New Zealand</option>
-                      <option className="bg-gray-900 text-white" value="USA">USA</option>
-                      <option className="bg-gray-900 text-white" value="Canada">Canada</option>
-                      <option className="bg-gray-900 text-white" value="UK">UK</option>
-                      <option className="bg-gray-900 text-white" value="Ireland">Ireland</option>
-                      <option className="bg-gray-900 text-white" value="Austria">Austria</option>
-                      <option className="bg-gray-900 text-white" value="Belgium">Belgium</option>
-                      <option className="bg-gray-900 text-white" value="Croatia">Croatia</option>
-                      <option className="bg-gray-900 text-white" value="Czech Republic">Czech Republic</option>
-                      <option className="bg-gray-900 text-white" value="Denmark">Denmark</option>
-                      <option className="bg-gray-900 text-white" value="Estonia">Estonia</option>
-                      <option className="bg-gray-900 text-white" value="Finland">Finland</option>
-                      <option className="bg-gray-900 text-white" value="France">France</option>
-                      <option className="bg-gray-900 text-white" value="Georgia">Georgia</option>
-                      <option className="bg-gray-900 text-white" value="Germany">Germany</option>
-                      <option className="bg-gray-900 text-white" value="Greece">Greece</option>
-                      <option className="bg-gray-900 text-white" value="India">India</option>
-                      <option className="bg-gray-900 text-white" value="other">Other</option>
+                      <option className="text-gray-900" value="">Select Country</option>
+                      <option className="text-gray-900" value="USA">Australia</option>
+                      <option className="text-gray-900" value="New Zealand">New Zealand</option>
+                      <option className="text-gray-900" value="USA">USA</option>
+                      <option className="text-gray-900" value="Canada">Canada</option>
+                      <option className="text-gray-900" value="UK">UK</option>
+                      <option className="text-gray-900" value="Ireland">Ireland</option>
+                      <option className="text-gray-900" value="Austria">Austria</option>
+                      <option className="text-gray-900" value="Belgium">Belgium</option>
+                      <option className="text-gray-900" value="Croatia">Croatia</option>
+                      <option className="text-gray-900" value="Czech Republic">Czech Republic</option>
+                      <option className="text-gray-900" value="Denmark">Denmark</option>
+                      <option className="text-gray-900" value="Estonia">Estonia</option>
+                      <option className="text-gray-900" value="Finland">Finland</option>
+                      <option className="text-gray-900" value="France">France</option>
+                      <option className="text-gray-900" value="Georgia">Georgia</option>
+                      <option className="text-gray-900" value="Germany">Germany</option>
+                      <option className="text-gray-900" value="Greece">Greece</option>
+                      <option className="text-gray-900" value="India">India</option>
+                      <option className="text-gray-900" value="other">Other</option>
                     </select>
                     <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
                       <svg className="w-4 h-4 text-blue-300/70 group-hover/input:text-blue-200 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7"></path></svg>
@@ -365,13 +365,13 @@ const VisaForm = () => {
                     }}
                     className="w-full bg-white/5 border border-white/20 text-white rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400/60 focus:border-transparent focus:bg-white/10 transition-all appearance-none cursor-pointer hover:bg-white/10 hover:border-white/30 shadow-inner"
                   >
-                    <option className="bg-gray-900 text-white" value="Travel">Travel</option>
-                    <option className="bg-gray-900 text-white" value="Business">Business</option>
-                    <option className="bg-gray-900 text-white" value="Study">Study</option>
-                    <option className="bg-gray-900 text-white" value="Work">Work</option>
-                    <option className="bg-gray-900 text-white" value="Residence">Residence</option>
-                    <option className="bg-gray-900 text-white" value="Tourist">Tourist</option>
-                    <option className="bg-gray-900 text-white" value="other">Other</option>
+                    <option className="text-gray-900" value="Travel">Travel</option>
+                    <option className="text-gray-900" value="Business">Business</option>
+                    <option className="text-gray-900" value="Study">Study</option>
+                    <option className="text-gray-900" value="Work">Work</option>
+                    <option className="text-gray-900" value="Residence">Residence</option>
+                    <option className="text-gray-900" value="Tourist">Tourist</option>
+                    <option className="text-gray-900" value="other">Other</option>
                   </select>
                   <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
                     <svg className="w-4 h-4 text-blue-300/70 group-hover/input:text-blue-200 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7"></path></svg>

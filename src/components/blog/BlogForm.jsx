@@ -247,12 +247,12 @@ const BlogForm = ({ blog, relatedBlogs }) => {
                     onChange={handleChange}
                     className="w-full appearance-none rounded-lg border border-white/20 bg-white/15 px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base text-white focus:border-blue-300 focus:bg-white/25 focus:outline-none focus:ring-2 focus:ring-blue-400"
                   >
-                    <option value="">Select Service</option>
-                    <option value="tourist-visa">Tourist Visa</option>
-                    <option value="business-visa">Business Visa</option>
-                    <option value="student-visa">Student Visa</option>
-                    <option value="work-visa">Work Visa</option>
-                    <option value="other">Other</option>
+                    <option value="" className="text-gray-900">Select Service</option>
+                    <option value="tourist-visa" className="text-gray-900">Tourist Visa</option>
+                    <option value="business-visa" className="text-gray-900">Business Visa</option>
+                    <option value="student-visa" className="text-gray-900">Student Visa</option>
+                    <option value="work-visa" className="text-gray-900">Work Visa</option>
+                    <option value="other" className="text-gray-900">Other</option>
                   </select>
                   <svg
                     className="pointer-events-none absolute right-4 top-1/2 w-4 -translate-y-1/2 text-blue-100"
