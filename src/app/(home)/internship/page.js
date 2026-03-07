@@ -200,6 +200,42 @@ const ScrollingColumn = ({ images, duration, offset = 0 }) => {
     );
 };
 
+const ScrollingRow = ({ images, duration, reverse = false }) => {
+    // Duplicate images for horizontal looping
+    const displayImages = [...images, ...images, ...images];
+
+    return (
+        <div className="flex overflow-hidden w-full relative">
+            <motion.div
+                className="flex gap-4 px-2"
+                animate={{
+                    x: reverse ? ["-33.33%", "0%"] : ["0%", "-33.33%"],
+                }}
+                transition={{
+                    duration: duration,
+                    repeat: Infinity,
+                    ease: "linear",
+                }}
+                style={{ width: "fit-content" }}
+            >
+                {displayImages.map((src, i) => (
+                    <div
+                        key={i}
+                        className="relative w-40 sm:w-56 aspect-[4/5] rounded-2xl overflow-hidden shadow-lg border border-white/20 flex-shrink-0"
+                    >
+                        <Image
+                            src={src}
+                            alt="Internship"
+                            fill
+                            className="object-cover"
+                        />
+                    </div>
+                ))}
+            </motion.div>
+        </div>
+    );
+};
+
 const InternshipPage = () => {
     const [showAll, setShowAll] = React.useState(false);
     const displayedDestinations = showAll ? destinations : destinations.slice(0, 6);
@@ -241,24 +277,24 @@ const InternshipPage = () => {
                             destinations across Asia, Europe, and beyond.
                         </motion.p>
 
-                        <motion.div className="flex flex-wrap gap-4" variants={fadeUp}>
+                        <motion.div className="flex flex-row justify-center lg:justify-start flex-wrap gap-4" variants={fadeUp}>
                             <Link
                                 href="/contact"
-                                className="px-8 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-full font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center gap-2"
+                                className="px-6 sm:px-8 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-full font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center gap-2 text-sm sm:text-base"
                             >
-                                Apply Now <FiArrowRight />
+                                Apply Now <FiArrowRight className="hidden sm:inline" />
                             </Link>
                             <Link
                                 href="/contact"
-                                className="px-8 py-3.5 border-2 border-blue-600 text-blue-600 rounded-full font-semibold hover:bg-blue-600 hover:text-white transition-all duration-300 flex items-center gap-2"
+                                className="px-6 sm:px-8 py-3.5 border-2 border-blue-600 text-blue-600 rounded-full font-semibold hover:bg-blue-600 hover:text-white transition-all duration-300 flex items-center gap-2 text-sm sm:text-base"
                             >
-                                <MdLocalPhone /> Have Questions?
+                                <MdLocalPhone /> <span className="hidden sm:inline">Have Questions?</span><span className="sm:hidden">Help</span>
                             </Link>
                         </motion.div>
 
                         {/* Trust badges */}
                         <motion.div
-                            className="flex items-center gap-6 pt-4"
+                            className="flex items-center justify-center lg:justify-start gap-6 pt-4"
                             variants={fadeUp}
                         >
                             {[
@@ -274,7 +310,7 @@ const InternshipPage = () => {
                         </motion.div>
                     </div>
 
-                    {/* Right — Hero Image Collage */}
+                    {/* Right — Hero Image Collage (Desktop) */}
                     <motion.div
                         className="hidden lg:block lg:w-1/2 relative lg:h-[700px] overflow-hidden lg:mr-12"
                         variants={fadeUp}
@@ -292,6 +328,23 @@ const InternshipPage = () => {
                                 offset={25}
                             />
                         </div>
+                    </motion.div>
+
+                    {/* Mobile Horizontal Scrolling Collage */}
+                    <motion.div
+                        className="block lg:hidden w-full overflow-hidden py-4 space-y-4 -mx-4 px-4"
+                        variants={fadeUp}
+                        custom={0.4}
+                    >
+                        <ScrollingRow
+                            images={destinations.slice(0, 5).map((d) => d.image)}
+                            duration={25}
+                        />
+                        <ScrollingRow
+                            images={destinations.slice(5, 10).map((d) => d.image)}
+                            duration={30}
+                            reverse={true}
+                        />
                     </motion.div>
                 </motion.div>
             </section>
