@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import {
     FiArrowRight,
+    FiArrowUp,
     FiBriefcase,
     FiGlobe,
     FiUsers,
@@ -27,38 +28,62 @@ const destinations = [
     {
         name: "Japan",
         city: "Tokyo, Osaka & more",
-        image: "/images/internship/japan.png",
-        color: "from-rose-500 to-pink-600",
+        image: "/images/landmarks/Mount Fuji in Japan Visa.webp",
+        flag: "/images/internship/japan-flag.svg",
     },
     {
         name: "South Korea",
         city: "Seoul, Busan & more",
-        image: "/images/internship/south-korea.png",
-        color: "from-sky-500 to-blue-600",
+        image: "/images/landmarks/Gyeongbokgung Palace in South Korea Visa.webp",
+        flag: "/images/internship/south-korea-flag.svg",
+    },
+    {
+        name: "Singapore",
+        city: "Singapore City",
+        image: "/images/landmarks/Marina Bay Sands tourist places in Singapore Visa.webp",
+        flag: "/images/internship/singapore-flag.svg",
+    },
+    {
+        name: "Thailand",
+        city: "Bangkok, Phuket & more",
+        image: "/images/landmarks/Grand Palace tourist places in Thailand Visa.webp",
+        flag: "/images/internship/thailand-flag.svg",
+    },
+    {
+        name: "Spain",
+        city: "Madrid, Barcelona & more",
+        image: "/images/landmarks/Sagrada Familia tourist places in Spain Visa.webp",
+        flag: "/images/internship/spain-flag.svg",
+    },
+    {
+        name: "Nepal",
+        city: "Kathmandu, Pokhara",
+        image: "/images/landmarks/Mount Everest tourist places in Nepal Visa.webp",
+        flag: "/images/internship/nepal-flag.png",
     },
     {
         name: "Australia",
         city: "Sydney, Melbourne & more",
-        image: "/images/internship/australia.png",
-        color: "from-amber-500 to-orange-600",
+        image: "/images/landmarks/Sydney Opera House in Australia Visa.webp",
+        flag: "/images/flags/au.webp",
     },
     {
         name: "Canada",
         city: "Toronto, Vancouver & more",
-        image: "/images/internship/canada.png",
-        color: "from-red-500 to-rose-600",
+        image: "/images/landmarks/Tourist Places in Canada Visa.webp",
+        flag: "/images/flags/ca.webp",
     },
     {
         name: "United Kingdom",
         city: "London, Manchester & more",
-        image: "/images/internship/uk.png",
-        color: "from-indigo-500 to-purple-600",
+        image: "/images/landmarks/Big Ben tourist places in United Kingdom UK Visa.webp",
+        flag: "/images/flags/uk.webp",
     },
     {
         name: "Germany",
         city: "Berlin, Munich & more",
-        image: "/images/internship/germany.png",
-        color: "from-emerald-500 to-teal-600",
+        image: "/images/landmarks/Brandenburg Gate in Germany Visa.webp",
+        flag: "/images/flags/de.webp",
     },
 ];
 
@@ -140,11 +165,49 @@ const stagger = {
     },
 };
 
-const InternshipPage = () => {
+const ScrollingColumn = ({ images, duration, offset = 0 }) => {
+    // For seamless looping, we duplicate the images
+    const displayImages = [...images, ...images];
+
     return (
-        <div className="relative mt-[80px] bg-gradient-to-br from-blue-50 via-white to-blue-100 min-h-screen overflow-hidden">
+        <div className="flex flex-col gap-4 overflow-hidden h-full relative">
+            <motion.div
+                className="flex flex-col gap-4"
+                animate={{
+                    y: [`${-offset}%`, `${-offset - 50}%`],
+                }}
+                transition={{
+                    duration: duration,
+                    repeat: Infinity,
+                    ease: "linear",
+                }}
+            >
+                {displayImages.map((src, i) => (
+                    <div
+                        key={i}
+                        className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden shadow-lg border border-white/20"
+                    >
+                        <Image
+                            src={src}
+                            alt="Internship"
+                            fill
+                            className="object-cover"
+                        />
+                    </div>
+                ))}
+            </motion.div>
+        </div>
+    );
+};
+
+const InternshipPage = () => {
+    const [showAll, setShowAll] = React.useState(false);
+    const displayedDestinations = showAll ? destinations : destinations.slice(0, 6);
+
+    return (
+        <div className="relative bg-gradient-to-br from-blue-50 via-white to-blue-100 min-h-screen overflow-hidden">
             {/* ── HERO SECTION ── */}
-            <section className="relative py-20 px-6 sm:px-12 overflow-hidden">
+            <section className="relative pt-0 pb-0 overflow-hidden">
                 {/* Decorative blurs */}
                 <div className="absolute top-0 left-0 w-96 h-96 bg-blue-300/30 rounded-full blur-3xl -z-10" />
                 <div className="absolute bottom-0 right-0 w-96 h-96 bg-indigo-300/20 rounded-full blur-3xl -z-10" />
@@ -156,13 +219,8 @@ const InternshipPage = () => {
                     variants={stagger}
                 >
                     {/* Left Content */}
-                    <div className="lg:w-1/2 space-y-6">
-                        <motion.div
-                            className="inline-block px-4 py-2 bg-blue-200/50 text-blue-600 font-medium rounded-full backdrop-blur-lg shadow-md"
-                            variants={fadeUp}
-                        >
-                            🌏 International Internship Program
-                        </motion.div>
+                    <div className="lg:w-1/2 space-y-6 pt-24 lg:pt-32 px-6 sm:pl-12">
+
 
                         <motion.h1
                             className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight"
@@ -218,201 +276,193 @@ const InternshipPage = () => {
 
                     {/* Right — Hero Image Collage */}
                     <motion.div
-                        className="lg:w-1/2 relative"
+                        className="lg:w-1/2 relative h-[500px] lg:h-[700px] overflow-hidden mr-6 sm:mr-12"
                         variants={fadeUp}
                         custom={0.3}
                     >
-                        <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-white/40">
-                            <Image
-                                src="/images/internship/japan.png"
-                                alt="Internship Abroad"
-                                fill
-                                className="object-cover"
-                                priority
+                        <div className="grid grid-cols-2 gap-4 h-full relative z-0">
+                            <ScrollingColumn
+                                images={destinations.slice(0, 3).map((d) => d.image)}
+                                duration={20}
+                                offset={0}
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-blue-900/60 via-transparent to-transparent" />
-                            <div className="absolute bottom-6 left-6 right-6">
-                                <div className="bg-white/20 backdrop-blur-md rounded-2xl p-4 border border-white/30">
-                                    <p className="text-white font-bold text-lg">
-                                        Your Global Career Starts Here
-                                    </p>
-                                    <p className="text-white/80 text-sm">
-                                        Customized internships across 20+ countries
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        {/* Floating badge */}
-                        <div className="absolute -top-4 -right-4 bg-gradient-to-br from-orange-400 to-pink-500 text-white px-5 py-3 rounded-2xl shadow-xl font-bold text-sm rotate-6">
-                            Apply Now! 🚀
+                            <ScrollingColumn
+                                images={destinations.slice(3, 6).map((d) => d.image)}
+                                duration={20}
+                                offset={25}
+                            />
                         </div>
                     </motion.div>
                 </motion.div>
             </section>
 
             {/* ── DESTINATIONS ── */}
-            <section className="py-20 px-6 sm:px-12">
-                <motion.div
-                    className="container mx-auto"
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.2 }}
-                    variants={stagger}
-                >
-                    <motion.div className="text-center mb-14" variants={fadeUp}>
-                        <span className="inline-block px-4 py-2 bg-blue-200/50 text-blue-600 font-medium rounded-full backdrop-blur-lg shadow-md mb-4">
-                            🗺️ Popular Destinations
-                        </span>
-                        <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
-                            Where Do You Want to{" "}
-                            <span className="text-blue-600">Intern Abroad?</span>
-                        </h2>
-                        <p className="mt-3 text-gray-600 max-w-2xl mx-auto">
-                            From bustling metropolises to serene historical towns — your
-                            adventure awaits in one of our exciting destinations.
-                        </p>
-                    </motion.div>
+            <section id="destinations-section" className="py-20 px-6 sm:px-12">
+                <div className="container mx-auto">
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {destinations.map((dest, i) => (
-                            <motion.div
+                    <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-14 text-left">
+                        <div className="lg:max-w-xl">
+                            <h2 className="text-4xl sm:text-5xl font-extrabold text-blue-950 leading-tight">
+                                Where Do You Want to<br />
+                                <span className="text-blue-600">Intern Abroad?</span>
+                            </h2>
+                        </div>
+                        <div className="lg:max-w-lg pb-1">
+                            <p className="text-xl font-bold text-blue-950 mb-3">
+                                Explore Our Destinations
+                            </p>
+                            <p className="text-gray-500 leading-relaxed text-lg">
+                                From bustling metropolises to serene historical towns — your
+                                adventure awaits in one of our exciting destinations.
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {displayedDestinations.map((dest, i) => (
+                            <div
                                 key={dest.name}
-                                className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer"
-                                variants={fadeUp}
-                                custom={i}
-                                whileHover={{ y: -8 }}
+                                className="group relative bg-white rounded-[2rem] overflow-hidden cursor-pointer flex flex-col transition-all duration-300 border-2 border-transparent hover:border-blue-600"
                             >
-                                <div className="relative h-64 overflow-hidden">
+                                {/* Image Container */}
+                                <div className="relative h-64 w-full overflow-hidden">
                                     <Image
                                         src={dest.image}
                                         alt={dest.name}
                                         fill
-                                        className="object-cover group-hover:scale-110 transition-transform duration-700"
+                                        className="object-cover transition-transform duration-700"
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                                 </div>
-                                <div className="absolute bottom-0 left-0 right-0 p-6">
-                                    <div
-                                        className={`inline-block px-3 py-1 rounded-full text-white text-xs font-semibold bg-gradient-to-r ${dest.color} mb-2`}
-                                    >
-                                        {dest.city}
+
+                                {/* Content Area - Initially with black side/bottom borders */}
+                                <div className="p-5 bg-white flex items-center gap-3 border-x-2 border-b-2 border-gray-400 group-hover:border-transparent transition-colors duration-300 rounded-b-[2rem]">
+                                    <div className="w-8 h-8 rounded-full flex items-center justify-center bg-gray-50 border border-gray-100 overflow-hidden shadow-sm flex-shrink-0 relative">
+                                        {dest.flag ? (
+                                            <Image
+                                                src={dest.flag}
+                                                alt={`${dest.name} flag`}
+                                                fill
+                                                className="object-cover"
+                                            />
+                                        ) : (
+                                            <span className="text-sm font-bold text-gray-700">
+                                                {dest.name.substring(0, 2).toUpperCase()}
+                                            </span>
+                                        )}
                                     </div>
-                                    <h3 className="text-2xl font-bold text-white">{dest.name}</h3>
+                                    <h3 className="text-gray-800 font-semibold text-[16px] truncate">
+                                        {dest.name} - {dest.city}
+                                    </h3>
                                 </div>
-                                {/* Hover overlay */}
-                                <div className="absolute inset-0 bg-blue-600/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-400">
-                                    <span className="text-white font-bold text-lg flex items-center gap-2">
-                                        Explore Internships <FiArrowRight />
-                                    </span>
-                                </div>
-                            </motion.div>
+                            </div>
                         ))}
                     </div>
 
-                    <motion.div className="text-center mt-10" variants={fadeUp}>
+
+                    {destinations.length > 6 && (
+                        <div className="text-center mt-12">
+                            <button
+                                onClick={() => {
+                                    setShowAll(!showAll);
+                                    if (showAll) {
+                                        const destinationsSection = document.getElementById('destinations-section');
+                                        if (destinationsSection) {
+                                            destinationsSection.scrollIntoView({ behavior: 'smooth' });
+                                        }
+                                    }
+                                }}
+                                className="group inline-flex items-center gap-3 px-6 py-2 bg-white border-2 border-blue-600 text-blue-600 rounded-full text-lg font-medium hover:bg-blue-600 hover:text-white transition-all duration-300"
+                            >
+                                {showAll ? (
+                                    <>Show Less <FiArrowUp className="transition-transform group-hover:-translate-y-1" /></>
+                                ) : (
+                                    <>View All Destinations <FiArrowRight className="transition-transform group-hover:translate-x-1" /></>
+                                )}
+                            </button>
+                        </div>
+                    )}
+                </div>
+
+            </section>
+
+            {/* ── INTERNSHIP FIELDS ── */}
+            <section className="py-20 px-6 sm:px-12 bg-white relative overflow-hidden">
+                <div className="container mx-auto relative z-10">
+                    <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-14 text-left">
+                        <div className="lg:max-w-xl">
+                            <h2 className="text-4xl sm:text-5xl font-extrabold text-blue-950 leading-tight">
+                                Your Ideal<br />
+                                <span className="text-blue-600">Internship</span>
+                            </h2>
+                        </div>
+                        <div className="lg:max-w-lg pb-1">
+                            {/* <p className="text-xl font-bold text-blue-950 mb-3">
+                                Explore Our Internship Fields
+                            </p> */}
+                            <p className="text-gray-500 leading-relaxed text-lg">
+                                We partner with a broad array of companies and organizations, ensuring we find
+                                the best fit for your career interests and academic/professional background.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                        {industries.map((ind, i) => (
+                            <div
+                                key={ind.name}
+                                className="group p-8 bg-white border-2 border-gray-400 rounded-[2rem] hover:border-blue-600 transition-all duration-300 cursor-pointer flex flex-col items-center text-center shadow-sm"
+                            >
+                                <div className="w-20 h-20 rounded-full bg-slate-50 border border-gray-100 flex items-center justify-center mb-6 relative">
+                                    {/* Circular decorative ring similar to reference */}
+                                    <div className="absolute inset-[-4px] rounded-full border border-gray-100/50" />
+                                    <ind.icon className="text-blue-600 text-3xl group-hover:scale-110 transition-transform duration-300" />
+                                </div>
+                                <h3 className="text-xl font-bold text-gray-800">
+                                    {ind.name}
+                                </h3>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="text-center mt-12">
                         <Link
                             href="/contact"
                             className="inline-flex items-center gap-2 px-8 py-3 bg-white border-2 border-blue-600 text-blue-600 rounded-full font-semibold hover:bg-blue-600 hover:text-white transition-all duration-300"
                         >
-                            View All Destinations <FiArrowRight />
-                        </Link>
-                    </motion.div>
-                </motion.div>
-            </section>
-
-            {/* ── INTERNSHIP FIELDS ── */}
-            <section className="py-20 px-6 sm:px-12 bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
-                <div className="absolute bottom-0 left-0 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl" />
-
-                <motion.div
-                    className="container mx-auto relative z-10"
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.2 }}
-                    variants={stagger}
-                >
-                    <motion.div className="text-center mb-14" variants={fadeUp}>
-                        <span className="inline-block px-4 py-2 bg-white/10 text-blue-200 font-medium rounded-full backdrop-blur-lg shadow-md mb-4">
-                            💼 Find Your Field
-                        </span>
-                        <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
-                            Your Ideal{" "}
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-300">
-                                Internship
-                            </span>
-                        </h2>
-                        <p className="mt-3 text-blue-200 max-w-2xl mx-auto">
-                            We partner with leading companies and organizations across
-                            industries, ensuring the perfect fit for your career goals.
-                        </p>
-                    </motion.div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {industries.map((ind, i) => (
-                            <motion.div
-                                key={ind.name}
-                                className="group p-6 bg-white/5 border border-white/10 backdrop-blur-xl rounded-2xl hover:bg-white/10 hover:border-blue-400/30 transition-all duration-300 cursor-pointer"
-                                variants={fadeUp}
-                                custom={i}
-                                whileHover={{ y: -5, scale: 1.02 }}
-                            >
-                                <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                                    <ind.icon className="text-white text-2xl" />
-                                </div>
-                                <h3 className="text-lg font-bold text-white mb-1">
-                                    {ind.name}
-                                </h3>
-                                <p className="text-blue-300 text-sm">{ind.desc}</p>
-                            </motion.div>
-                        ))}
-                    </div>
-
-                    <motion.div className="text-center mt-10" variants={fadeUp}>
-                        <Link
-                            href="/contact"
-                            className="inline-flex items-center gap-2 px-8 py-3 bg-white text-blue-700 rounded-full font-semibold hover:bg-blue-50 hover:scale-105 transition-all duration-300 shadow-lg"
-                        >
                             Explore All Fields <FiArrowRight />
                         </Link>
-                    </motion.div>
-                </motion.div>
+                    </div>
+                </div>
             </section>
 
             {/* ── HOW IT WORKS ── */}
             <section className="py-20 px-6 sm:px-12">
-                <motion.div
-                    className="container mx-auto"
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.2 }}
-                    variants={stagger}
-                >
-                    <motion.div className="text-center mb-14" variants={fadeUp}>
-                        <span className="inline-block px-4 py-2 bg-blue-200/50 text-blue-600 font-medium rounded-full backdrop-blur-lg shadow-md mb-4">
-                            ⚙️ Simple Process
-                        </span>
-                        <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
-                            How Does Our{" "}
-                            <span className="text-blue-600">Program Work?</span>
-                        </h2>
-                        <p className="mt-3 text-gray-600 max-w-2xl mx-auto">
-                            Four simple steps to launch your international career journey with
-                            JM Visa Services.
-                        </p>
-                    </motion.div>
+                <div className="container mx-auto">
+
+                    <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-14 text-left">
+                        <div className="lg:max-w-xl">
+                            <h2 className="text-4xl sm:text-5xl font-extrabold text-blue-950 leading-tight">
+                                How Does Our<br />
+                                <span className="text-blue-600">Program Work?</span>
+                            </h2>
+                        </div>
+                        <div className="lg:max-w-lg pb-1">
+                            <p className="text-gray-500 leading-relaxed text-lg">
+                                Four simple steps to launch your international career journey with
+                                JM Visa Services.
+                            </p>
+                        </div>
+                    </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {steps.map((s, i) => (
-                            <motion.div
+                            <div
                                 key={s.step}
-                                className="relative p-8 bg-white/40 border border-white/30 backdrop-blur-xl rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 text-center group"
-                                variants={fadeUp}
-                                custom={i}
-                                whileHover={{ y: -5 }}
+                                className="relative p-8 bg-white border-2 border-gray-400 rounded-[2rem] shadow-sm hover:border-blue-600 transition-all duration-300 text-center group"
                             >
                                 {/* Step number */}
-                                <div className="absolute -top-5 left-1/2 -translate-x-1/2 w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-600 text-white rounded-full flex items-center justify-center font-bold text-sm shadow-lg">
+                                <div className="absolute -top-5 left-1/2 -translate-x-1/2 w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm shadow-md">
                                     {s.step}
                                 </div>
                                 <div className="w-16 h-16 mx-auto mt-4 mb-5 bg-blue-50 rounded-2xl flex items-center justify-center group-hover:bg-blue-100 transition-colors duration-300">
@@ -421,164 +471,172 @@ const InternshipPage = () => {
                                 <h3 className="text-xl font-bold text-gray-900 mb-2">
                                     {s.title}
                                 </h3>
-                                <p className="text-gray-600 text-sm">{s.desc}</p>
-
-                                {/* Connector line (not on last) */}
-                                {i < steps.length - 1 && (
-                                    <div className="hidden lg:block absolute top-1/2 -right-4 w-8 border-t-2 border-dashed border-blue-300" />
-                                )}
-                            </motion.div>
+                                <p className="text-gray-600 text-sm leading-relaxed">{s.desc}</p>
+                            </div>
                         ))}
                     </div>
-                </motion.div>
+                </div>
             </section>
 
             {/* ── WHY CHOOSE JM VISA ── */}
-            <section className="py-20 px-6 sm:px-12 bg-gradient-to-br from-blue-50 via-white to-indigo-50">
-                <motion.div
-                    className="container mx-auto"
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.2 }}
-                    variants={stagger}
-                >
-                    <motion.div className="text-center mb-14" variants={fadeUp}>
-                        <span className="inline-block px-4 py-2 bg-blue-200/50 text-blue-600 font-medium rounded-full backdrop-blur-lg shadow-md mb-4">
-                            ❤️ Why JM Visa
-                        </span>
-                        <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
-                            Why Choose{" "}
-                            <span className="text-blue-600">JM Visa Services?</span>
-                        </h2>
-                        <p className="mt-3 text-gray-600 max-w-2xl mx-auto">
-                            We don&apos;t just arrange internships — we craft complete
-                            international experiences with end-to-end support.
-                        </p>
-                    </motion.div>
+            {/* <section className="py-20 px-6 sm:px-12 bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+                <div className="container mx-auto">
+                    <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-14 text-left">
+                        <div className="lg:max-w-xl">
+                            <h2 className="text-4xl sm:text-5xl font-extrabold text-blue-950 leading-tight">
+                                Why Choose<br />
+                                <span className="text-blue-600">JM Visa Services?</span>
+                            </h2>
+                        </div>
+                        <div className="lg:max-w-lg pb-1">
+                            <p className="text-gray-500 leading-relaxed text-lg">
+                                With over a decade of experience, we provide end-to-end support
+                                for your international career aspirations.
+                            </p>
+                        </div>
+                    </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {benefits.map((b, i) => (
-                            <motion.div
-                                key={b.title}
-                                className="relative p-7 bg-white/60 border border-white/40 backdrop-blur-xl rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group overflow-hidden"
-                                variants={fadeUp}
-                                custom={i}
-                                whileHover={{ y: -5 }}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {benefits.map((r, i) => (
+                            <div
+                                key={r.title}
+                                className="group p-8 bg-white border-2 border-gray-400 rounded-[2rem] shadow-sm hover:border-blue-600 transition-all duration-300 flex flex-col items-center text-center"
                             >
-                                <div className="absolute top-0 right-0 w-24 h-24 bg-blue-200/30 blur-2xl rounded-full -z-10 group-hover:bg-blue-300/40 transition-colors" />
-                                <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center mb-5 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                                    <b.icon className="text-white text-2xl" />
+                                <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-100 transition-colors duration-300">
+                                    <r.icon className="text-blue-600 text-3xl" />
                                 </div>
-                                <h3 className="text-lg font-bold text-gray-900 mb-2">
-                                    {b.title}
+                                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                                    {r.title}
                                 </h3>
-                                <p className="text-gray-600 text-sm">{b.desc}</p>
-                            </motion.div>
+                                <p className="text-gray-600 leading-relaxed">
+                                    {r.desc}
+                                </p>
+                            </div>
                         ))}
                     </div>
-                </motion.div>
-            </section>
+                </div>
+            </section> */}
 
             {/* ── UNIVERSITY & EMPLOYER PARTNERSHIP ── */}
             <section className="py-16 px-6 sm:px-12">
-                <motion.div
-                    className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8"
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.2 }}
-                    variants={stagger}
-                >
+                <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
                     {/* University Partnership */}
-                    <motion.div
-                        className="p-8 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-3xl shadow-xl text-white overflow-hidden relative"
-                        variants={fadeUp}
-                    >
-                        <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-2xl" />
-                        <FiBookOpen className="text-4xl mb-4 text-blue-200" />
-                        <h3 className="text-2xl font-bold mb-3">University Partnership</h3>
-                        <p className="text-blue-100 mb-6">
-                            Is your university seeking a high-quality international internship
-                            program for students? Let&apos;s connect and build the future
-                            together.
-                        </p>
-                        <Link
-                            href="/contact"
-                            className="inline-flex items-center gap-2 px-6 py-3 bg-white text-blue-700 rounded-full font-semibold hover:bg-blue-50 transition-all duration-300"
-                        >
-                            Contact Us <FiArrowRight />
-                        </Link>
-                    </motion.div>
+                    <div className="p-10 bg-[#1D144A] rounded-[2.5rem] shadow-xl text-white overflow-hidden relative group min-h-[400px] flex flex-col justify-center">
+                        {/* Background Image Overlay */}
+                        <div className="absolute inset-0 z-0">
+                            <Image
+                                src="/images/internship/japan.png"
+                                alt="University"
+                                fill
+                                className="object-cover opacity-20 grayscale"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-[#1D144A] via-transparent to-transparent opacity-80" />
+                        </div>
+
+                        <div className="relative z-10">
+                            <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-8 shadow-lg">
+                                <FiBookOpen className="text-3xl text-blue-900" />
+                            </div>
+                            <h3 className="text-4xl font-bold mb-4">University Partnership</h3>
+                            <p className="text-gray-300 text-lg mb-8 max-w-md">
+                                Is your university seeking a high-quality international internship
+                                program for students? Let's connect!
+                            </p>
+                            <Link
+                                href="/contact"
+                                className="inline-flex items-center gap-2 px-8 py-3 border border-white/50 text-white rounded-full font-medium hover:bg-white hover:text-blue-900 hover:border-white transition-all duration-300"
+                            >
+                                Contact us <FiArrowRight />
+                            </Link>
+                        </div>
+                    </div>
 
                     {/* Hire Interns */}
-                    <motion.div
-                        className="p-8 bg-gradient-to-br from-orange-500 to-pink-600 rounded-3xl shadow-xl text-white overflow-hidden relative"
-                        variants={fadeUp}
-                        custom={1}
-                    >
-                        <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-2xl" />
-                        <FiUsers className="text-4xl mb-4 text-orange-200" />
-                        <h3 className="text-2xl font-bold mb-3">Hire Interns</h3>
-                        <p className="text-orange-100 mb-6">
-                            Are you an employer looking for talented, motivated interns for
-                            your business? We connect you with the best candidates worldwide.
-                        </p>
-                        <Link
-                            href="/contact"
-                            className="inline-flex items-center gap-2 px-6 py-3 bg-white text-orange-600 rounded-full font-semibold hover:bg-orange-50 transition-all duration-300"
-                        >
-                            Contact Us <FiArrowRight />
-                        </Link>
-                    </motion.div>
-                </motion.div>
+                    <div className="p-10 bg-[#1D144A] rounded-[2.5rem] shadow-xl text-white overflow-hidden relative group min-h-[400px] flex flex-col justify-center">
+                        {/* Background Image Overlay */}
+                        <div className="absolute inset-0 z-0">
+                            <Image
+                                src="/images/internship/germany.png"
+                                alt="Hire Interns"
+                                fill
+                                className="object-cover opacity-20 grayscale"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-[#1D144A] via-transparent to-transparent opacity-80" />
+                        </div>
+
+                        <div className="relative z-10">
+                            <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-8 shadow-lg">
+                                <FiUsers className="text-3xl text-blue-900" />
+                            </div>
+                            <h3 className="text-4xl font-bold mb-4">Hire Interns</h3>
+                            <p className="text-gray-300 text-lg mb-8 max-w-md">
+                                Hi employers! Are you looking for the right interns for
+                                your business or organization?
+                            </p>
+                            <Link
+                                href="/contact"
+                                className="inline-flex items-center gap-2 px-8 py-3 border border-white/50 text-white rounded-full font-medium hover:bg-white hover:text-blue-900 hover:border-white transition-all duration-300"
+                            >
+                                Contact us <FiArrowRight />
+                            </Link>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             {/* ── CTA BANNER ── */}
             <section className="py-20 px-6 sm:px-12">
-                <motion.div
-                    className="container mx-auto"
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.3 }}
-                    variants={fadeUp}
-                >
-                    <div className="relative p-12 sm:p-16 bg-gradient-to-r from-blue-800 to-indigo-800 rounded-3xl shadow-2xl overflow-hidden">
-                        <div className="absolute top-0 left-0 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl" />
-                        <div className="absolute bottom-0 right-0 w-80 h-80 bg-indigo-500/20 rounded-full blur-3xl" />
+                <div className="container mx-auto">
+                    <div className="relative bg-white rounded-[2.5rem] shadow-xl border border-blue-100 overflow-hidden flex flex-col lg:flex-row items-center p-8 lg:p-12 gap-12">
+                        <div className="absolute -bottom-80 left-0 w-[140%] h-[140%] pointer-events-none z-0">
+                            <Image
+                                src="/images/internship/apply-banner-Background.svg"
+                                alt="Background Pattern"
+                                fill
+                                className="object-contain object-left-bottom opacity-40 scale-110 translate-y-10"
+                                style={{ filter: 'brightness(0) saturate(100%) invert(43%) sepia(97%) saturate(2335%) hue-rotate(209deg) brightness(96%) contrast(92%)' }}
+                            />
+                        </div>
 
-                        <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
-                            <div>
-                                <h2 className="text-3xl sm:text-4xl font-extrabold text-white leading-tight">
-                                    Ready to Start Your
-                                    <br />
-                                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-300">
-                                        Internship Journey?
-                                    </span>
-                                </h2>
-                                <p className="mt-4 text-blue-200 max-w-lg">
-                                    Ignite your global career with JM Visa Services and embark on
-                                    an unforgettable professional adventure abroad.
-                                </p>
-                            </div>
-                            <div className="flex flex-wrap gap-4">
+                        <div className="relative z-10 lg:w-3/5 space-y-8">
+                            <h2 className="text-5xl sm:text-6xl font-extrabold text-blue-950 leading-tight tracking-tight">
+                                Ready to Start Your<br />
+                                <span className="text-blue-600">Internship Journey?</span>
+                            </h2>
+                            <p className="text-gray-500 text-xl leading-relaxed max-w-xl font-medium">
+                                Ignite your global career with JM Visa Services and embark on
+                                an unforgettable professional adventure abroad.
+                            </p>
+                            <div className="flex flex-wrap gap-5">
                                 <Link
                                     href="/contact"
-                                    className="px-10 py-4 bg-white text-blue-700 rounded-full font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center gap-2"
+                                    className="px-8 py-3 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition-all duration-300 shadow-lg shadow-blue-100"
                                 >
-                                    Apply Now <FiArrowRight />
+                                    Apply Now
                                 </Link>
                                 <Link
                                     href="/contact"
-                                    className="px-10 py-4 border-2 border-white/40 text-white rounded-full font-bold hover:bg-white/10 transition-all duration-300 flex items-center gap-2"
+                                    className="group px-8 py-3 border-[1.5px] border-gray-900 text-blue-950 rounded-xl font-bold hover:bg-gray-50 transition-all duration-300 flex items-center gap-2"
                                 >
-                                    Talk to Us <MdLocalPhone />
+                                    Talk to Us <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
                                 </Link>
                             </div>
                         </div>
+
+                        <div className="relative z-10 lg:w-2/5 w-full h-[400px] rounded-[2rem] overflow-hidden shadow-2xl">
+                            <Image
+                                src="/images/landmarks/Mount Fuji in Japan Visa.webp"
+                                alt="Join JM Visa"
+                                fill
+                                className="object-cover"
+                            />
+                        </div>
                     </div>
-                </motion.div>
+                </div>
             </section>
         </div>
     );
 };
+
 
 export default InternshipPage;
