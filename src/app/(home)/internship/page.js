@@ -355,9 +355,8 @@ const InternshipPage = () => {
 
                     <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-14 text-left">
                         <div className="lg:max-w-xl">
-                            <h2 className="text-4xl sm:text-5xl font-extrabold text-blue-950 leading-tight">
-                                Where Do You Want to<br />
-                                <span className="text-blue-600">Intern Abroad?</span>
+                            <h2 className="text-3xl sm:text-5xl font-extrabold text-blue-950 leading-tight whitespace-normal sm:whitespace-pre-line">
+                                Where Do You Want to <span className="text-blue-600">Intern Abroad?</span>
                             </h2>
                         </div>
                         <div className="lg:max-w-lg pb-1">
@@ -372,11 +371,11 @@ const InternshipPage = () => {
                     </div>
 
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="flex overflow-x-auto lg:grid lg:grid-cols-3 gap-6 lg:gap-8 pb-6 scrollbar-hide -mx-4 px-4 lg:mx-0 lg:px-0 snap-x snap-mandatory">
                         {displayedDestinations.map((dest, i) => (
                             <div
                                 key={dest.name}
-                                className="group relative bg-white rounded-[2rem] overflow-hidden cursor-pointer flex flex-col transition-all duration-300 border-2 border-transparent hover:border-blue-600"
+                                className="flex-shrink-0 w-[280px] sm:w-[350px] lg:w-auto group relative bg-white rounded-[2rem] overflow-hidden cursor-pointer flex flex-col transition-all duration-300 border-2 border-transparent hover:border-blue-600 snap-center"
                             >
                                 {/* Image Container */}
                                 <div className="relative h-64 w-full overflow-hidden">
@@ -444,15 +443,11 @@ const InternshipPage = () => {
                 <div className="container mx-auto relative z-10">
                     <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-14 text-left">
                         <div className="lg:max-w-xl">
-                            <h2 className="text-4xl sm:text-5xl font-extrabold text-blue-950 leading-tight">
-                                Your Ideal<br />
-                                <span className="text-blue-600">Internship</span>
+                            <h2 className="text-3xl sm:text-5xl font-extrabold text-blue-950 leading-tight">
+                                Your Ideal <span className="text-blue-600">Internship</span>
                             </h2>
                         </div>
                         <div className="lg:max-w-lg pb-1">
-                            {/* <p className="text-xl font-bold text-blue-950 mb-3">
-                                Explore Our Internship Fields
-                            </p> */}
                             <p className="text-gray-500 leading-relaxed text-lg">
                                 We partner with a broad array of companies and organizations, ensuring we find
                                 the best fit for your career interests and academic/professional background.
@@ -460,11 +455,11 @@ const InternshipPage = () => {
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div className="flex overflow-x-auto lg:grid lg:grid-cols-4 gap-6 lg:gap-8 pb-6 scrollbar-hide -mx-4 px-4 lg:mx-0 lg:px-0 snap-x snap-mandatory">
                         {industries.map((ind, i) => (
                             <div
                                 key={ind.name}
-                                className="group p-8 bg-white border-2 border-gray-400 rounded-[2rem] hover:border-blue-600 transition-all duration-300 cursor-pointer flex flex-col items-center text-center shadow-sm"
+                                className="flex-shrink-0 w-[220px] sm:w-[280px] lg:w-auto group p-8 bg-white border-2 border-gray-400 rounded-[2rem] hover:border-blue-600 transition-all duration-300 cursor-pointer flex flex-col items-center text-center shadow-sm snap-center"
                             >
                                 <div className="w-20 h-20 rounded-full bg-slate-50 border border-gray-100 flex items-center justify-center mb-6 relative">
                                     {/* Circular decorative ring similar to reference */}
