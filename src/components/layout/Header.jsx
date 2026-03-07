@@ -20,6 +20,7 @@ const Header = () => {
     { name: "Countries", href: "/country" },
     // { name: "Franchise", href: "/franchise" },
     { name: "Blog", href: "/blog" },
+    { name: "Internship", href: "/internship" },
   ];
 
   const toggleSidebar = () => {
@@ -50,11 +51,10 @@ const Header = () => {
             <Link
               key={link.name}
               href={link.href}
-              className={`text-md font-bold transition-colors duration-300 ${
-                currentPath === link.href
+              className={`text-md font-bold transition-colors duration-300 ${currentPath === link.href
                   ? "text-blue-500"
                   : "text-white hover:text-blue-400"
-              }`}
+                }`}
             >
               {link.name.toUpperCase()}
             </Link>
@@ -106,11 +106,10 @@ const Header = () => {
           <Link
             key={link.name}
             href={link.href}
-            className={`text-md block w-full py-1 font-bold transition-colors duration-300 ${
-              currentPath === link.href
+            className={`text-md block w-full py-1 font-bold transition-colors duration-300 ${currentPath === link.href
                 ? "text-blue-400 border-l-4 border-blue-400 pl-2"
                 : "text-gray-600 hover:text-blue-400"
-            }`}
+              }`}
             onClick={toggleSidebar}
           >
             {link.name.toUpperCase()}
