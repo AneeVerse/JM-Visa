@@ -213,13 +213,13 @@ const InternshipPage = () => {
                 <div className="absolute bottom-0 right-0 w-96 h-96 bg-indigo-300/20 rounded-full blur-3xl -z-10" />
 
                 <motion.div
-                    className="container mx-auto flex flex-col lg:flex-row items-center gap-12"
+                    className="container mx-auto flex flex-col lg:flex-row items-center gap-6 lg:gap-12"
                     initial="hidden"
                     animate="visible"
                     variants={stagger}
                 >
                     {/* Left Content */}
-                    <div className="lg:w-1/2 space-y-6 pt-24 lg:pt-32 px-6 sm:pl-12">
+                    <div className="w-full lg:w-1/2 space-y-6 pt-24 sm:pt-20 lg:pt-32 px-4 sm:px-6 lg:px-8 lg:pl-12 text-center lg:text-left">
 
 
                         <motion.h1
@@ -276,7 +276,7 @@ const InternshipPage = () => {
 
                     {/* Right — Hero Image Collage */}
                     <motion.div
-                        className="lg:w-1/2 relative h-[500px] lg:h-[700px] overflow-hidden mr-6 sm:mr-12"
+                        className="hidden lg:block lg:w-1/2 relative lg:h-[700px] overflow-hidden lg:mr-12"
                         variants={fadeUp}
                         custom={0.3}
                     >
@@ -297,7 +297,7 @@ const InternshipPage = () => {
             </section>
 
             {/* ── DESTINATIONS ── */}
-            <section id="destinations-section" className="py-20 px-6 sm:px-12">
+            <section id="destinations-section" className="py-12 sm:py-20 px-4 sm:px-6 lg:px-8">
                 <div className="container mx-auto">
 
                     <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-14 text-left">
@@ -387,7 +387,7 @@ const InternshipPage = () => {
             </section>
 
             {/* ── INTERNSHIP FIELDS ── */}
-            <section className="py-20 px-6 sm:px-12 bg-white relative overflow-hidden">
+            <section className="py-12 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white relative overflow-hidden">
                 <div className="container mx-auto relative z-10">
                     <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-14 text-left">
                         <div className="lg:max-w-xl">
@@ -437,7 +437,7 @@ const InternshipPage = () => {
             </section>
 
             {/* ── HOW IT WORKS ── */}
-            <section className="py-20 px-6 sm:px-12">
+            <section className="py-12 sm:py-20 px-4 sm:px-6 lg:px-8">
                 <div className="container mx-auto">
 
                     <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-14 text-left">
@@ -518,7 +518,7 @@ const InternshipPage = () => {
             </section> */}
 
             {/* ── UNIVERSITY & EMPLOYER PARTNERSHIP ── */}
-            <section className="py-16 px-6 sm:px-12">
+            <section className="py-16 px-4 sm:px-6 lg:px-8">
                 <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
                     {/* University Partnership */}
                     <div className="p-10 bg-[#1D144A] rounded-[2.5rem] shadow-xl text-white overflow-hidden relative group min-h-[400px] flex flex-col justify-center">
@@ -585,7 +585,7 @@ const InternshipPage = () => {
             </section>
 
             {/* ── CTA BANNER ── */}
-            <section className="py-20 px-6 sm:px-12">
+            <section className="py-10 sm:py-20 px-4 sm:px-6 lg:px-8">
                 <div className="container mx-auto">
                     <div className="relative bg-white rounded-[2.5rem] shadow-xl border border-blue-100 overflow-hidden flex flex-col lg:flex-row items-center p-8 lg:p-12 gap-12">
                         <div className="absolute -bottom-80 left-0 w-[140%] h-[140%] pointer-events-none z-0">
