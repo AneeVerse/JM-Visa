@@ -540,7 +540,7 @@ const InternshipPage = () => {
                             <h3 className="text-4xl font-bold mb-4">University Partnership</h3>
                             <p className="text-gray-300 text-lg mb-8 max-w-md">
                                 Is your university seeking a high-quality international internship
-                                program for students? Let's connect!
+                                program for students? Let&apos;s connect!
                             </p>
                             <Link
                                 href="/contact"
