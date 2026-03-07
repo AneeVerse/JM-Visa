@@ -635,7 +635,7 @@ const InternshipPage = () => {
             {/* ── CTA BANNER ── */}
             <section className="py-10 sm:py-20 px-4 sm:px-6 lg:px-8">
                 <div className="container mx-auto">
-                    <div className="relative bg-white rounded-[2.5rem] shadow-xl border border-blue-100 overflow-hidden flex flex-col lg:flex-row items-center p-8 lg:p-12 gap-12">
+                    <div className="relative bg-white rounded-[2.5rem] shadow-xl border border-blue-100 overflow-hidden flex flex-col-reverse lg:flex-row items-center p-8 lg:p-12 gap-12">
                         <div className="absolute -bottom-80 left-0 w-[140%] h-[140%] pointer-events-none z-0">
                             <Image
                                 src="/images/internship/apply-banner-Background.svg"
@@ -646,32 +646,31 @@ const InternshipPage = () => {
                             />
                         </div>
 
-                        <div className="relative z-10 lg:w-3/5 space-y-8">
-                            <h2 className="text-5xl sm:text-6xl font-extrabold text-blue-950 leading-tight tracking-tight">
-                                Ready to Start Your<br />
-                                <span className="text-blue-600">Internship Journey?</span>
+                        <div className="relative z-10 lg:w-3/5 space-y-8 text-center lg:text-left">
+                            <h2 className="text-3xl sm:text-6xl font-extrabold text-blue-950 leading-tight tracking-tight">
+                                Ready to Start Your <span className="text-blue-600">Internship Journey?</span>
                             </h2>
-                            <p className="text-gray-500 text-xl leading-relaxed max-w-xl font-medium">
+                            <p className="text-gray-500 text-lg sm:text-xl leading-relaxed max-w-xl mx-auto lg:mx-0 font-medium">
                                 Ignite your global career with JM Visa Services and embark on
                                 an unforgettable professional adventure abroad.
                             </p>
-                            <div className="flex flex-wrap gap-5">
+                            <div className="flex flex-row justify-center lg:justify-start gap-4">
                                 <Link
                                     href="/contact"
-                                    className="px-8 py-3 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition-all duration-300 shadow-lg shadow-blue-100"
+                                    className="px-6 sm:px-8 py-3 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition-all duration-300 shadow-lg shadow-blue-100 text-sm sm:text-base"
                                 >
                                     Apply Now
                                 </Link>
                                 <Link
                                     href="/contact"
-                                    className="group px-8 py-3 border-[1.5px] border-gray-900 text-blue-950 rounded-xl font-bold hover:bg-gray-50 transition-all duration-300 flex items-center gap-2"
+                                    className="group px-6 sm:px-8 py-3 border-[1.5px] border-gray-900 text-blue-950 rounded-xl font-bold hover:bg-gray-50 transition-all duration-300 flex items-center gap-2 text-sm sm:text-base"
                                 >
-                                    Talk to Us <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
+                                    Talk to Us <FiArrowRight className="hidden sm:inline group-hover:translate-x-1 transition-transform" />
                                 </Link>
                             </div>
                         </div>
 
-                        <div className="relative z-10 lg:w-2/5 w-full h-[400px] rounded-[2rem] overflow-hidden shadow-2xl">
+                        <div className="relative z-10 lg:w-2/5 w-full h-[300px] sm:h-[400px] rounded-[2rem] overflow-hidden shadow-2xl">
                             <Image
                                 src="/images/landmarks/Mount Fuji in Japan Visa.webp"
                                 alt="Join JM Visa"
