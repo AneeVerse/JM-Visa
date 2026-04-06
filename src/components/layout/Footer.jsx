@@ -171,8 +171,19 @@ const Footer = () => {
           </div>
         </div>
 
+        {/* Jurisdictional Clause */}
+        <div className="border-t border-gray-400 mt-12 pt-6">
+          <p className="text-xs text-gray-300 leading-relaxed text-center md:text-left">
+            <span className="font-semibold text-gray-100">Jurisdictional Clause:</span>{" "}
+            Notwithstanding anything contained, any dispute, claim or controversy
+            arising out of or relating to the services shall be subject only to
+            the exclusive jurisdiction of the Courts at Navi Mumbai and Thane
+            District.
+          </p>
+        </div>
+
         {/* Divider */}
-        <div className="border-t border-gray-400 mt-12 pt-6 flex flex-col md:flex-row justify-between items-center">
+        <div className="mt-6 pt-6 border-t border-gray-400 flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm text-gray-100">
             Copyright © {new Date().getFullYear()} JM Visa Services. All rights reserved.
           </p>
