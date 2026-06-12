@@ -14,6 +14,10 @@ const env = {
   NEXT_PUBLIC_RECAPTCHA_SITE_KEY: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '',
   RECAPTCHA_SECRET_KEY: process.env.RECAPTCHA_SECRET_KEY || '',
 
+  // Staff Bypass
+  NEXT_PUBLIC_STAFF_BYPASS_KEY: process.env.NEXT_PUBLIC_STAFF_BYPASS_KEY || 'jmstaff',
+  STAFF_BYPASS_KEY: process.env.STAFF_BYPASS_KEY || 'jmstaff',
+
   // Node Environment
   NODE_ENV: process.env.NODE_ENV || 'development',
 };

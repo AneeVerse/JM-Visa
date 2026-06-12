@@ -4,24 +4,30 @@ import { enforceRateLimit, attachRateLimitCookie } from '../../../utils/rateLimi
 import { verifyRecaptchaToken } from '../../../utils/verifyRecaptcha';
 
 export const POST = async (req) => {
-  const rateLimit = enforceRateLimit(req);
-
-  if (!rateLimit.allowed) {
-    return new Response(
-      JSON.stringify({ success: false, message: rateLimit.message }),
-      {
-        status: 429,
-        headers: {
-          "Content-Type": "application/json",
-          "Retry-After": rateLimit.retryAfterSeconds.toString(),
-        },
-      }
-    );
-  }
-
   try {
     // Parse the incoming JSON data
-    const { name, email, phone, recaptchaToken } = await req.json();
+    const { name, email, phone, recaptchaToken, bypass } = await req.json();
+
+    const staffKey = process.env.STAFF_BYPASS_KEY || 'jmstaff';
+    const isStaff = bypass === staffKey;
+
+    let rateLimit = null;
+    if (!isStaff) {
+      rateLimit = enforceRateLimit(req);
+
+      if (!rateLimit.allowed) {
+        return new Response(
+          JSON.stringify({ success: false, message: rateLimit.message }),
+          {
+            status: 429,
+            headers: {
+              "Content-Type": "application/json",
+              "Retry-After": rateLimit.retryAfterSeconds.toString(),
+            },
+          }
+        );
+      }
+    }
 
     if (!name || !email || !phone) {
       return new Response(
@@ -30,13 +36,15 @@ export const POST = async (req) => {
       );
     }
 
-    const captchaResult = await verifyRecaptchaToken(recaptchaToken);
+    if (!isStaff) {
+      const captchaResult = await verifyRecaptchaToken(recaptchaToken);
 
-    if (!captchaResult.success) {
-      return new Response(
-        JSON.stringify({ success: false, message: captchaResult.message || 'reCAPTCHA verification failed.' }),
-        { status: 400, headers: { 'Content-Type': 'application/json' } }
-      );
+      if (!captchaResult.success) {
+        return new Response(
+          JSON.stringify({ success: false, message: captchaResult.message || 'reCAPTCHA verification failed.' }),
+          { status: 400, headers: { 'Content-Type': 'application/json' } }
+        );
+      }
     }
 
     // Nodemailer transporter setup
@@ -243,7 +251,9 @@ export const POST = async (req) => {
       JSON.stringify({ success: true, message: 'Consent email sent successfully!' }),
       { status: 200, headers: { 'Content-Type': 'application/json' } }
     );
-    attachRateLimitCookie(response, rateLimit.cookieValue);
+    if (!isStaff && rateLimit && rateLimit.cookieValue) {
+      attachRateLimitCookie(response, rateLimit.cookieValue);
+    }
     return response;
   } catch (error) {
     console.error('Error sending email:', error.message);

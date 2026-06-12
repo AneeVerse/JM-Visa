@@ -14,8 +14,21 @@ const TermsAndConditionsPopup = () => {
   const [hideButton, setHideButton] = useState(false);
   const [captchaToken, setCaptchaToken] = useState(null);
   const [captchaError, setCaptchaError] = useState("");
+  const [isStaff, setIsStaff] = useState(false);
+  const [bypassKey, setBypassKey] = useState("");
   const recaptchaRef = useRef(null);
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const key = params.get("bypass");
+      const staffKey = process.env.NEXT_PUBLIC_STAFF_BYPASS_KEY || "jmstaff";
+      if (key === staffKey) {
+        setIsStaff(true);
+        setBypassKey(key);
+      }
+    }
+  }, []);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -37,7 +50,7 @@ const TermsAndConditionsPopup = () => {
     try {
       const fullPhoneNumber = formData.phone ? `${formData.countryCode} ${formData.phone}` : "";
 
-      if (!captchaToken) {
+      if (!isStaff && !captchaToken) {
         setCaptchaError("Please verify you are not a robot.");
         setIsLoading(false);
         setHideButton(false);
@@ -47,7 +60,11 @@ const TermsAndConditionsPopup = () => {
       const response = await fetch("/api/termsform", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData, phone: fullPhoneNumber, recaptchaToken: captchaToken }),
+        body: JSON.stringify({ 
+          ...formData, 
+          phone: fullPhoneNumber, 
+          ...(isStaff ? { bypass: bypassKey } : { recaptchaToken: captchaToken }) 
+        }),
       });
 
       const result = await response.json();
@@ -141,7 +158,12 @@ const TermsAndConditionsPopup = () => {
                   </div>
                 </div>
 
-                {SITE_KEY ? (
+                {isStaff ? (
+                  <div className="mb-4 p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-emerald-800 text-sm text-center font-medium shadow-sm flex items-center justify-center gap-2">
+                    <span className="text-base">✨</span>
+                    <span>Staff Mode Active — Rate limit & Captcha Bypassed</span>
+                  </div>
+                ) : SITE_KEY ? (
                   <div className="mb-4">
                     <ReCAPTCHA
                       ref={recaptchaRef}
