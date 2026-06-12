@@ -158,12 +158,7 @@ const TermsAndConditionsPopup = () => {
                   </div>
                 </div>
 
-                {isStaff ? (
-                  <div className="mb-4 p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-emerald-800 text-sm text-center font-medium shadow-sm flex items-center justify-center gap-2">
-                    <span className="text-base">✨</span>
-                    <span>Staff Mode Active — Rate limit & Captcha Bypassed</span>
-                  </div>
-                ) : SITE_KEY ? (
+                {isStaff ? null : SITE_KEY ? (
                   <div className="mb-4">
                     <ReCAPTCHA
                       ref={recaptchaRef}
