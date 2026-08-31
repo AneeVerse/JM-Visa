@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { getGpsCoords, getPublicIp } from '../lib/browserLocation';
 
 const useGeoLocation = () => {
     const [location, setLocation] = useState(null);
@@ -6,17 +7,31 @@ const useGeoLocation = () => {
     useEffect(() => {
         const fetchGeo = async () => {
             try {
-                // ipapi.co provides HTTPS and doesn't require a key for small volumes
-                const response = await fetch('https://ipapi.co/json/');
+                const [ip, gps] = await Promise.all([getPublicIp(), getGpsCoords()]);
+
+                if (gps?.lat && gps?.lon) {
+                    const response = await fetch('/api/geo-lookup', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ ip, lat: gps.lat, lon: gps.lon }),
+                    });
+                    if (response.ok) {
+                        const data = await response.json();
+                        if (data?.geo) {
+                            setLocation(data.geo);
+                            return;
+                        }
+                    }
+                }
+
+                const response = await fetch('/api/geo-lookup', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ ip }),
+                });
                 if (!response.ok) return;
                 const data = await response.json();
-                setLocation({
-                    city: data.city,
-                    region: data.region,
-                    pincode: data.postal,
-                    country: data.country_name,
-                    ip: data.ip
-                });
+                if (data?.geo) setLocation(data.geo);
             } catch (err) {
                 console.error("Geo fetch failed:", err);
             }
