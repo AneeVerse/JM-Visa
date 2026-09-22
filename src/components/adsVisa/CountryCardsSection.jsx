@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
@@ -13,7 +13,7 @@ const countries = [
     image: '/images/landmarks/Big Ben tourist places in United Kingdom UK Visa.webp',
     flag: '/images/flags/gb.webp',
     visaTypes: ['Tourist Visa', 'Business Visa'],
-    processingTime: '15-20 Days',
+    processingTime: '15 working days',
     description: 'UK visa consultation with structured documentation support, checklist-based guidance, and application assistance.',
   },
   {
@@ -22,7 +22,7 @@ const countries = [
     image: '/images/landmarks/Tourist Places in United States Visa.webp',
     flag: '/images/flags/us.webp',
     visaTypes: ['Tourist Visa', 'Business Visa'],
-    processingTime: '30-60 Days',
+    processingTime: 'Varies by Profile',
     description: 'US visa consultation for tourist, business, and interview preparation with clear steps and experienced guidance.',
   },
   {
@@ -31,7 +31,7 @@ const countries = [
     image: '/images/landmarks/Colosseum in Italy Visa.webp',
     flag: '/images/flags/eu.png',
     visaTypes: ['Tourist Visa', 'Business Visa'],
-    processingTime: '15-20 Days',
+    processingTime: '3-15 working days',
     description: 'Schengen visa consultation across European destinations—itinerary planning, checklists, and document verification.',
   },
   {
@@ -40,7 +40,7 @@ const countries = [
     image: '/images/landmarks/Sydney Opera House in Australia Visa.webp',
     flag: '/images/flags/au.webp',
     visaTypes: ['Tourist Visa', 'Business Visa'],
-    processingTime: '15-20 Days',
+    processingTime: '15-30 working days',
     description: 'Australia visa consultation for visitor and business travel with step-by-step guidance and fast support.',
   },
 ];

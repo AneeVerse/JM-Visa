@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import { motion } from 'framer-motion';
 import FormComponent from '../common/FormComponent';
 
@@ -27,7 +27,7 @@ const AdsVisaHero = ({ onBookingClick }) => {
 
             {/* Subheading text */}
             <p className="text-base sm:text-lg text-gray-700 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              Get visa consultation for tourist and business travel to the UK, US, Schengen (Europe) and Australia with a simple, step-by-step process and fast WhatsApp support whenever you need clarity. We&apos;re an independent consultancy (not a government website), and we don&apos;t promise approvals; final decisions are always made by the relevant authorities.
+              Visa consultation for UK, US, Schengen &amp; Australia tourist and business travel. Simple process, fast WhatsApp support. Independent consultancy; no approval guarantees. Final decisions are made by the relevant authorities.
             </p>
 
             {/* Trust Indicators */}
