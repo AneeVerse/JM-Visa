@@ -26,7 +26,7 @@ const AdsVisaHero = ({ onBookingClick }) => {
             </h1>
 
             {/* Subheading text */}
-            <p className="text-base sm:text-lg text-gray-700 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+            <p className="text-lg sm:text-xl text-gray-700 leading-relaxed max-w-2xl mx-auto lg:mx-0">
               Visa consultation for UK, US, Schengen &amp; Australia tourist and business travel. Simple process, fast WhatsApp support. Independent consultancy; no approval guarantees. Final decisions are made by the relevant authorities.
             </p>
 
