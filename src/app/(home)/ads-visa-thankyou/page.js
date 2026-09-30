@@ -1,8 +1,9 @@
-﻿"use client";
+"use client";
 
 import { useEffect } from 'react';
 import { FaCheckCircle, FaPhone, FaEnvelope, FaClock } from 'react-icons/fa';
 import Link from 'next/link';
+import Script from 'next/script';
 
 export default function AdsVisaThankYouPage() {
   useEffect(() => {
@@ -11,6 +12,32 @@ export default function AdsVisaThankYouPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white pt-16 pb-20">
+      {/* Google tag (gtag.js) */}
+      <Script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=AW-18482140930"
+        strategy="afterInteractive"
+      />
+      <Script id="google-ads-tag-thankyou" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'AW-18482140930');
+        `}
+      </Script>
+
+      {/* Event snippet for Sign-up conversion page */}
+      <Script id="google-ads-conversion" strategy="afterInteractive">
+        {`
+          gtag('event', 'conversion', {
+              'send_to': 'AW-18482140930/1VfBCMru2IodEIKu_OxE',
+              'value': 1.0,
+              'currency': 'INR'
+          });
+        `}
+      </Script>
+
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="mx-auto flex items-center justify-center h-20 w-20 rounded-full bg-green-100 mb-6 shadow-md">
           <FaCheckCircle className="h-12 w-12 text-green-600" />

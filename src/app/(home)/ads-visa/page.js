@@ -1,6 +1,7 @@
-﻿"use client";
+"use client";
 import { useCallback } from 'react';
 import Image from 'next/image';
+import Script from 'next/script';
 import { FaPhoneAlt, FaWhatsapp, FaPlane, FaUserTie, FaGlobe, FaClock } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import AdsVisaHero from '../../../components/adsVisa/AdsVisaHero';
@@ -18,6 +19,21 @@ const AdsVisaPage = () => {
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-white">
+      {/* Google tag (gtag.js) */}
+      <Script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=AW-18482140930"
+        strategy="afterInteractive"
+      />
+      <Script id="google-ads-tag-landing" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'AW-18482140930');
+        `}
+      </Script>
+
       {/* Background Geo & Visitor Tracking */}
       <VisitorTracker />
 
