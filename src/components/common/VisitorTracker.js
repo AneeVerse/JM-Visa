@@ -1,7 +1,7 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useRef } from "react";
-import { getGpsCoords, getPublicIp } from "../../lib/browserLocation";
+import { getPublicIp } from "../../lib/browserLocation";
 
 export default function VisitorTracker() {
   const tracked = useRef(false);
@@ -11,15 +11,13 @@ export default function VisitorTracker() {
     tracked.current = true;
 
     const track = async () => {
-      const [ip, gps] = await Promise.all([getPublicIp(), getGpsCoords()]);
+      const ip = await getPublicIp();
 
       await fetch("/api/track-visitor", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ip,
-          lat: gps?.lat,
-          lon: gps?.lon,
           pageUrl: window.location.href,
           referrer: document.referrer || "Direct",
           userAgent: navigator.userAgent,

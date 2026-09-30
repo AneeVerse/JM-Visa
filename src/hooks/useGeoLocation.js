@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getGpsCoords, getPublicIp } from '../lib/browserLocation';
+import { getPublicIp } from '../lib/browserLocation';
 
 const useGeoLocation = () => {
     const [location, setLocation] = useState(null);
@@ -7,23 +7,7 @@ const useGeoLocation = () => {
     useEffect(() => {
         const fetchGeo = async () => {
             try {
-                const [ip, gps] = await Promise.all([getPublicIp(), getGpsCoords()]);
-
-                if (gps?.lat && gps?.lon) {
-                    const response = await fetch('/api/geo-lookup', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ ip, lat: gps.lat, lon: gps.lon }),
-                    });
-                    if (response.ok) {
-                        const data = await response.json();
-                        if (data?.geo) {
-                            setLocation(data.geo);
-                            return;
-                        }
-                    }
-                }
-
+                const ip = await getPublicIp();
                 const response = await fetch('/api/geo-lookup', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
