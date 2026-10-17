@@ -14,6 +14,7 @@ const teamMembers = [
     linkedin: "https://www.linkedin.com/in/jayesh-jaywant-more-156360292",
     twitter: "https://wa.me/+919321315524",
     email: "mailto:info@jmvisaservices.com",
+    hidden: false,
   },
   {
     name: "Amrita Vijaykumar Thakar",
@@ -23,6 +24,7 @@ const teamMembers = [
     linkedin: "https://www.linkedin.com/in/amrita-vijaykumar-thakar-8845a0114/",
     twitter: "https://wa.me/+919321315524",
     email: "mailto:info@jmvisaservices.com",
+    hidden: true, // Hidden from about page
   },
 ];
 
@@ -41,12 +43,14 @@ const OurTeamSection = () => {
         </div>
 
         {/* Team Members */}
-        <div className="flex flex-row flex-wrap gap-6">
-          {teamMembers.map((member, index) => (
-            <div
-              key={index}
-              className="flex flex-row flex-1 min-w-[300px] sm:flex-row items-center p-3 md:p-5 gap-6  transition"
-            >
+        <div className="flex flex-row flex-wrap justify-center gap-6">
+          {teamMembers
+            .filter((member) => !member.hidden)
+            .map((member, index) => (
+              <div
+                key={index}
+                className="flex flex-row flex-1 max-w-xl min-w-[300px] sm:flex-row items-center p-3 md:p-5 gap-6  transition"
+              >
               {/* Image Section */}
               <div className="w-32 h-full flex-shrink-0">
                 <img
